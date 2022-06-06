@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.kos.showticat.reservation.service.ScheduleService;
+import com.kos.showticat.reservation.vo.MembersVO;
 import com.kos.showticat.reservation.vo.ScheduleVO;
 
 public class temp {
@@ -12,10 +13,10 @@ public class temp {
 		
 		ScheduleService service = new ScheduleService();
 		
-		List<ScheduleVO> scList = new ArrayList<>();
-		scList = service.selectALL();
+		List<MembersVO> list = new ArrayList<>();
+		list = service.selectALLMembers();
 		
-		for(ScheduleVO arr: scList) {
+		for(MembersVO arr: list) {
 			System.out.println(arr);
 		}
 	}
