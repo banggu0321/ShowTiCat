@@ -1,5 +1,7 @@
 package com.kos.showticat.jayoung;
 
+import com.kos.showticat.jayoung.MemberVO;
+
 public class MemberService {
 	MemberDAO dao = new MemberDAO();
 
@@ -42,5 +44,10 @@ public class MemberService {
 	public MemberVO memberPlace(String m_name, String place) {
 		return dao.selectByPlace(m_name, place);
 
+	}
+	
+	// 회원정보 수정
+	public int update(MemberVO member) {
+		return dao.update(member);
 	}
 }
