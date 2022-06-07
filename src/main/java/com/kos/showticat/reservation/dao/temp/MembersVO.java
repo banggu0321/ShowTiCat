@@ -1,4 +1,4 @@
-package com.kos.showticat.reservation.vo;
+package com.kos.showticat.reservation.dao.temp;
 
 public class MembersVO {
 	private String mID, mPW, mName, email, phone, birth, gender, mDate, point, placeNum;

@@ -1,23 +1,211 @@
 package com.kos.showticat.reservation.dao.temp;
 
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.sql.Timestamp;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.kos.showticat.reservation.vo.MembersVO;
-import com.kos.showticat.reservation.vo.ScheduleVO;
+import com.kos.showticat.reservation.dao.temp.MembersVO;
+import com.kos.showticat.reservation.dao.temp.ReservationVO;
+import com.kos.showticat.reservation.dao.temp.ScheduleVO;
 import com.kos.showticat.util.DButil;
 
 public class ScheduleDAO {
 	
+	final static String SQL_SCHEDULE_INSERT="INSERT INTO SCHEDULE VALUES (?, ?, ?, ?, ?)";	
 	final static String SQL_SCHEDULE_SELECT_ALL ="select schedule_num, show_code, theater_num, place_num, show_start from schedule";
 	final static String SQL_SCHEDULE_POINT_SELECT_ALL ="select*from members";
 	final static String SQL_SCHEDULE_POINT_UPDATE="update members set point=? where m_id=? and m_pw=?";
+	
 	final static String SQL_RESERVATION_INSERT="INSERT INTO RESERVATION values(?, ?, sysdate, ?, 'temp', 0, 'N')";
+	final static String SQL_RESERVATION_UPDATE_PAYMENT_TOTALPRICES="UPDATE RESERVATION  SET PAYMENT=?, TOTAL_PRICE=? WHERE RESERVATION_NUM=?";
+	final static String SQL_RESERVATION_UPDATE_PAYMENT_YN="UPDATE RESERVATION SET PAY_YN =? WHERE  RESERVATION_NUM =?";
+	final static String SQL_RESERVATION_SELECT="SELECT m_id, reservation_date, schedule_num, payment, total_price, pay_yn FROM RESERVATION WHERE RESERVATION_NUM=?";
+	
+	final static String SQL_RESERVATION_DETAIL_INSERT="INSERT INTO RESERV_DETAIL VALUES (?,'temp')";
+	final static String SQL_RESERVATION_DETAIL_UPDATE="UPDATE RESERV_DETAIL SET SEAT_NUM=? WHERE RESERVATION_NUM=?";
+	
+	public void insertScheduleInfor(int scheduleNum, String showCode, String theaterNum, int placeNum, String showStart) {
+		
+		Connection con = DButil.getConnection();
+		PreparedStatement ppst=null;
+		
+		//string -> timestamp -> date
+		Timestamp sStart = Timestamp.valueOf(showStart);
+		Date sDate = new Date(sStart.getTime());
+		
+		try {	
+			ppst = con.prepareStatement(SQL_SCHEDULE_INSERT);
+			ppst.setInt(1, scheduleNum);
+			ppst.setString(2, showCode);
+			ppst.setString(3, theaterNum);
+			ppst.setInt(4, placeNum);
+			ppst.setDate(5, sDate);
+			int result = ppst.executeUpdate();
+			if(result == 1) {
+				System.out.println("ScheduleDAO.insertScheduleInfor=>insert data");
+			}			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				ppst.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+			DButil.dbClose(con);
+		}
+	}
+	
+	
+	public ReservationVO reservationSelectByNumber(int reservatioNum) {
+		
+		ReservationVO rvo = new ReservationVO();
+		
+		Connection con = DButil.getConnection();
+		PreparedStatement ppst=null;
+		ResultSet rs = null;
+		
+		try {
+			ppst = con.prepareStatement(SQL_RESERVATION_SELECT);
+			ppst.setInt(1, reservatioNum);
+			rs = ppst.executeQuery();
+			
+			while(rs.next()) {
+				rvo.setReservationNum(String.valueOf(reservatioNum));
+				rvo.setmID(rs.getString("m_id"));
+				rvo.setReservationDate(rs.getString("reservation_date"));
+				rvo.setScheduleNum(rs.getString("schedule_num"));
+				rvo.setPayment(rs.getString("payment"));
+				rvo.setTotalPrice(rs.getString("total_price"));
+				rvo.setPayYN(rs.getString("pay_yn"));
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				rs.close();
+				ppst.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+			DButil.dbClose(con);
+		}
+
+		return rvo;
+	}
+	
+	
+	public void updateReservationPaymentYN(String paymentYN, int reservatioNum) {
+		
+		Connection con = DButil.getConnection();
+		PreparedStatement ppst=null;
+		
+		try {
+			ppst = con.prepareStatement(SQL_RESERVATION_UPDATE_PAYMENT_YN);
+			ppst.setString(1, paymentYN);
+			ppst.setInt(2, reservatioNum);
+			int result = ppst.executeUpdate();
+			if(result == 1) {
+				System.out.println("ScheduleDAO.updateReservationPaymentYN=>update data");
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				ppst.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+			DButil.dbClose(con);
+		}
+	}
+	
+	
+	public void updateReservationDetailInfor(String seatNum, int reservationNum) {
+		
+		Connection con = DButil.getConnection();
+		PreparedStatement ppst=null;
+		
+		try {
+			ppst = con.prepareStatement(SQL_RESERVATION_DETAIL_UPDATE);
+			ppst.setString(1, seatNum);
+			ppst.setInt(2, reservationNum);
+			int result = ppst.executeUpdate();
+			if(result == 1) {
+				System.out.println("ScheduleDAO.updateReservationDetailInfor=>update data");
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			try {
+				ppst.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+			DButil.dbClose(con);
+		}
+	}
+	
+	
+	public void insertReservationDetailInfor(int reserNum) {
+		
+		Connection con = DButil.getConnection();
+		PreparedStatement ppst=null;
+		
+		try {
+			ppst = con.prepareStatement(SQL_RESERVATION_DETAIL_INSERT);
+			ppst.setInt(1, reserNum);
+			int result = ppst.executeUpdate();
+			if(result == 1) {
+				System.out.println("ScheduleDAO.insertReservationDetailInfor=>insert data");
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			try {
+				ppst.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+			DButil.dbClose(con);
+		}		
+	}
+	
+	
+	public void updateReservationInfor(String payment, int totalPrice, int reservationNum) {
+		
+		Connection con = DButil.getConnection();
+		PreparedStatement ppst=null;
+		
+		try {
+			ppst = con.prepareStatement(SQL_RESERVATION_UPDATE_PAYMENT_TOTALPRICES);
+			ppst.setString(1, payment);
+			ppst.setInt(2, totalPrice);
+			ppst.setInt(3, reservationNum);
+			int result = ppst.executeUpdate();
+			if(result == 1) {
+				System.out.println("ScheduleDAO.updateReservationInfor=>update data");
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			try {
+				ppst.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+			DButil.dbClose(con);
+		}
+	}
+	
 	
 	public void insertReservationInfor(int reserNum, String mID, int schedNum) {
 		
@@ -31,7 +219,7 @@ public class ScheduleDAO {
 			ppst.setInt(3, schedNum);
 			int result = ppst.executeUpdate();
 			if(result == 1) {
-				System.out.println("ScheduleDAO.insertReservationInfor=>update data");
+				System.out.println("ScheduleDAO.insertReservationInfor=>insert data");
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -44,6 +232,7 @@ public class ScheduleDAO {
 			DButil.dbClose(con);
 		}
 	}
+	
 	
 	public void updatePointMembers(String id, String pw, int point) {
 		
@@ -72,6 +261,7 @@ public class ScheduleDAO {
 		}
 	}
 
+	
 	public List<MembersVO> selectALLMembers(){
 		
 		List<MembersVO> mvoList = new ArrayList<>();

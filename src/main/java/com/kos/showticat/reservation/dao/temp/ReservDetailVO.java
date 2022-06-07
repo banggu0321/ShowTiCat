@@ -1,4 +1,4 @@
-package com.kos.showticat.reservation.vo;
+package com.kos.showticat.reservation.dao.temp;
 
 public class ReservDetailVO {
 	
