@@ -8,6 +8,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 @WebServlet("/jayoung/resetPW.do")
 public class ResetPW extends HttpServlet {
@@ -24,8 +25,17 @@ public class ResetPW extends HttpServlet {
 		
 		MemberService service = new MemberService();
 		int result = service.resetPW(m_id, new_pw);
+		if(result > 0) {
+			request.setAttribute("msg", "성공");
+			
+			HttpSession session = request.getSession();
+			session.invalidate();
+		} else {
+			request.setAttribute("msg", "실패");
+		}
 		
-		
+		RequestDispatcher rd = request.getRequestDispatcher("result.jsp");
+		rd.forward(request, response);
 	}
 
 }

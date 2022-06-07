@@ -95,7 +95,7 @@ public class MemberDAO {
 		conn = DBUtil.getConnection();   
 		
 		try {
-			pst = conn.prepareStatement(SQL_FIND_PW);
+			pst = conn.prepareStatement(SQL_UPDATE_PW);
 			pst.setString(1, m_pw); 
 			pst.setString(2, m_id); 
 			rs = pst.executeQuery();

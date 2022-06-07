@@ -13,6 +13,7 @@ import com.kos.showticat.util.DBUtil;
 public class ShowDAO {
 	static final String SQL_SELECT ="select * from show";
 	static final String SQL_SELECT_CODE ="select * from show where show_code=?";
+	static final String SQL_SEARCH ="select * from show where show_name like '%'||"+"?"+"||'%'";
 	
 	Connection conn;
 	Statement st;
@@ -58,6 +59,27 @@ public class ShowDAO {
 			DBUtil.dbClose(rs, pst, conn);
 		}
 		return show;
+	}
+	
+	//검색목록 전체조회
+	public List<ShowVO> selectSearch(String word) {
+		List<ShowVO> showList = new ArrayList<>();
+		conn = DBUtil.getConnection();
+		try {
+			pst = conn.prepareStatement(SQL_SEARCH);
+			pst.setString(1, word);
+			rs = pst.executeQuery();
+			
+			while(rs.next()) {
+				showList.add(makeShow(rs));
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			DBUtil.dbClose(rs, pst, conn);
+		}
+		
+		return showList;
 	}
 
 	private ShowVO makeShow(ResultSet rs) throws SQLException {

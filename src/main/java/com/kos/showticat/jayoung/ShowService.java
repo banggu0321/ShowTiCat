@@ -14,4 +14,9 @@ public class ShowService {
 	public ShowVO selectShow(String show_code) {
 		return dao.selectShow(show_code);
 	}
+	
+	//검색목록 전체조회
+	public List<ShowVO> selectSearch(String word) {
+		return dao.selectSearch(word);
+	}
 }

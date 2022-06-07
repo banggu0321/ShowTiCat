@@ -26,8 +26,9 @@ function showList() {
 }
 
 function scheduleList() {
-	location.href="scheduleList.do";
+	location.href="placeDetail.do?place_num=1000";
 }
+
 </script>
 </head>
 <body>
@@ -36,5 +37,6 @@ function scheduleList() {
 <hr>
 <button class="btn btn-primary" id="showList">영화/공연 목록보기</button>
 <button class="btn btn-primary" id="scheduleList">극장별로 조회</button>
+
 </body>
 </html>

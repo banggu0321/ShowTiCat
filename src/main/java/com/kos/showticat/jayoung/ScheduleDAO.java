@@ -12,7 +12,9 @@ import com.kos.showticat.util.DBUtil;
 
 public class ScheduleDAO {
 	static final String SQL_SELECT_ALL ="select * from schedule";
-	static final String SQL_SELECT ="select * from schedule where place_num =? and show_code=?";
+	static final String SQL_SELECT_BY_NUM ="select * from schedule where place_num =?";
+	static final String SQL_SELECT_BY_SHOW ="select * from schedule where place_num =? and show_code=?";
+	static final String SQL_SELECT_BY_THEATER ="select * from schedule where place_num =? and show_code=? and theater_num=?";
 	
 	Connection conn;
 	Statement st;
@@ -42,13 +44,12 @@ public class ScheduleDAO {
 	}
 	
 	//극장별로 조회
-	public List<ScheduleVO> selectByPlace(int place_num,String show_code) {
+	public List<ScheduleVO> selectByPlace(int place_num) {
 		List<ScheduleVO> scheduleList = new ArrayList<>();
 		conn = DBUtil.getConnection();
 		try {
-			pst = conn.prepareStatement(SQL_SELECT);
+			pst = conn.prepareStatement(SQL_SELECT_BY_NUM);
 			pst.setInt(1, place_num);
-			pst.setString(2, show_code);
 			rs = pst.executeQuery();
 			
 			while(rs.next()) {
@@ -62,6 +63,51 @@ public class ScheduleDAO {
 	
 		return scheduleList;
 	}
+	
+	//영화별로 조회
+	public List<ScheduleVO> selectByShow(int place_num, String show_code) {
+		List<ScheduleVO> scheduleList = new ArrayList<>();
+		conn = DBUtil.getConnection();
+		try {
+			pst = conn.prepareStatement(SQL_SELECT_BY_SHOW);
+			pst.setInt(1, place_num);
+			pst.setString(2, show_code);
+			rs = pst.executeQuery();
+			
+			while(rs.next()) {
+				scheduleList.add(makeSchedule(rs));
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			DBUtil.dbClose(rs, pst, conn);
+		}
+		
+		return scheduleList;
+	}
+	
+	//상영관별로 조회
+	public List<ScheduleVO> selectByTheater(int place_num, String show_code, String theater_num) {
+		List<ScheduleVO> scheduleList = new ArrayList<>();
+		conn = DBUtil.getConnection();
+		try {
+			pst = conn.prepareStatement(SQL_SELECT_BY_THEATER);
+			pst.setInt(1, place_num);
+			pst.setString(2, show_code);
+			pst.setString(3, theater_num);
+			rs = pst.executeQuery();
+			
+			while(rs.next()) {
+				scheduleList.add(makeSchedule(rs));
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			DBUtil.dbClose(rs, pst, conn);
+		}
+		
+		return scheduleList;
+	}
 
 	private ScheduleVO makeSchedule(ResultSet rs) throws SQLException {
 		ScheduleVO schedule = new ScheduleVO();
@@ -71,6 +117,7 @@ public class ScheduleDAO {
 		schedule.setShow_code(rs.getString("show_code"));
 		schedule.setShow_start(rs.getDate("show_start"));
 		schedule.setTheater_num(rs.getString("theater_num"));
+		schedule.setStart_time(rs.getTime("show_start"));
 		
 		return schedule;
 	}

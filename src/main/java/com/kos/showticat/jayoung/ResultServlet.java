@@ -1,6 +1,7 @@
 package com.kos.showticat.jayoung;
 
 import java.io.IOException;
+import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -10,17 +11,22 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * Servlet implementation class ScheduleList
+ * Servlet implementation class ResultServlet
  */
-@WebServlet("/jayoung/scheduleList.do")
-public class ScheduleList extends HttpServlet {
+@WebServlet("/jayoung/result.do")
+public class ResultServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-
+  
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		ScheduleService service = new ScheduleService();
-		request.setAttribute("scheduleList", service.selectAll());
+		String word = request.getParameter("search");
+		request.setAttribute("word", word);
 		
-		RequestDispatcher rd = request.getRequestDispatcher("scheduleList.jsp");
+		ShowService service = new ShowService();
+		List<ShowVO> sList = service.selectSearch(word);
+		
+		if(!sList.isEmpty()) request.setAttribute("result", sList);
+		
+		RequestDispatcher rd = request.getRequestDispatcher("searchResult.jsp");
 		rd.forward(request, response);
 	}
 

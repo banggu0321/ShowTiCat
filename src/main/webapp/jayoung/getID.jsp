@@ -29,7 +29,7 @@ function findPW() {
 <body>
 <h1>FIND ID</h1>
 <hr>
-<p>아이디는 ${member.m_id} 입니다.</p>
+<p>아이디는 ${m_id} 입니다.</p>
 <button id="findPW" class="btn btn-outline-success">비밀번호 찾기</button>
 </body>
 </html>

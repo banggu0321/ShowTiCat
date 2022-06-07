@@ -18,6 +18,9 @@
 	padding-right: 20px;
 }
 </style>
+<script>
+
+</script>
 </head>
 <body>
 <div>
@@ -41,10 +44,11 @@
 		</c:if>	
 	</span>
 	<a class="right" href="${path}/jayoung/main.jsp"><button class="btn btn-light">MAIN</button></a>
+	<form action="result.do" class="right">
+		<input class="form-control" type="text" name="search" id="search" value="${word}">
+		<input class="btn btn-success" type="submit" value="검색">
+	</form>
+
 </div>
-<c:if test="${member != null}">
-	<hr>
-	<p>${member}</p>
-</c:if>
 </body>
 </html>

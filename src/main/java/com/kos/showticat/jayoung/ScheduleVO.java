@@ -1,6 +1,7 @@
 package com.kos.showticat.jayoung;
 
 import java.sql.Date;
+import java.sql.Time;
 
 public class ScheduleVO {
 	private int schedule_num;
@@ -8,16 +9,19 @@ public class ScheduleVO {
 	private String theater_num;
 	private int place_num;
 	private Date show_start;
+	private Time start_time;
 	
 	public ScheduleVO() {}
 	
-	public ScheduleVO(int schedule_num, String show_code, String theater_num, int place_num, Date show_start) {
+	public ScheduleVO(int schedule_num, String show_code, String theater_num, int place_num, Date show_start,
+			Time start_time) {
 		super();
 		this.schedule_num = schedule_num;
 		this.show_code = show_code;
 		this.theater_num = theater_num;
 		this.place_num = place_num;
 		this.show_start = show_start;
+		this.start_time = start_time;
 	}
 
 	public int getSchedule_num() {
@@ -60,14 +64,21 @@ public class ScheduleVO {
 		this.show_start = show_start;
 	}
 
+	public Time getStart_time() {
+		return start_time;
+	}
+
+	public void setStart_time(Time start_time) {
+		this.start_time = start_time;
+	}
+
 	@Override
 	public String toString() {
 		StringBuilder builder = new StringBuilder();
-		builder.append("ScheduleVO [schedule=").append(schedule_num).append(", show_code=").append(show_code)
+		builder.append("ScheduleVO [schedule_num=").append(schedule_num).append(", show_code=").append(show_code)
 				.append(", theater_num=").append(theater_num).append(", place_num=").append(place_num)
-				.append(", show_start=").append(show_start).append("]");
+				.append(", show_start=").append(show_start).append(", start_time=").append(start_time).append("]");
 		return builder.toString();
 	}
-	
-	
+
 }

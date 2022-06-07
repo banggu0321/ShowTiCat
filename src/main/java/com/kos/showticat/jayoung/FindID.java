@@ -30,15 +30,15 @@ public class FindID extends HttpServlet {
 		MemberService service = new MemberService();
 		MemberVO member = service.findID(m_name, phone);
 		
-		HttpSession session = request.getSession();
-		session.setAttribute("member", member);
-		
 		if(member == null) {
 			response.setContentType("text/html; charset=UTF-8");
 			PrintWriter writer = response.getWriter();
 			writer.println("<script>alert('일치하는 회원 정보가 없습니다. 확인 후 다시 시도해주세요.');  location.href='findID.do';</script>");
 			writer.close();
 		}else {
+			HttpSession session = request.getSession();
+			session.setAttribute("m_id", member.getM_id());
+			
 			response.sendRedirect("getID.jsp");
 		}
 	}
