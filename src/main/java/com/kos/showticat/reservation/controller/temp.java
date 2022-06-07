@@ -18,9 +18,9 @@ public class temp {
 
 	public static void main(String[] args) {
 		
-		f6(); //schedule table insert row
+//		f6(); //schedule table insert row
 		
-//		f5();  //reservation table 조회
+		f5();  //reservation table 조회
 		
 //		f4(); //1~2: 인원수 선택
 		
