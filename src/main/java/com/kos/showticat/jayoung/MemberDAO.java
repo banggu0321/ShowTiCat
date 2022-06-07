@@ -190,7 +190,7 @@ public class MemberDAO {
 		conn = DBUtil.getConnection();
 
 		try {
-			pst = conn.prepareStatement(SQL_SELECT_POINT);
+			pst = conn.prepareStatement(SQL_SELECT_PLACE);
 			pst.setString(1, m_name);
 			pst.setString(2, place_num);
 			System.out.println(pst.toString());
