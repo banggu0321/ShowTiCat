@@ -10,6 +10,7 @@ public class DButil {
 		
 		String url = "jdbc:oracle:thin:@testdb_medium?TNS_ADMIN=C:/Users/KOSTA/Downloads/Wallet_testDB";
 		String url2 = "jdbc:oracle:thin:@testdb_medium?TNS_ADMIN=C:/Users/lenovo/Desktop/language/SQL/KOSTA/Wallet_testDB";
+		String url3 = "jdbc:oracle:thin:@testdb_medium?TNS_ADMIN=C:/Wallet_testDB";
 		String user="admin";
 		String password ="Kostatestdb241";
 		String driverPath ="oracle.jdbc.driver.OracleDriver";
@@ -18,7 +19,7 @@ public class DButil {
 		try {
 			
 			Class.forName(driverPath);
-			conn = DriverManager.getConnection(url2, user, password);			
+			conn = DriverManager.getConnection(url3, user, password);			
 		} catch (ClassNotFoundException e) {
 			e.printStackTrace();
 		} catch (SQLException e) {

@@ -1,6 +1,7 @@
 package com.kos.showticat.reservation.dao.temp;
 
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -15,16 +16,73 @@ public class ScheduleDAO {
 	
 	final static String SQL_SCHEDULE_SELECT_ALL ="select schedule_num, show_code, theater_num, place_num, show_start from schedule";
 	final static String SQL_SCHEDULE_POINT_SELECT_ALL ="select*from members";
-	final static String SQL_SCHEDULE_POINT_UPDATE="";
+	final static String SQL_SCHEDULE_POINT_UPDATE="update members set point=? where m_id=? and m_pw=?";
+	final static String SQL_RESERVATION_INSERT="INSERT INTO RESERVATION values(?, ?, sysdate, ?, 'temp', 0, 'N')";
+	
+	public void insertReservationInfor(int reserNum, String mID, int schedNum) {
+		
+		Connection con = DButil.getConnection();
+		PreparedStatement ppst=null;
+
+		try {
+			ppst = con.prepareStatement(SQL_RESERVATION_INSERT);
+			ppst.setInt(1, reserNum);
+			ppst.setString(2, mID);
+			ppst.setInt(3, schedNum);
+			int result = ppst.executeUpdate();
+			if(result == 1) {
+				System.out.println("ScheduleDAO.insertReservationInfor=>update data");
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				ppst.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+			DButil.dbClose(con);
+		}
+	}
+	
+	public void updatePointMembers(String id, String pw, int point) {
+		
+		Connection con = DButil.getConnection();
+		PreparedStatement ppst=null;
+		
+		try {
+			ppst =  con.prepareStatement(SQL_SCHEDULE_POINT_UPDATE);
+			ppst.setInt(1, point);
+			ppst.setString(2, id);
+			ppst.setString(3, pw);
+			int result = ppst.executeUpdate();
+			if(result == 1) {
+				System.out.println("ScheduleDAO.updatePointMembers=>update data");
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				ppst.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+			
+			DButil.dbClose(con);
+		}
+	}
 
 	public List<MembersVO> selectALLMembers(){
 		
 		List<MembersVO> mvoList = new ArrayList<>();
 		Connection con = DButil.getConnection();
+		Statement st=null;
+		ResultSet rs=null;
+		
 		
 		try {
-			Statement st = con.createStatement();
-			ResultSet rs = st.executeQuery(SQL_SCHEDULE_POINT_SELECT_ALL);
+			st = con.createStatement();
+			rs = st.executeQuery(SQL_SCHEDULE_POINT_SELECT_ALL);
 			
 			while(rs.next()) {
 				MembersVO mvo = new MembersVO();
@@ -43,7 +101,15 @@ public class ScheduleDAO {
 
 		} catch (SQLException e) {
 			e.printStackTrace();
-		}		
+		}finally {
+			try {
+				rs.close();
+				st.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+			DButil.dbClose(con);
+		}
 		return mvoList;	
 	}
 	
