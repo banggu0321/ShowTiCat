@@ -12,7 +12,57 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <link rel="stylesheet" href="css/admin.css">
-
+	<script>
+		$(function() {
+			$(".btnM").click(function(){
+				$("#myModal").modal();
+			});
+			
+			$(".btnUpd").click(function() {
+				var show_code = $(this).attr("data-showcode");
+				$("#show_code").val(show_code);
+				$.ajax({
+					url:"showUpdate.do",	//어디로
+					data:{"show_code":show_code},	//가져갈 data{key,value}
+					type:"get",
+					success:function(responseData){
+						alert("서버에 다녀옴 : "+ responseData);
+						var show = JSON.parse(responseData);
+						  $("#show_name").val(show["show_name"]);
+						  $("#director").val(show["director"]);
+						  $("#trailer").val(show["trailer"]);
+						  $("#opening_date").val(show["opening_date"]);
+						  $("#show_time").val(show["show_time"]);
+						  $("#category").val(show["category"]);
+						  $("#summary").val(show["summary"]);
+						  $("#poster").val(show["poster"]);
+						  $("#price").val(show["price"]);
+					}
+				}); //location.href = "showUpdate.do?show_code=" + show_code;
+			});
+			
+			$(".btnDel").click(function() {
+				var show_code = $(this).attr("data-showcode");
+				if(confirm(show_code + " 삭제?")){
+					$.ajax({
+						url:"showDeleteCheck.do",
+						data:{"show_code": show_code},
+						type:"get",
+						success: function(responseData){
+							if(responseData==0){
+								$("#message").html("삭제가능");
+							}else{
+								$("#message").html("삭제불가");
+							}
+						},
+						fail:function(){
+							$("#message").html("fail");
+						});
+					});//location.href = "showDeleteCheck.do?show_code=" + show_code;
+				}//location.href = "showDelete.do?show_code=" + show_code;
+			});
+		});
+	</script>
 </head>
 <body>
 	<jsp:include page="adminHeader.jsp" />
@@ -50,60 +100,7 @@
 			</c:forEach>
 		</table>
 	</div>
-	<script>
-		$(function() {
-			$(".btnM").click(function(){
-				$("#myModal").modal();
-			});
-			$(".btnUpd").click(function() {
-				var show_code = $(this).attr("data-showcode");
-				$("#show_code").val(show_code);
-				//location.href = "showUpdate.do?show_code=" + show_code;
-			});
-			$(".btnDel").click(function() {
-				var show_code = $(this).attr("data-showcode");
-				if(confirm(show_code + " 삭제?")){
-					location.href = "showDeleteCheck.do?show_code=" + show_code;
-				}
-				
-			});
-		});
-	/* 		
-			$.ajax({
-					url:"showUpdate.do",	//어디로
-					data:{"show_code":show_code},	//가져갈 data{key,value}
-					type:"get",
-					success:function(responseData){
-						alert("서버에 다녀옴 : "+ responseData);
-						var show = JSON.parse(responseData);
-						  $("#show_name").val(show["show_name"]);
-						  $("#director").val(show["director"]);
-						  $("#trailer").val(show["trailer"]);
-						  $("#opening_date").val(show["opening_date"]);
-						  $("#show_time").val(show["show_time"]);
-						  $("#category").val(show["category"]);
-						  $("#summary").val(show["summary"]);
-						  $("#poster").val(show["poster"]);
-						  $("#price").val(show["price"]);
-					}
-				}); 
-			$.ajax({
-					url:"showDeleteCheck.do",
-					data:{"show_code": show_code},
-					type:"get",
-					success: function(responseData){
-						if(responseData==0){
-							$("#message").html("삭제가능");
-						}else{
-							$("#message").html("삭제불가");
-						}
-					},
-					fail:function(){
-						$("#message").html("fail");
-				});//location.href = "showDelete.do?show_code=" + show_code;
-			});
-	*/
-	</script>
+	
 <!-- The Modal -->
   <div class="modal" id="myModal">
     <div class="modal-dialog">

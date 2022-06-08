@@ -20,6 +20,9 @@ public class ScheduleInsertServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		ScheduleService sService = new ScheduleService();
+		
+		
 		// 화면보여주기
 		RequestDispatcher rd;
 		rd = request.getRequestDispatcher("adminScheduleInsert.jsp");
