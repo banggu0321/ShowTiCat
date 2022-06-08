@@ -27,8 +27,8 @@ public class ScheduleService {
 		scdao.updateReservationDetailInfor(seatNum, reservationNum);
 	}
 	
-	public void insertReservationDetailInfor(int reserNum) {
-		scdao.insertReservationDetailInfor(reserNum);
+	public void insertReservationDetailInfor(int reserNum, String seatNumb) {
+		scdao.insertReservationDetailInfor(reserNum,seatNumb);
 	}
 	
 	public void updateReservationInfor(String payment, int totalPrice, int reservationNum) {

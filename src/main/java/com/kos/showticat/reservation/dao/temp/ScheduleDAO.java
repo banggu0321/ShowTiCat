@@ -29,7 +29,7 @@ public class ScheduleDAO {
 	final static String SQL_RESERVATION_UPDATE_PAYMENT_YN="UPDATE RESERVATION SET PAY_YN =? WHERE  RESERVATION_NUM =?";
 	final static String SQL_RESERVATION_SELECT="SELECT m_id, reservation_date, schedule_num, payment, total_price, pay_yn FROM RESERVATION WHERE RESERVATION_NUM=?";
 	
-	final static String SQL_RESERVATION_DETAIL_INSERT="INSERT INTO RESERV_DETAIL VALUES (?,'temp')";
+	final static String SQL_RESERVATION_DETAIL_INSERT="INSERT INTO RESERV_DETAIL VALUES (?,?)";
 	final static String SQL_RESERVATION_DETAIL_UPDATE="UPDATE RESERV_DETAIL SET SEAT_NUM=? WHERE RESERVATION_NUM=?";
 	
 	public void insertScheduleInfor(int scheduleNum, String showCode, String theaterNum, int placeNum, String showStart) {
@@ -155,7 +155,7 @@ public class ScheduleDAO {
 	}
 	
 	
-	public void insertReservationDetailInfor(int reserNum) {
+	public void insertReservationDetailInfor(int reserNum, String seatNumb) {
 		
 		Connection con = DButil.getConnection();
 		PreparedStatement ppst=null;
@@ -163,6 +163,7 @@ public class ScheduleDAO {
 		try {
 			ppst = con.prepareStatement(SQL_RESERVATION_DETAIL_INSERT);
 			ppst.setInt(1, reserNum);
+			ppst.setString(2, seatNumb);
 			int result = ppst.executeUpdate();
 			if(result == 1) {
 				System.out.println("ScheduleDAO.insertReservationDetailInfor=>insert data");
