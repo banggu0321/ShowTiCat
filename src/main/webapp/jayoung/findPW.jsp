@@ -12,12 +12,13 @@
 <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.slim.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <link rel="stylesheet" href="common.css">
 
 <script>
 $(function() {
+	$("#findPW").on("submit",isEmpty);
 	$("#check").hide();
-	$("#findPW").on("submit",isEmpty)
 	$("#sendSMS").on("click",sendSMS);
 })
 
@@ -30,8 +31,28 @@ function sendSMS() {
 	$("#check").show();
 }
 
-function isChecked() {
+function isEmpty() {
+	var id = $("#m_id").val();
+	var name = $("#m_name").val();
+	var phone = $("#phone").val();
+	var msg = $("#msg").html();
 	
+	if(id==null||id=='') {
+		$("#m_id").focus();
+		return false;
+	}
+	if(name==null||name=='') {
+		$("#m_name").focus();
+		return false;
+	}
+	if(phone==null||phone=='') {
+		$("#phone").focus();
+		return false;
+	}
+	if(msg!="인증성공") {
+		alert("휴대폰 인증을 해주세요.");
+		return false;
+	}
 }
 </script>
 </head>
@@ -42,12 +63,12 @@ function isChecked() {
 <form action="findPW.do" method="post" id="findPW">
 <div class="form-group">
 	<label>ID :</label>
-	<input class="form-control" type="text" name="m_id">
+	<input class="form-control" type="text" name="m_id" id="m_id">
 </div>
 
 <div class="form-group">
 	<label>이름 :</label>
-	<input class="form-control" type="text" name="m_name">
+	<input class="form-control" type="text" name="m_name" id="m_name">
 </div>
 
 <div class="form-group">

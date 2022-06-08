@@ -8,15 +8,14 @@ import org.json.simple.JSONObject;
 import net.nurigo.java_sdk.api.Message;
 import net.nurigo.java_sdk.exceptions.CoolsmsException;
 
-public class SendSMS{
+public class SendSMS2{
 
-	private static int sendMsg(String to) throws CoolsmsException{
+	public void sendMsg(String to, int randomNum) {
 	    String api_key = "NCSM6JCJ07YIKIIB";
 	    String api_secret = "J7YMPLUUCIC3E3OX5BNDQDGNLE1H1GDJ";
 	    Message coolsms = new Message(api_key, api_secret);
-	    
-	    int randomNum = makeRandomNum();
-	    
+	
+	    // 4 params(to, from, type, text) are mandatory. must be filled
 	    HashMap<String, String> params = new HashMap<String, String>();	
 	    params.put("to", to);
 	    params.put("from", "01057562187");
@@ -31,16 +30,9 @@ public class SendSMS{
 	      System.out.println(e.getMessage());
 	      System.out.println(e.getCode());
 	    }
-	    
-	    return randomNum;
 	}
 
-	private static int makeRandomNum() {
+	public int makeRandomNum() {
 		return ThreadLocalRandom.current().nextInt(100000, 1000000);
-	}
-	
-	public static int send(String phone) throws CoolsmsException {
-		int num = sendMsg(phone);
-		return num;
 	}
 }

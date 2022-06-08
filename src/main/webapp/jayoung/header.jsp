@@ -20,7 +20,7 @@
 </style>
 <script>
 $(function() {
-	$("#searchForm").on("submit",isEmpty);
+	//$("#searchForm").on("submit",isEmpty);
 	
 	$("#main").on("click",main);
 	$("#login").on("click",login);
@@ -28,7 +28,7 @@ $(function() {
 	$("#join").on("click",join);
 	
 })
-
+/*
 function isEmpty() {
 	var word = $("#search").val();
 	if(word==null||word==''){
@@ -37,7 +37,7 @@ function isEmpty() {
 		return false;
 	}
 }
-
+*/
 function main() {
 	location.href="main.jsp";
 }

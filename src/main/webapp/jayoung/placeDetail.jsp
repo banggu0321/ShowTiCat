@@ -33,7 +33,9 @@ a:hover {
 .img {
 	padding: 20px;
 }
-
+.show {
+	display: inline-block;
+}
 </style>
 
 <script>
@@ -61,20 +63,52 @@ function reservation() {
 <p class="info">문의 : ${place.place_phone}</p>
 </div>
 <hr>
-<c:forEach items="${theaterList}" var="theater" varStatus="v">
-	<c:forEach items="${showList}" var="show">
-		<c:forEach items="${list}" var="value" varStatus="s">
-			<c:if test="${value.show_code==show.show_code && value.theater_num==theater.theater_num}">
-			<p>${show.show_name}</p>
-			<p>${v.count}관</p>
-			<button class="btn btn-outline-primary">${value.show_name}<br>${value.start_time}</button>
+<c:forEach items="${list}" var="value" varStatus="s">
+	<%-- 첫번째 --%>
+	<c:if test="${s.first}">
+		<div class="show">
+			<h4>${value.show_name}</h4>
+			<p>${value.theater_num}관</p>
+			<button class="btn btn-outline-primary reservBtn">
+				${value.show_name}<br>${value.start_time}<br>${value.show_start}<br>좌석 : ${theater.last_seat}
+			</button>
+		</div>
+	</c:if>
+	<%-- 중간 --%>		
+	<c:if test="${!s.first}">
+		<%-- 제목이 같은경우 --%>
+		<c:if test="${list.get(s.index).show_name==list.get(s.index-1).show_name}">
+			<%-- 상영관이 같은경우 --%>
+			<c:if test="${list.get(s.index).theater_num==list.get(s.index-1).theater_num}">
+				<div class="show">
+				<button class="btn btn-outline-primary reservBtn">
+					${value.show_name}<br>${value.start_time}<br>${value.show_start}<br>좌석 : ${theater.last_seat}
+				</button>
+				</div>
 			</c:if>
-		</c:forEach>
-	</c:forEach>
+
+			<c:if test="${list.get(s.index).theater_num!=list.get(s.index-1).theater_num}">
+				<div class="show">
+				<p>${value.theater_num}관</p>
+				<button class="btn btn-outline-primary reservBtn">
+					${value.show_name}<br>${value.start_time}<br>${value.show_start}<br>좌석 : ${theater.last_seat}
+				</button>
+				</div>
+			</c:if>
+		</c:if>
+				
+		<c:if test="${list.get(s.index).show_name!=list.get(s.index-1).show_name}">
+			<hr>
+			<div class="show">
+			<h4>${value.show_name}</h4>
+			<p>${value.theater_num}관</p>
+			<button class="btn btn-outline-primary reservBtn">
+				${value.show_name}<br>${value.start_time}<br>${value.show_start}<br>좌석 : ${theater.last_seat}
+			</button>
+			</div> 
+		</c:if>
+	</c:if>
 </c:forEach>
-
-
-	<hr>
-
+<hr>
 </body>
 </html>

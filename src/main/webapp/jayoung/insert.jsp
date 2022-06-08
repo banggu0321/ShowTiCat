@@ -17,8 +17,8 @@
 
 <script>
 $(function() {
+	$("#joinForm").on("submit",isChecked);
 	$("#check").hide();
-	$("#join").on("submit",isChecked);
 	
 	$("#m_id").on("keyup",checkID);
 	$("#m_pw").on("keyup",checkPW);
@@ -29,10 +29,12 @@ $(function() {
 });
 
 function checkPW() {
-	var pw1 = $("#m_pw").val();
-	var pw2 = $("#pw2").val();
-
-	if(pw1 != pw2) {
+	var pw1 = $("#m_pw").val().trim();
+	var pw2 = $("#pw2").val().trim();
+	
+	if(pw1==null||pw1==''){
+		$("#pwMsg").html("PW는 필수입력입니다.");
+	}else if(pw1 != pw2) {
 		$("#pwMsg").html("비밀번호를 확인하세요.");
 	} else {
 		$("#pwMsg").html("비밀번호 일치");
@@ -40,7 +42,7 @@ function checkPW() {
 }
 
 function checkID() {
-	var m_id = $("#m_id").val();
+	var m_id = $("#m_id").val().trim();
 	if(m_id==""||m_id==null) {
 		$("#idMsg").html("ID는 필수입력입니다.");
 		return;
@@ -62,18 +64,30 @@ function checkID() {
 function isChecked() {
 	var idMsg = $("#idMsg").html().trim();
 	var pwMsg = $("#pwMsg").html().trim();
+
+	var name = $("#m_name").val();
+	var email = $("#email").val();
+	var phone = $("#phone").val();
+	var random = $("#random").val();
 	
 	if(idMsg != "사용가능한 ID입니다.") {
-		alert("ID를 확인하세요.");
 		$("#m_id").focus();
 		return false;
-	}
-	
-	if(pwMsg != "비밀번호 일치") {
-		alert("비밀번호를 확인하세요.");
+	}else if(pwMsg != "비밀번호 일치") {
 		$("#m_pw").focus();
 		return false;
-	}
+	}else if(name==null||name==''){
+		$("#m_name").focus();
+		return false;
+	}else if(email==null||email==''){
+		$("#email").focus();
+		return false;
+	}else if(phone==null||phone==''){
+		$("#phone").focus();
+		return false;
+	}else if(random==null||random==''){
+		return false;
+	}	
 }
 
 function sendSMS() {
@@ -97,7 +111,7 @@ function reset() {
 
 <h4>JOIN ShowTiCat</h4>
 <hr>
-<form action="insert.do" method="post" id="join">
+<form action="insert.do" method="post" id="joinForm">
 <div class="form-group">
 	<label>ID </label>
 	<input class="form-control" type="text" name="m_id" id="m_id">

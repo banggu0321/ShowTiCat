@@ -17,10 +17,11 @@
 
 <script>
 $(function() {
-	$("#check").hide();
 	$("#findID").on("submit",isEmpty);
+	$("#check").hide();
 	$("#findPW").on("click", findPW);
 	$("#sendSMS").on("click",sendSMS);
+	$("#checkNum").on("click",checkNum);
 })
 
 function findPW() {
@@ -31,9 +32,33 @@ function sendSMS() {
 	var phone = $("#phone").val();
 	if(phone==null||phone=='') {
 		alert("연락처를 먼저 입력해주세요.");
+		$("#phone").focus();
 		return;
 	}
+	
 	$("#check").show();
+}
+
+function isEmpty() {
+	var name = $("#m_name").val();
+	var phone = $("#phone").val();
+	var msg = $("#msg").html();
+	
+	if(name==null||name=='') {
+		$("#m_name").focus();
+		return false;
+	}
+	if(phone==null||phone=='') {
+		$("#phone").focus();
+		return false;
+	}
+	if(msg!="인증성공") {
+		alert("휴대폰 인증을 해주세요.");
+		return false;
+	}
+}
+
+function checkNum() {
 	$.ajax({
 		url:"randomNumCheck.do",
 		data:{"phone":phone},
@@ -47,10 +72,6 @@ function sendSMS() {
 		},
 		fail: function() {}
 	});
-}
-
-function isEmpty() {
-	
 }
 </script>
 
@@ -67,7 +88,7 @@ function isEmpty() {
 <form action="findID.do" method="post" id="findID">
 <div class="form-group">
 	<label>이름 :</label>
-	<input class="form-control" type="text" name="m_name">
+	<input class="form-control" type="text" name="m_name" id="m_name">
 </div>
 
 <div class="form-group">

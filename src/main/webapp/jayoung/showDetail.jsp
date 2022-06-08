@@ -91,7 +91,11 @@ a:hover {
 
 </div>
 <hr>
-<c:import url="showSummary.jsp?show=${show}"/>
+<h3>줄거리</h3>
+<pre>${show.summary}</pre>
+<hr>
+<h3>차트</h3>
+<img class="left poster" alt="${show.show_name}" src="../${show.poster}" width="300px" height="400px">
 
 <!-- The Modal -->
 <div class="modal" id="myModal">
@@ -106,7 +110,7 @@ a:hover {
       
       <!-- Modal body -->
       <div class="modal-body">
-        <iframe width="560" height="315" src="https://www.youtube.com/embed/${show.trailer}?autoplay=1&mute=1" 
+        <iframe width="650" height="366" src="https://www.youtube.com/embed/${show.trailer}?autoplay=1&mute=1" 
         	title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
       </div>
         
