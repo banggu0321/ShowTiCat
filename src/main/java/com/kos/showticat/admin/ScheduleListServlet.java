@@ -12,16 +12,16 @@ import javax.servlet.http.HttpServletResponse;
 /**
  * Servlet implementation class AdminScheduleList
  */
-@WebServlet("/bang/show.do")
+@WebServlet("/bang/schedule.do")
 public class ScheduleListServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
     
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		ShowService service = new ShowService();
-		request.setAttribute("showlist", service.selectAllShow());
+		ScheduleService service = new ScheduleService();
+		request.setAttribute("schedulelist", service.selectAllSchedule());
 		
 		RequestDispatcher rd;
-		rd = request.getRequestDispatcher("adminShow.jsp");
+		rd = request.getRequestDispatcher("adminSchedule.jsp");
 		rd.forward(request, response);
 	}
 }

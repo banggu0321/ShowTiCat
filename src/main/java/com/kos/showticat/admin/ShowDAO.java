@@ -32,7 +32,7 @@ public class ShowDAO {
 	static final String SQL_DELETE_SHOW ="DELETE FROM show WHERE show_code =? ";
 	
 	
-	// 1. 모든 스케줄 조회
+	// 1. 모든 공연 조회
 	public List<ShowVO> selectAllShow() {
 		List<ShowVO> showlist = new ArrayList<>();
 		conn = DBUtil.getConnection();

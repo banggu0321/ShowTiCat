@@ -11,6 +11,7 @@
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
 <link rel="stylesheet" href="css/admin.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 
 </head>
 <body>
@@ -39,10 +40,19 @@
 					<td>${schedule.show_start_date }</td>
 					<td>${schedule.show_start_time }</td>
 					<td>${schedule.last_seat }</td>
-					<td><button class="btnDell btn btn-dark" data-deptid="${dept.department_id}">삭제</button></td>
+					<td><button class="btnDelete btn btn-dark" data-schedulenum="${schedule.schedule_num}">삭제</button></td>
 				</tr>
 			</c:forEach>
 		</table>
     </div>
+    <script>
+		$(function(){
+			$(".btnDelete").on("click", function(){
+				var schedule_num = $(this).attr("data-schedulenum");
+				alert(schedule_num);
+				location.href = "scheduleDelete.do?schedule_num=" + schedule_num;
+			});
+		});
+	</script>
 </body>
 </html>

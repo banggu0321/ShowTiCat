@@ -10,18 +10,20 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * Servlet implementation class AdminScheduleList
+ * Servlet implementation class ScheduleDeleteServlet
  */
-@WebServlet("/bang/show.do")
-public class ShowListServlet extends HttpServlet {
+@WebServlet("/bang/scheduleDelete.do")
+public class ScheduleDeleteServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-    
+       
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		ShowService service = new ShowService();
-		request.setAttribute("showlist", service.selectAllShow());
-		
-		RequestDispatcher rd;
-		rd = request.getRequestDispatcher("adminShow.jsp");
+		int schedule_num = Integer.parseInt(request.getParameter("schedule_num"));
+
+		ScheduleService service = new ScheduleService();
+		int result = service.deleteSchedule(schedule_num);
+		request.setAttribute("message", result > 0 ? "삭제성공" : "삭제실패");
+
+		RequestDispatcher rd = request.getRequestDispatcher("schedule.do");
 		rd.forward(request, response);
 	}
 }

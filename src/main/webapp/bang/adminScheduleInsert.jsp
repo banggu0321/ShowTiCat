@@ -41,8 +41,16 @@
 			<label>시작시간</label> <input type="date" name="show_start">
 			<!-- <input type="time"> -->
 		</div>
-		<input type="submit" value="등록"> 
-		<input type="reset" value="취소">
+		<input class="btn btn-primary" type="submit" value="등록"> 
+		<input class="btn btn-secondary" type="reset" value="리셋">
+		<input class="btn btn-secondary" type="button" value="돌아가기" id="return">
 	</form>
+	<script>
+		$(function(){
+			$("#return").click(function(){
+			location.href="show.do";
+			}); 
+		}); 
+	</script>
 </body>
 </html>
