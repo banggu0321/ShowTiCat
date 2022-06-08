@@ -16,7 +16,6 @@ public class ShowVO {
 
 	public ShowVO() {
 	}
-	
 	public ShowVO(String show_code, String show_name, String director, String trailer, Date opening_date, int show_time,
 			String category, String summary, String poster, int price) {
 		super();
@@ -122,6 +121,8 @@ public class ShowVO {
 				.append(price).append("]");
 		return builder.toString();
 	}
+
+
 	
 	
 }

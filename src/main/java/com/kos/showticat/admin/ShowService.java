@@ -16,22 +16,24 @@ public class ShowService {
 	public int insertShow(ShowVO sc) {
 		return showDAO.insertShow(sc);
 	}
-	
-	
-/*	
+
 	// 3. 공연 수정
-	public int updateShow(ShowVO sc){
-		return 0;
+	public List<ShowVO> selectByCode(String show_code) {
+		return showDAO.selectByCode(show_code);
 	}
+
+	public int updateShow(ShowVO sc) {
+		return showDAO.updateShow(sc);
+	}
+
 	// 4. 공연 삭제
 	// 4-1. 해당 공연의 판매 횟수 조회 (조건조회)
-	public int selectBuyShow() {
-		return 0;
+	public int selectBuyShow(String show_code) {
+		return showDAO.selectBuyShow(show_code);
 	}
 
 	// 4-2. 공연 삭제
-	public int deleteShow(int show_code) {
-		return scheduleDAO.deleteSchedule(schedule_num);
+	public int deleteShow(String show_code) {
+		return showDAO.deleteShow(show_code);
 	}
-	*/
 }
