@@ -25,6 +25,7 @@ $(function() {
 	$("#pw2").on("keyup",checkPW);
 	$("#resetBtn").on("click",reset);
 	$("#sendSMS").on("click",sendSMS);
+	$("#checkNum").on("click",checkNum);
 	
 });
 
@@ -93,15 +94,27 @@ function isChecked() {
 function sendSMS() {
 	var phone = $("#phone").val();
 	if(phone==null||phone=='') {
-		alert("연락처를 먼저 입력해주세요.");
+		alert("연락처를 입력해주세요.");
+		$("#phone").focus();
 		return;
 	}
 	$("#check").show();
 }
 
+function checkNum() {
+	var input = $("#random").val();
+	if(input == '') {
+		$("#msg").html("인증성공");
+	}else {
+		$("#msg").html("인증실패");
+	}
+}
+
 function reset() {
 	$("#idMsg").empty();
 	$("#pwMsg").empty();
+	$("#msg").empty();
+	$("#check").hide();
 }
 </script>
 </head>
@@ -148,7 +161,7 @@ function reset() {
 		<label>인증번호 :</label>
 		<input class="form-control" type="text" name="random" id="random" placeholder="인증번호 입력" >
 		<input class="btn btn-outline-danger" type="button" id="checkNum" value="인증하기">
-		<div id="msg"></div>
+		<span id="msg"></span>
 	</div>
 </div>
 
@@ -160,7 +173,7 @@ function reset() {
 <div class="form-group form-check-inline">
 	<label>GENDER </label>
 	<label class="form-check-inline">
-		<input class="form-check-input" type="radio" name="gender" value="M">남
+		<input class="form-check-input" type="radio" name="gender" value="M" checked="checked">남
 	</label>
 	<label class="form-check-inline">
 		<input class="form-check-input" type="radio" name="gender" value="W">여

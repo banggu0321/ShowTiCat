@@ -1,4 +1,4 @@
-package com.kos.showticat.jayoung;
+package com.kos.showticat.user.join;
 
 import java.io.IOException;
 import java.sql.Date;
@@ -10,6 +10,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.kos.showticat.jayoung.MemberService;
+import com.kos.showticat.jayoung.MemberVO;
 import com.kos.showticat.util.DateUtil;
 
 @WebServlet("/jayoung/insert.do")

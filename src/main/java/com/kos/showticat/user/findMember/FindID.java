@@ -1,4 +1,4 @@
-package com.kos.showticat.jayoung;
+package com.kos.showticat.user.findMember;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -10,6 +10,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+
+import com.kos.showticat.jayoung.MemberService;
+import com.kos.showticat.jayoung.MemberVO;
 
 /**
  * Servlet implementation class FindID

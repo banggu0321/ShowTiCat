@@ -1,4 +1,4 @@
-package com.kos.showticat.jayoung;
+package com.kos.showticat.user.findMember;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -11,34 +11,40 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-@WebServlet("/jayoung/login.do")
-public class LoginServlet extends HttpServlet {
-	private static final long serialVersionUID = 1L;
+import com.kos.showticat.jayoung.MemberService;
+import com.kos.showticat.jayoung.MemberVO;
 
+/**
+ * Servlet implementation class FindID
+ */
+@WebServlet("/jayoung/findPW.do")
+public class FindPW extends HttpServlet {
+	private static final long serialVersionUID = 1L;
+   
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		RequestDispatcher rd = request.getRequestDispatcher("login.jsp");
+		RequestDispatcher rd = request.getRequestDispatcher("findPW.jsp");
 		rd.forward(request, response);
 	}
 
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {		
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String m_id = request.getParameter("m_id");
-		String m_pw = request.getParameter("m_pw");
+		String m_name = request.getParameter("m_name");
+		String phone = request.getParameter("phone");
 		
 		MemberService service = new MemberService();
-		MemberVO member = service.selectID(m_id, m_pw);
+		MemberVO member = service.findPW(m_id, m_name, phone);
 		
 		HttpSession session = request.getSession();
 		session.setAttribute("member", member);
-		String path = (String)session.getAttribute("reqPath");
 		
 		if(member == null) {
 			response.setContentType("text/html; charset=UTF-8");
 			PrintWriter writer = response.getWriter();
-			writer.println("<script>alert('아이디/비밀번호 확인 후 다시 로그인해주세요.');  location.href='login.do';</script>");
+			writer.println("<script>alert('일치하는 회원 정보가 없습니다. 확인 후 다시 시도해주세요.');  location.href='findPW.do';</script>");
 			writer.close();
 		}else {
-			if(path==null) path = request.getContextPath() + "/jayoung/main.jsp";
-			response.sendRedirect(path);
+			response.sendRedirect("resetPW.jsp");
 		}
 	}
+
 }

@@ -17,7 +17,7 @@
 
 <script>
 $(function() {
-	$("#findID").on("submit",isEmpty);
+	$("#findForm").on("submit",isEmpty);
 	$("#check").hide();
 	$("#findPW").on("click", findPW);
 	$("#sendSMS").on("click",sendSMS);
@@ -28,15 +28,24 @@ function findPW() {
 	location.href="findPW.do";
 }
 
+var code="";
 function sendSMS() {
 	var phone = $("#phone").val();
 	if(phone==null||phone=='') {
-		alert("연락처를 먼저 입력해주세요.");
+		alert("연락처를 입력해주세요.");
 		$("#phone").focus();
 		return;
 	}
-	
+
 	$("#check").show();
+	$.ajax({
+		url:"randomNumCheck.do?phone="+phone,
+		success:function(data) {
+			alert("인증번호를 발송하였습니다.");
+			$("#phone").attr("readonly",true);
+			code = data;
+		}
+	})
 }
 
 function isEmpty() {
@@ -47,45 +56,32 @@ function isEmpty() {
 	if(name==null||name=='') {
 		$("#m_name").focus();
 		return false;
-	}
-	if(phone==null||phone=='') {
+	}else if(phone==null||phone=='') {
 		$("#phone").focus();
 		return false;
-	}
-	if(msg!="인증성공") {
+	}else if(msg!="인증성공") {
 		alert("휴대폰 인증을 해주세요.");
+		$("#random").focus();
 		return false;
 	}
 }
 
 function checkNum() {
-	$.ajax({
-		url:"randomNumCheck.do",
-		data:{"phone":phone},
-		success: function(res) {
-			var input = $("#random").val();
-			if(input==res){
-				$("#msg").html("인증성공");
-			}else{
-				$("#msg").html("인증실패");
-			}
-		},
-		fail: function() {}
-	});
+	var input = $("#random").val();
+	if(input == code) {
+		$("#msg").html("인증성공");
+	}else {
+		$("#msg").html("인증실패");
+	}
 }
 </script>
 
-<style>
-#check {
-
-}
-</style>
 </head>
 <body>
 <jsp:include page="header.jsp"/>
 <h4>FIND ID</h4> 
 <hr>
-<form action="findID.do" method="post" id="findID">
+<form action="findID.do" method="post" id="findForm">
 <div class="form-group">
 	<label>이름 :</label>
 	<input class="form-control" type="text" name="m_name" id="m_name">
@@ -100,7 +96,7 @@ function checkNum() {
 		<label>인증번호 :</label>
 		<input class="form-control" type="text" name="random" id="random" placeholder="인증번호 입력" >
 		<input class="btn btn-outline-danger" type="button" id="checkNum" value="인증하기">
-		<div id="msg"></div>
+		<span id="msg"></span>
 	</div>
 </div>
 

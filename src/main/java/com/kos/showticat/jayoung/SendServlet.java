@@ -17,8 +17,19 @@ public class SendServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		/*
 		String phone = request.getParameter("phone");
 
+		int randomNum = 0;
+		try {
+			randomNum = SendSMS.send(phone);
+		} catch (CoolsmsException e) {
+			e.printStackTrace();
+		}
+
+		PrintWriter out = response.getWriter();
+		out.print(randomNum);
+		*/
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

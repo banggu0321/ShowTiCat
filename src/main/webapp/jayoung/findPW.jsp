@@ -17,15 +17,17 @@
 
 <script>
 $(function() {
-	$("#findPW").on("submit",isEmpty);
+	$("#findForm").on("submit",isEmpty);
 	$("#check").hide();
 	$("#sendSMS").on("click",sendSMS);
+	$("#checkNum").on("click",checkNum);
 })
 
 function sendSMS() {
 	var phone = $("#phone").val();
 	if(phone==null||phone=='') {
-		alert("연락처를 먼저 입력해주세요.");
+		alert("연락처를 입력해주세요.");
+		$("#phone").focus();
 		return;
 	}
 	$("#check").show();
@@ -54,13 +56,22 @@ function isEmpty() {
 		return false;
 	}
 }
+
+function checkNum() {
+	var input = $("#random").val();
+	if(input == '') {
+		$("#msg").html("인증성공");
+	}else {
+		$("#msg").html("인증실패");
+	}
+}
 </script>
 </head>
 <body>
 <jsp:include page="header.jsp"/>
 <h4>FIND PASSWORD</h4> 
 <hr>
-<form action="findPW.do" method="post" id="findPW">
+<form action="findPW.do" method="post" id="findForm">
 <div class="form-group">
 	<label>ID :</label>
 	<input class="form-control" type="text" name="m_id" id="m_id">
@@ -80,7 +91,7 @@ function isEmpty() {
 		<label>인증번호 :</label>
 		<input class="form-control" type="text" name="random" id="random" placeholder="인증번호 입력" >
 		<input class="btn btn-outline-danger" type="button" id="checkNum" value="인증하기">
-		<div id="msg"></div>
+		<span id="msg"></span>
 	</div>
 </div>
 

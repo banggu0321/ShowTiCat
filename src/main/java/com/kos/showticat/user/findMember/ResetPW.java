@@ -1,4 +1,4 @@
-package com.kos.showticat.jayoung;
+package com.kos.showticat.user.findMember;
 
 import java.io.IOException;
 
@@ -9,6 +9,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+
+import com.kos.showticat.jayoung.MemberService;
 
 @WebServlet("/jayoung/resetPW.do")
 public class ResetPW extends HttpServlet {

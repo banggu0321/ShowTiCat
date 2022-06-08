@@ -16,6 +16,8 @@
 
 <script>
 $(function() {
+	$("#loginForm").on("submit", isEmpty);
+	
 	$("#findID").on("click", findID);
 	$("#findPW").on("click", findPW);
 })
@@ -27,6 +29,19 @@ function findID() {
 function findPW() {
 	location.href="findPW.do";
 }
+
+function isEmpty() {
+	var id = $("#m_id").val();
+	var pw = $("#m_pw").val();
+	
+	if(id==null||id=='') {
+		$("#m_id").focus();
+		return false;
+	}else if(pw==null||pw=='') {
+		$("#m_pw").focus();
+		return false;
+	}
+}
 </script>
 </head>
 
@@ -34,15 +49,15 @@ function findPW() {
 <jsp:include page="header.jsp"/>
 <h4>LOGIN</h4> 
 <hr>
-<form action="login.do" method="post">
+<form action="login.do" method="post" id="loginForm">
 <div class="form-group">
 	<label>아이디 :</label>
-	<input class="form-control" type="text" name="m_id" value="ja0">
+	<input class="form-control" type="text" name="m_id" id="m_id">
 </div>
 
 <div class="form-group">
 	<label>비밀번호 :</label>
-	<input class="form-control" type="text" name="m_pw" value="1234">
+	<input class="form-control" type="text" name="m_pw" id="m_pw">
 </div>
 
 <input class="btn btn-success" type="submit" value="로그인">
