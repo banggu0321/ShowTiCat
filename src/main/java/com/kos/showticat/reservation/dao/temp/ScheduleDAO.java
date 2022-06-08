@@ -32,6 +32,111 @@ public class ScheduleDAO {
 	final static String SQL_RESERVATION_DETAIL_INSERT="INSERT INTO RESERV_DETAIL VALUES (?,?)";
 	final static String SQL_RESERVATION_DETAIL_UPDATE="UPDATE RESERV_DETAIL SET SEAT_NUM=? WHERE RESERVATION_NUM=?";
 	
+	final static String SQL_PLACE_SELECT_ALL = "SELECT place_num, place_name, place_loc, place_phone FROM PLACE";
+	
+	final static String SQL_THEATER_SELECT_ALL ="SELECT theater_num, theater_type, LAST_SEAT, PLACE_NUM FROM THEATER";
+	final static String SQL_THEATER_SELECT_BY_PLACE_NUMBER = "SELECT theater_num, theater_type, LAST_SEAT, PLACE_NUM FROM THEATER where PLACE_NUM=?";
+	
+	public List<TheaterVO> selectTheaterByPlaceNum(int placeNum){
+		
+		List<TheaterVO> tList = new ArrayList<>();
+		Connection con = DButil.getConnection();
+		PreparedStatement ppst=null;
+		ResultSet rs=null;
+		
+		try {
+			ppst = con.prepareStatement(SQL_THEATER_SELECT_BY_PLACE_NUMBER);
+			ppst.setInt(1, placeNum);
+			rs = ppst.executeQuery();
+			
+			while(rs.next()) {
+				TheaterVO temp = new TheaterVO();
+				temp.setTheater_num(rs.getString("theater_num"));
+				temp.setTheater_type(rs.getString("theater_type"));
+				temp.setLast_seat(rs.getInt("LAST_SEAT"));
+				temp.setPlace_num(rs.getInt("PLACE_NUM"));
+				tList.add(temp);				
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			try {
+				rs.close();
+				ppst.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+			DButil.dbClose(con);
+		}
+		return tList;
+	}
+	
+	public List<TheaterVO> selectAllTheater(){
+		List<TheaterVO> tList = new ArrayList<>();
+		Connection con = DButil.getConnection();
+		Statement st=null;
+		ResultSet rs=null;
+		
+		try {
+			st = con.createStatement();
+			rs = st.executeQuery(SQL_THEATER_SELECT_ALL);
+			
+			while(rs.next()) {
+				TheaterVO temp = new TheaterVO();
+				temp.setTheater_num(rs.getString("theater_num"));
+				temp.setTheater_type(rs.getString("theater_type"));
+				temp.setLast_seat(rs.getInt("LAST_SEAT"));
+				temp.setPlace_num(rs.getInt("PLACE_NUM"));
+				tList.add(temp);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				rs.close();
+				st.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+			DButil.dbClose(con);
+		}		
+		return tList;
+	}
+	
+	public List<PlaceVO> selectALLPlace() {
+		
+		List<PlaceVO> pList = new ArrayList<>();
+		Connection con = DButil.getConnection();
+		Statement st=null;
+		ResultSet rs=null;
+		
+		try {
+			st = con.createStatement();
+			rs = st.executeQuery(SQL_PLACE_SELECT_ALL);
+			
+			while(rs.next()) {
+				PlaceVO temp = new PlaceVO();
+				temp.setPlace_num(rs.getInt("place_num"));
+				temp.setPlace_name(rs.getString("place_name"));
+				temp.setPlace_loc(rs.getString("place_loc"));
+				temp.setPlace_phone(rs.getString("place_phone"));
+				pList.add(temp);
+			}
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				rs.close();
+				st.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+			DButil.dbClose(con);
+		}
+		return pList;
+	}
+	
 	public void insertScheduleInfor(int scheduleNum, String showCode, String theaterNum, int placeNum, String showStart) {
 		
 		Connection con = DButil.getConnection();

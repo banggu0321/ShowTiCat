@@ -15,20 +15,6 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
 <link rel="stylesheet" href="common.css">
 
-<script>
-$(function() {
-	$("#reservBtn").on("click", reservation);
-	$("#close").on("click", stop);
-})
-
-function reservation() {
-	location.href="reservation.do?show_code=${show.show_code}";
-}
-
-function stop() {
-	$("iframe")[0].contentWindow.postMessage('{"event":"command","func":"stopVideo","args":""}', '*');
-}
-</script>
 
 <style>
 .left {
@@ -63,6 +49,21 @@ a:hover {
 }
 </style>
 
+
+<script>
+$(function() {
+	$("#reservBtn").on("click", reservation);
+	$("#close").on("click", stop);
+})
+
+function reservation() {
+	location.href="reservation.do?show_code=${show.show_code}";
+}
+
+function stop() {
+	$("iframe")[0].contentWindow.postMessage('{"event":"command","func":"stopVideo","args":""}', '*');
+}
+</script>
 </head>
 <body>
 <h1 class="left">SHOW DETAIL</h1>

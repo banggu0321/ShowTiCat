@@ -15,22 +15,6 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
 <link rel="stylesheet" href="common.css">
 
-<script>
-$(function() {
-	$(".reservBtn").on("click", reservation);
-	$(".poster").on("click", showDetail);
-})
-
-function reservation() {
-	var code = $(this).attr("code");
-	location.href="reservation.do?show_code="+code;
-}
-
-function showDetail() {
-	var code = $(this).attr("code");
-	location.href="showDetail.do?show_code="+code;
-}
-</script>
 <style>
 .poster {
 	position: relative;
@@ -67,6 +51,23 @@ function showDetail() {
 	display:block;
 }
 </style>
+
+<script>
+$(function() {
+	$(".reservBtn").on("click", reservation);
+	$(".poster").on("click", showDetail);
+})
+
+function reservation() {
+	var code = $(this).attr("code");
+	location.href="reservation.do?show_code="+code;
+}
+
+function showDetail() {
+	var code = $(this).attr("code");
+	location.href="showDetail.do?show_code="+code;
+}
+</script>
 </head>
 
 <body>

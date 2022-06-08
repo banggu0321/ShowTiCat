@@ -11,6 +11,18 @@ public class ScheduleService {
 	
 	ScheduleDAO scdao = new ScheduleDAO();
 	
+	public List<TheaterVO> selectTheaterByPlaceNum(int placeNum){
+		return scdao.selectTheaterByPlaceNum(placeNum);
+	}
+	
+	public List<TheaterVO> selectAllTheater(){
+		return scdao.selectAllTheater();
+	}
+	
+	public List<PlaceVO> selectALLPlace() {
+		return scdao.selectALLPlace();
+	}
+	
 	public void insertScheduleInfor(int scheduleNum, String showCode, String theaterNum, int placeNum, String showStart) {
 		scdao.insertScheduleInfor(scheduleNum, showCode, theaterNum, placeNum, showStart);
 	}

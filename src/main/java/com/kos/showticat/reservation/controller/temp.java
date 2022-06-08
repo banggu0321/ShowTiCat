@@ -9,24 +9,26 @@ import java.util.List;
 
 import com.kos.showticat.reservation.dao.temp.ScheduleService;
 import com.kos.showticat.reservation.dao.temp.MembersVO;
+import com.kos.showticat.reservation.dao.temp.PlaceVO;
 import com.kos.showticat.reservation.dao.temp.ReservationVO;
 import com.kos.showticat.reservation.dao.temp.ScheduleVO;
+import com.kos.showticat.reservation.dao.temp.TheaterVO;
 
-import oracle.sql.CHAR;
+//import oracle.sql.CHAR;
 
 public class temp {
 
 	public static void main(String[] args) {
 		
+		f9(); //theater select by place number
+//		f8(); //theater table select all
+//		f7();  //place talbe select all
+		
 //		f6(); //schedule table insert row
-		
 //		f5();  //reservation table 조회
-		
-		f4(); //1~2: 인원수 선택(수정)
-		
+//		f4(); //1~2: 인원수 선택(수정)
 //		f3beta(); //reservation number에 따른 paymentYN update
 //		f3(); 	//2(나머지 update).인원(좌석)선택, 총비용(스케쥴넘버-> 가격, 인원 선택-> 총 비용) 
-		
 //		f2(); //reservation table의 (스케쥴 넘버와 reservation date을 먼저 결정), 나머지(임시 값) & reservation detail table의 해당하는 row 작성
 		//1.[스케쥴(영화, 극장, 날짜, 시간 선택)->] 스케쥴 넘버(reservationNum, m_id, scheduleNum, reservationDate)&나머지(temp 값) 입력-> 스케쥴_detail table 해당 row 입력
 	
@@ -34,11 +36,47 @@ public class temp {
 //		f1();  //update point in members table, select members table
 	}
 
+	private static void f9() {
+	
+		ScheduleService service = new ScheduleService();
+		List<TheaterVO> pList = new ArrayList<>();
+		int placenum = 1005;
+		pList = service.selectTheaterByPlaceNum(placenum);
+		
+		for(TheaterVO temp: pList) {
+			System.out.println(temp);
+		}
+	}
+
+	private static void f8() {
+		
+		ScheduleService service = new ScheduleService();
+		List<TheaterVO> pList = new ArrayList<>();
+		pList = service.selectAllTheater();
+		
+		for(TheaterVO temp: pList) {
+			System.out.println(temp);
+		}
+		
+	}
+
+	private static void f7() {
+		
+		ScheduleService service = new ScheduleService();
+		List<PlaceVO> pList = new ArrayList<>();
+		pList = service.selectALLPlace();
+		
+		for(PlaceVO temp: pList) {
+			System.out.println(temp);
+		}
+	}
+
 	private static void f6() {
 		
 		int scheduleNum = 44;  //규칙에 따라 부여(영화, 상영관 고려)
 		
 		String showCode = "AA3"; //user 선택을 받아서 결정
+		
 		String theaterNum = "B2"; //user 선택을 받아서 결정
 		int placeNum = 1002; //theater가 결정되면서 따라서 결정
 		
@@ -78,13 +116,11 @@ public class temp {
 		String m_id="cansu"; 
 		int reservationNum = Integer.parseInt(eachChartoString(m_id, scheduleNum)); //생성된 예약번호을 ?
 		
-		
-		//seat_num에 한개 값인 상황
 		String seatNumbArr = "11 12 14 15"; //자리 선택한 결과 가져오기
 		String[] seatNum = seatNumbArr.trim().split(" ");
 		int countSeat = seatNum.length;  //갯수 구하기
 		
-		
+		//seat_num에 한개 값인 상황		
 		ScheduleService service = new ScheduleService();
 		for(String arr: seatNum) {
 			service.insertReservationDetailInfor(reservationNum, arr);
