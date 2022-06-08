@@ -14,7 +14,10 @@ public class ScheduleDAO {
 	static final String SQL_SELECT_ALL ="select * from schedule";
 	static final String SQL_SELECT_BY_NUM ="select * from schedule where place_num =?";
 	static final String SQL_SELECT_BY_SHOW ="select * from schedule where place_num =? and show_code=?";
-	static final String SQL_SELECT_BY_THEATER ="select * from schedule where place_num =? and show_code=? and theater_num=?";
+	static final String SQL_SELECT_THEATER ="SELECT SHOW_CODE, SHOW_NAME,schedule_num,theater_num,place_num, show_start FROM schedule "
+			+ " JOIN show using(show_code) WHERE theater_num in ("
+			+ "	SELECT theater_num FROM theater	WHERE place_num IN ("
+			+ " SELECT place_num FROM place WHERE place_num = ?)) order by 2,4";
 	
 	Connection conn;
 	Statement st;
@@ -85,16 +88,14 @@ public class ScheduleDAO {
 		
 		return scheduleList;
 	}
-	
+
 	//상영관별로 조회
-	public List<ScheduleVO> selectByTheater(int place_num, String show_code, String theater_num) {
+	public List<ScheduleVO> selectByTheater(int place_num) {
 		List<ScheduleVO> scheduleList = new ArrayList<>();
 		conn = DBUtil.getConnection();
 		try {
-			pst = conn.prepareStatement(SQL_SELECT_BY_THEATER);
+			pst = conn.prepareStatement(SQL_SELECT_THEATER);
 			pst.setInt(1, place_num);
-			pst.setString(2, show_code);
-			pst.setString(3, theater_num);
 			rs = pst.executeQuery();
 			
 			while(rs.next()) {
@@ -115,6 +116,7 @@ public class ScheduleDAO {
 		schedule.setPlace_num(rs.getInt("place_num"));
 		schedule.setSchedule_num(rs.getInt("schedule_num"));
 		schedule.setShow_code(rs.getString("show_code"));
+		schedule.setShow_name(rs.getString("show_name"));
 		schedule.setShow_start(rs.getDate("show_start"));
 		schedule.setTheater_num(rs.getString("theater_num"));
 		schedule.setStart_time(rs.getTime("show_start"));

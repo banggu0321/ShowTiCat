@@ -19,36 +19,67 @@
 }
 </style>
 <script>
+$(function() {
+	$("#searchForm").on("submit",isEmpty);
+	
+	$("#main").on("click",main);
+	$("#login").on("click",login);
+	$("#logout").on("click",logout);
+	$("#join").on("click",join);
+	
+})
 
+function isEmpty() {
+	var word = $("#search").val();
+	if(word==null||word==''){
+		alert("검색어를 입력하세요.");
+		$("#search").focus();
+		return false;
+	}
+}
+
+function main() {
+	location.href="main.jsp";
+}
+
+function login() {
+	location.href="login.do";
+}
+
+function logout() {
+	location.href="logout.do";
+}
+
+function join() {
+	location.href="insert.do";
+}
 </script>
 </head>
 <body>
+<h1 class="left" id="main">Show TiCat</h1>
 <div>
-<c:set var="path" value="${pageContext.request.contextPath}"/>
 	<span class="right">
 		<c:if test="${member != null}">
-			${member.m_name}님 로그인
+			<p id="user">${member.m_name}님 로그인</p>
 		</c:if>	
 		<c:if test="${member == null}">
-			Guest
+			<p id="user">Guest</p>
 		</c:if>	
 	</span>
 	<span>
 		<c:if test="${member != null}">
-		<a class="right" href="${path}/logout"><button class="btn btn-light">로그아웃</button></a>
-			
+			<button class="btn btn-light right" id="logout">로그아웃</button>			
 		</c:if>
 		<c:if test="${member == null}">
-			<a class="right" href="${path}/jayoung/login.do"><button class="btn btn-light">로그인</button></a>
-			<a class="right" href="${path}/jayoung/insert.do"><button class="btn btn-light">회원가입</button></a>
+			<button class="btn btn-light right" id="login">로그인</button>
+			<button class="btn btn-light right" id="join">회원가입</button>
 		</c:if>	
 	</span>
-	<a class="right" href="${path}/jayoung/main.jsp"><button class="btn btn-light">MAIN</button></a>
-	<form action="result.do" class="right">
+	<form action="result.do" class="right" id="searchForm">
 		<input class="form-control" type="text" name="search" id="search" value="${word}">
 		<input class="btn btn-success" type="submit" value="검색">
 	</form>
-
+<hr>
 </div>
 </body>
 </html>

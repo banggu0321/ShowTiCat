@@ -48,8 +48,8 @@ function reservation() {
 </script>
 </head>
 <body>
-<h1 class="left">Schedule List</h1>
 <jsp:include page="header.jsp"/>
+<h4>Schedule List</h4>
 <hr>
 <jsp:include page="placeList.jsp"/>
 <hr>
@@ -61,18 +61,20 @@ function reservation() {
 <p class="info">문의 : ${place.place_phone}</p>
 </div>
 <hr>
-
-<c:forEach items="${scheduleList}" var="schedule">
+<c:forEach items="${theaterList}" var="theater" varStatus="v">
 	<c:forEach items="${showList}" var="show">
-		<c:if test="${show.show_code==schedule.show_code}">
-		<h4>${show.show_name}</h4>
-		<button class="reservBtn btn btn-primary" num="${schedule.schedule_num}">
-			${schedule.show_start}<br>
-			${schedule.start_time}
-		</button>
-		</c:if>
+		<c:forEach items="${list}" var="value" varStatus="s">
+			<c:if test="${value.show_code==show.show_code && value.theater_num==theater.theater_num}">
+			<p>${show.show_name}</p>
+			<p>${v.count}관</p>
+			<button class="btn btn-outline-primary">${value.show_name}<br>${value.start_time}</button>
+			</c:if>
+		</c:forEach>
 	</c:forEach>
-	<hr>
 </c:forEach>
+
+
+	<hr>
+
 </body>
 </html>

@@ -70,8 +70,8 @@ function showDetail() {
 </head>
 
 <body>
-<h1 class="left">Show List</h1>
 <jsp:include page="header.jsp"/>
+<h4>Show List</h4>
 <hr>
 <c:forEach items="${showList}" var="show">
 <div class="box">

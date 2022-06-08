@@ -65,8 +65,8 @@ a:hover {
 
 </head>
 <body>
-<h1 class="left">SHOW DETAIL</h1>
 <jsp:include page="header.jsp"/>
+<h4>SHOW DETAIL</h4>
 <hr>
 <img class="left poster" alt="${show.show_name}" src="../${show.poster}" width="300px" height="400px">
 <div class="left">

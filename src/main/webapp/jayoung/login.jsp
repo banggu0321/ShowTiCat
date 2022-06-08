@@ -31,8 +31,8 @@ function findPW() {
 </head>
 
 <body>
-<h1 class="left">LOGIN</h1> 
 <jsp:include page="header.jsp"/>
+<h4>LOGIN</h4> 
 <hr>
 <form action="login.do" method="post">
 <div class="form-group">

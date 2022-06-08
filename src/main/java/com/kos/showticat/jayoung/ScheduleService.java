@@ -19,9 +19,9 @@ public class ScheduleService {
 	public List<ScheduleVO> selectByShow(int place_num, String show_code) {
 		return dao.selectByShow(place_num, show_code);
 	}
-	
+
 	//상영관별로 조회
-	public List<ScheduleVO> selectByTheater(int place_num, String show_code, String theater_num) {
-		return dao.selectByTheater(place_num, show_code, theater_num);
+	public List<ScheduleVO> selectByTheater(int place_num) {
+		return dao.selectByTheater(place_num);
 	}
 }

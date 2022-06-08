@@ -17,12 +17,15 @@
 
 <script>
 $(function() {
-	$("form").on("submit",isChecked);
+	$("#check").hide();
+	$("#join").on("submit",isChecked);
 	
 	$("#m_id").on("keyup",checkID);
 	$("#m_pw").on("keyup",checkPW);
 	$("#pw2").on("keyup",checkPW);
 	$("#resetBtn").on("click",reset);
+	$("#sendSMS").on("click",sendSMS);
+	
 });
 
 function checkPW() {
@@ -57,8 +60,8 @@ function checkID() {
 }
 
 function isChecked() {
-	var idMsg = $("#idMsg").html();
-	var pwMsg = $("#pwMsg").html();
+	var idMsg = $("#idMsg").html().trim();
+	var pwMsg = $("#pwMsg").html().trim();
 	
 	if(idMsg != "사용가능한 ID입니다.") {
 		alert("ID를 확인하세요.");
@@ -73,6 +76,15 @@ function isChecked() {
 	}
 }
 
+function sendSMS() {
+	var phone = $("#phone").val();
+	if(phone==null||phone=='') {
+		alert("연락처를 먼저 입력해주세요.");
+		return;
+	}
+	$("#check").show();
+}
+
 function reset() {
 	$("#idMsg").empty();
 	$("#pwMsg").empty();
@@ -81,11 +93,11 @@ function reset() {
 </head>
 
 <body>
-<h1 class="left">JOIN ShowTiCat</h1>
 <jsp:include page="header.jsp"/>
-<hr>
 
-<form action="insert.do" method="post">
+<h4>JOIN ShowTiCat</h4>
+<hr>
+<form action="insert.do" method="post" id="join">
 <div class="form-group">
 	<label>ID </label>
 	<input class="form-control" type="text" name="m_id" id="m_id">
@@ -105,7 +117,7 @@ function reset() {
 
 <div class="form-group">
 	<label>NAME </label>
-	<input class="form-control" type="text" name="m_name">
+	<input class="form-control" type="text" name="m_name" id="m_name">
 </div>
 
 <div class="form-group">
@@ -115,7 +127,15 @@ function reset() {
 
 <div class="form-group">
 	<label>PHONE </label>
-	<input class="form-control" type="text" name="phone" placeholder="하이픈(-)제외 11자리 입력" pattern="[01]{2}[01679]{1}[0-9]{7,8}">
+	<input class="form-control" type="text" name="phone" id="phone" placeholder="하이픈(-)제외 11자리 입력" pattern="[01]{2}[01679]{1}[0-9]{7,8}">
+	<input class="btn btn-outline-danger" type="button" id="sendSMS" value="인증번호받기">
+	
+	<div id="check">
+		<label>인증번호 :</label>
+		<input class="form-control" type="text" name="random" id="random" placeholder="인증번호 입력" >
+		<input class="btn btn-outline-danger" type="button" id="checkNum" value="인증하기">
+		<div id="msg"></div>
+	</div>
 </div>
 
 <div class="form-group">
@@ -133,7 +153,7 @@ function reset() {
 	</label>
 </div>
 <br>
-<input type="submit" class="btn btn-success" value="회원가입">
+<input type="submit" class="btn btn-success" value="회원가입" id="submitBtn">
 <input type="reset" class="btn btn-secondary" value="초기화" id="resetBtn">
 </form>
 

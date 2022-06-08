@@ -27,7 +27,8 @@ function findPW() {
 
 </head>
 <body>
-<h1>FIND ID</h1>
+<jsp:include page="header.jsp"/>
+<h4>FIND ID</h4>
 <hr>
 <p>아이디는 ${m_id} 입니다.</p>
 <button id="findPW" class="btn btn-outline-success">비밀번호 찾기</button>

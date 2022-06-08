@@ -32,9 +32,8 @@ function scheduleList() {
 </script>
 </head>
 <body>
-<h1 class="left">Show TiCat</h1>
 <jsp:include page="header.jsp"/>
-<hr>
+
 <button class="btn btn-primary" id="showList">영화/공연 목록보기</button>
 <button class="btn btn-primary" id="scheduleList">극장별로 조회</button>
 

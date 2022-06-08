@@ -11,7 +11,7 @@ import javax.servlet.http.HttpSession;
 /**
  * Servlet implementation class LogOutServlet
  */
-@WebServlet("/logout")
+@WebServlet("/jayoung/logout.do")
 public class LogOutServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
@@ -19,6 +19,6 @@ public class LogOutServlet extends HttpServlet {
 		HttpSession session = request.getSession();
 		session.invalidate();
 		
-		response.sendRedirect("jayoung/main.jsp");
+		response.sendRedirect("main.jsp");
 	}
 }

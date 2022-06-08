@@ -51,8 +51,8 @@ h1 {
 </style>
 </head>
 <body>
-<h1 class="left">Show TiCat</h1>
-<c:import url="header.jsp"/>
+<jsp:include page="header.jsp"/>
+<h4>검색결과</h4>
 <hr>
 <c:choose>
 	<c:when test="${result!=null}">
@@ -68,7 +68,7 @@ h1 {
 		</c:forEach>
 	</c:when>
 	<c:otherwise>
-		<p>${word}에 대한 검색결과가 없습니다.</p>
+		<p>"${word}"에 대한 검색결과가 없습니다.</p>
 	</c:otherwise>
 </c:choose>
 </body>
