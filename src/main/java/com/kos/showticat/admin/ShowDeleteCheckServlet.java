@@ -15,13 +15,15 @@ public class ShowDeleteCheckServlet extends HttpServlet {
     
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String show_code = request.getParameter("show_code");
-        if(show_code==null) return ;
+        /*
+		if(show_code==null) return ;
         System.out.println("show_code:" + show_code);
-        //DB에 직원id가 존재하는지 체크한다. ???empService->empDAO-->DB
-        ShowService service = new ShowService();
+        //DB에 직원id가 존재하는지 체크한다. ???empService->empDAO-->DB  
+        */
+		ShowService service = new ShowService();
         int result = service.selectBuyShow(show_code);
         PrintWriter out = response.getWriter();
-        out.print(result);//0이면 등록가능 1이면 등록불가 
+        out.print(result);//0이면 삭제가능 1이상 삭제불가 
         
 	}
 }

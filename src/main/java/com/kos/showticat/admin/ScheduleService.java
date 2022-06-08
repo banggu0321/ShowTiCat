@@ -41,8 +41,8 @@ public class ScheduleService {
 
 	// 3. 스케줄 삭제
 	// 3-1. 해당 스케줄의 판매 횟수 조회 (조건조회)
-	public int selectBuySchedule() {
-		return scheduleDAO.selectBuySchedule();
+	public int selectBuySchedule(int schedule_num) {
+		return scheduleDAO.selectBuySchedule(schedule_num);
 	}
 
 	// 3-2. 스케줄 삭제

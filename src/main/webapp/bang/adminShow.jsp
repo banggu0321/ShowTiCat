@@ -39,6 +39,8 @@
 					<td>${show.show_time }</td>
 					<td>${show.category }</td>
 					<td>
+						<input type="button" value="모달" class="btnM btn btn-info" 
+							 data-showcode="${show.show_code}">
 						<input type="button" value="수정" class="btnUpd btn btn-info" 
 							data-toggle="modal" data-target="#myModal" data-showcode="${show.show_code}">
 						<input type="button" value="삭제" class="btnDel btn btn-dark" 
@@ -50,15 +52,20 @@
 	</div>
 	<script>
 		$(function() {
+			$(".btnM").click(function(){
+				$("#myModal").modal();
+			});
 			$(".btnUpd").click(function() {
 				var show_code = $(this).attr("data-showcode");
-				//alert(show_code);
 				$("#show_code").val(show_code);
-				location.href = "showUpdate.do?show_code=" + show_code;
+				//location.href = "showUpdate.do?show_code=" + show_code;
 			});
 			$(".btnDel").click(function() {
 				var show_code = $(this).attr("data-showcode");
-				location.href = "showDelete.do?show_code=" + show_code;
+				if(confirm(show_code + " 삭제?")){
+					location.href = "showDeleteCheck.do?show_code=" + show_code;
+				}
+				
 			});
 		});
 	/* 		

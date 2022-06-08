@@ -29,6 +29,10 @@ public class ScheduleDAO {
 	static final String SQL_SELECT_PLACE_INSERT ="SELECT PLACE_NUM , PLACE_NAME FROM PLACE";
 	static final String SQL_SELECT_THEATER_INSERT ="SELECT THEATER_NUM FROM THEATER";	
 	static final String SQL_INSERT_SCHEDULE ="INSERT INTO schedule values(seq_schedule_no.nextval,?,?,?,?)";
+	static final String SQL_SELECT_RESERVATION_DELETE_SCHEDULE =""
+			+ "SELECT count(r.RESERVATION_NUM) FROM SCHEDULE sc JOIN RESERVATION r  ON (sc.SCHEDULE_NUM = r.SCHEDULE_NUM )"
+			+ " sc.SCHEDULE_NUM  = ?"
+			+ "	AND r.PAY_YN = 'Y'";	
 	static final String SQL_DELETE_SCHEDULE ="DELETE FROM schedule WHERE SCHEDULE_NUM =? ";
 	
 	
@@ -159,8 +163,22 @@ public class ScheduleDAO {
 
 	// 3. 스케줄 삭제
 	// 3-1. 해당 스케줄의 판매 횟수 조회 (조건조회)
-	public int selectBuySchedule() {
-		return 0;
+	public int selectBuySchedule(int schedule_num) {
+		int result = 0;
+		conn = DBUtil.getConnection();
+		try {
+			pst = conn.prepareStatement(SQL_SELECT_RESERVATION_DELETE_SCHEDULE);
+			pst.setInt(1, schedule_num);  
+			rs = pst.executeQuery();
+			while (rs.next()) {
+				result = rs.getInt(1);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			DBUtil.dbClose(rs, pst, conn);
+		}
+		return result;
 	}
 
 	// 3-2. 스케줄 삭제
