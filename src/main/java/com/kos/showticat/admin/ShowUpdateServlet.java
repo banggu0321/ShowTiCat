@@ -19,18 +19,16 @@ import com.kos.showticat.admin.vo.ShowVO;
 public class ShowUpdateServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-	protected void doGet(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String show_code = request.getParameter("show_code");
 		System.out.println(show_code);
 		
 		ShowService service = new ShowService();
-		request.setAttribute("showlist", service.selectByCode(show_code));
+		request.setAttribute("show", service.selectByCode(show_code));
 		
 	}
 
 	// 입력된 data를 DB에 저장하기
-	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		request.setCharacterEncoding("utf-8");
@@ -39,7 +37,10 @@ public class ShowUpdateServlet extends HttpServlet {
 		ShowService service = new ShowService();
 		int result = service.updateShow(s);
 		request.setAttribute("message", result > 0 ? "성공" : "실패");
-		response.sendRedirect("show.do");
+		RequestDispatcher rd;
+		rd = request.getRequestDispatcher("result.jsp");
+		rd.forward(request, response);
+		//response.sendRedirect("show.do");
 	}
 
 	private ShowVO makeS(HttpServletRequest request) {

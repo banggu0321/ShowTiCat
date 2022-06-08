@@ -51,33 +51,36 @@
 	<script>
 		$(function() {
 			$(".btnUpd").click(function() {
-				alert(show_code);
-				var show_code = $(".btnUpd").attr("data-showcode");
-				alert(show_code);
+				var show_code = $(this).attr("data-showcode");
+				//alert(show_code);
 				$("#show_code").val(show_code);
-				$.ajax({
+				location.href = "showUpdate.do?show_code=" + show_code;
+			});
+			$(".btnDel").click(function() {
+				var show_code = $(this).attr("data-showcode");
+				location.href = "showDelete.do?show_code=" + show_code;
+			});
+		});
+	/* 		
+			$.ajax({
 					url:"showUpdate.do",	//어디로
 					data:{"show_code":show_code},	//가져갈 data{key,value}
 					type:"get",
 					success:function(responseData){
 						alert("서버에 다녀옴 : "+ responseData);
-						var obj = JSON.parse(responseData);
-						  $("#show_name").val(obj["show_name"]);
-						  $("#director").val(obj["director"]);
-						  $("#trailer").val(obj["trailer"]);
-						  $("#opening_date").val(obj["opening_date"]);
-						  $("#show_time").val(obj["show_time"]);
-						  $("#category").val(obj["category"]);
-						  $("#summary").val(obj["summary"]);
-						  $("#poster").val(obj["poster"]);
-						  $("#price").val(obj["price"]);
+						var show = JSON.parse(responseData);
+						  $("#show_name").val(show["show_name"]);
+						  $("#director").val(show["director"]);
+						  $("#trailer").val(show["trailer"]);
+						  $("#opening_date").val(show["opening_date"]);
+						  $("#show_time").val(show["show_time"]);
+						  $("#category").val(show["category"]);
+						  $("#summary").val(show["summary"]);
+						  $("#poster").val(show["poster"]);
+						  $("#price").val(show["price"]);
 					}
-				});
-			});
-			$(".btnDel").click(function() {
-				alert(show_code);
-				var show_code = $(this).attr("data-showcode");
-				$.ajax({
+				}); 
+			$.ajax({
 					url:"showDeleteCheck.do",
 					data:{"show_code": show_code},
 					type:"get",
@@ -92,9 +95,7 @@
 						$("#message").html("fail");
 				});//location.href = "showDelete.do?show_code=" + show_code;
 			});
-		});
-		
-		/*  */
+	*/
 	</script>
 <!-- The Modal -->
   <div class="modal" id="myModal">

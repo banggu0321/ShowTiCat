@@ -2,7 +2,6 @@ package com.kos.showticat.admin;
 
 import java.io.IOException;
 
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -23,7 +22,6 @@ public class ScheduleDeleteServlet extends HttpServlet {
 		int result = service.deleteSchedule(schedule_num);
 		request.setAttribute("message", result > 0 ? "삭제성공" : "삭제실패");
 
-		RequestDispatcher rd = request.getRequestDispatcher("schedule.do");
-		rd.forward(request, response);
+		response.sendRedirect("schedule.do");
 	}
 }
