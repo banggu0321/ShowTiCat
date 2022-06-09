@@ -23,11 +23,45 @@ $(function() {
 	$("#m_id").on("keyup",checkID);
 	$("#m_pw").on("keyup",checkPW);
 	$("#pw2").on("keyup",checkPW);
+	$("#select").on("change",selectChange);
 	$("#resetBtn").on("click",reset);
 	$("#sendSMS").on("click",sendSMS);
 	$("#checkNum").on("click",checkNum);
 	
 });
+
+function isChecked() {
+	var idMsg = $("#idMsg").html().trim();
+	var pwMsg = $("#pwMsg").html().trim();
+
+	var name = $("#m_name").val();
+	var email = $("#email").val();
+	var phone = $("#phone").val();
+	var random = $("#random").val();
+	var birth = $("#birth").val();
+	
+	if(idMsg != "사용가능한 ID입니다.") {
+		$("#m_id").focus();
+		return false;
+	}else if(pwMsg != "사용가능한 PW입니다.") {
+		$("#m_pw").focus();
+		return false;
+	}else if(name==null||name==''){
+		$("#m_name").focus();
+		return false;
+	}else if(email==null||email==''){
+		$("#email").focus();
+		return false;
+	}else if(phone==null||phone==''){
+		$("#phone").focus();
+		return false;
+	}else if(random==null||random==''){
+		return false;
+	}else if(birth==null||birth==''){
+		$("#birth").focus();
+		return false;
+	}
+}
 
 function checkPW() {
 	var pw1 = $("#m_pw").val().trim();
@@ -38,7 +72,7 @@ function checkPW() {
 	}else if(pw1 != pw2) {
 		$("#pwMsg").html("비밀번호를 확인하세요.");
 	} else {
-		$("#pwMsg").html("비밀번호 일치");
+		$("#pwMsg").html("사용가능한 PW입니다.");
 	}
 }
 
@@ -62,33 +96,15 @@ function checkID() {
 	});
 }
 
-function isChecked() {
-	var idMsg = $("#idMsg").html().trim();
-	var pwMsg = $("#pwMsg").html().trim();
-
-	var name = $("#m_name").val();
-	var email = $("#email").val();
-	var phone = $("#phone").val();
-	var random = $("#random").val();
-	
-	if(idMsg != "사용가능한 ID입니다.") {
-		$("#m_id").focus();
-		return false;
-	}else if(pwMsg != "비밀번호 일치") {
-		$("#m_pw").focus();
-		return false;
-	}else if(name==null||name==''){
-		$("#m_name").focus();
-		return false;
-	}else if(email==null||email==''){
-		$("#email").focus();
-		return false;
-	}else if(phone==null||phone==''){
-		$("#phone").focus();
-		return false;
-	}else if(random==null||random==''){
-		return false;
-	}	
+function selectChange() {
+	 if ($('#select').val() == 'directly') {
+         $('#email2').attr("readonly", false);
+         $('#email2').val("");
+         $('#email2').focus();
+     } else {
+         $('#email2').val($('#select').val());
+         $('#email2').attr("readonly",true);
+     }
 }
 
 var code="";
@@ -162,7 +178,17 @@ function reset() {
 
 <div class="form-group">
 	<label>EMAIL </label>
-	<input class="form-control" type="email" name="email" id="email" placeholder="abcdef@showticat.com">
+	<input class="form-control" type="text" name="email1" id="email1" placeholder="이메일">
+	<span>@</span>
+	<input class="form-control" name="email2" id="email2">
+	<select class="form-control" id="select">
+            <option value="" disabled selected>E-Mail 선택</option>
+            <option value="naver.com" id="naver.com">naver.com</option>
+            <option value="gmail.com" id="gmail.com">gmail.com</option>
+            <option value="nate.com" id="nate.com">nate.com</option>
+            <option value="hanmail.net" id="hanmail.net">hanmail.net</option>
+            <option value="directly" id="textEmail">직접 입력하기</option>
+        </select>
 </div>
 
 <div class="form-group">
@@ -180,7 +206,7 @@ function reset() {
 
 <div class="form-group">
 	<label>BIRTHDAY </label>
-	<input class="form-control" type="date" name="birth">
+	<input class="form-control" type="date" name="birth" id="birth">
 </div>
 
 <div class="form-group form-check-inline">

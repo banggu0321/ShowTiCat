@@ -18,7 +18,7 @@ public class ScheduleDAO {
 			+ " JOIN show using(show_code) WHERE theater_num in ("
 			+ "	SELECT theater_num FROM theater	WHERE place_num IN ("
 			+ " SELECT place_num FROM place WHERE place_num = ?)) order by 2,4,6";
-	static final String SQL_SYSDATE = "SELECT sysdate, sysdate+1, sysdate+2, sysdate+3, sysdate+4, SYSDATE+5, sysdate+6 FROM dual;";
+	static final String SQL_SYSDATE = "SELECT sysdate, sysdate+1, sysdate+2, sysdate+3, sysdate+4, SYSDATE+5, sysdate+6 FROM dual";
 	
 	Connection conn;
 	Statement st;

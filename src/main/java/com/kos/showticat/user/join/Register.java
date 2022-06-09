@@ -16,11 +16,11 @@ import com.kos.showticat.jayoung.MemberVO;
 import com.kos.showticat.util.DateUtil;
 
 @WebServlet("/jayoung/insert.do")
-public class MemberInsert extends HttpServlet {
+public class Register extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		RequestDispatcher rd = request.getRequestDispatcher("insert.jsp");
+		RequestDispatcher rd = request.getRequestDispatcher("register.jsp");
 		rd.forward(request, response);
 	}
 	
@@ -39,7 +39,8 @@ public class MemberInsert extends HttpServlet {
 			HttpSession session = request.getSession();
 			session.setAttribute("m_id", member.getM_id());
 			
-			response.sendRedirect("joinResult.jsp");
+			RequestDispatcher rd = request.getRequestDispatcher("registerResult.jsp");
+			rd.forward(request, response);
 		}
 	}
 
@@ -50,6 +51,7 @@ public class MemberInsert extends HttpServlet {
 		String m_pw = request.getParameter("m_pw");
 		String m_name = request.getParameter("m_name");
 		String email = request.getParameter("email");
+		//String email = request.getParameter("email1")+"@"+request.getParameter("email2");
 		String phone = request.getParameter("phone");
 		String birth = request.getParameter("birth");
 		String gender = request.getParameter("gender");

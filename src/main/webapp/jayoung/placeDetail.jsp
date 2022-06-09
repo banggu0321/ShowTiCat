@@ -47,6 +47,7 @@ a:hover {
 <script>
 $(function() {
 	$(".reservBtn").on("click",reservation);
+})
 
 function reservation() {
 	var num = $(this).attr("num");
@@ -144,6 +145,3 @@ ${dataList}
 <hr>
 </body>
 </html>
-
-
-
