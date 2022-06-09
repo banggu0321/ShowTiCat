@@ -10,6 +10,7 @@
 <body>
 	<h1>place list</h1>
 	<hr>
+	
 	<table>
 		<tr>
 			<th>theater_num</th>
@@ -20,7 +21,7 @@
 
 		<c:forEach items="${theaterByNumber}" var="theater">
 			<tr>
-				<td><a href="cansu/scheduleResult.jsp?theaterNum=${theater.theater_num}&placeNum=${theater.place_num}">${theater.theater_num}</a></td>
+				<td><a href="reservationFromShowListTheater?theaterNum=${theater.theater_num}&placeNum=${theater.place_num}" >${theater.theater_num}</a></td>
 				<td>${theater.theater_type}</td>
 				<td>${theater.last_seat}</td>
 				<td>${theater.place_num}</td>

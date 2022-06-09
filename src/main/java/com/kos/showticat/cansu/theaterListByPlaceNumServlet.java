@@ -24,11 +24,12 @@ public class theaterListByPlaceNumServlet extends HttpServlet {
 		ScheduleService service = new ScheduleService();
 		List<TheaterVO> pList = new ArrayList<>();
 		
+		System.out.println(request.getParameter("placeNumber"));
 		int placenum = Integer.parseInt(request.getParameter("placeNumber"));		
 		pList = service.selectTheaterByPlaceNum(placenum);
 		request.setAttribute("theaterByNumber", pList);
 		
-		//위임(placeList.jsp)
+		//위임
 		RequestDispatcher rd = request.getRequestDispatcher("cansu/theaterListByNumber.jsp");
 		rd.forward(request, response);
 	}

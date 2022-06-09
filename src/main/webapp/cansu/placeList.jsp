@@ -21,7 +21,7 @@
 
 		<c:forEach items="${placeList}" var="place">
 			<tr>
-				<td><a href="theaterListByPlaceNumServlet?placeNumber=${place.place_num}">${place.place_num}</a></td>
+				<td><a href="http://localhost:9090/ShowTiCat/theaterListByPlaceNumServlet?placeNumber=${place.place_num}">${place.place_num}</a></td>
 				<td>${place.place_name}</td>
 				<td>${place.place_loc}</td>
 				<td>${place.place_phone}</td>

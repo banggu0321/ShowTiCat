@@ -1,6 +1,9 @@
 package com.kos.showticat.cansu;
 
 import java.io.IOException;
+import java.util.Calendar;
+
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -21,9 +24,9 @@ public class reservationFromShowList extends HttpServlet {
 		
 		//log in check
 		String logInPath = "../jayoung/main.jsp";
+		HttpSession session = request.getSession();
 		
 		MemberVO member = new MemberVO();
-		HttpSession session = request.getSession();
 		member = (MemberVO) session.getAttribute("member");
 		System.out.println(member);
 		if(member==null) {  //log in 없이 예매시 main page로 재전송
@@ -37,19 +40,44 @@ public class reservationFromShowList extends HttpServlet {
 		System.out.println(showCode);
 //		String showCode = "AA3"; //user 선택을 받아서 결정
 		
-		// schedule number check
-		int scheduleNum = 42;  		
-//		int scheduleNum = 2;  //schedule 번호 가져오기		
-		int reservationNum = Integer.parseInt(eachChartoString(m_id, scheduleNum));  //id에 따라 일정한 숫자로 변환+"scheduleNumber"
+		// schedule number을 session에 저장
+		int scheduleNum = createScheduleNumber(m_id);  		
+		session.setAttribute("scheduleNumber", scheduleNum); //session영역에서 자신의 scheduleNumber찾기
 		
 		ScheduleService service = new ScheduleService();
-		service.insertReservationInfor(reservationNum, m_id, scheduleNum);  //reservation table row 생성
+		service.insertScheduleInforNum(scheduleNum, showCode);
+		System.out.println("create schedule");
 		
-		String payment = "card"; //payment 방식 선택
-		int totalPrice = 2200;  //인원수 결정후  최종 금액 결정(좌석 선택후)
-		service.updateReservationInfor(payment, totalPrice, reservationNum); //생성된 row의 너머지 값 update
+		//위임(극장선택)
+		RequestDispatcher rd = request.getRequestDispatcher("/placeListServilet");
+		rd.forward(request, response);
 		
 	}
+	private static int createScheduleNumber(String mID) {
+		
+//		System.out.println(mID);
+		int dayNum = calendartoString();
+//		System.out.println(dayNum);
+		String scheduleNum = eachChartoString(mID, dayNum);
+
+		return Integer.parseInt(scheduleNum.substring(3, scheduleNum.length()));
+		
+	}
+
+	private static int calendartoString() {
+		Calendar now = Calendar.getInstance();
+		int nowYear = now.get(Calendar.YEAR);
+		int nowMonth = now.get(Calendar.MONTH)+1;
+		int nowDay = now.get(Calendar.DATE);
+		int nowHour = now.get(Calendar.HOUR);
+		int nowMinute = now.get(Calendar.MINUTE);
+//		System.out.println(nowYear+"-"+nowMonth+"-"+nowDay+" "+nowHour+":"+nowMinute);
+		
+		String dayNum = Integer.toString(nowMonth)+Integer.toString(nowDay)+Integer.toString(nowHour)+Integer.toString(nowMinute);
+//		System.out.println(dayNum);
+		return Integer.parseInt(dayNum);
+	}
+
 	private static String eachChartoString(String name, int number) {
 		
 		char[] temp = name.toCharArray();

@@ -1,10 +1,12 @@
 package com.kos.showticat.reservation.controller;
 
+import java.sql.Date;
+import java.sql.Timestamp;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
-import java.util.Date;
+import java.util.Calendar;
 import java.util.List;
 
 import com.kos.showticat.reservation.dao.temp.ScheduleService;
@@ -20,7 +22,7 @@ public class temp {
 
 	public static void main(String[] args) {
 		
-		f9(); //theater select by place number
+//		f9(); //theater select by place number
 //		f8(); //theater table select all
 //		f7();  //place talbe select all
 		
@@ -34,6 +36,112 @@ public class temp {
 	
 
 //		f1();  //update point in members table, select members table
+		
+		f15(); //reservation table select schedule number
+//		f14(); //show table select price
+//		f13(); //schedule table select show_code
+//		f12(); //schedule table create(3. update showTime)
+//		f11();  //schedule table create(2. update theater)
+//		f10();  //schedule table create(1. insert schedule number and show code)
+	}
+
+
+	private static void f15() {
+		int reservationNum = 469421;
+		
+		ScheduleService service = new ScheduleService();
+		System.out.println(service.selectReservationByReservationNum(reservationNum));
+	}
+
+
+	private static void f14() {
+		String showCode = "AA23";
+		
+		ScheduleService service = new ScheduleService();
+		System.out.println(service.selectShowByShowCode(showCode));
+	}
+
+
+	private static void f13() {
+		
+		int scheduleNum = 10; //저장된 schedule number 가져오기
+		
+		ScheduleService service = new ScheduleService();
+		System.out.println(service.selectScheduleByScheduleNum(scheduleNum));
+	}
+
+
+	private static void f12() {
+		int scheduleNum = 711691055; //생성한 schedule number 불러오기(session 에 저장하고 불러오기)
+
+		String startShow = "2022-06-09 10:10:00";  //user가 시간을 선택
+		
+		//string -> timestamp -> date
+		Timestamp sStart = Timestamp.valueOf(startShow);
+		Date sDate = new Date(sStart.getTime());
+		
+		ScheduleService service = new ScheduleService();
+		service.updateScheduleShowstart(sDate, scheduleNum);
+	}
+	private Date stringToDate(String myDate, String myTime) {  //dateSampleServlet에서 사용
+		
+		String timeTemp = myTime+":00";
+//		System.out.println(timeTemp);
+
+		
+		String showStart = myDate+" "+timeTemp;
+		Timestamp temp = Timestamp.valueOf(showStart);
+
+		Date result=new Date(temp.getTime());
+		return result;
+	}
+
+	private static void f11() {
+		
+		int scheduleNum = 711691055; //생성한 schedule number 불러오기(session 에 저장하고 불러오기)
+
+		String theaterNum = "D2"; //user 선택을 받아옴
+		ScheduleService service = new ScheduleService();
+		int placeNum = service.selectPlaceByTheaterNum(theaterNum);  //해당하는 place number을 받아옴
+//		System.out.println(placeNum);
+		
+		service.updateScheduleTheaterPlacenum(theaterNum, placeNum, scheduleNum);		
+	}
+
+	private static void f10() {
+		
+		int scheduleNum = createScheduleNumber("cansu"); //user가 예매 시작시 생성
+//		System.out.println(scheduleNum);
+		String showCode = "AA9";  //user의 영화 선택 받음 
+		
+		ScheduleService service = new ScheduleService();
+		service.insertScheduleInforNum(scheduleNum, showCode);
+		
+	}
+	
+	private static int createScheduleNumber(String mID) {
+		
+//		System.out.println(mID);
+		int dayNum = calendartoString();
+//		System.out.println(dayNum);
+		String scheduleNum = eachChartoString(mID, dayNum);
+
+		return Integer.parseInt(scheduleNum.substring(3, scheduleNum.length()));
+		
+	}
+
+	private static int calendartoString() {
+		Calendar now = Calendar.getInstance();
+		int nowYear = now.get(Calendar.YEAR);
+		int nowMonth = now.get(Calendar.MONTH)+1;
+		int nowDay = now.get(Calendar.DATE);
+		int nowHour = now.get(Calendar.HOUR);
+		int nowMinute = now.get(Calendar.MINUTE);
+//		System.out.println(nowYear+"-"+nowMonth+"-"+nowDay+" "+nowHour+":"+nowMinute);
+		
+		String dayNum = Integer.toString(nowMonth)+Integer.toString(nowDay)+Integer.toString(nowHour)+Integer.toString(nowMinute);
+//		System.out.println(dayNum);
+		return Integer.parseInt(dayNum);
 	}
 
 	private static void f9() {
@@ -170,6 +278,8 @@ public class temp {
 			result += (int)ch;
 		}
 		
+//		System.out.println(result);
+//		System.out.println(Integer.toString(number));
 		return result.substring(0, 6)+Integer.toString(number);
 	}
 
