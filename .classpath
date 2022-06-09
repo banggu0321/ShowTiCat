@@ -14,6 +14,7 @@
 	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.web.container"/>
 	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.module.container"/>
 	<classpathentry kind="lib" path="C:/Kosta_241/ojdbc10-full/ojdbc10.jar"/>
+	<classpathentry kind="lib" path="C:/Users/ghddl/Downloads/java-sdk v2.1/java-sdk/lib/json-simple-1.1.1.jar"/>
 	<classpathentry kind="lib" path="C:/Kosta_241/javaSDK-2.2.jar"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>

@@ -18,6 +18,7 @@ public class ScheduleDAO {
 			+ " JOIN show using(show_code) WHERE theater_num in ("
 			+ "	SELECT theater_num FROM theater	WHERE place_num IN ("
 			+ " SELECT place_num FROM place WHERE place_num = ?)) order by 2,4,6";
+	static final String SQL_SYSDATE = "SELECT sysdate, sysdate+1, sysdate+2, sysdate+3, sysdate+4, SYSDATE+5, sysdate+6 FROM dual;";
 	
 	Connection conn;
 	Statement st;
@@ -108,6 +109,40 @@ public class ScheduleDAO {
 		}
 		
 		return scheduleList;
+	}
+	
+	//오늘 기준 7일 조회
+	public DateVO selectSysdate() {
+		DateVO dateList = new DateVO();
+		conn = DBUtil.getConnection();
+		try {
+			pst = conn.prepareStatement(SQL_SYSDATE);
+			rs = pst.executeQuery();
+			
+			while(rs.next()) {
+				dateList = makeDate(rs);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			DBUtil.dbClose(rs, pst, conn);
+		}
+		
+		return dateList;
+	}
+
+	private DateVO makeDate(ResultSet rs) throws SQLException {
+		DateVO date = new DateVO();
+		
+		date.setSysdate(rs.getDate(1));
+		date.setSysdate_1(rs.getDate(2));
+		date.setSysdate_2(rs.getDate(3));
+		date.setSysdate_3(rs.getDate(4));
+		date.setSysdate_4(rs.getDate(5));
+		date.setSysdate_5(rs.getDate(6));
+		date.setSysdate_6(rs.getDate(7));
+		
+		return date;
 	}
 
 	private ScheduleVO makeSchedule(ResultSet rs) throws SQLException {

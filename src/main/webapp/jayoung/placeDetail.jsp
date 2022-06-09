@@ -74,11 +74,13 @@ function reservation() {
 <%-- 극장정보 --%>
 <img class="left img" src="${path}/images/theater.webp" width="300px" height="400px">
 <div class="left">
-<p class="name">${place.place_name}</p>
+<p class="name">ShowTiCat ${place.place_name}</p>
 <hr>
 <p class="info">위치 : ${place.place_loc}</p>
 <p class="info">문의 : ${place.place_phone}</p>
 </div>
+<hr>
+${dataList}
 <hr>
 <%-- 상영스케줄 --%>
 <c:forEach items="${list}" var="value" varStatus="s">

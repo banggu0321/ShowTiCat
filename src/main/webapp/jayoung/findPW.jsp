@@ -23,6 +23,7 @@ $(function() {
 	$("#checkNum").on("click",checkNum);
 })
 
+var code="";
 function sendSMS() {
 	var phone = $("#phone").val();
 	if(phone==null||phone=='') {
@@ -30,7 +31,18 @@ function sendSMS() {
 		$("#phone").focus();
 		return;
 	}
+
 	$("#check").show();
+	$.ajax({
+		url:"randomNumCheck.do",
+		data:{"phone":phone},
+		success:function(data) {
+			alert("인증번호를 발송하였습니다.");
+			alert(data);
+			$("#phone").attr("readonly",true);
+			code = data;
+		}
+	})
 }
 
 function isEmpty() {
@@ -59,7 +71,7 @@ function isEmpty() {
 
 function checkNum() {
 	var input = $("#random").val();
-	if(input == '') {
+	if(input == code) {
 		$("#msg").html("인증성공");
 	}else {
 		$("#msg").html("인증실패");

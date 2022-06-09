@@ -59,7 +59,7 @@ h1 {
 	<c:when test="${result!=null}">
 		<c:forEach items="${result}" var="show">
 			<div>
-				<img alt="${show.show_name}" src="${path}/${show.poster}" width="225px" height="300px">
+				<img alt="${show.show_name}" src="${path}/images/${show.poster}" width="225px" height="300px">
 				<p class="title">${show.show_name}</p>
 				<p class="info">${show.opening_date} OPEN</p>
 				<button class="btn btn-primary detailBtn" code="${show.show_code}">상세보기</button>

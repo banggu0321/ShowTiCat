@@ -62,17 +62,14 @@ function join() {
 		<c:if test="${member != null}">
 			<p id="user">${member.m_name}님 로그인</p>
 		</c:if>	
-		<c:if test="${member == null}">
-			<p id="user">Guest</p>
-		</c:if>	
 	</span>
-	<span>
+	<span class="right">
 		<c:if test="${member != null}">
-			<button class="btn btn-light right" id="logoutH">로그아웃</button>			
+			<button class="btn btn-light" id="logoutH">로그아웃</button>			
 		</c:if>
 		<c:if test="${member == null}">
-			<button class="btn btn-light right" id="loginH">로그인</button>
-			<button class="btn btn-light right" id="joinH">회원가입</button>
+			<button class="btn btn-light" id="loginH">로그인</button>
+			<button class="btn btn-light" id="joinH">회원가입</button>
 		</c:if>	
 	</span>
 	<form action="result.do" class="right" id="formH">

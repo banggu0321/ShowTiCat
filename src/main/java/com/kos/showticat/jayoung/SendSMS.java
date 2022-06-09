@@ -39,7 +39,7 @@ public class SendSMS{
 		return ThreadLocalRandom.current().nextInt(100000, 1000000);
 	}
 	
-	public static int send(String phone) throws CoolsmsException {
+	public static int send(String phone) throws CoolsmsException{
 		int num = sendMsg(phone);
 		return num;
 	}

@@ -1,4 +1,4 @@
-package com.kos.showticat.jayoung;
+package com.kos.showticat.user.display;
 
 import java.io.IOException;
 import java.util.List;
@@ -9,6 +9,11 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import com.kos.showticat.jayoung.PlaceService;
+import com.kos.showticat.jayoung.ScheduleService;
+import com.kos.showticat.jayoung.ShowService;
+import com.kos.showticat.jayoung.TheaterService;
 
 @WebServlet("/jayoung/placeDetail.do")
 public class PlaceDetail extends HttpServlet {
@@ -22,11 +27,12 @@ public class PlaceDetail extends HttpServlet {
 		ScheduleService ss = new ScheduleService();
 		ShowService sss = new ShowService();
 
-		request.setAttribute("place", ps.selectByNum(place_num)); //
-		request.setAttribute("placeList", ps.selectAll()); //
+		request.setAttribute("place", ps.selectByNum(place_num)); 
+		request.setAttribute("placeList", ps.selectAll()); 
 		request.setAttribute("showList", sss.selectAll());
 		request.setAttribute("theaterList", ts.selectByPlace(place_num));
-		request.setAttribute("list", ss.selectByTheater(place_num)); //
+		request.setAttribute("list", ss.selectByTheater(place_num));
+		request.setAttribute("dateList", ss.selectSysdate());
 		
 		RequestDispatcher rd = request.getRequestDispatcher("placeDetail.jsp");
 		rd.forward(request, response);

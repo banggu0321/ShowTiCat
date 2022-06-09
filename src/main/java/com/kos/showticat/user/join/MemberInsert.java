@@ -1,7 +1,7 @@
 package com.kos.showticat.user.join;
 
 import java.io.IOException;
-import java.sql.Date;
+import java.io.PrintWriter;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -9,6 +9,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.kos.showticat.jayoung.MemberService;
 import com.kos.showticat.jayoung.MemberVO;
@@ -26,11 +27,20 @@ public class MemberInsert extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		MemberVO member = makeMember(request);
 		MemberService service = new MemberService();
-
-		request.setAttribute("msg", service.memberInsert(member)>0?"성공":"실패");
 		
-		RequestDispatcher rd = request.getRequestDispatcher("result.jsp");
-		rd.forward(request, response);
+		int result = service.memberInsert(member);
+		
+		if(result == 0) {
+			response.setContentType("text/html; charset=UTF-8");
+			PrintWriter writer = response.getWriter();
+			writer.println("<script>alert('회원가입에 실패하였습니다. 확인 후 다시 시도해주세요.'); location.href='insert.do';</script>");
+			writer.close();
+		}else {
+			HttpSession session = request.getSession();
+			session.setAttribute("m_id", member.getM_id());
+			
+			response.sendRedirect("joinResult.jsp");
+		}
 	}
 
 	private MemberVO makeMember(HttpServletRequest request) {
@@ -54,5 +64,4 @@ public class MemberInsert extends HttpServlet {
 		
 		return m;
 	}
-
 }

@@ -1,6 +1,7 @@
-package com.kos.showticat.jayoung;
+package com.kos.showticat.user.display;
 
 import java.io.IOException;
+import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -9,27 +10,31 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-/**
- * Servlet implementation class ShowDetail
- */
-@WebServlet("/jayoung/showDetail.do")
-public class ShowDetail extends HttpServlet {
-	private static final long serialVersionUID = 1L;
+import com.kos.showticat.jayoung.ShowService;
+import com.kos.showticat.jayoung.ShowVO;
 
+/**
+ * Servlet implementation class ResultServlet
+ */
+@WebServlet("/jayoung/result.do")
+public class ResultServlet extends HttpServlet {
+	private static final long serialVersionUID = 1L;
+  
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String show_code = request.getParameter("show_code");
+		String word = request.getParameter("search");
+		request.setAttribute("word", word);
 		
 		ShowService service = new ShowService();
-		CastService cservice = new CastService();
-		request.setAttribute("show", service.selectShow(show_code)); 
-		request.setAttribute("castList", cservice.selectCast(show_code)); 
+		List<ShowVO> sList = service.selectSearch(word);
 		
+		if(!sList.isEmpty()) request.setAttribute("result", sList);
 		
-		RequestDispatcher rd = request.getRequestDispatcher("showDetail.jsp");
+		RequestDispatcher rd = request.getRequestDispatcher("searchResult.jsp");
 		rd.forward(request, response);
 	}
-	
+
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		doGet(request, response);
 	}
+
 }

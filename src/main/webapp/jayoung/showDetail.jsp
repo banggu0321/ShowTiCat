@@ -97,7 +97,8 @@ a:hover {
 <pre>${show.summary}</pre>
 <hr>
 <h3>예매자 통계</h3>
-<img class="left poster" alt="${show.show_name}" src="${path}/images/${show.show_chart}" width="300px" height="400px">
+<c:import url="showChart.jsp"></c:import>
+<%-- <img class="left poster" alt="${show.show_name}" src="${path}/images/${show.show_chart}" width="300px" height="400px"> --%>
 
 <!-- The Modal -->
 <div class="modal" id="myModal">

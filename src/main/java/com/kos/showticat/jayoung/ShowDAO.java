@@ -117,7 +117,7 @@ public class ShowDAO {
 		show.setShow_time(rs.getString("show_time"));
 		show.setSummary(rs.getString("summary"));
 		show.setTrailer(rs.getString("trailer"));
-		show.setShow_chart(rs.getString("show_chart"));
+		
 		
 		return show;
 	}

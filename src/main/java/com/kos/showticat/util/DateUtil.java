@@ -19,4 +19,11 @@ public class DateUtil {
 		return d2;
 	}
 	
+	public static Date sysdate() {
+		java.util.Date d = new java.util.Date();
+		String sdf = new SimpleDateFormat("yyyy-MM-dd").format(d);
+		Date date = convertToDate(sdf);
+		
+		return date;
+	}
 }
