@@ -17,7 +17,7 @@ public class ScheduleDAO {
 	static final String SQL_SELECT_THEATER ="SELECT SHOW_CODE, SHOW_NAME,schedule_num,theater_num,place_num, show_start FROM schedule "
 			+ " JOIN show using(show_code) WHERE theater_num in ("
 			+ "	SELECT theater_num FROM theater	WHERE place_num IN ("
-			+ " SELECT place_num FROM place WHERE place_num = ?)) order by 2,4";
+			+ " SELECT place_num FROM place WHERE place_num = ?)) order by 2,4,6";
 	
 	Connection conn;
 	Statement st;

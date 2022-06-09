@@ -51,6 +51,7 @@ h1 {
 </style>
 </head>
 <body>
+<c:set var="path" value="${pageContext.request.contextPath}"/>
 <jsp:include page="header.jsp"/>
 <h4>검색결과</h4>
 <hr>
@@ -58,7 +59,7 @@ h1 {
 	<c:when test="${result!=null}">
 		<c:forEach items="${result}" var="show">
 			<div>
-				<img alt="${show.show_name}" src="../${show.poster}" width="225px" height="300px">
+				<img alt="${show.show_name}" src="${path}/${show.poster}" width="225px" height="300px">
 				<p class="title">${show.show_name}</p>
 				<p class="info">${show.opening_date} OPEN</p>
 				<button class="btn btn-primary detailBtn" code="${show.show_code}">상세보기</button>

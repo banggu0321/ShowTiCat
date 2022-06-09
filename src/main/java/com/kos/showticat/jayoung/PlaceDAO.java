@@ -11,7 +11,7 @@ import java.util.List;
 import com.kos.showticat.util.DBUtil;
 
 public class PlaceDAO {
-	static final String SQL_SELECT_ALL ="select * from place order by 1";
+	static final String SQL_SELECT_ALL ="select * from place order by 2";
 	static final String SQL_SELECT ="select * from place where place_num = ?";
 
 	Connection conn;

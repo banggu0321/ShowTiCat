@@ -10,19 +10,15 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-@WebServlet("/jayoung/showList.do")
-public class ShowList extends HttpServlet {
+@WebServlet("/jayoung/showAllList.do")
+public class ShowAllList extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String category = request.getParameter("category");
-		HttpSession session = request.getSession();
-		session.setAttribute("category", category);
-		
 		ShowService service = new ShowService();
-		request.setAttribute("showList", service.selectCategory(category));
+		request.setAttribute("showList", service.selectAll());
 		
-		RequestDispatcher rd = request.getRequestDispatcher("showList.jsp");
+		RequestDispatcher rd = request.getRequestDispatcher("showAllList.jsp");
 		rd.forward(request, response);
 	}
 }

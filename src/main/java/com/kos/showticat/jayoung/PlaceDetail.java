@@ -22,11 +22,11 @@ public class PlaceDetail extends HttpServlet {
 		ScheduleService ss = new ScheduleService();
 		ShowService sss = new ShowService();
 
-		request.setAttribute("place", ps.selectByNum(place_num));
-		request.setAttribute("placeList", ps.selectAll());
+		request.setAttribute("place", ps.selectByNum(place_num)); //
+		request.setAttribute("placeList", ps.selectAll()); //
 		request.setAttribute("showList", sss.selectAll());
 		request.setAttribute("theaterList", ts.selectByPlace(place_num));
-		request.setAttribute("list", ss.selectByTheater(place_num));
+		request.setAttribute("list", ss.selectByTheater(place_num)); //
 		
 		RequestDispatcher rd = request.getRequestDispatcher("placeDetail.jsp");
 		rd.forward(request, response);

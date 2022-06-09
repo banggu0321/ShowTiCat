@@ -10,6 +10,11 @@ public class ShowService {
 		return dao.selectAll();
 	}
 	
+	//영화/공연 각자 목록
+	public List<ShowVO> selectCategory(String category) {
+		return dao.selectCategory(category);
+	}
+	
 	//공연코드로 조회
 	public ShowVO selectShow(String show_code) {
 		return dao.selectShow(show_code);

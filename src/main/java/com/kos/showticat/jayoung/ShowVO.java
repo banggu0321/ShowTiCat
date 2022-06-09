@@ -13,11 +13,12 @@ public class ShowVO {
 	private String summary;
 	private String poster;
 	private int price;
+	private String show_chart;
 	
 	public ShowVO() {}
 	
 	public ShowVO(String show_code, String show_name, String director, String trailer, Date opening_date,
-			String show_time, String category, String summary, String poster, int price) {
+			String show_time, String category, String summary, String poster, int price, String show_chart) {
 		super();
 		this.show_code = show_code;
 		this.show_name = show_name;
@@ -29,6 +30,15 @@ public class ShowVO {
 		this.summary = summary;
 		this.poster = poster;
 		this.price = price;
+		this.show_chart = show_chart;
+	}
+
+	public String getShow_chart() {
+		return show_chart;
+	}
+
+	public void setShow_chart(String show_chart) {
+		this.show_chart = show_chart;
 	}
 
 	public String getShow_code() {

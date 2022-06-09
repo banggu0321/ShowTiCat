@@ -65,10 +65,11 @@ a:hover {
 
 </head>
 <body>
+<c:set var="path" value="${pageContext.request.contextPath}"/>
 <jsp:include page="header.jsp"/>
 <h4>SHOW DETAIL</h4>
 <hr>
-<img class="left poster" alt="${show.show_name}" src="../${show.poster}" width="300px" height="400px">
+<img class="left poster" alt="${show.show_name}" src="${path}/images/${show.poster}" width="300px" height="400px">
 <div class="left">
 	<p class="title">${show.show_name}</p>
 	<hr>
@@ -81,7 +82,8 @@ a:hover {
 			<c:if test="${s.last&&cast.cast_url!=null}">
 				<a href="${cast.cast_url}" class="url" target="_blank">${cast.cast_name}</a>
 			</c:if>
-			<c:if test="${cast.cast_url==null}">${cast.cast_name}</c:if>
+			<c:if test="${s.last==false&&cast.cast_url==null}">${cast.cast_name},</c:if>
+			<c:if test="${s.last&&cast.cast_url==null}">${cast.cast_name}</c:if>
 		</c:forEach>
 	</p>
 	<p class="info">상영시간 : ${show.show_time}분</p>
@@ -94,8 +96,8 @@ a:hover {
 <h3>줄거리</h3>
 <pre>${show.summary}</pre>
 <hr>
-<h3>차트</h3>
-<img class="left poster" alt="${show.show_name}" src="../${show.poster}" width="300px" height="400px">
+<h3>예매자 통계</h3>
+<img class="left poster" alt="${show.show_name}" src="${path}/images/${show.show_chart}" width="300px" height="400px">
 
 <!-- The Modal -->
 <div class="modal" id="myModal">

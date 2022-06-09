@@ -12,6 +12,7 @@ import com.kos.showticat.util.DBUtil;
 
 public class ShowDAO {
 	static final String SQL_SELECT ="select * from show";
+	static final String SQL_SELECT_CATEGORY ="select * from show where category = ?";
 	static final String SQL_SELECT_CODE ="select * from show where show_code=?";
 	static final String SQL_SEARCH ="select * from show where show_name like '%'||"+"?"+"||'%'";
 	
@@ -38,6 +39,27 @@ public class ShowDAO {
 			DBUtil.dbClose(rs, pst, conn);
 		}
 	
+		return showList;
+	}
+	
+	//영화/공연 각자 목록
+	public List<ShowVO> selectCategory(String category) {
+		List<ShowVO> showList = new ArrayList<>();
+		conn = DBUtil.getConnection();
+		try {
+			pst = conn.prepareStatement(SQL_SELECT_CATEGORY);
+			pst.setString(1, category);
+			rs = pst.executeQuery();
+			
+			while(rs.next()) {
+				showList.add(makeShow(rs));
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			DBUtil.dbClose(rs, pst, conn);
+		}
+		
 		return showList;
 	}
 	
@@ -95,6 +117,7 @@ public class ShowDAO {
 		show.setShow_time(rs.getString("show_time"));
 		show.setSummary(rs.getString("summary"));
 		show.setTrailer(rs.getString("trailer"));
+		show.setShow_chart(rs.getString("show_chart"));
 		
 		return show;
 	}

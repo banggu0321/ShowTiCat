@@ -13,7 +13,6 @@
 <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.slim.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCHyjHLk2rWmOixhpK-ZR3jSDYRpZm-pjI&callback=initMap"></script>
 <link rel="stylesheet" href="common.css">
 
 <style>
@@ -40,24 +39,14 @@ a:hover {
 .reservBtn {
 	margin-right: 10px;
 }
+.title {
+	font-size: 20px;
+}
 </style>
 
 <script>
 $(function() {
 	$(".reservBtn").on("click",reservation);
-
-function initMap() {
-    // 오스트레일리아 울룰루 산의 위도, 경도 정보
-    var uluru = {lat: -25.344, lng: 131.036};
-    // 구글 지도 객체를 생성하고, 위치는 uluru로 맞춘다.
-    var map = new google.maps.Map(
-        document.getElementById('googleMap'), {zoom: 15, center: uluru});
-    // Uluru 산에 마커를 위치시키는 ㅗ드
-    var marker = new google.maps.Marker({position: uluru, map: map});
-}
-
-window.initMap = initMap;
-})
 
 function reservation() {
 	var num = $(this).attr("num");
@@ -66,27 +55,45 @@ function reservation() {
 </script>
 </head>
 <body>
+<c:set var="path" value="${pageContext.request.contextPath}"/>
 <jsp:include page="header.jsp"/>
 <h4>Schedule List</h4>
 <hr>
-<jsp:include page="placeList.jsp"/>
+<%-- 극장목록 --%>
+<c:forEach items="${placeList}" var="place" varStatus="s">
+	<c:if test="${s.first}">
+		| <a href="placeDetail.do?place_num=${place.place_num}">
+		ShowTiCat ${place.place_name}</a> |
+	</c:if>
+	<c:if test="${s.first==false}">
+		 <a href="placeDetail.do?place_num=${place.place_num}">
+		 ShowTiCat ${place.place_name}</a> |
+	</c:if>
+</c:forEach>
 <hr>
-<img class="left img" src="../images/theater.webp" width="300px" height="400px">
+<%-- 극장정보 --%>
+<img class="left img" src="${path}/images/theater.webp" width="300px" height="400px">
 <div class="left">
 <p class="name">${place.place_name}</p>
 <hr>
 <p class="info">위치 : ${place.place_loc}</p>
-<div id="googleMap" style="width: 500px%;height: 250px;"></div>
 <p class="info">문의 : ${place.place_phone}</p>
 </div>
 <hr>
+<%-- 상영스케줄 --%>
 <c:forEach items="${list}" var="value" varStatus="s">
+<c:forEach items="${theaterList}" var="theater" varStatus="v">
+<c:forEach items="${showList}" var="show">
+<c:if test="${theater.theater_num==value.theater_num&&value.show_code==show.show_code}">
 	<%-- 첫번째 --%>
 	<c:if test="${s.first}">
-			<h4>${value.show_name}</h4>
-			<p>${value.theater_num}관</p>
+		<div>
+			<a href="showDetail.do?show_code=${show.show_code}" class="title">${value.show_name}</a>
+			<span> ${show.category} | ${show.show_time}분 | ${show.opening_date} OPEN</span>
+		</div>
+		<p>${v.count}관</p>
 		<div class="show">
-			<button class="btn btn-outline-primary reservBtn">
+			<button class="btn btn-outline-primary reservBtn" num="${value.schedule_num}">
 				${value.show_name}<br>${value.show_start}<br>${value.start_time}
 			</button>
 		
@@ -97,7 +104,7 @@ function reservation() {
 		<c:if test="${list.get(s.index).show_name==list.get(s.index-1).show_name}">
 			<%-- 상영관이 같은경우 --%>
 			<c:if test="${list.get(s.index).theater_num==list.get(s.index-1).theater_num}">
-				<button class="btn btn-outline-primary reservBtn">
+				<button class="btn btn-outline-primary reservBtn" num="${value.schedule_num}">
 					${value.show_name}<br>${value.show_start}<br>${value.start_time}
 				</button>
 			</c:if>
@@ -105,9 +112,9 @@ function reservation() {
 			<c:if test="${list.get(s.index).theater_num!=list.get(s.index-1).theater_num}">
 				</div>
 				<br> <%-- 상영관 구분 --%>
-				<p>${value.theater_num}관</p>
+				<p>${v.count}관</p>
 				<div class="show">
-				<button class="btn btn-outline-primary reservBtn">
+				<button class="btn btn-outline-primary reservBtn" num="${value.schedule_num}">
 					${value.show_name}<br>${value.show_start}<br>${value.start_time}
 				</button>
 			</c:if>
@@ -116,14 +123,20 @@ function reservation() {
 		<c:if test="${list.get(s.index).show_name!=list.get(s.index-1).show_name}">
 			</div> 
 			<hr> <%-- 영화/공연 구분 --%>
-			<h4>${value.show_name}</h4>
-			<p>${value.theater_num}관</p>
+			<div>
+				<a href="showDetail.do?show_code=${show.show_code}" class="title">${value.show_name}</a>
+				<span> ${show.category} | ${show.show_time}분 | ${show.opening_date} OPEN</span>
+			</div>
+			<p>${v.count}관</p>
 			<div class="show">
-			<button class="btn btn-outline-primary reservBtn">
+			<button class="btn btn-outline-primary reservBtn" num="${value.schedule_num}">
 				${value.show_name}<br>${value.show_start}<br>${value.start_time}
 			</button>
 		</c:if>
 	</c:if>
+</c:if>
+</c:forEach>
+</c:forEach>
 </c:forEach>
 </div>
 <hr>
