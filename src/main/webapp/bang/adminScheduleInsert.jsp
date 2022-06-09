@@ -10,6 +10,7 @@
 <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.slim.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <link rel="stylesheet" href="css/admin.css">
   <style>
   	label{display:inline-block; width:150px;}
@@ -39,7 +40,8 @@
 		<div class="form-group">
 			<label>상영관 번호</label>
 			<select class="form-control" id="therter_num" name="theater_num">
-    			<option value="">선택하세요</option>
+    			<option value="A1">A1</option>
+    			<!-- <option value="">선택하세요</option> -->
     			<%-- <c:forEach items="${tlist}" var="t">
     				<option value="${t.theater_num}">${t.theater_num}</option>
     			</c:forEach> --%>

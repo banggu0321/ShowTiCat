@@ -22,22 +22,22 @@
 	<h1>공연 추가</h1>
 	<form action="showInsert.do" method="post">
 		<div class="form-group">
-			<label>show코드</label> <input class="form-control" type="text" name="show_code" value="AA">
+			<label>show코드</label> <input class="form-control" type="text" name="show_code" value="BB">
 		</div>
 		<div class="form-group">
-			<label>제목</label> <input class="form-control" type="text" name="show_name" value="">
+			<label>제목</label> <input class="form-control" type="text" name="show_name" value="쮈">
 		</div>
 		<div class="form-group">
-			<label>감독</label> <input class="form-control" type="text" name=director value="">
+			<label>감독</label> <input class="form-control" type="text" name=director value="쮈">
 		</div>
 		<div class="form-group">
-			<label>트레일러</label> <input class="form-control" type="text" name="trailer" placeholder="http://aaa" value=""><!-- 형식지정 -->
+			<label>트레일러</label> <input class="form-control" type="text" name="trailer" value="abc"><!-- 형식지정 -->
 		</div>
 		<div class="form-group">
-			<label>개봉일자</label> <input class="form-control" type="date" name="opening_date" value="">
+			<label>개봉일자</label> <input class="form-control" type="date" name="opening_date" value="3000-03-21">
 		</div>
 		<div class="form-group">
-			<label>러닝타임</label> <input class="form-control" type="number" name="show_time" value="">
+			<label>러닝타임</label> <input class="form-control" type="number" name="show_time" value="120">
 		</div>
 		<div class="form-group">
 			<label>카테고리</label> 
@@ -50,7 +50,7 @@
 			<label>줄거리</label> <textarea class="form-control" name="summary"></textarea>
 		</div>
 		<div class="form-group">
-			<label>포스터</label> <input class="form-control" type="text" name="poster" value=""><!-- 이미지input -->
+			<label>포스터</label> <input class="form-control" type="text" name="poster" value="img"><!-- 이미지input -->
 		</div>
 		<div class="form-group">
 			<label>가격</label> <input class="form-control" type="number" name="price" readonly="readonly" id="price" value="12000">

@@ -50,14 +50,23 @@
 						type:"get",
 						success: function(responseData){
 							if(responseData==0){
-								$("#message").html("삭제가능");
+								$.ajax({
+									url:"showDelete.do",
+									data:{"show_code": show_code},
+									type:"get",
+									success: function(){
+										alert("["+show_code +"]"+ "삭제되었습니다.");
+										location.reload();
+									},
+									fail:{}
+								});
 							}else{
-								$("#message").html("삭제불가");
+								alert("삭제불가");
 							}
 						},
 						fail:function(){
-							$("#message").html("fail");
-						});
+							alert("fail");
+						}
 					});//location.href = "showDeleteCheck.do?show_code=" + show_code;
 				}//location.href = "showDelete.do?show_code=" + show_code;
 			});
@@ -69,7 +78,7 @@
 	<div>
 		<h1>공연/영화 목록</h1>
 		<div><span><a href="showInsert.do">영화/공연 등록</a> </span></div>
-		<span id="message">!!!!</span>
+		<!-- <span id="message">!!!!</span> -->
 		<br>
 		<table>
 			<tr>

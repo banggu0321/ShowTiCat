@@ -40,17 +40,41 @@
 					<td>${schedule.show_start_date }</td>
 					<td>${schedule.show_start_time }</td>
 					<td>${schedule.last_seat }</td>
-					<td><button class="btnDelete btn btn-dark" data-schedulenum="${schedule.schedule_num}">삭제</button></td>
+					<td><button class="btnDel btn btn-dark" data-schedulenum="${schedule.schedule_num}">삭제</button></td>
 				</tr>
 			</c:forEach>
 		</table>
     </div>
     <script>
 		$(function(){
-			$(".btnDelete").on("click", function(){
+			$(".btnDel").on("click", function(){
 				var schedule_num = $(this).attr("data-schedulenum");
-				alert(schedule_num);
-				location.href = "scheduleDelete.do?schedule_num=" + schedule_num;
+				if(confirm(schedule_num + " 삭제?")){
+					$.ajax({
+						url:"scheduleDeleteCheck.do",
+						data:{"schedule_num": schedule_num},
+						type:"get",
+						success: function(responseData){
+							if(responseData==0){
+								$.ajax({
+									url:"scheduleDelete.do",
+									data:{"schedule_num": schedule_num},
+									type:"get",
+									success: function(){
+										alert("["+schedule_num +"]"+ "삭제되었습니다.");
+										location.reload();
+									},
+									fail:{}
+								});
+							}else{
+								alert("삭제불가");
+							}
+						},
+						fail:function(){
+							alert("fail");
+						}
+					});//location.href = "showDeleteCheck.do?show_code=" + show_code;
+				}//location.href = "showDelete.do?show_code=" + show_code;
 			});
 		});
 	</script>
