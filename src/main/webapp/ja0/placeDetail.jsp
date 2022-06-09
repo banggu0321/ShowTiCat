@@ -53,6 +53,16 @@ function reservation() {
 	var num = $(this).attr("num");
 	location.href="reservation.do?schedule_num="+num;
 }
+
+function getDatesStartToLast(startDate, lastDate) {
+	var result = [];
+	var curDate = new Date(startDate);
+	while(curDate <= new Date(lastDate)) {
+		result.push(curDate.toISOString().split("T")[0]);
+		curDate.setDate(curDate.getDate() + 1);
+	}
+	return result;
+}
 </script>
 </head>
 <body>
@@ -81,7 +91,7 @@ function reservation() {
 <p class="info">문의 : ${place.place_phone}</p>
 </div>
 <hr>
-${dataList}
+날짜!!!!
 <hr>
 <%-- 상영스케줄 --%>
 <c:forEach items="${list}" var="value" varStatus="s">

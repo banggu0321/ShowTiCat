@@ -24,9 +24,5 @@ public class ScheduleService {
 	public List<ScheduleVO> selectByTheater(int place_num) {
 		return dao.selectByTheater(place_num);
 	}
-	
-	//오늘 기준 7일 조회
-	public DateVO selectSysdate() {
-		return dao.selectSysdate();
-	}
+
 }

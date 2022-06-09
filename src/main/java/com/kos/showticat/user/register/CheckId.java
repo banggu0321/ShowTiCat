@@ -1,4 +1,4 @@
-package com.kos.showticat.user.join;
+package com.kos.showticat.user.register;
 
 import java.io.IOException;
 import java.io.PrintWriter;
