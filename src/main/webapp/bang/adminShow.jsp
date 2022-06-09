@@ -25,9 +25,11 @@
 					url:"showUpdate.do",	//어디로
 					data:{"show_code":show_code},	//가져갈 data{key,value}
 					type:"get",
+					//datatype : "json",
 					success:function(responseData){
-						alert("서버에 다녀옴 : "+ responseData);
+						//alert("서버에 다녀옴 : "+ responseData);
 						var show = JSON.parse(responseData);
+						console.dir(show);
 						  $("#show_name").val(show["show_name"]);
 						  $("#director").val(show["director"]);
 						  $("#trailer").val(show["trailer"]);
@@ -98,8 +100,6 @@
 					<td>${show.show_time }</td>
 					<td>${show.category }</td>
 					<td>
-						<input type="button" value="모달" class="btnM btn btn-info" 
-							 data-showcode="${show.show_code}">
 						<input type="button" value="수정" class="btnUpd btn btn-info" 
 							data-toggle="modal" data-target="#myModal" data-showcode="${show.show_code}">
 						<input type="button" value="삭제" class="btnDel btn btn-dark" 
@@ -123,25 +123,41 @@
         
         <!-- Modal body -->
         <form class="modal-body form-group" action="showUpdate.do" method="post">
-          <label>코드</label><input class="form-control" type="text" id="show_code" readonly="readonly"><br>
-          <label>제목</label><input class="form-control" type="text" id="show_name"><br>
-          <label>감독</label><input class="form-control" type="text" id="director"><br>
-          <label>트레일러</label><input class="form-control" type="text" id="trailer"><br>
-          <label>개봉일자</label><input class="form-control" type="date" id="opening_date"><br>
-          <label>러닝타임</label><input class="form-control" type="number" id="show_time"><br>
-          <label>카테고리</label><input class="form-control" type="text" id="category"><br>
-          <label>줄거리</label><input class="form-control" type="text" id="summary"><br>
-          <label>포스터</label><input class="form-control" type="text" id="poster"><br>
-          <label>가격</label><input class="form-control" type="text" id="price" readonly="readonly"><br>
-        </form>
+          <label>코드</label><input class="form-control" type="text" id="show_code" name="show_code" readonly="readonly"><br>
+          <label>제목</label><input class="form-control" type="text" id="show_name" name="show_name"><br>
+          <label>감독</label><input class="form-control" type="text" id="director" name="director"><br>
+          <label>트레일러</label><input class="form-control" type="text" id="trailer" name="trailer"><br>
+          <label>개봉일자</label><input class="form-control" type="date" id="opening_date" name="opening_date"><br>
+          <label>러닝타임</label><input class="form-control" type="number" id="show_time" name="show_time"><br>
+          <label>카테고리</label>
+          	<select class="form-control" name="category" id="category" onchange="OnChange()">
+				<option value="영화">영화</option>
+				<option value="공연">공연</option>
+			</select><br>
+          <label>줄거리</label><input class="form-control" type="text" id="summary" name="summary"><br>
+          <label>포스터</label><input class="form-control" type="text" id="poster" name="poster"><br>
+          <label>가격</label><input class="form-control" type="text" id="price"  name="price" readonly="readonly"><br>
         
         <!-- Modal footer -->
-        <form class="modal-footer">
-          <input  class="btn btn-primary" type="submit" value="수정하기">
-          <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+          <div class="modal-footer">
+          	<input  class="btn btn-primary" type="submit" value="수정하기">
+          	<button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+          </div>
         </form>
       </div>
     </div>
   </div>
+  <script>
+		function OnChange(){
+			var option = document.getElementById("category").options[document.getElementById("category").selectedIndex].value;
+			//alert(option);
+			if(option=="영화") {
+				document.getElementById("price").value = 12000;
+			}else{
+				document.getElementById("price").value = 100000;
+			}
+		}
+		
+	</script>
 </body>
 </html>

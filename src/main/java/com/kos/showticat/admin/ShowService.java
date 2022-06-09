@@ -18,7 +18,7 @@ public class ShowService {
 	}
 
 	// 3. 공연 수정
-	public List<ShowVO> selectByCode(String show_code) {
+	public ShowVO selectByCode(String show_code) {
 		return showDAO.selectByCode(show_code);
 	}
 

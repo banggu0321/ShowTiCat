@@ -18,15 +18,17 @@ public class ShowDAO {
 	//SQL
 	static final String SQL_SELECT_ALL = "SELECT SHOW_CODE , SHOW_NAME , OPENING_DATE , SHOW_TIME ,CATEGORY  FROM show ORDER BY SHOW_CODE";
 	static final String SQL_INSERT_SHOW ="INSERT INTO SHOW VALUES(?||SEQ_SHOW_NO.nextval,?,?,?,?,?,?,?,?,?)";
-	static final String SQL_SELECT_BYSHOW = "SELECT * FROM show";
+	static final String SQL_SELECT_BYSHOW = "SELECT * FROM SHOW WHERE SHOW_CODE = ?";
 	static final String SQL_UPDATE_SHOW ="UPDATE SHOW SET "
 			+ " SHOW_NAME =?, "
 			+ " DIRECTOR =?, "
 			+ " TRAILER  =?, "
 			+ " OPENING_DATE =?, "
 			+ " SHOW_TIME =?, "
+			+ " CATEGORY =?,"
 			+ " SUMMARY =?, "
-			+ " POSTER =? "
+			+ " POSTER =?, "
+			+ " PRICE =?"
 			+ " WHERE SHOW_CODE = ? ";
 	static final String SQL_SELECT_SCHEDULE_DELETE_SHOW ="SELECT COUNT(SCHEDULE_NUM) FROM SCHEDULE WHERE SHOW_CODE = ?";	
 	static final String SQL_DELETE_SHOW ="DELETE FROM show WHERE show_code =? ";
@@ -87,22 +89,22 @@ public class ShowDAO {
 
 	// 3. 공연 수정
 	// 3-1. 해당 공연 조회
-	public List<ShowVO> selectByCode(String show_code) {
-		List<ShowVO> slist = new ArrayList<ShowVO>();
+	public ShowVO selectByCode(String show_code) {
+		ShowVO show = null;
 		conn = DBUtil.getConnection();
 		try {
 			pst = conn.prepareStatement(SQL_SELECT_BYSHOW);
 			pst.setString(1, show_code); //첫번째 ?에 부서번호를 넣는다.
 			rs = pst.executeQuery();
 			while(rs.next()) {
-				slist.add(makeSlist(rs));
+				show = makeSlist(rs);
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}finally {
 			DBUtil.dbClose(rs, pst, conn);
 		}
-		return slist;
+		return show;
 	}
 	private ShowVO makeSlist(ResultSet rs) throws SQLException {
 		ShowVO s = new ShowVO();
@@ -129,9 +131,11 @@ public class ShowDAO {
 			pst.setString(3, sc.getTrailer());
 			pst.setDate(4, sc.getOpening_date());
 			pst.setInt(5, sc.getShow_time());
-			pst.setString(6, sc.getSummary());
-			pst.setString(7, sc.getPoster());
-			pst.setString(8, sc.getShow_code());
+			pst.setString(6, sc.getCategory());
+			pst.setString(7, sc.getSummary());
+			pst.setString(8, sc.getPoster());
+			pst.setInt(9, sc.getPrice());
+			pst.setString(10, sc.getShow_code());
 			result = pst.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();

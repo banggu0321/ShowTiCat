@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<meta http-equiv="refresh" content="3;url=schedule.do">
+<meta http-equiv="refresh" content="3;url=show.do">
 <title>Insert title here</title>
 </head>
 <body>
