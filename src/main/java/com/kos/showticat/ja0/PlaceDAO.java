@@ -1,4 +1,4 @@
-package com.kos.showticat.jayoung;
+package com.kos.showticat.ja0;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;

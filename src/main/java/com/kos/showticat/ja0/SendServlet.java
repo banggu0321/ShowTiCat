@@ -1,4 +1,4 @@
-package com.kos.showticat.jayoung;
+package com.kos.showticat.ja0;
 
 import java.io.IOException;
 import java.io.PrintWriter;

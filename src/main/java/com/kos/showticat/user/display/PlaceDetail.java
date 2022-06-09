@@ -10,10 +10,10 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.kos.showticat.jayoung.PlaceService;
-import com.kos.showticat.jayoung.ScheduleService;
-import com.kos.showticat.jayoung.ShowService;
-import com.kos.showticat.jayoung.TheaterService;
+import com.kos.showticat.ja0.PlaceService;
+import com.kos.showticat.ja0.ScheduleService;
+import com.kos.showticat.ja0.ShowService;
+import com.kos.showticat.ja0.TheaterService;
 
 @WebServlet("/jayoung/placeDetail.do")
 public class PlaceDetail extends HttpServlet {

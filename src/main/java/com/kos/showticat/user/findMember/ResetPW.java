@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.kos.showticat.jayoung.MemberService;
+import com.kos.showticat.ja0.MemberService;
 
 @WebServlet("/jayoung/resetPW.do")
 public class ResetPW extends HttpServlet {

@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import com.kos.showticat.jayoung.ShowService;
+import com.kos.showticat.ja0.ShowService;
 
 @WebServlet("/jayoung/showList.do")
 public class ShowList extends HttpServlet {

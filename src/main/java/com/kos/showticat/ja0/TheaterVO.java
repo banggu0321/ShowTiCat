@@ -1,4 +1,4 @@
-package com.kos.showticat.jayoung;
+package com.kos.showticat.ja0;
 
 public class TheaterVO {
 	private String theater_num;

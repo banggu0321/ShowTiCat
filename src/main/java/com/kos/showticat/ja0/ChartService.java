@@ -1,4 +1,4 @@
-package com.kos.showticat.jayoung;
+package com.kos.showticat.ja0;
 
 public class ChartService {
 	ChartDAO dao = new ChartDAO();
