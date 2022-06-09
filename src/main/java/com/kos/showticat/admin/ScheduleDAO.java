@@ -27,7 +27,7 @@ public class ScheduleDAO {
 			+ "				JOIN PLACE p ON (sc.PLACE_NUM = p.PLACE_NUM )";
 	static final String SQL_SELECT_SHOW_INSERT ="SELECT SHOW_CODE , SHOW_NAME FROM SHOW";
 	static final String SQL_SELECT_PLACE_INSERT ="SELECT PLACE_NUM , PLACE_NAME FROM PLACE";
-	static final String SQL_SELECT_THEATER_INSERT ="SELECT THEATER_NUM FROM THEATER";	
+	static final String SQL_SELECT_THEATER_INSERT ="SELECT THEATER_NUM FROM THEATER WHERE PLACE_NUM=?";	
 	static final String SQL_INSERT_SCHEDULE ="INSERT INTO schedule values(seq_schedule_no.nextval,?,?,?,?)";
 	static final String SQL_SELECT_RESERVATION_DELETE_SCHEDULE =""
 			+ "SELECT count(r.RESERVATION_NUM) FROM SCHEDULE sc JOIN RESERVATION r  ON (sc.SCHEDULE_NUM = r.SCHEDULE_NUM )"
@@ -117,11 +117,12 @@ public class ScheduleDAO {
 	}
 	//SQL_SELECT_THEATER_INSERT
 	// 2-1-3 상영관번호
-	public List<TheaterVO> selectTheaterInsertSchedule(){
+	public List<TheaterVO> selectTheaterInsertSchedule(int place_num){
 		List<TheaterVO> theaterlist = new ArrayList<>();
 		conn = DBUtil.getConnection();
 		try {
 			pst = conn.prepareStatement(SQL_SELECT_PLACE_INSERT);
+			pst.setInt(1, place_num);  
 			rs = pst.executeQuery();
 			while(rs.next()) {
 				theaterlist.add(maketheaterlist(rs));

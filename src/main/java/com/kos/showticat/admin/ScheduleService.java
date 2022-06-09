@@ -30,8 +30,8 @@ public class ScheduleService {
 	}
 
 	// 2-1-3 상영관번호
-	public List<TheaterVO> selectTheaterInsertSchedule() {
-		return scheduleDAO.selectTheaterInsertSchedule();
+	public List<TheaterVO> selectTheaterInsertSchedule(int place_num) {
+		return scheduleDAO.selectTheaterInsertSchedule(place_num);
 	}
 
 	// 2-2. 스케줄 추가

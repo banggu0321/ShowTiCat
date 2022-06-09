@@ -68,7 +68,7 @@
 	<jsp:include page="adminHeader.jsp" />
 	<div>
 		<h1>공연/영화 목록</h1>
-		<a href="showInsert.do">영화/공연 등록</a> <br>
+		<div><span><a href="showInsert.do">영화/공연 등록</a> </span></div>
 		<span id="message">!!!!</span>
 		<br>
 		<table>

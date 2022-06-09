@@ -33,7 +33,11 @@ public class ShowInsertServlet extends HttpServlet {
 		ShowService service = new ShowService();
 		int result = service.insertShow(s);
 		request.setAttribute("message", result>0?"성공":"실패");
-		response.sendRedirect("show.do");
+		if(result>0) {
+			response.sendRedirect("show.do");
+		}else {
+			response.sendRedirect("showInsert.do");
+		}		
 	}
 	private ShowVO makeS(HttpServletRequest request) {
 		ShowVO s = new ShowVO();

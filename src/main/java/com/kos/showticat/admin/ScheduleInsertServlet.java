@@ -2,6 +2,7 @@ package com.kos.showticat.admin;
 
 import java.io.IOException;
 import java.sql.Date;
+import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -10,7 +11,10 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.kos.showticat.admin.vo.PlaceVO;
 import com.kos.showticat.admin.vo.ScheduleVO;
+import com.kos.showticat.admin.vo.ShowVO;
+import com.kos.showticat.admin.vo.TheaterVO;
 
 /**
  * Servlet implementation class ScheduleInsertServlet
@@ -20,7 +24,17 @@ public class ScheduleInsertServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		int place_num = 1000;
+		//place_num = Integer.parseInt(request.getParameter("place_num"));
+		
 		ScheduleService sService = new ScheduleService();
+		List<ShowVO> slist = sService.selectShowInsertSchedule();
+		List<PlaceVO> plist = sService.selectPlaceInsertSchedule();
+		List<TheaterVO> tlist = sService.selectTheaterInsertSchedule(place_num);
+		
+		request.setAttribute("slist", slist);
+		request.setAttribute("plist", plist);
+		request.setAttribute("tlist", tlist);
 		
 		
 		// 화면보여주기
@@ -35,8 +49,13 @@ public class ScheduleInsertServlet extends HttpServlet {
 		ScheduleVO sc = makeSc(request);
 		ScheduleService service = new ScheduleService();
 		int result = service.insertSchedule(sc);
-		request.setAttribute("message", result>0?"성공":"실패");
-		response.sendRedirect("schedule.do");
+		//request.setAttribute("message", result>0?"성공":"실패");
+		
+		if(result>0) {
+			response.sendRedirect("schedule.do");
+		}else {
+			response.sendRedirect("scheduleInsert.do");
+		}	
 	}
 	private ScheduleVO makeSc(HttpServletRequest request) {
 		ScheduleVO sc = new ScheduleVO();
