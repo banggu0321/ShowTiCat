@@ -17,24 +17,37 @@
 
 <script>
 $(function() {
-	$("#showList").on("click",showList);
+	$("#aList").on("click",aList);
+	$("#mList").on("click",mList);
+	$("#sList").on("click",sList);
 	$("#scheduleList").on("click",scheduleList);
 })
 
-function showList() {
-	location.href="showList.do";
+function aList() {
+	location.href="showAllList.do";
+}
+
+function mList() {
+	location.href="showList.do?category=영화";
+}
+
+function sList() {
+	location.href="showList.do?category=공연";
 }
 
 function scheduleList() {
-	location.href="scheduleList.do";
+	
+	location.href="placeDetail.do?place_num=1020";
 }
+
 </script>
 </head>
 <body>
-<h1 class="left">Show TiCat</h1>
 <jsp:include page="header.jsp"/>
-<hr>
-<button class="btn btn-primary" id="showList">영화/공연 목록보기</button>
+
+<button class="btn btn-primary" id="aList">영화/공연 목록보기</button>
+<button class="btn btn-primary" id="mList" hidden="hidden">영화 목록보기</button>
+<button class="btn btn-primary" id="sList" hidden="hidden">공연 목록보기</button>
 <button class="btn btn-primary" id="scheduleList">극장별로 조회</button>
 </body>
 </html>

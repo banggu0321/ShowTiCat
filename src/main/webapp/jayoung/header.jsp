@@ -18,34 +18,60 @@
 	padding-right: 20px;
 }
 </style>
+<script>
+$(function() {	
+	$("#mainH").on("click",main);
+	$("#loginH").on("click",login);
+	$("#logoutH").on("click",logout);
+	$("#joinH").on("click",join);
+	
+})
+
+function main() {
+	location.href="main.jsp";
+}
+
+function login() {
+	location.href="login.do";
+}
+
+function logout() {
+	location.href="logout.do";
+}
+
+function join() {
+	location.href="insert.do";
+}
+</script>
 </head>
 <body>
+<h1 class="left" id="mainH">Show TiCat</h1>
 <div>
-<c:set var="path" value="${pageContext.request.contextPath}"/>
 	<span class="right">
 		<c:if test="${member != null}">
-			${member.m_name}님 로그인
-		</c:if>	
-		<c:if test="${member == null}">
-			Guest
+			<p id="user">${member.m_name}님 로그인</p>
 		</c:if>	
 	</span>
-	<span>
+	<span class="right">
 		<c:if test="${member != null}">
+<<<<<<< HEAD
+			<button class="btn btn-light" id="logoutH">로그아웃</button>			
+=======
 		<a class="right" href="${path}/jaeyong/memberPage.jsp"><button class="btn btn-light">마이페이지</button></a>
 		<a class="right" href="${path}/logout"><button class="btn btn-light">로그아웃</button></a>
 			
+>>>>>>> branch 'master' of https://github.com/banggu0321/ShowTiCat
 		</c:if>
 		<c:if test="${member == null}">
-			<a class="right" href="${path}/jayoung/login.do"><button class="btn btn-light">로그인</button></a>
-			<a class="right" href="${path}/jayoung/insert.do"><button class="btn btn-light">회원가입</button></a>
-		</c:if>	
+			<button class="btn btn-light" id="loginH">로그인</button>
+			<button class="btn btn-light" id="joinH">회원가입</button>
+		</c:if>
 	</span>
-	<a class="right" href="${path}/jayoung/main.jsp"><button class="btn btn-light">MAIN</button></a>
+	<form action="result.do" class="right" id="formH">
+		<input class="form-control" type="text" name="word" id="searchH" value="${word}">
+		<input class="btn btn-success" type="submit" value="검색">
+	</form>
+<hr>
 </div>
-<c:if test="${member != null}">
-	<hr>
-	<p>${member}</p>
-</c:if>
 </body>
 </html>

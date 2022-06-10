@@ -1,36 +1,42 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
-<title>FIND ID</title>
+<title>JOIN ShowTiCat</title>
 
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
 <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.slim.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <link rel="stylesheet" href="common.css">
+
+<style>
+#welcome {
+	text-align: center;
+}
+</style>
 
 <script>
 $(function() {
-	$("#findPW").on("click", findPW);
+	$("#login").on("click",login);
 })
 
-function findPW() {
-	location.href="findPW.do";
+function login() {
+	location.href="login.do";
 }
 </script>
-
 </head>
 <body>
 <jsp:include page="header.jsp"/>
-<h4>FIND ID</h4>
-<hr>
-<h5>아이디는 ${m_id} 입니다.</h5>
-<button id="findPW" class="btn btn-outline-success">비밀번호 찾기</button>
+<div id="welcome">
+<p>${m_id}님 회원가입이 완료되었습니다.</p>
+<p>환영합니다!</p>
+<button class="btn btn-light" id="login">로그인</button>
+</div>
 </body>
 </html>
