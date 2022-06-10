@@ -32,6 +32,7 @@ public class LoginServlet extends HttpServlet {
 		
 		HttpSession session = request.getSession();
 		session.setAttribute("member", member);
+		
 		String path = (String)session.getAttribute("reqPath");
 		
 		if(member == null) {
@@ -44,7 +45,7 @@ public class LoginServlet extends HttpServlet {
 				path = request.getContextPath() + "/bang/schedule.do";
 				response.sendRedirect(path);
 			}else if(path==null) {
-				path = request.getContextPath() + "/jayoung/main.jsp";
+				path = request.getContextPath() + "/jayoung/main.go";
 				response.sendRedirect(path);
 			}
 		}

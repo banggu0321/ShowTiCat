@@ -62,7 +62,6 @@ h1 a {
 		<c:if test="${member != null}">
 			<button class="btn btn-light" id="logoutH">로그아웃</button>			
 			<button class="btn btn-light" id="myPage">마이페이지</button>
-		<%-- <a class="right" href="${path}/logout"><button class="btn btn-light">로그아웃</button></a> --%>
 		</c:if>
 		<c:if test="${member == null}">
 			<button class="btn btn-light" id="loginH">로그인</button>
