@@ -29,7 +29,7 @@
 					success:function(responseData){
 						//alert("서버에 다녀옴 : "+ responseData);
 						var show = JSON.parse(responseData);
-						console.dir(show);
+						//console.dir(show);
 						  $("#show_name").val(show["show_name"]);
 						  $("#director").val(show["director"]);
 						  $("#trailer").val(show["trailer"]);

@@ -16,8 +16,12 @@ color: black;}
     width: 20%;
 }
 .movieImage {
-    height: 80%;
-    outline: 1px solid #708090;
+    height: 100%;
+    /* outline: 1px solid #708090; */
+}
+.pImage{
+	height: 80%;
+	overflow: hidden;
 }
 .movieName{
 	font-size: 20px;
