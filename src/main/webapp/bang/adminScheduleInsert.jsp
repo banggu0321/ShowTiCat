@@ -33,19 +33,14 @@
 			<label>극장이름</label>
 			<select class="form-control" id="place_num" name="place_num" onchange="OnChange()">
     			<c:forEach items="${plist}" var="p">
-    				<option value="${p.place_num}">${p.place_num}-${p.place_name}</option>
+    				<option class="placeN" value="${p.place_num}">${p.place_num}-${p.place_name}</option>
     			</c:forEach>
     		</select>
 		</div>
 		<div class="form-group">
 			<label>상영관 번호</label>
-			<select class="form-control" id="therter_num" name="theater_num">
-    			<option value="A1">A1</option>
-    			<!-- <option value="">선택하세요</option> -->
-    			<%-- <c:forEach items="${tlist}" var="t">
-    				<option value="${t.theater_num}">${t.theater_num}</option>
-    			</c:forEach> --%>
-    		</select>
+			<div id="theater">
+    		</div>
 		</div>
 		<div class="form-group">
 			<label>시작시간</label> 
@@ -61,18 +56,39 @@
 			$("#return").click(function(){
 			location.href="schedule.do";
 			}); 
-		}); 
-		/*
+			
+			
+			/* $(".placeN").click(function() {
+				var place_num = $(".placeN").val();
+				alert(place_num);
+			}); */
+		});
 		function OnChange(){
-			int place_num = document.getElementById("place_num").options[document.getElementById("place_num").selectedIndex].value;
+			var place_num = $(".placeN").val();
 			alert(place_num);
 			$.ajax({   
 				  type: "GET",  
 				  url: "scheduleInsert.do",   
 				  data:{"place_num":place_num},
-				  success: result
+				  success:function(responseData){
+					//alert("서버에 다녀옴 : "+ responseData);
+					//$("#theater").html(responseData);
+				}
 			});
-		}*/
+		}
+				/* $.ajax({
+			$("#show_code").val(show_code);
+			$.ajax({
+				url:"scheduleTheater.do",
+				type:"get",
+				data:{"place_num":show_code},
+				success:function(responseData){
+					//alert("서버에 다녀옴 : "+ responseData);
+					$("#theater").html(responseData);
+				}
+			});
+		}); 
+		*/
 	</script>
 </body>
 </html>
