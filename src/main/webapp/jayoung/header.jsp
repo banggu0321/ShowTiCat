@@ -32,7 +32,7 @@
 	</span>
 	<span>
 		<c:if test="${member != null}">
-		<a class="right" href="${path}/jaeyong/memberPage.jsp"><button class="btn btn-light">마이페이지</button></a>
+		<a class="right" href="${path}/memberPage.jsp"><button class="btn btn-light">마이페이지</button></a>
 		<a class="right" href="${path}/logout"><button class="btn btn-light">로그아웃</button></a>
 			
 		</c:if>
