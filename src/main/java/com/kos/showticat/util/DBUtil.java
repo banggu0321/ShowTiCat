@@ -10,11 +10,12 @@ public class DBUtil {
 
 	public static Connection getConnection() {
 		
-		String url = "jdbc:oracle:thin:@testdb_medium?TNS_ADMIN=C:/wallet_db/Wallet_testDB/";
+		String url = "jdbc:oracle:thin:@testdb_medium?TNS_ADMIN=C:/Wallet_testDB/";
 		String user="admin";
 		String password ="Kostatestdb241";
 		
 		Connection conn = null;
+		
 		try {
 			Class.forName("oracle.jdbc.OracleDriver");
 			conn = DriverManager.getConnection(url, user, password);			

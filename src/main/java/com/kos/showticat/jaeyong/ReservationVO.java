@@ -61,7 +61,7 @@ public class ReservationVO {
 	public String getPAYMENT() {
 		return PAYMENT;
 	}
-
+	
 	public void setPAYMENT(String pAYMENT) {
 		PAYMENT = pAYMENT;
 	}
@@ -89,7 +89,7 @@ public class ReservationVO {
 				.append(", RESERVATION_DATE=").append(RESERVATION_DATE).append(", SCHEDULE_NUM=").append(SCHEDULE_NUM)
 				.append(", PAYMENT=").append(PAYMENT).append(", TOTAL_PRICE=").append(TOTAL_PRICE).append(", PAY_YN=")
 				.append(PAY_YN).append("]");
-		return builder.toString();
+				  return builder.toString();
 	}
 	
 }
