@@ -64,7 +64,7 @@ public class MemeberUpdate extends HttpServlet {
 		}
 
 		RequestDispatcher rd;
-		rd = request.getRequestDispatcher("memberUpdate.jsp");
+		rd = request.getRequestDispatcher("memberPage.jsp");
 		rd.forward(request, response);
 
 	}
