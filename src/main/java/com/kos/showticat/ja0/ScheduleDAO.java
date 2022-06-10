@@ -16,10 +16,9 @@ public class ScheduleDAO {
 	static final String SQL_SELECT_ALL ="select * from schedule";
 	static final String SQL_SELECT_BY_NUM ="select * from schedule where place_num =?";
 	static final String SQL_SELECT_BY_SHOW ="select * from schedule where place_num =? and show_code=?";
-	static final String SQL_SELECT_THEATER ="SELECT SHOW_CODE, SHOW_NAME,schedule_num,theater_num,place_num, show_start FROM schedule "
-			+ " JOIN show using(show_code) WHERE theater_num in ("
-			+ "	SELECT theater_num FROM theater	WHERE place_num IN ("
-			+ " SELECT place_num FROM place WHERE place_num = ?)) order by 2,4,6";/* and show_start = ? */
+	static final String SQL_SELECT_THEATER ="SELECT SHOW_CODE,SHOW_NAME,schedule_num,theater_num,s.place_num, show_start "
+			+ " FROM schedule s JOIN show using(show_code) JOIN theater using(theater_num)"
+			+ " where s.place_num=? ORDER BY 2,4,6"; /* and show_start = ? */
 	
 	Connection conn;
 	Statement st;
@@ -112,7 +111,7 @@ public class ScheduleDAO {
 		
 		return scheduleList;
 	}
-	
+
 	private ScheduleVO makeSchedule(ResultSet rs) throws SQLException {
 		ScheduleVO schedule = new ScheduleVO();
 		

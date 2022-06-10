@@ -11,7 +11,7 @@
 .chart {
 	float:left;
 	list-style: none;
-	padding: 5px 50px 10px 5px;
+	padding: 5px 30px 50px 5px;
 	text-align: center;
 }
 </style>
@@ -20,11 +20,11 @@
 <ul>
 <li class="chart">
 	<p>성별 예매 분포</p> <hr>
-	<canvas id="myChart" width="300" height="300"></canvas>
+	<canvas id="myChart" width="500" height="300"></canvas>
 </li>
 <li class="chart">
 	<p>연령별 예매 분포</p> <hr>
-	<canvas id="ageChart" width="300" height="300"></canvas>
+	<canvas id="ageChart" width="500" height="300"></canvas>
 </li>
 <!-- <li class="chart">
 	<p>테스트</p> <hr>
@@ -36,7 +36,7 @@
 <script>
 const ctx = document.getElementById('ageChart').getContext('2d');
 const ageChart = new Chart(ctx, {
-    type: 'bar',
+    type: 'doughnut',
     data: {
         labels: ['10대', '20대', '30대', '40대', '50대'],
         datasets: [{
