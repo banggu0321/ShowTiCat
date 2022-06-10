@@ -1,5 +1,7 @@
 package com.kos.showticat.jayoung;
 
+import java.util.List;
+
 import com.kos.showticat.jayoung.MemberVO;
 
 public class MemberService {
@@ -35,19 +37,29 @@ public class MemberService {
 		return dao.memberInsert(member);
 	}
 
-	// 이름으로 포인트 검색
+	// 개인정보 수정
+	public int memberUpdate(MemberVO member) {
+		return dao.memberUpdate(member);
+	}
+
+	// 포인트 확인
 	public MemberVO memberPoint(String m_name, int point) {
 		return dao.selectByPoint(m_name, point);
 	}
 
-	// 이름으로 관심장소 검색
+	// 관심매장 확인 및 수정
 	public MemberVO memberPlace(String m_name, String place) {
 		return dao.selectByPlace(m_name, place);
 
 	}
+
+	// 예매 및 취소내역 확인
+
+	// (리뷰)
 	
-	// 회원정보 수정
-	public int update(MemberVO member) {
-		return dao.update(member);
+	// 회원 탈퇴
+	public int Delete(String m_id) {
+		return dao.Delete(m_id);
 	}
+
 }
