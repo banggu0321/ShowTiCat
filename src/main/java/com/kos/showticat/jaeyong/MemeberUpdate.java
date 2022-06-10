@@ -11,7 +11,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import com.kos.showticat.jayoung.*;
 import com.kos.showticat.util.DateUtil;
 
 /**
