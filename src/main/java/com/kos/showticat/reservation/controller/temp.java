@@ -35,14 +35,93 @@ public class temp {
 		//1.[스케쥴(영화, 극장, 날짜, 시간 선택)->] 스케쥴 넘버(reservationNum, m_id, scheduleNum, reservationDate)&나머지(temp 값) 입력-> 스케쥴_detail table 해당 row 입력
 	
 
-//		f1();  //update point in members table, select members table
+		f1();  //update point in members table, select members table
 		
-		f15(); //reservation table select schedule number
+//		f15(); //reservation table select schedule number
 //		f14(); //show table select price
 //		f13(); //schedule table select show_code
 //		f12(); //schedule table create(3. update showTime)
 //		f11();  //schedule table create(2. update theater)
 //		f10();  //schedule table create(1. insert schedule number and show code)
+		
+//		f16();  //member table select gender
+//		f17(); //reservation table select schedule number
+//		f18(); //schedule table select show code
+//		f19(); //chart table update (rate_M or rate_W)
+//		f19beta(); //chart table select rate_m and rate_w
+//		f20();  //reservation table select ID
+	}
+
+	private static void f20() {
+		
+		int reservationNum = 2; //reservation number 받아오기
+		
+		ScheduleService service = new ScheduleService();
+		System.out.println(service.selectReservationUserIDByReservationNum(reservationNum));
+	}
+
+	private static void f19() {
+		
+		String gender = "W"; //select된 gender 받아오기
+		
+		List<String> rateWM = new ArrayList<>();
+		String showCode="BB34"; //select된 showcode 받아오기
+		
+		ScheduleService service = new ScheduleService();
+		rateWM = service.selectChartByShowCode(showCode);
+		
+		int rate = 0;  //gender에 따라 초기값 결정
+		if(gender.equals("W")) {
+			rate = Integer.parseInt(rateWM.get(0));			
+		}else if(gender.equals("M")) {
+			rate = Integer.parseInt(rateWM.get(1));	
+		}
+		//updateChartGenderWByCheck
+		
+		if(gender.equals("W")) {
+			service.updateChartGenderWByCheck(rate+1, showCode);		
+		}else if(gender.equals("M")) {
+			service.updateChartGenderMByCheck(rate+1, showCode);
+		}
+	}
+
+	private static void f19beta() {
+		
+		List<String> rateWM = new ArrayList<>();
+		String showCode="BB34"; //select된 showcode 받아오기
+		
+		ScheduleService service = new ScheduleService();
+		rateWM = service.selectChartByShowCode(showCode);
+		
+		for(String arr: rateWM) {
+			System.out.println(arr);
+		}
+	}
+
+	private static void f18() {
+		
+		int scheduleNum = 16; //select된 schedule number 가져오기
+		
+		ScheduleService service = new ScheduleService();
+		System.out.println(service.selectScheduleByScheduleNum(scheduleNum));
+	}
+
+
+	private static void f17() {
+		
+		int reservationNum = 469540; //session에 저장된 reservation number 가져오기
+		
+		ScheduleService service = new ScheduleService();
+		System.out.println(service.selectReservationByReservationNum(reservationNum));
+	}
+
+
+	private static void f16() {
+
+		String mID = "yong";  //session에 저장된 member obj에서 m_id 가져오기
+		
+		ScheduleService service = new ScheduleService();
+		System.out.println(service.selectMemberByID(mID));
 	}
 
 
@@ -197,9 +276,12 @@ public class temp {
 	}
 
 	private static void f5() {
-		int scheduleNum = 10; 
-		String m_id="cansu"; 
-		int reservationNum = Integer.parseInt(eachChartoString(m_id, scheduleNum)); //생성된 예약번호을 ?
+//		int scheduleNum = 10; 
+//		String m_id="cansu"; 
+//		int reservationNum = Integer.parseInt(eachChartoString(m_id, scheduleNum)); //생성된 예약번호을 ?
+		
+		
+		int reservationNum = 469543;
 		
 		ScheduleService service = new ScheduleService();
 		ReservationVO rvo = service.reservationSelectByNumber(reservationNum);
@@ -288,10 +370,10 @@ public class temp {
 		
 		//update point
 		String id = "cansu";
-		String pw = "2022";
-		int point = 333;  //update value
+		service.selectMembersPointByID(id);
+		int point = 100+service.selectMembersPointByID(id);;  //update value
 		
-		service.updatePointMembers(id, pw, point);
+		service.updatePointMembers(id, point);
 		
 //		//select member table
 //		List<MembersVO> list = new ArrayList<>();

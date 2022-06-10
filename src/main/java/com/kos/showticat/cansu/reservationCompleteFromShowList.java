@@ -43,7 +43,7 @@ public class reservationCompleteFromShowList extends HttpServlet {
 		service.updateReservationInfor(pay, totalPrice, reservationNum);
 		
 		//위임(reservationResult에 예약 결과 출력)
-		RequestDispatcher rd = request.getRequestDispatcher("cansu/reservationResult.jsp");
+		RequestDispatcher rd = request.getRequestDispatcher("reservationResultFromShowList");
 		rd.forward(request, response);
 	}
 

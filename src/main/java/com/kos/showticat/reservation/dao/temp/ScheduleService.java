@@ -12,6 +12,30 @@ public class ScheduleService {
 
 	ScheduleDAO scdao = new ScheduleDAO();
 	
+	public int selectMembersPointByID(String mID) {
+		return scdao.selectMembersPointByID(mID);
+	}
+	
+	public String selectReservationUserIDByReservationNum(int reservationNum) {
+		return scdao.selectReservationUserIDByReservationNum(reservationNum);
+	}
+	
+	public void updateChartGenderWByCheck(int rate, String showCode) {
+		scdao.updateChartGenderWByCheck(rate, showCode);
+	}
+	
+	public void updateChartGenderMByCheck(int rate,String showCode) {
+		scdao.updateChartGenderMByCheck(rate, showCode);
+	}
+	
+	public List<String> selectChartByShowCode(String showCode) {
+		return scdao.selectChartByShowCode(showCode);
+	}
+	
+	public String selectMemberByID(String mID) {
+		return scdao.selectMemberByID(mID);
+	}
+	
 	public int selectReservationByReservationNum(int reservationNum) {
 		return scdao.selectReservationByReservationNum(reservationNum);
 	}
@@ -80,8 +104,8 @@ public class ScheduleService {
 		scdao.insertReservationInfor(reserNum, mID, schedNum);
 	}
 
-	public void updatePointMembers(String id, String pw, int point) {
-		scdao.updatePointMembers(id, pw, point);
+	public void updatePointMembers(String id, int point) {
+		scdao.updatePointMembers(id, point);
 	}
 
 	public List<ScheduleVO> selectALL() {

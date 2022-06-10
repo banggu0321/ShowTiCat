@@ -2,12 +2,13 @@ package com.kos.showticat.reservation.dao.temp;
 
 public class ReservationVO {
 	
-	private String reservationNum, mID, reservationDate, scheduleNum, payment, totalPrice, payYN;
+	private String mID, reservationDate, scheduleNum, payment, totalPrice, payYN;
+	private int reservationNum;
 
 	public ReservationVO() {
 	}
 
-	public ReservationVO(String reservationNum, String mID, String reservationDate, String scheduleNum, String payment,
+	public ReservationVO(int reservationNum, String mID, String reservationDate, String scheduleNum, String payment,
 			String totalPrice, String payYN) {
 		this.reservationNum = reservationNum;
 		this.mID = mID;
@@ -18,11 +19,11 @@ public class ReservationVO {
 		this.payYN = payYN;
 	}
 
-	public String getReservationNum() {
+	public int getReservationNum() {
 		return reservationNum;
 	}
 
-	public void setReservationNum(String reservationNum) {
+	public void setReservationNum(int reservationNum) {
 		this.reservationNum = reservationNum;
 	}
 

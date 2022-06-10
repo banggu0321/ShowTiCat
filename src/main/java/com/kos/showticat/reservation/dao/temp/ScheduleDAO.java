@@ -26,24 +26,203 @@ public class ScheduleDAO {
 	final static String SQL_SCHEDULE_INSERT="INSERT INTO SCHEDULE VALUES (?, ?, ?, ?, ?)";	
 	final static String SQL_SCHEDULE_SELECT_ALL ="select schedule_num, show_code, theater_num, place_num, show_start from schedule";
 	final static String SQL_SCHEDULE_POINT_SELECT_ALL ="select*from members";
-	final static String SQL_SCHEDULE_POINT_UPDATE="update members set point=? where m_id=? and m_pw=?";
+	final static String SQL_SCHEDULE_POINT_UPDATE="update members set point=? where m_id=?";
 	
+	final static String SQL_RESERVATION_SELECT_ID_BY_RESERVATION_NUMBER="SELECT M_ID FROM RESERVATION WHERE RESERVATION_NUM =?";
 	final static String SQL_RESERVATION_SELECT_SCHEDULE_NUMBER_BY_RESERVATION_NUMBER="SELECT SCHEDULE_NUM  FROM RESERVATION WHERE RESERVATION_NUM=?";
 	final static String SQL_RESERVATION_INSERT="INSERT INTO RESERVATION values(?, ?, sysdate, ?, 'temp', 0, 'N')";
 	final static String SQL_RESERVATION_UPDATE_PAYMENT_TOTALPRICES="UPDATE RESERVATION  SET PAYMENT=?, TOTAL_PRICE=? WHERE RESERVATION_NUM=?";
 	final static String SQL_RESERVATION_UPDATE_PAYMENT_YN="UPDATE RESERVATION SET PAY_YN =? WHERE  RESERVATION_NUM =?";
 	final static String SQL_RESERVATION_SELECT="SELECT m_id, reservation_date, schedule_num, payment, total_price, pay_yn FROM RESERVATION WHERE RESERVATION_NUM=?";
-	
 	final static String SQL_RESERVATION_DETAIL_INSERT="INSERT INTO RESERV_DETAIL VALUES (?,?)";
 	final static String SQL_RESERVATION_DETAIL_UPDATE="UPDATE RESERV_DETAIL SET SEAT_NUM=? WHERE RESERVATION_NUM=?";
-	
-	final static String SQL_PLACE_SELECT_ALL = "SELECT place_num, place_name, place_loc, place_phone FROM PLACE";
 	
 	final static String SQL_THEATER_SELECT_BY_THEATER_NUMBER="SELECT PLACE_NUM FROM THEATER WHERE THEATER_NUM =?";
 	final static String SQL_THEATER_SELECT_ALL ="SELECT theater_num, theater_type, LAST_SEAT, PLACE_NUM FROM THEATER";
 	final static String SQL_THEATER_SELECT_BY_PLACE_NUMBER = "SELECT theater_num, theater_type, LAST_SEAT, PLACE_NUM FROM THEATER where PLACE_NUM=?";
 	
+	final static String SQL_PLACE_SELECT_ALL = "SELECT place_num, place_name, place_loc, place_phone FROM PLACE";
 	final static String SQL_SHOW_SELECT_PRICE_BY_SHOW_CODE="SELECT PRICE FROM SHOW WHERE SHOW_CODE=?";
+	
+	final static String SQL_MEMBER_SELECT_GENDER_BY_ID ="SELECT GENDER FROM MEMBERS WHERE M_ID=?";
+	final static String SQL_MEMBER_SELECT_POINT_BY_ID ="SELECT POINT FROM MEMBERS WHERE M_ID=?";
+	
+	final static String SQL_CHART_SELECT_RATE_WM_BY_SHOW_CODE="SELECT RATE_M, RATE_W FROM CHART WHERE SHOW_CODE=?";
+	final static String SQL_CHART_UPDATE_GENDER_M_BY_CHECK="UPDATE CHART SET RATE_M=? WHERE SHOW_CODE=?";
+	final static String SQL_CHART_UPDATE_GENDER_W_BY_CHECK="UPDATE CHART SET RATE_W=? WHERE SHOW_CODE=?";
+	
+	public int selectMembersPointByID(String mID) {
+		
+		int point = 0;
+		
+		Connection con = DButil.getConnection();
+		PreparedStatement ppst=null;
+		ResultSet rs = null;
+		
+		try {
+			ppst = con.prepareStatement(SQL_MEMBER_SELECT_POINT_BY_ID);
+			ppst.setString(1, mID);
+			rs = ppst.executeQuery();
+			
+			while(rs.next()) {
+				point = rs.getInt("point");
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				rs.close();
+				ppst.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+			DButil.dbClose(con);
+		}		
+		return point;
+	}
+	
+	public String selectReservationUserIDByReservationNum(int reservationNum) {
+		String mID = null;
+		
+		Connection con = DButil.getConnection();
+		PreparedStatement ppst=null;
+		ResultSet rs = null;
+		
+		try {
+			ppst = con.prepareStatement(SQL_RESERVATION_SELECT_ID_BY_RESERVATION_NUMBER);
+			ppst.setInt(1, reservationNum);
+			rs = ppst.executeQuery();
+			
+			while(rs.next()) {
+				mID = rs.getString("m_id");
+			}			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				rs.close();
+				ppst.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+			DButil.dbClose(con);
+		}				
+		return mID;
+	}
+	
+	public void updateChartGenderWByCheck(int rate, String showCode) {
+		
+		Connection con = DButil.getConnection();
+		PreparedStatement ppst=null;
+		
+		try {
+			ppst = con.prepareStatement(SQL_CHART_UPDATE_GENDER_W_BY_CHECK);
+			ppst.setInt(1, rate);
+			ppst.setString(2, showCode);
+			
+			int result = ppst.executeUpdate();
+			if(result == 1) {
+				System.out.println("ScheduleDAO.updateChartGenderWByCheck=>update data");
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				ppst.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+			DButil.dbClose(con);
+		}
+	}
+	
+	public void updateChartGenderMByCheck(int rate, String showCode) {
+		
+		Connection con = DButil.getConnection();
+		PreparedStatement ppst=null;
+		
+		try {
+			ppst = con.prepareStatement(SQL_CHART_UPDATE_GENDER_M_BY_CHECK);
+			ppst.setInt(1, rate);
+			ppst.setString(2, showCode);
+			
+			int result = ppst.executeUpdate();
+			if(result == 1) {
+				System.out.println("ScheduleDAO.updateChartGenderMByCheck=>update data");
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				ppst.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+			DButil.dbClose(con);
+		}
+	}
+	
+	public List<String> selectChartByShowCode(String showCode) {
+		
+		List<String> rateWM = new ArrayList<>();
+		
+		Connection con = DButil.getConnection();
+		PreparedStatement ppst=null;
+		ResultSet rs = null;
+		
+		try {
+			ppst = con.prepareStatement(SQL_CHART_SELECT_RATE_WM_BY_SHOW_CODE);
+			ppst.setString(1, showCode);
+			rs = ppst.executeQuery();
+			
+			while(rs.next()) {
+				rateWM.add(rs.getString("rate_w"));
+				rateWM.add(rs.getString("rate_m"));
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				rs.close();
+				ppst.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+			DButil.dbClose(con);
+		}			
+		return rateWM;
+	}
+	
+	public String selectMemberByID(String mID) {
+		
+		String gender = null;
+		
+		Connection con = DButil.getConnection();
+		PreparedStatement ppst=null;
+		ResultSet rs = null;
+		
+		try {
+			ppst = con.prepareStatement(SQL_MEMBER_SELECT_GENDER_BY_ID);
+			ppst.setString(1, mID);
+			rs = ppst.executeQuery();
+			
+			while(rs.next()) {
+				gender = rs.getString("gender");
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				rs.close();
+				ppst.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+			DButil.dbClose(con);
+		}			
+		return gender;		
+	}
 	
 	
 	public int selectReservationByReservationNum(int reservationNum) {
@@ -384,7 +563,7 @@ public class ScheduleDAO {
 			rs = ppst.executeQuery();
 			
 			while(rs.next()) {
-				rvo.setReservationNum(String.valueOf(reservatioNum));
+				rvo.setReservationNum(reservatioNum);
 				rvo.setmID(rs.getString("m_id"));
 				rvo.setReservationDate(rs.getString("reservation_date"));
 				rvo.setScheduleNum(rs.getString("schedule_num"));
@@ -540,7 +719,7 @@ public class ScheduleDAO {
 	}
 	
 	
-	public void updatePointMembers(String id, String pw, int point) {
+	public void updatePointMembers(String id, int point) {
 		
 		Connection con = DButil.getConnection();
 		PreparedStatement ppst=null;
@@ -549,7 +728,6 @@ public class ScheduleDAO {
 			ppst =  con.prepareStatement(SQL_SCHEDULE_POINT_UPDATE);
 			ppst.setInt(1, point);
 			ppst.setString(2, id);
-			ppst.setString(3, pw);
 			int result = ppst.executeUpdate();
 			if(result == 1) {
 				System.out.println("ScheduleDAO.updatePointMembers=>update data");
