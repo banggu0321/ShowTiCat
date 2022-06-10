@@ -1,4 +1,3 @@
-
 <%@page import="java.sql.Connection"%>
 <%@page import="com.kos.showticat.util.DBUtil"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
