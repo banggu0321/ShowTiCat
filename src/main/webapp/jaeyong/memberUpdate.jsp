@@ -55,16 +55,20 @@ p {
 		<label>아이디 : </label>
 		<input type="text"
 			   name="m_id"
-			   value="${member.m_id}"disabled="disabled"><br>
+			   value="${member.m_id}"
+			   readonly="readonly"><br>
 			    
 		<label>비밀번호 : </label>
 		<input type="password"
 			   name="m_pw"
-			   id="m_pw" value="${member.m_pw}"disabled="disabled"><br>
+			   id="m_pw" value="${member.m_pw}"
+			   disabled="disabled"><br>
 		
 		<label>비밀번호 확인 : </label>
 		<input type="password"
-			   id="pw2">
+			   id="pw2"
+			   name="m_pw">
+			   
 		<span  id="pwMsg"></span><br>
 		
 		<label>이름 : </label>
