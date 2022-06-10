@@ -146,7 +146,6 @@ function sendSMS() {
 		success:function(data) {
 			alert("인증번호를 발송하였습니다.");
 			$("#phone").attr("readonly",true);
-			alert(data);
 			code = data;
 		}
 	})

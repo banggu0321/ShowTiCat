@@ -43,7 +43,6 @@ function sendSMS() {
 		data:{"phone":phone},
 		success:function(data) {
 			alert("인증번호를 발송하였습니다.");
-			alert(data);
 			$("#phone").attr("readonly",true);
 			code = data;
 		}
