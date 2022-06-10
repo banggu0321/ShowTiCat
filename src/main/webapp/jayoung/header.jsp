@@ -54,12 +54,18 @@ function join() {
 	</span>
 	<span class="right">
 		<c:if test="${member != null}">
+<<<<<<< HEAD
 			<button class="btn btn-light" id="logoutH">로그아웃</button>			
+=======
+		<a class="right" href="${path}/jaeyong/memberPage.jsp"><button class="btn btn-light">마이페이지</button></a>
+		<a class="right" href="${path}/logout"><button class="btn btn-light">로그아웃</button></a>
+			
+>>>>>>> branch 'master' of https://github.com/banggu0321/ShowTiCat
 		</c:if>
 		<c:if test="${member == null}">
 			<button class="btn btn-light" id="loginH">로그인</button>
 			<button class="btn btn-light" id="joinH">회원가입</button>
-		</c:if>	
+		</c:if>
 	</span>
 	<form action="result.do" class="right" id="formH">
 		<input class="form-control" type="text" name="word" id="searchH" value="${word}">
