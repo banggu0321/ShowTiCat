@@ -17,7 +17,7 @@
 
 <script>
 $(function() {
-	$("form").on("submit",isChecked);
+	$("#resetPW").on("submit",isChecked);
 
 	$("#m_pw").on("keyup",checkPW);
 	$("#pw2").on("keyup",checkPW);
@@ -51,9 +51,10 @@ function reset() {
 </script>
 </head>
 <body>
-<h1>FIND PASSWORD</h1> 
+<jsp:include page="header.jsp"/>
+<h4>FIND PASSWORD</h4> 
 <hr>
-<form action="resetPW.do" method="post">
+<form action="resetPW.do" method="post" id="resetPW">
 <input type="hidden" name="m_id" value="${member.m_id}">
 <div class="form-group">
 	<label>PASSWORD </label>
