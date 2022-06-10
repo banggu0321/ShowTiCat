@@ -24,7 +24,7 @@ public class MemeberUpdate extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		RequestDispatcher rd;
-		rd = request.getRequestDispatcher("memberPage.jsp");
+		rd = request.getRequestDispatcher("memberUpdate.jsp");
 		rd.forward(request, response);
 	}
 
