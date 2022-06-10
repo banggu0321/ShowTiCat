@@ -260,8 +260,8 @@ public class MemberDAO {
 		conn = DBUtil.getConnection();
 		try {
 			pst = conn.prepareStatement(SQL_DELETE_MEMBER);
-            pst.setString(1, m_id);
-			result = pst.executeUpdate();		
+            pst.setString(1,m_id);
+            result = pst.executeUpdate();		
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
