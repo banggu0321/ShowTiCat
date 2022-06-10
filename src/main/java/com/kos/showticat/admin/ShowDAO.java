@@ -17,7 +17,7 @@ public class ShowDAO {
 	
 	//SQL
 	static final String SQL_SELECT_ALL = "SELECT SHOW_CODE , SHOW_NAME , OPENING_DATE , SHOW_TIME ,CATEGORY  FROM show ORDER BY SHOW_CODE";
-	static final String SQL_INSERT_SHOW ="INSERT INTO SHOW VALUES(?||SEQ_SHOW_NO.nextval,?,?,?,?,?,?,?,?,?)";
+	static final String SQL_INSERT_SHOW ="INSERT INTO SHOW VALUES(?||SEQ_SHOW_NO.nextval,?,?,?,?,?,?,?,?,?) " ;
 	static final String SQL_SELECT_BYSHOW = "SELECT * FROM SHOW WHERE SHOW_CODE = ?";
 	static final String SQL_UPDATE_SHOW ="UPDATE SHOW SET "
 			+ " SHOW_NAME =?, "
