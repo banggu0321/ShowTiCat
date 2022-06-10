@@ -53,19 +53,16 @@ function isEmpty() {
 	if(id==null||id=='') {
 		$("#m_id").focus();
 		return false;
-	}
-	if(name==null||name=='') {
+	}else if(name==null||name=='') {
 		$("#m_name").focus();
 		return false;
-	}
-	if(phone==null||phone=='') {
+	}else if(phone==null||phone=='') {
 		$("#phone").focus();
 		return false;
-	}
-	if(msg!="인증성공") {
+	} else  if(msg!="인증성공") {
 		alert("휴대폰 인증을 해주세요.");
 		return false;
-	}
+	} 
 }
 
 function checkNum() {

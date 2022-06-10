@@ -43,7 +43,7 @@ public class FindPW extends HttpServlet {
 			writer.println("<script>alert('일치하는 회원 정보가 없습니다. 확인 후 다시 시도해주세요.');  location.href='findPW.do';</script>");
 			writer.close();
 		}else {
-			response.sendRedirect("resetPW.jsp");
+			response.sendRedirect("resetPW.do");
 		}
 	}
 

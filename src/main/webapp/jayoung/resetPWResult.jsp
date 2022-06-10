@@ -20,6 +20,15 @@
 	text-align: center;
 }
 </style>
+<script>
+$(function() {
+	$("#login").on("click",login);
+})
+
+function login() {
+	location.href="login.do";
+}
+</script>
 </head>
 <body>
 <jsp:include page="header.jsp"/>

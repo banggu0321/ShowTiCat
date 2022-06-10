@@ -102,7 +102,7 @@ function changeDate() {
 			<a href="showDetail.do?show_code=${show.show_code}" class="title">${value.show_name}</a>
 			<span> ${show.category} | ${show.show_time}분 | ${show.opening_date} OPEN</span>
 		</div>
-		<p>${v.count}관</p>
+		<p>${v.count}관 | ${theater.theater_name} | 총 ${theater.last_seat}석</p>
 		<div class="show">
 			<button class="btn btn-outline-primary reservBtn" num="${value.schedule_num}">
 				${value.show_name}<br>${value.show_start}<br>${value.start_time}<br>좌석 : /${theater.last_seat}
@@ -123,7 +123,7 @@ function changeDate() {
 			<c:if test="${list.get(s.index).theater_num!=list.get(s.index-1).theater_num}">
 				</div>
 				<br> <%-- 상영관 구분 --%>
-				<p>${v.count}관</p>
+				<p>${v.count}관 | ${theater.theater_name} | 총 ${theater.last_seat}석</p>
 				<div class="show">
 				<button class="btn btn-outline-primary reservBtn" num="${value.schedule_num}">
 					${value.show_name}<br>${value.show_start}<br>${value.start_time}<br>좌석 : /${theater.last_seat}
@@ -138,7 +138,7 @@ function changeDate() {
 				<a href="showDetail.do?show_code=${show.show_code}" class="title">${value.show_name}</a>
 				<span> ${show.category} | ${show.show_time}분 | ${show.opening_date} OPEN</span>
 			</div>
-			<p>${v.count}관</p>
+			<p>${v.count}관 | ${theater.theater_name} | 총 ${theater.last_seat}석</p>
 			<div class="show">
 			<button class="btn btn-outline-primary reservBtn" num="${value.schedule_num}">
 				${value.show_name}<br>${value.show_start}<br>${value.start_time}<br>좌석 : /${theater.last_seat}
