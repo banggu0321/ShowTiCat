@@ -55,12 +55,16 @@ function showDetail() {
 .box {
 	border: 2px gray solid;
 	display: inline-block;
-	margin: 50px;
+	margin: 30px;
 	padding: 10px;
 }
 .info {
 	margin: 10px 20px 10px 20px;
 	text-align: center;
+	white-space:nowrap;
+	text-overflow: ellipsis;
+	overflow: hidden;
+	width: 200px;
 }
 .reservBtn {
 	margin: 0 auto;
@@ -84,7 +88,7 @@ a:hover {
 <c:forEach items="${showList}" var="show">
 <div class="box">
 	<div class="poster" code="${show.show_code}">
-		<img alt="${show.show_name}" src="${path}/images/${show.poster}" width="225px" height="300px">
+		<img alt="${show.show_name}" src="${path}/images/${show.poster}" width="250px" height="335px">
 		<button class="detail btn btn-outline-secondary">상세보기</button>
 	</div>
 	<p class="info">${show.show_name}</p>

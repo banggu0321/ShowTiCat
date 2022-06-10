@@ -39,18 +39,16 @@ function stop() {
 }
 .title {
 	padding-top: 20px;
-	font-size: 50px;
+	font-size: 30px;
 	font-weight: bold;
 }
 .info {
-	font-size: 20px;
+	font-size: 18px;
 }
 .deBtn {
 	font-size: 20px;
+	margin-top: 50px;
 	margin-right: 20px;
-}
-pre {
-	font-size: 15px;
 }
 a:hover {
 	text-decoration: none;
@@ -60,6 +58,14 @@ a:hover {
 }
 .modal-body {
 	margin: 0 auto;
+}
+.summary {
+	white-space: pre;
+	padding: 5px 0px 5px 20px;
+	font-size: 18px;
+}
+.t {
+	padding: 5px 0px 5px 20px;
 }
 </style>
 
@@ -90,17 +96,17 @@ a:hover {
 	<p class="info">개봉일 : ${show.opening_date}</p>
 	<button class="btn btn-outline-primary deBtn" data-toggle="modal" data-target="#myModal">예고편보기</button>
 	<button class="btn btn-primary deBtn" id="reservBtn">예매하기</button>
-
 </div>
 <hr>
-<h3>줄거리</h3>
-<pre>${show.summary}</pre>
+<h4 class="t">줄거리</h4>
+<p class="summary">${show.summary}</p>
 <hr>
-<h3>예매자 통계</h3>
+<h4 class="t">예매자 통계</h4>
 <c:import url="showChart.jsp"></c:import>
-<%-- <img class="left poster" alt="${show.show_name}" src="${path}/images/${show.show_chart}" width="300px" height="400px"> --%>
 
-<!-- The Modal -->
+
+
+<!-- 예고편 모달 -->
 <div class="modal" id="myModal">
   <div class="modal-dialog modal-lg">
     <div class="modal-content">

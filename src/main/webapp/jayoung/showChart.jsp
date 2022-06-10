@@ -14,16 +14,19 @@
 	padding: 5px 30px 50px 5px;
 	text-align: center;
 }
+.chartTitle {
+	font-size: 18px;
+}
 </style>
 </head>
 <body>
 <ul>
 <li class="chart">
-	<p>성별 예매 분포</p> <hr>
+	<p class="chartTitle">성별 예매 분포</p> <hr>
 	<canvas id="myChart" width="500" height="300"></canvas>
 </li>
 <li class="chart">
-	<p>연령별 예매 분포</p> <hr>
+	<p class="chartTitle">연령별 예매 분포</p> <hr>
 	<canvas id="ageChart" width="500" height="300"></canvas>
 </li>
 <!-- <li class="chart">
