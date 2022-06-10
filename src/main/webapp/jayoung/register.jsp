@@ -90,10 +90,9 @@ function isChecked() {
 	var pwMsg = $("#pwMsg").html().trim();
 
 	var name = $("#m_name").val();
-	var email = $("#email").val();
+	var email = $("#email1").val();
 	var phone = $("#phone").val();
 	var random = $("#random").val();
-	var birth = $("#birth").val();
 	
 	if(idMsg != "사용가능한 ID입니다.") {
 		$("#m_id").focus();
@@ -111,9 +110,6 @@ function isChecked() {
 		$("#phone").focus();
 		return false;
 	}else if(random==null||random==''){
-		return false;
-	}else if(birth==null||birth==''){
-		$("#birth").focus();
 		return false;
 	}
 }

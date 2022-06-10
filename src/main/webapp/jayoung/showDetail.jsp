@@ -26,7 +26,7 @@ function reservation() {
 }
 
 function stop() {
-	$("iframe")[0].contentWindow.postMessage('{"event":"command","func":"stopVideo","args":""}', '*');
+	
 }
 </script>
 
