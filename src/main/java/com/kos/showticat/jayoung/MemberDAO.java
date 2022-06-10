@@ -224,4 +224,9 @@ public class MemberDAO {
 
 		return member;
 	}
+
+	public int update(MemberVO member) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
 }

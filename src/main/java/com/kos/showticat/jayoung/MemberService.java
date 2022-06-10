@@ -50,4 +50,9 @@ public class MemberService {
 	public int update(MemberVO member) {
 		return dao.update(member);
 	}
+
+	public int memberUpdate(MemberVO member) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
 }

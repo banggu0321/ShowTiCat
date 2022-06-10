@@ -44,7 +44,7 @@
 		</div>
 		<div class="form-group">
 			<label>시작시간</label> 
-			<input class="form-control" type="date" name="show_start">
+			<input class="form-control" type="datetime-local" name="show_start" placeholder="yyyy-mm-dd ">
 			<!-- <input type="time"> -->
 		</div>
 		<input class="btn btn-primary" type="submit" value="등록"> 
