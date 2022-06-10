@@ -31,35 +31,43 @@ p {
 		<br>
 		<label>아이디 : </label>
 		<input value ="${member.m_id}"
-			   type  ="text" disabled="disabled"><br>
+			   type  ="text"
+			   name  ="m_id" 
+			   disabled="disabled"><br>
 			   
 		<label>비밀번호 : </label>
 		<input value ="${member.m_pw}"
-			   type  ="text" disabled="disabled"
-			   name  ="password"><br>
+			   type  ="text"
+			   name  ="password"
+ 			   disabled="disabled"><br>
 		
 		<label>이름 : </label>
 		<input value ="${member.m_name}"
-			   type  ="text" disabled="disabled"
-			   name  ="name"><br>
+			   type  ="text"
+			   name  ="name"
+ 			   disabled="disabled"><br>
 		
 		<label>핸드폰 번호 : </label>
 		<input value ="${member.phone}"
-			   type  ="text" disabled="disabled"
-			   name  ="phone"><br>
+			   type  ="text"
+			   name  ="phone"
+ 			   disabled="disabled"><br>
 		
 		<label>생일 : </label>
 		<input value ="${member.birth}"
-			   type  ="text" disabled="disabled"
-			   name  ="birth"><br>
+			   type  ="text"
+			   name  ="birth"
+ 			   disabled="disabled"><br>
 		
 		<label>성별 : </label>		
 		<input value ="${member.gender}"
-			   type  ="text" disabled="disabled"><br>
+			   type  ="text"
+ 			   disabled="disabled"><br>
 		
 		<label>이메일 : </label>
 		<input value ="${member.email}"
-			   type ="text" disabled="disabled"><br>
+			   type ="text"
+ 			   disabled="disabled"><br>
 			
 		<label>관심매장 : </label>
 		<c:if test="${member!=null}">

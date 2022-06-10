@@ -7,6 +7,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>MemberUpdate</title>
+
 <script
 	src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.slim.min.js"></script>
 <script
@@ -61,8 +62,7 @@ p {
 		<label>비밀번호 : </label>
 		<input type="password"
 			   name="m_pw"
-			   id="m_pw" value="${member.m_pw}"
-			   disabled="disabled"><br>
+			   id="m_pw" value="${member.m_pw}"><br>
 		
 		<label>비밀번호 확인 : </label>
 		<input type="password"
