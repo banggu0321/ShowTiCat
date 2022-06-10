@@ -28,22 +28,20 @@ public class reservationResultFromShowList extends HttpServlet {
 		
 		ScheduleService service = new ScheduleService();
 		ReservationVO rvo = service.reservationSelectByNumber(reservationNum);
+		//		System.out.println(rvo);
+	
 		rvo.setReservationNum(reservationNum);
-		
 		request.setAttribute("reservationData", rvo);
 		
 		//update point
-//		String id = "cansu";
-//		int point = Integer.parseInt(rvo.getTotalPrice())+service.selectMembersPointByID(id);  //update value = point + select value
-//		
-//		service.updatePointMembers(id, point);
-		
-//		System.out.println(rvo);
+		String id = service.selectReservationUserIDByReservationNum(reservationNum);
+		int point = Integer.parseInt(rvo.getTotalPrice())+service.selectMembersPointByID(id);  //update value = point + select value	
+		service.updatePointMembers(id, point);
+		System.out.println("ScheduleDAO.reservationResultFromShowList=>update data");
 		
 		//ю╖юс(reservationResult.jsp)
 		RequestDispatcher rd = request.getRequestDispatcher("cansu/reservationResult.jsp");
 		rd.forward(request, response);
-
 	}
 
 

@@ -32,6 +32,10 @@ public class reservationCompletePayYNandRate extends HttpServlet {
 		int scheduleNum = service.selectReservationByReservationNum(reservationNum);
 		String showCode = service.selectScheduleByScheduleNum(scheduleNum);		
 //		System.out.println(showCode);
+		
+//reservation table pay_YN update		
+		String yn="Y"; //check를 통해 Y or N 결정
+		service.updateReservationPaymentYN(yn, reservationNum);
 
 
 		//reservation number에서 select m_id -> gender 확인

@@ -50,6 +50,11 @@ public class temp {
 //		f19(); //chart table update (rate_M or rate_W)
 //		f19beta(); //chart table select rate_m and rate_w
 //		f20();  //reservation table select ID
+		f21(); //reservation table  update pay_YN
+	}
+
+	private static void f21() {
+		
 	}
 
 	private static void f20() {
