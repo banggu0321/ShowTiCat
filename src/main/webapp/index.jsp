@@ -1,8 +1,15 @@
+
+<%@page import="java.sql.Connection"%>
+<%@page import="com.kos.showticat.util.DBUtil"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="ko">
-
+<%
+/* DB연결 확인하기 */
+Connection conn = DBUtil.getConnection();
+System.out.println(conn);
+%>
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -12,7 +19,6 @@
     height: 100%;
     margin: 0 auto;
 }
-
 /*===========================================================================
 common
 =============================================================================*/
@@ -154,9 +160,9 @@ container
 .banner {
     width: 100%;
     height: 100%;
-    background: url(../images/exPoster1) no-repeat center;
+    background: url(images/exPoster1.png) no-repeat center;
     background-size: 50% 50%;
-
+ 
 }
 
 /*===========================================================================
