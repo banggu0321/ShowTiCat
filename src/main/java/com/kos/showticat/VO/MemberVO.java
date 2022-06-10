@@ -1,4 +1,4 @@
-package com.kos.showticat.ja0;
+package com.kos.showticat.VO;
 
 import java.sql.Date;
 

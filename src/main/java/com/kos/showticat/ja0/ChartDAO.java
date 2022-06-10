@@ -6,6 +6,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
+import com.kos.showticat.VO.ChartVO;
 import com.kos.showticat.util.DBUtil;
 
 public class ChartDAO {

@@ -51,12 +51,12 @@ function isEmpty() {
 <hr>
 <form action="login.do" method="post" id="loginForm">
 <div class="form-group">
-	<label>아이디 :</label>
+	<label>아이디 </label>
 	<input class="form-control" type="text" name="m_id" id="m_id">
 </div>
 
 <div class="form-group">
-	<label>비밀번호 :</label>
+	<label>비밀번호 </label>
 	<input class="form-control" type="text" name="m_pw" id="m_pw">
 </div>
 

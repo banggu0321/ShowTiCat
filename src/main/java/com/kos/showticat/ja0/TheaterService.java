@@ -2,6 +2,8 @@ package com.kos.showticat.ja0;
 
 import java.util.List;
 
+import com.kos.showticat.VO.TheaterVO;
+
 public class TheaterService {
 	TheaterDAO dao = new TheaterDAO();
 	

@@ -1,6 +1,7 @@
 package com.kos.showticat.ja0;
 
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -8,6 +9,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.kos.showticat.VO.ScheduleVO;
 import com.kos.showticat.util.DBUtil;
 
 public class ScheduleDAO {
@@ -17,7 +19,7 @@ public class ScheduleDAO {
 	static final String SQL_SELECT_THEATER ="SELECT SHOW_CODE, SHOW_NAME,schedule_num,theater_num,place_num, show_start FROM schedule "
 			+ " JOIN show using(show_code) WHERE theater_num in ("
 			+ "	SELECT theater_num FROM theater	WHERE place_num IN ("
-			+ " SELECT place_num FROM place WHERE place_num = ?)) order by 2,4,6";
+			+ " SELECT place_num FROM place WHERE place_num = ?)) order by 2,4,6";/* and show_start = ? */
 	
 	Connection conn;
 	Statement st;
@@ -90,12 +92,13 @@ public class ScheduleDAO {
 	}
 
 	//상영관별로 조회
-	public List<ScheduleVO> selectByTheater(int place_num) {
+	public List<ScheduleVO> selectByTheater(int place_num/* , Date show_date */) {
 		List<ScheduleVO> scheduleList = new ArrayList<>();
 		conn = DBUtil.getConnection();
 		try {
 			pst = conn.prepareStatement(SQL_SELECT_THEATER);
 			pst.setInt(1, place_num);
+			/* pst.setDate(2, show_date); */
 			rs = pst.executeQuery();
 			
 			while(rs.next()) {

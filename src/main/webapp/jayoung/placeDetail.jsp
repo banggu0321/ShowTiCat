@@ -47,6 +47,7 @@ a:hover {
 <script>
 $(function() {
 	$(".reservBtn").on("click",reservation);
+	$(".dateBtn").on("click",changeDate);
 })
 
 function reservation() {
@@ -54,14 +55,9 @@ function reservation() {
 	location.href="reservation.do?schedule_num="+num;
 }
 
-function getDatesStartToLast(startDate, lastDate) {
-	var result = [];
-	var curDate = new Date(startDate);
-	while(curDate <= new Date(lastDate)) {
-		result.push(curDate.toISOString().split("T")[0]);
-		curDate.setDate(curDate.getDate() + 1);
-	}
-	return result;
+function changeDate() {
+	/*var date = $(this).attr("date");
+	location.href="placeDetail.do?place_num="+${place.place_num} +"&date="+date ;*/
 }
 </script>
 </head>
@@ -91,7 +87,9 @@ function getDatesStartToLast(startDate, lastDate) {
 <p class="info">문의 : ${place.place_phone}</p>
 </div>
 <hr>
-날짜!!!!
+<c:forEach items="${dateList}" var="date">
+	<button class="btn btn-outline-dark dateBtn" date="${date}">${date}</button>
+</c:forEach>
 <hr>
 <%-- 상영스케줄 --%>
 <c:forEach items="${list}" var="value" varStatus="s">
@@ -107,7 +105,7 @@ function getDatesStartToLast(startDate, lastDate) {
 		<p>${v.count}관</p>
 		<div class="show">
 			<button class="btn btn-outline-primary reservBtn" num="${value.schedule_num}">
-				${value.show_name}<br>${value.show_start}<br>${value.start_time}
+				${value.show_name}<br>${value.show_start}<br>${value.start_time}<br>좌석 : /${theater.last_seat}
 			</button>
 		
 	</c:if>
@@ -118,7 +116,7 @@ function getDatesStartToLast(startDate, lastDate) {
 			<%-- 상영관이 같은경우 --%>
 			<c:if test="${list.get(s.index).theater_num==list.get(s.index-1).theater_num}">
 				<button class="btn btn-outline-primary reservBtn" num="${value.schedule_num}">
-					${value.show_name}<br>${value.show_start}<br>${value.start_time}
+					${value.show_name}<br>${value.show_start}<br>${value.start_time}<br>좌석 : /${theater.last_seat}
 				</button>
 			</c:if>
 
@@ -128,7 +126,7 @@ function getDatesStartToLast(startDate, lastDate) {
 				<p>${v.count}관</p>
 				<div class="show">
 				<button class="btn btn-outline-primary reservBtn" num="${value.schedule_num}">
-					${value.show_name}<br>${value.show_start}<br>${value.start_time}
+					${value.show_name}<br>${value.show_start}<br>${value.start_time}<br>좌석 : /${theater.last_seat}
 				</button>
 			</c:if>
 		</c:if>
@@ -143,7 +141,7 @@ function getDatesStartToLast(startDate, lastDate) {
 			<p>${v.count}관</p>
 			<div class="show">
 			<button class="btn btn-outline-primary reservBtn" num="${value.schedule_num}">
-				${value.show_name}<br>${value.show_start}<br>${value.start_time}
+				${value.show_name}<br>${value.show_start}<br>${value.start_time}<br>좌석 : /${theater.last_seat}
 			</button>
 		</c:if>
 	</c:if>

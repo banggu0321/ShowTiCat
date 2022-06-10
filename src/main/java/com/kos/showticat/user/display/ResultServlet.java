@@ -10,8 +10,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.kos.showticat.VO.ShowVO;
 import com.kos.showticat.ja0.ShowService;
-import com.kos.showticat.ja0.ShowVO;
 
 /**
  * Servlet implementation class ResultServlet
@@ -21,7 +21,7 @@ public class ResultServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
   
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String word = request.getParameter("search");
+		String word = request.getParameter("word");
 		request.setAttribute("word", word);
 		
 		ShowService service = new ShowService();

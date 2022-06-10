@@ -2,6 +2,7 @@ package com.kos.showticat.user.register;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.Date;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -11,8 +12,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.kos.showticat.VO.MemberVO;
 import com.kos.showticat.ja0.MemberService;
-import com.kos.showticat.ja0.MemberVO;
 import com.kos.showticat.util.DateUtil;
 
 @WebServlet("/jayoung/insert.do")
@@ -50,10 +51,9 @@ public class Register extends HttpServlet {
 		String m_id = request.getParameter("m_id");
 		String m_pw = request.getParameter("m_pw");
 		String m_name = request.getParameter("m_name");
-		String email = request.getParameter("email");
-		//String email = request.getParameter("email1")+"@"+request.getParameter("email2");
+		String email = request.getParameter("email1")+"@"+request.getParameter("email2");
 		String phone = request.getParameter("phone");
-		String birth = request.getParameter("birth");
+		String birth = request.getParameter("year")+"-"+request.getParameter("month")+"-"+request.getParameter("day");
 		String gender = request.getParameter("gender");
 		
 		m.setBirth(DateUtil.convertToDate(birth));

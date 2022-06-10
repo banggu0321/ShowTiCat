@@ -1,5 +1,7 @@
 package com.kos.showticat.ja0;
 
+import com.kos.showticat.VO.ChartVO;
+
 public class ChartService {
 	ChartDAO dao = new ChartDAO();
 	

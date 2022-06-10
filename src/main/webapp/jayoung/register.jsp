@@ -28,40 +28,29 @@ $(function() {
 	$("#sendSMS").on("click",sendSMS);
 	$("#checkNum").on("click",checkNum);
 	
+    var now = new Date();
+    var year = now.getFullYear();
+    var mon = (now.getMonth() + 1) > 9 ? ''+(now.getMonth() + 1) : '0'+(now.getMonth() + 1); 
+    var day = (now.getDate()) > 9 ? ''+(now.getDate()) : '0'+(now.getDate());           
+                 
+    for(var i = 1900 ; i <= year ; i++) {
+        $('#year').append('<option value="'+i+'">' + i + '</option>');    
+    }
+          
+    for(var i=1; i <= 12; i++) {
+        var mm = i > 9 ? i : "0"+i ;            
+        $('#month').append('<option value="'+mm+'">' + mm + '</option>');    
+    }
+    
+    for(var i=1; i <= 31; i++) {
+        var dd = i > 9 ? i : "0"+i ;            
+        $('#day').append('<option value="'+dd+'">' + dd+ '</option>');    
+    }
+    
+    $("#year  > option[value="+year+"]").attr("selected", "true");        
+    $("#month  > option[value="+mon+"]").attr("selected", "true");    
+    $("#day  > option[value="+day+"]").attr("selected", "true");  
 });
-
-function isChecked() {
-	var idMsg = $("#idMsg").html().trim();
-	var pwMsg = $("#pwMsg").html().trim();
-
-	var name = $("#m_name").val();
-	var email = $("#email").val();
-	var phone = $("#phone").val();
-	var random = $("#random").val();
-	var birth = $("#birth").val();
-	
-	if(idMsg != "사용가능한 ID입니다.") {
-		$("#m_id").focus();
-		return false;
-	}else if(pwMsg != "사용가능한 PW입니다.") {
-		$("#m_pw").focus();
-		return false;
-	}else if(name==null||name==''){
-		$("#m_name").focus();
-		return false;
-	}else if(email==null||email==''){
-		$("#email").focus();
-		return false;
-	}else if(phone==null||phone==''){
-		$("#phone").focus();
-		return false;
-	}else if(random==null||random==''){
-		return false;
-	}else if(birth==null||birth==''){
-		$("#birth").focus();
-		return false;
-	}
-}
 
 function checkPW() {
 	var pw1 = $("#m_pw").val().trim();
@@ -96,15 +85,48 @@ function checkID() {
 	});
 }
 
+function isChecked() {
+	var idMsg = $("#idMsg").html().trim();
+	var pwMsg = $("#pwMsg").html().trim();
+
+	var name = $("#m_name").val();
+	var email = $("#email").val();
+	var phone = $("#phone").val();
+	var random = $("#random").val();
+	var birth = $("#birth").val();
+	
+	if(idMsg != "사용가능한 ID입니다.") {
+		$("#m_id").focus();
+		return false;
+	}else if(pwMsg != "사용가능한 PW입니다.") {
+		$("#m_pw").focus();
+		return false;
+	}else if(name==null||name==''){
+		$("#m_name").focus();
+		return false;
+	}else if(email==null||email==''){
+		$("#email").focus();
+		return false;
+	}else if(phone==null||phone==''){
+		$("#phone").focus();
+		return false;
+	}else if(random==null||random==''){
+		return false;
+	}else if(birth==null||birth==''){
+		$("#birth").focus();
+		return false;
+	}
+}
+
 function selectChange() {
 	 if ($('#select').val() == 'directly') {
-         $('#email2').attr("readonly", false);
-         $('#email2').val("");
-         $('#email2').focus();
-     } else {
-         $('#email2').val($('#select').val());
-         $('#email2').attr("readonly",true);
-     }
+        $('#email2').attr("readonly", false);
+        $('#email2').val("");
+        $('#email2').focus();
+    } else {
+        $('#email2').val($('#select').val());
+        $('#email2').attr("readonly",true);
+    }
 }
 
 var code="";
@@ -117,13 +139,14 @@ function sendSMS() {
 	}
 
 	$("#check").show();
+	
 	$.ajax({
-		url:"randomNumCheck.do",
+		url:"sendSMS.do",
 		data:{"phone":phone},
 		success:function(data) {
 			alert("인증번호를 발송하였습니다.");
-			alert(data);
 			$("#phone").attr("readonly",true);
+			alert(data);
 			code = data;
 		}
 	})
@@ -180,33 +203,35 @@ function reset() {
 	<label>EMAIL </label>
 	<input class="form-control" type="text" name="email1" id="email1" placeholder="이메일">
 	<span>@</span>
-	<input class="form-control" name="email2" id="email2">
+	<input class="form-control" name="email2" id="email2" readonly="readonly">
 	<select class="form-control" id="select">
-            <option value="" disabled selected>E-Mail 선택</option>
-            <option value="naver.com" id="naver.com">naver.com</option>
-            <option value="gmail.com" id="gmail.com">gmail.com</option>
-            <option value="nate.com" id="nate.com">nate.com</option>
-            <option value="hanmail.net" id="hanmail.net">hanmail.net</option>
-            <option value="directly" id="textEmail">직접 입력하기</option>
-        </select>
+		<option value="" disabled selected>E-Mail 선택</option>
+		<option>naver.com</option>
+		<option>gmail.com</option>
+		<option>nate.com</option>
+		<option>hanmail.net</option>
+		<option value="directly">직접 입력하기</option>
+	</select>
 </div>
 
 <div class="form-group">
 	<label>PHONE </label>
 	<input class="form-control" type="text" name="phone" id="phone" placeholder="하이픈(-)제외 11자리 입력" pattern="[01]{2}[01679]{1}[0-9]{7,8}">
 	<input class="btn btn-outline-danger" type="button" id="sendSMS" value="인증번호받기">
-	
-	<div id="check">
-		<label>인증번호 :</label>
-		<input class="form-control" type="text" name="random" id="random" placeholder="인증번호 입력" >
-		<input class="btn btn-outline-danger" type="button" id="checkNum" value="인증하기">
-		<span id="msg"></span>
-	</div>
+</div>
+
+<div id="check" class="form-group">
+	<label>인증번호 </label>
+	<input class="form-control" type="text" name="random" id="random" placeholder="인증번호 입력" >
+	<input class="btn btn-outline-danger" type="button" id="checkNum" value="인증하기">
+	<span id="msg"></span>
 </div>
 
 <div class="form-group">
 	<label>BIRTHDAY </label>
-	<input class="form-control" type="date" name="birth" id="birth">
+	<select class="form-control" id="year" name="year"></select><span class="birth">년 </span>
+	<select class="form-control" id="month" name="month"></select><span class="birth">월 </span>
+	<select class="form-control" id="day" name="day"></select><span class="birth">일 </span>
 </div>
 
 <div class="form-group form-check-inline">

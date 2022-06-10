@@ -2,6 +2,8 @@ package com.kos.showticat.ja0;
 
 import java.util.List;
 
+import com.kos.showticat.VO.CastVO;
+
 public class CastService {
 	CastDAO dao = new CastDAO();
 	

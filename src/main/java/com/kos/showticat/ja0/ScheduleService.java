@@ -1,6 +1,9 @@
 package com.kos.showticat.ja0;
 
+import java.sql.Date;
 import java.util.List;
+
+import com.kos.showticat.VO.ScheduleVO;
 
 public class ScheduleService {
 	ScheduleDAO dao = new ScheduleDAO();
@@ -21,8 +24,8 @@ public class ScheduleService {
 	}
 
 	//상영관별로 조회
-	public List<ScheduleVO> selectByTheater(int place_num) {
-		return dao.selectByTheater(place_num);
+	public List<ScheduleVO> selectByTheater(int place_num/* , Date show_date */) {
+		return dao.selectByTheater(place_num/* , show_date */);
 	}
 
 }

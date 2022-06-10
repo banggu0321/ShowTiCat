@@ -11,8 +11,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.kos.showticat.VO.MemberVO;
 import com.kos.showticat.ja0.MemberService;
-import com.kos.showticat.ja0.MemberVO;
 
 @WebServlet("/jayoung/login.do")
 public class LoginServlet extends HttpServlet {

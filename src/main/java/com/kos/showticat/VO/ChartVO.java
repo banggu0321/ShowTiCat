@@ -1,4 +1,4 @@
-package com.kos.showticat.ja0;
+package com.kos.showticat.VO;
 
 public class ChartVO {
 	private String show_code;

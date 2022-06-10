@@ -19,25 +19,14 @@
 }
 </style>
 <script>
-$(function() {
-	//$("#formH").on("submit",isEmpty);
-	
+$(function() {	
 	$("#mainH").on("click",main);
 	$("#loginH").on("click",login);
 	$("#logoutH").on("click",logout);
 	$("#joinH").on("click",join);
 	
 })
-/*
-function isEmpty() {
-	var word = $("#searchH").val();
-	if(word==null||word==''){
-		alert("검색어를 입력하세요.");
-		$("#searchH").focus();
-		return false;
-	}
-}
-*/
+
 function main() {
 	location.href="main.jsp";
 }
@@ -73,7 +62,7 @@ function join() {
 		</c:if>	
 	</span>
 	<form action="result.do" class="right" id="formH">
-		<input class="form-control" type="text" name="search" id="searchH" value="${word}">
+		<input class="form-control" type="text" name="word" id="searchH" value="${word}">
 		<input class="btn btn-success" type="submit" value="검색">
 	</form>
 <hr>

@@ -1,5 +1,7 @@
 package com.kos.showticat.ja0;
 
+import com.kos.showticat.VO.MemberVO;
+
 public class MemberService {
 	MemberDAO dao = new MemberDAO();
 	

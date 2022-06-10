@@ -36,6 +36,7 @@ function sList() {
 }
 
 function scheduleList() {
+	
 	location.href="placeDetail.do?place_num=1020";
 }
 

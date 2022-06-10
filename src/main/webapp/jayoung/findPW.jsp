@@ -34,7 +34,7 @@ function sendSMS() {
 
 	$("#check").show();
 	$.ajax({
-		url:"randomNumCheck.do",
+		url:"sendSMS.do",
 		data:{"phone":phone},
 		success:function(data) {
 			alert("인증번호를 발송하였습니다.");
@@ -85,22 +85,22 @@ function checkNum() {
 <hr>
 <form action="findPW.do" method="post" id="findForm">
 <div class="form-group">
-	<label>ID :</label>
+	<label>ID </label>
 	<input class="form-control" type="text" name="m_id" id="m_id">
 </div>
 
 <div class="form-group">
-	<label>이름 :</label>
+	<label>이름 </label>
 	<input class="form-control" type="text" name="m_name" id="m_name">
 </div>
 
 <div class="form-group">
-	<label>휴대전화 :</label>
+	<label>휴대전화 </label>
 	<input class="form-control" type="text" name="phone" id="phone" placeholder="하이픈(-)제외 11자리 입력" pattern="[01]{3}[0-9]{8}">
 	<input class="btn btn-outline-danger" type="button" id="sendSMS" value="인증번호받기">
 	
 	<div id="check">
-		<label>인증번호 :</label>
+		<label>인증번호 </label>
 		<input class="form-control" type="text" name="random" id="random" placeholder="인증번호 입력" >
 		<input class="btn btn-outline-danger" type="button" id="checkNum" value="인증하기">
 		<span id="msg"></span>

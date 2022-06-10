@@ -1,4 +1,4 @@
-package com.kos.showticat.ja0;
+package com.kos.showticat.VO;
 
 public class CastVO {
 	private String show_code;
