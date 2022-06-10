@@ -1,2 +1,8 @@
 /build/
 /src/main/webapp/WEB-INF/wallet_db/
+
+# Eclipse Core      
+.ShowTiCat
+
+# JDT-specific (Eclipse Java Development Tools)     
+.classpath
