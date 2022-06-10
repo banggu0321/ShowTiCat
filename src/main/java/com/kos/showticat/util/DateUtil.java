@@ -47,8 +47,4 @@ public class DateUtil {
 		}
 		return dateList;
 	}
-	
-	public static void main(String[] args) {
-		System.out.println(dateList());
-	}
 }

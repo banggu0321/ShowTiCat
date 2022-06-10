@@ -13,7 +13,7 @@
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-<link rel="stylesheet" href="common.css">
+<link rel="stylesheet" href="css/common.css">
 
 <script>
 $(function() {
@@ -94,13 +94,13 @@ function checkNum() {
 	<label>휴대전화 </label>
 	<input class="form-control" type="text" name="phone" id="phone" placeholder="하이픈(-)제외 11자리 입력" pattern="[01]{3}[0-9]{8}">
 	<input class="btn btn-outline-danger" type="button" id="sendSMS" value="인증번호받기">
+</div>
 	
-	<div id="check">
-		<label>인증번호 </label>
-		<input class="form-control" type="text" name="random" id="random" placeholder="인증번호 입력" >
-		<input class="btn btn-outline-danger" type="button" id="checkNum" value="인증하기">
-		<span id="msg"></span>
-	</div>
+<div id="check">
+	<label>인증번호 </label>
+	<input class="form-control" type="text" name="random" id="random" placeholder="인증번호 입력" >
+	<input class="btn btn-outline-danger" type="button" id="checkNum" value="인증하기">
+	<span id="msg"></span>
 </div>
 
 <input class="btn btn-success" type="submit" value="비밀번호 찾기">
