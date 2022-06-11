@@ -113,15 +113,21 @@ header
 nav
 =============================================================================*/
 .nav {
+    height: 50px;
     margin: -50px;
     /* height: 40px;
     padding: 5px; */
 }
 
-.nav a {
-    font-size: 16px;
+.nav_menu a {
+	font-size: 20px;
 }
-
+.nav_menu li{
+    width: 100%;
+}
+.nav_menu li h2{
+    font-weight: bold;
+}
 /* .nav li {
     width: 100%;
     height: 40px;
@@ -139,7 +145,12 @@ nav
 .nav_menu input {
     width: 65%;
 }
-
+.nav_menu :nth-child(5) {
+	width: 100px;
+}
+.nav_menu :nth-child(6) {
+    width: 1550px;
+}
 /*===========================================================================
 container
 =============================================================================*/
@@ -148,7 +159,7 @@ container
     height: 500px;
     position: relative;
     background-color: #000;
-
+	margin: 50px 0 0 0;
 }
 
 .banner {

@@ -16,15 +16,15 @@ color: black;}
     width: 20%;
 }
 .movieImage {
-    height: 100%;
+    height: 80%;
     /* outline: 1px solid #708090; */
 }
 .pImage{
-	height: 80%;
+	height: 100%;
 	overflow: hidden;
 }
 .movieName{
-	font-size: 20px;
+	font-size: 18px;
     text-align: center; 
 }
 .posters :nth-child(2) {

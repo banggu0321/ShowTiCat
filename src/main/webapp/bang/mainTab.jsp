@@ -58,14 +58,86 @@
 	    <div id="home" class="container tab-pane active"><br>
 			<div class="movieChart">	
 				<div class="posters">
-				    
+				    <div class="posterWrap">
+						<div class="movieImage"">
+							<a><input class="pImage" type="image" src=" ../images/notReady.jpg"></a>
+						</div>
+						<!-- movieImamge -->
+						<div class="movieName">
+							<strong>준비중</strong>
+						</div><!-- movieName -->
+					</div><!-- posterWrap -->
+					<div class="posterWrap">
+						<div class="movieImage"">
+							<a><input class="pImage" type="image" src=" ../images/notReady.jpg"></a>
+						</div>
+						<!-- movieImamge -->
+						<div class="movieName">
+							<strong>준비중</strong>
+						</div><!-- movieName -->
+					</div><!-- posterWrap -->
+					<div class="posterWrapBar"></div><!-- posterWrapBar -->
+					<div class="posterWrap">
+						<div class="movieImage"">
+							<a><input class="pImage" type="image" src=" ../images/notReady.jpg"></a>
+						</div>
+						<!-- movieImamge -->
+						<div class="movieName">
+							<strong>준비중</strong>
+						</div><!-- movieName -->
+					</div><!-- posterWrap -->
+					<div class="posterWrap">
+						<div class="movieImage"">
+							<a><input class="pImage" type="image" src=" ../images/notReady.jpg"></a>
+						</div>
+						<!-- movieImamge -->
+						<div class="movieName">
+							<strong>준비중</strong>
+						</div><!-- movieName -->
+					</div><!-- posterWrap -->
 				</div><!-- posters -->
 			</div><!-- movieChart -->
 	    </div>
 	    <div id="menu1" class="container tab-pane"><br>
 	    	<div class="movieChart">	
 				<div class="posters">
-					
+					<div class="posterWrap">
+						<div class="movieImage"">
+							<a><input class="pImage" type="image" src=" ../images/notReady.jpg"></a>
+						</div>
+						<!-- movieImamge -->
+						<div class="movieName">
+							<strong>준비중</strong>
+						</div><!-- movieName -->
+					</div><!-- posterWrap -->
+					<div class="posterWrap">
+						<div class="movieImage"">
+							<a><input class="pImage" type="image" src=" ../images/notReady.jpg"></a>
+						</div>
+						<!-- movieImamge -->
+						<div class="movieName">
+							<strong>준비중</strong>
+						</div><!-- movieName -->
+					</div><!-- posterWrap -->
+					<div class="posterWrapBar"></div><!-- posterWrapBar -->
+					<div class="posterWrap">
+						<div class="movieImage"">
+							<a><input class="pImage" type="image" src=" ../images/notReady.jpg"></a>
+						</div>
+						<!-- movieImamge -->
+						<div class="movieName">
+							<strong>준비중</strong>
+						</div><!-- movieName -->
+					</div><!-- posterWrap -->
+					<div class="posterWrap">
+						<div class="movieImage"">
+							<a><input class="pImage" type="image" src=" ../images/notReady.jpg"></a>
+						</div>
+						<!-- movieImamge -->
+						<div class="movieName">
+							<strong>준비중</strong>
+						</div><!-- movieName -->
+					</div><!-- posterWrap -->
 				</div><!-- posters -->
 			</div><!-- screen -->
 	    </div>

@@ -16,6 +16,7 @@ public class ShowVO {
 
 	public ShowVO() {
 	}
+	
 	public ShowVO(String show_code, String show_name, String poster) {
 		this.show_code = show_code;
 		this.show_name = show_name;
