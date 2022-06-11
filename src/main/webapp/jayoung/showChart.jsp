@@ -8,19 +8,18 @@
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels"></script>
 <style>
-.chart {
+.chart li {
 	float:left;
-	list-style: none;
 	padding: 5px 30px 50px 5px;
 	text-align: center;
 }
-.chartTitle {
+.chart p {
 	font-size: 18px;
 }
 </style>
 </head>
 <body>
-<ul>
+<ul class="chart">
 <li class="chart">
 	<p class="chartTitle">성별 예매 분포</p> <hr>
 	<canvas id="myChart" width="500" height="300"></canvas>

@@ -13,6 +13,7 @@
 <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.slim.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <link rel="stylesheet" href="css/common.css">
 
 <script>
@@ -53,24 +54,24 @@ h1 {
 <body>
 <c:set var="path" value="${pageContext.request.contextPath}"/>
 <jsp:include page="header.jsp"/>
-<h4>검색결과</h4>
-<hr>
-<c:choose>
-	<c:when test="${result!=null}">
-		<c:forEach items="${result}" var="show">
-			<div>
-				<img alt="${show.show_name}" src="${path}/images/${show.poster}" width="225px" height="300px">
-				<p class="title">${show.show_name}</p>
-				<p class="info">${show.opening_date} OPEN</p>
-				<button class="btn btn-primary detailBtn" code="${show.show_code}">상세보기</button>
-				<button class="btn btn-outline-primary reservBtn" code="${show.show_code}">예매하기</button>
-			</div>
-			<hr>
-		</c:forEach>
-	</c:when>
-	<c:otherwise>
-		<p>"${word}"에 대한 검색결과가 없습니다.</p>
-	</c:otherwise>
-</c:choose>
+<div class="contents">
+	<c:choose>
+		<c:when test="${result!=null}">
+			<c:forEach items="${result}" var="show">
+				<div>
+					<img alt="${show.show_name}" src="${path}/images/${show.poster}" width="225px" height="300px">
+					<p class="title">${show.show_name}</p>
+					<p class="info">${show.opening_date} OPEN</p>
+					<button class="btn btn-primary detailBtn" code="${show.show_code}">상세보기</button>
+					<button class="btn btn-outline-primary reservBtn" code="${show.show_code}">예매하기</button>
+				</div>
+				<hr>
+			</c:forEach>
+		</c:when>
+		<c:otherwise>
+			<p>"${word}"에 대한 검색결과가 없습니다.</p>
+		</c:otherwise>
+	</c:choose>
+</div>
 </body>
 </html>

@@ -5,8 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
-<link rel="stylesheet" href="css/index.css">
+<link rel="stylesheet" href="css/header.css">
 </head>
 
 <body>
@@ -17,14 +16,15 @@
             <div class="contents">
                 <!-- 로고 및 사이트 이름 -->
                 <h1>
-                    <a href="${path}/jayoung/index.jsp"><img src="${path}/images/Ticat.png" alt="logo">
-                    <!-- 사이트 이름 -->
+                    <a href="${path}/jayoung/main.go">
+	                    <img src="${path}/images/Ticat.png" alt="ShowTiCat">
+	                    <!-- 사이트 이름 -->
                     <span>S h o w T i C a t</span>
                     </a>
                 </h1>
                 <!-- 회원관련창 -->
+	            <ul class="member">
                 <c:if test="${member != null}">
-	                <ul class="member">
 	                    <il>
 	                        <a href="${path}/jayoung/logout.do">
 	                        	<img src="${path}/images/login.png" alt="logout">
@@ -37,10 +37,8 @@
 	                            <span>MyPage</span>
 	                        </a>
 	                    </il>
-	                </ul><!-- member -->
 				</c:if>	
                 <c:if test="${member == null}">
-	                <ul class="member">
 	                    <il>
 	                        <a href="${path}/jayoung/login.do">
 	                        	<img src="${path}/images/login.png" alt="login">
@@ -59,11 +57,11 @@
 	                            <span>MyPage</span>
 	                        </a>
 	                    </il>
-	                </ul><!-- member -->
 				</c:if>	
+	            </ul><!-- member -->
             </div><!-- contents -->
         </div><!-- headerContents -->
-
+        
         <div class="nav">
             <div class="contents">
                 <ul class="nav_menu">
@@ -74,23 +72,23 @@
                         <h2><a href="${path}/jayoung/showList.do?category=공연">공연</a></h2>
                     </li>
                     <li>
-                    	<%-- date 수정필요 --%>
-                        <h2><a href="placeDetail.do?place_num=1020&date=2022-06-11">극장</a></h2>
+                        <h2><a href="${path}/jayoung/placeDetail.do?place_num=1020&date=${sysdate}">극장</a></h2>
                     </li>
                     <li>
                         <h2><a href="#">예매</a></h2>
                     </li>
-                    <li>
-                        <h2></h2>
-                    </li>
-                    <li class="sherch">
-                        <h2><input id="search" value="${word}">
-                            <a href="${path}/jayoung/result.do?word=${word}">검색</a>
-                        </h2>
+                    <li><h2></h2></li>
+                    <li><h2></h2></li>
+                    <li class="search">
+                        <form action="result.do" id="formH">
+							<input type="text" name="word" id="searchH" value="${word}">
+							<input class="btn btn-light btn-sm" type="submit" value="검색">
+						</form>
                     </li>
                 </ul>
             </div><!-- contens -->
         </div><!-- nav -->
     </div><!-- header -->
+
 </body>
 </html>

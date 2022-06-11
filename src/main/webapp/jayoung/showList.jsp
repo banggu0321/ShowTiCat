@@ -13,6 +13,7 @@
 <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.slim.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <link rel="stylesheet" href="css/common.css">
 
 <script>
@@ -55,8 +56,8 @@ function showDetail() {
 .box {
 	border: 2px gray solid;
 	display: inline-block;
-	margin: 30px;
-	padding: 10px;
+	margin: 20px;
+	padding: 13px;
 }
 .info {
 	margin: 10px 20px 10px 20px;
@@ -79,22 +80,18 @@ a:hover {
 <body>
 <c:set var="path" value="${pageContext.request.contextPath}"/>
 <jsp:include page="header.jsp"/>
-<h4>Show List | 
-	<a href="showAllList.do">전체보기</a> | 
-	<a href="showList.do?category=영화">영화</a> | 
-	<a href="showList.do?category=공연">공연</a> |
-</h4>
-<hr>
-<c:forEach items="${showList}" var="show">
-<div class="box">
-	<div class="poster" code="${show.show_code}">
-		<img alt="${show.show_name}" src="${path}/images/${show.poster}" width="250px" height="335px">
-		<button class="detail btn btn-outline-secondary">상세보기</button>
+<div class="contents">
+	<c:forEach items="${showList}" var="show">
+	<div class="box">
+		<div class="poster" code="${show.show_code}">
+			<img alt="${show.show_name}" src="${path}/images/${show.poster}" width="250px" height="335px">
+			<button class="detail btn btn-outline-secondary">상세보기</button>
+		</div>
+		<p class="info">${show.show_name}</p>
+		<p class="info">${show.opening_date} OPEN</p>
+		<button class="reservBtn btn btn-outline-primary btn-sm reservBtn" code="${show.show_code}">예매하기</button>
 	</div>
-	<p class="info">${show.show_name}</p>
-	<p class="info">${show.opening_date} OPEN</p>
-	<button class="reservBtn btn btn-outline-primary btn-sm reservBtn" code="${show.show_code}">예매하기</button>
+	</c:forEach>
 </div>
-</c:forEach>
 </body>
 </html>

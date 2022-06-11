@@ -33,10 +33,12 @@ function login() {
 </head>
 <body>
 <jsp:include page="header.jsp"/>
-<div id="welcome">
-<p>${m_id}님 회원가입이 완료되었습니다.</p>
-<p>환영합니다!</p>
-<button class="btn btn-light" id="login">로그인</button>
+<div class="contents">
+	<div id="welcome">
+	<p>${m_id}님 회원가입이 완료되었습니다.</p>
+	<p>환영합니다!</p>
+	<button class="btn btn-light" id="login">로그인</button>
+	</div>
 </div>
 </body>
 </html>

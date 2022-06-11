@@ -77,33 +77,33 @@ function checkNum() {
 </head>
 <body>
 <jsp:include page="header.jsp"/>
-<h4>FIND PASSWORD</h4> 
-<hr>
-<form action="findPW.do" method="post" id="findForm">
-<div class="form-group">
-	<label>ID </label>
-	<input class="form-control" type="text" name="m_id" id="m_id">
-</div>
-
-<div class="form-group">
-	<label>이름 </label>
-	<input class="form-control" type="text" name="m_name" id="m_name">
-</div>
-
-<div class="form-group">
-	<label>휴대전화 </label>
-	<input class="form-control" type="text" name="phone" id="phone" placeholder="하이픈(-)제외 11자리 입력" pattern="[01]{3}[0-9]{8}">
-	<input class="btn btn-outline-danger" type="button" id="sendSMS" value="인증번호받기">
-</div>
+<div class="contents">
+	<form action="findPW.do" method="post" id="findForm">
+	<div class="form-group">
+		<label>ID </label>
+		<input class="form-control" type="text" name="m_id" id="m_id">
+	</div>
 	
-<div id="check">
-	<label>인증번호 </label>
-	<input class="form-control" type="text" name="random" id="random" placeholder="인증번호 입력" >
-	<input class="btn btn-outline-danger" type="button" id="checkNum" value="인증하기">
-	<span id="msg"></span>
+	<div class="form-group">
+		<label>이름 </label>
+		<input class="form-control" type="text" name="m_name" id="m_name">
+	</div>
+	
+	<div class="form-group">
+		<label>휴대전화 </label>
+		<input class="form-control" type="text" name="phone" id="phone" placeholder="하이픈(-)제외 11자리 입력" pattern="[01]{3}[0-9]{8}">
+		<input class="btn btn-outline-danger" type="button" id="sendSMS" value="인증번호받기">
+	</div>
+		
+	<div id="check">
+		<label>인증번호 </label>
+		<input class="form-control" type="text" name="random" id="random" placeholder="인증번호 입력" >
+		<input class="btn btn-outline-danger" type="button" id="checkNum" value="인증하기">
+		<span id="msg"></span>
+	</div>
+	
+	<input class="btn btn-success" type="submit" value="비밀번호 찾기">
+	</form>
 </div>
-
-<input class="btn btn-success" type="submit" value="비밀번호 찾기">
-</form>
 </body>
 </html>

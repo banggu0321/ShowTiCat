@@ -13,6 +13,7 @@
 <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.slim.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <link rel="stylesheet" href="css/common.css">
 
 <script>
@@ -52,21 +53,21 @@ function reset() {
 </head>
 <body>
 <jsp:include page="header.jsp"/>
-<h4>FIND PASSWORD</h4> 
-<hr>
-<form action="resetPW.do" method="post" id="resetPW">
-<input type="hidden" name="m_id" value="${member.m_id}">
-<div class="form-group">
-	<label>PASSWORD </label>
-	<input class="form-control" type="text" name="m_pw" id="m_pw" placeholder="새로운 비밀번호">
+<div class="contents">
+	<form action="resetPW.do" method="post" id="resetPW">
+	<input type="hidden" name="m_id" value="${m_id}">
+	<div class="form-group">
+		<label>PASSWORD </label>
+		<input class="form-control" type="text" name="m_pw" id="m_pw" placeholder="새로운 비밀번호">
+	</div>
+	
+	<div class="form-group">
+		<label>PASSWORD CHECK</label>
+		<input class="form-control" type="text" id="pw2" placeholder="비밀번호 확인">
+		<span id="pwMsg"></span>
+	</div>
+	<input type="submit" class="btn btn-success" type="submit" value="비밀번호 변경하기">
+	</form>
 </div>
-
-<div class="form-group">
-	<label>PASSWORD CHECK</label>
-	<input class="form-control" type="text" id="pw2" placeholder="비밀번호 확인">
-	<span id="pwMsg"></span>
-</div>
-<input type="submit" class="btn btn-success" type="submit" value="비밀번호 변경하기">
-</form>
 </body>
 </html>

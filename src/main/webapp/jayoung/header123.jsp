@@ -6,13 +6,22 @@
 <head>
 <meta charset="UTF-8">
 <style>
-.left {
+/* .left {
 	float:left;
 	padding-right: 20px;
 }
 .right {
 	float:right;
 	padding-right: 20px;
+} */
+.container, .item {
+display: inline-block;
+justify-content: space-evenly;
+flex-basis: 200px;
+width: 980px;
+}
+.item {
+
 }
 </style>
 <script>
@@ -52,13 +61,13 @@ h1 a {
 </head>
 <body>
 <h1 class="left" id="mainH"><a href="main.go">Show TiCat</a></h1>
-<div>
-	<span class="right">
+<div class="container">
+	<div class="item">
 		<c:if test="${member != null}">
 			<p id="user">${member.m_name}님 로그인</p>
 		</c:if>	
-	</span>
-	<span class="right">
+	</div>
+	<div class="item">
 		<c:if test="${member != null}">
 			<button class="btn btn-light" id="logoutH">로그아웃</button>			
 			<button class="btn btn-light" id="myPage">마이페이지</button>
@@ -67,11 +76,13 @@ h1 a {
 			<button class="btn btn-light" id="loginH">로그인</button>
 			<button class="btn btn-light" id="joinH">회원가입</button>
 		</c:if>
-	</span>
+	</div>
+	<div class="item">
 	<form action="result.do" class="right" id="formH">
 		<input class="form-control" type="text" name="word" id="searchH" value="${word}">
-		<input class="btn btn-success" type="submit" value="검색">
+		<input class="btn btn-success" type="button" value="검색">
 	</form>
+	</div>
 <hr>
 </div>
 </body>

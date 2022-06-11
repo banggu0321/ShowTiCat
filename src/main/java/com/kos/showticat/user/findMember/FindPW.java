@@ -40,8 +40,10 @@ public class FindPW extends HttpServlet {
 			writer.println("<script>alert('일치하는 회원 정보가 없습니다. 확인 후 다시 시도해주세요.');  location.href='findPW.do';</script>");
 			writer.close();
 		}else {
+			request.setAttribute("m_id", m_id);
 			
-			response.sendRedirect("resetPW.do");
+			RequestDispatcher rd = request.getRequestDispatcher("resetPW.jsp");
+			rd.forward(request, response);
 		}
 	}
 

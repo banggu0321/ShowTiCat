@@ -1,10 +1,5 @@
 @charset "UTF-8";
-	
-.contents {
-    width: 980px;
-    height: 100%;
-    margin: 0 auto;
-}
+
 /*===========================================================================
 common
 =============================================================================*/
@@ -19,10 +14,6 @@ html,body,h1,ol,ul,li,div,h2 {
     padding: 0;
 }
 
-/* body * {
-    outline: 3px dotted tomato;
-} */
-
 a {
     color: black;
     text-decoration: none;
@@ -32,7 +23,10 @@ ul,ol,li{
     list-style: none;
  
 }
-
+a:hover {
+	color: black;
+    text-decoration: none;
+}
 /*===========================================================================
 header
 =============================================================================*/
@@ -62,12 +56,14 @@ header
 .header h1 img {
     width: 117px;
     height: 100%;
+
 }
 
 .header h1 span {
-    font-size: 18.5px;
+	margin-top: 10px;
+    font-size: 20px;
+    font-weight: bold;
 }
-
 
 .member {
     width: 400px;
@@ -99,13 +95,20 @@ header
 nav
 =============================================================================*/
 .nav {
-    margin: -50px;
-    height: 40px;
+    margin: -68px;
+    height: 65px;
     padding: 5px;
+    border-bottom: 1px solid #ddd;
 }
 
 .nav a {
     font-size: 16px;
+    font-weight: bold;
+}
+
+.nav a:hover {
+    font-size: 18px;
+    font-weight: bold;
 }
 
 .nav li {
@@ -114,90 +117,16 @@ nav
 }
 
 .nav_menu {
-    width: 980px;
+    width: 1300px;
     display: inline-flex;
 }
 
-.nav_menu .sherch {
-    display: flex;
+.nav_menu .search form {
+	margin-top: 8px;
+	display: inline-flex;
 }
 
-.nav_menu input {
-    width: 65%;
+.nav_menu .search .btn {
+	margin-left: 5px;
+	font-weight: bold;
 }
-
-/*===========================================================================
-container
-=============================================================================*/
-.contaniner {
-    width: 100%;
-    height: 500px;
-    position: relative;
-    background-color: #000;
-
-}
-
-.banner {
-    width: 100%;
-    height: 100%;
-    background: url(images/exPoster1.png) no-repeat center;
-    background-size: 50% 50%;
- 
-}
-
-/*===========================================================================
-chart
-=============================================================================*/
-.chart {
-    width: 100%;
-    height: fit-content;
-}
-
-.chart .contents {
-    height: 50%;
-    padding: 50px 30px 60px;
-
-}
-
-.chart a {
-    font-size: 26px;
-}
-
-.movieChart {
-    margin: 0 0 20px 0;
-}
-
-.posters {
-    height: 295px;
-    display: flex;
-    justify-content: space-around;
-}
-
-.posters :nth-child(2) {
-    margin: 0 32px;
-
-}
-
-.posters :nth-child(4) {
-    margin: 0 32px;
-
-}
-
-.posterWrap {
-    width: 20%;
-
-}
-
-.posterWrap img {
-    /* 이미지 임시 표시 */
-    outline: 1px solid #708090;
-
-}
-
-.movieImage {
-    height: 80%;
-
-    /* 이미지 임시 표시 */
-    outline: 1px solid #708090;
-}
-	
