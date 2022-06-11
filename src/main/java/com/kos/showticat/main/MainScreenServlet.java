@@ -27,41 +27,40 @@ public class MainScreenServlet extends HttpServlet {
 		List<ShowVO> showList1 = service.selectScreenMovie();
 		List<ShowVO> showList2 = service.selectScreenPer();
 		// System.out.println(showList1);
-		
-		String filename1 = "";
-		String filename2 = "";
-		String image_dir = request.getSession().getServletContext().getRealPath("/") + "images"+ java.io.File.separator;
-		File file1 = new File(image_dir + filename1);
-		File file2 = new File(image_dir + filename2);
-		String notReady = "notReady.jpg";
+		// System.out.println(showList2);
 		// System.out.println(showList1.get(0).getPoster());
+		// System.out.println(showList1.get(1).getPoster());
+		// System.out.println(showList2.get(0).getPoster());
+		// System.out.println(showList2.get(1).getPoster());
 
-		for (int i = 0; i <= 1; i++) {
-			filename1 = showList1.get(i).getPoster();
-			filename2 = showList2.get(i).getPoster();
-			if (file1.exists() == false) {
-				showList1.get(i).setPoster(notReady);
-			} else if (file2.exists() == false) {
-				showList2.get(i).setPoster(notReady);
-			}
-		}
-		/*
-		 * List<ShowVO> showListnone = new ArrayList<ShowVO>(); ShowVO showListnone1 =
-		 * new ShowVO("notReady", "준비중", "notReady.jpg");
-		 */
-		/*
-		 * if (showList1.get(0).getPoster() == null) { request.setAttribute("showList1",
-		 * showListnone1); } else if (showList1.get(1).getPoster() == null) {
-		 * request.setAttribute("showList2", showListnone1); } else {
-		 * 
-		 * }
-		 */
+		String notReady = "notReady.jpg";
+		String image_dir = request.getSession().getServletContext().getRealPath("/") + "images"
+				+ java.io.File.separator;
+		File file1 = new File(image_dir + showList1.get(0).getPoster());
+		File file2 = new File(image_dir + showList1.get(1).getPoster());
+		File file3 = new File(image_dir + showList2.get(0).getPoster());
+		File file4 = new File(image_dir + showList2.get(1).getPoster());
+		//System.out.println(file1.exists());
+		//System.out.println(file2.exists());
+		//System.out.println(file3.exists());
+		//System.out.println(file4.exists());
+
+		if (file1.exists() == false) {
+			showList1.get(0).setPoster(notReady);
+		} else{}
+		if (file2.exists() == false) {
+			showList1.get(1).setPoster(notReady);
+		} else{}
+		if (file3.exists() == false) {
+			showList2.get(0).setPoster(notReady);
+		} else{}
+		if (file4.exists() == false) {
+			showList2.get(1).setPoster(notReady);
+		} else {}
 
 		request.setAttribute("showList1", showList1);
 		request.setAttribute("showList2", showList2);
-
 		RequestDispatcher rd = request.getRequestDispatcher("mainTabDisplay.jsp");
 		rd.forward(request, response);
-
 	}
 }
