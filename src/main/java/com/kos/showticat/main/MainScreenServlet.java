@@ -38,7 +38,7 @@ public class MainScreenServlet extends HttpServlet {
 		String image_dir = request.getSession().getServletContext().getRealPath("/") + "images"
 				+ java.io.File.separator;
 
-		System.out.println(showList2.size());
+		//System.out.println(showList2.size());
 
 		if (showList1.size() == 0) {
 			showList1.add(noneshow);
