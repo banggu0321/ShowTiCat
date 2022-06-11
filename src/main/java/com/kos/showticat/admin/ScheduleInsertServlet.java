@@ -46,7 +46,8 @@ public class ScheduleInsertServlet extends HttpServlet {
 		request.setCharacterEncoding("utf-8");
 
 		ScheduleVO sc = makeSc(request);
-		ScheduleService service = new ScheduleService();
+		System.out.println(sc);
+		ScheduleService service = new ScheduleService(); //2022-06-24T00:19
 		int result = service.insertSchedule(sc);
 		//request.setAttribute("message", result>0?"성공":"실패");
 		
@@ -68,7 +69,8 @@ public class ScheduleInsertServlet extends HttpServlet {
 	}
 	private Date readDate(HttpServletRequest request, String column) {
 		String data = request.getParameter(column);
-		return com.kos.showticat.util.DateUtil.convertToDate(data);
+		//System.out.println(data);
+		return com.kos.showticat.util.DateUtil.convertToDateTime(data);
 	}
 	private int readInt(HttpServletRequest request, String column) {
 		String data = request.getParameter(column);
