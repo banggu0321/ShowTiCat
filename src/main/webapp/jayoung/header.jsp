@@ -5,74 +5,92 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<style>
-.left {
-	float:left;
-	padding-right: 20px;
-}
-.right {
-	float:right;
-	padding-right: 20px;
-}
-</style>
-<script>
-$(function() {	
-	$("#loginH").on("click",login);
-	$("#logoutH").on("click",logout);
-	$("#joinH").on("click",join);
-	$("#myPage").on("click",myPage);
-	
-})
-
-function login() {
-	location.href="login.do";
-}
-
-function logout() {
-	location.href="logout.do";
-}
-
-function join() {
-	location.href="insert.do";
-}
-
-function myPage() {
-	location.href="../jjjjjjjjyyyyyyyy/memberPage.jsp";
-}
-</script>
-
-<style>
-a:hover {
-	text-decoration: none;
-}
-h1 a {
-	color:black;
-}
-</style>
+<title>Insert title here</title>
+<link rel="stylesheet" href="css/index.css">
 </head>
+
 <body>
-<h1 class="left" id="mainH"><a href="main.go">Show TiCat</a></h1>
-<div>
-	<span class="right">
-		<c:if test="${member != null}">
-			<p id="user">${member.m_name}님 로그인</p>
-		</c:if>	
-	</span>
-	<span class="right">
-		<c:if test="${member != null}">
-			<button class="btn btn-light" id="logoutH">로그아웃</button>			
-			<button class="btn btn-light" id="myPage">마이페이지</button>
-		</c:if>
-		<c:if test="${member == null}">
-			<button class="btn btn-light" id="loginH">로그인</button>
-			<button class="btn btn-light" id="joinH">회원가입</button>
-		</c:if>
-	</span>
-	<form action="result.do" class="right" id="formH">
-		<input class="form-control" type="text" name="word" id="searchH" value="${word}">
-		<input class="btn btn-success" type="submit" value="검색">
-	</form>
-<hr>
-</div>
+<c:set var="path" value="${pageContext.request.contextPath}"/>
+    <div class="header">
+        <!-- 헤더 컨텐츠 -->
+        <div class="headerContents">
+            <div class="contents">
+                <!-- 로고 및 사이트 이름 -->
+                <h1>
+                    <a href="${path}/jayoung/index.jsp"><img src="${path}/images/Ticat.png" alt="logo">
+                    <!-- 사이트 이름 -->
+                    <span>S h o w T i C a t</span>
+                    </a>
+                </h1>
+                <!-- 회원관련창 -->
+                <c:if test="${member != null}">
+	                <ul class="member">
+	                    <il>
+	                        <a href="${path}/jayoung/logout.do">
+	                        	<img src="${path}/images/login.png" alt="logout">
+	                            <span>로그아웃</span>
+	                        </a>
+	                    </il>
+	                    <il>
+	                        <a href="${path}/jayoung/login.do">
+	                        <img src="${path}/images/mypage.png" alt="mypage">
+	                            <span>MyPage</span>
+	                        </a>
+	                    </il>
+	                </ul><!-- member -->
+				</c:if>	
+                <c:if test="${member == null}">
+	                <ul class="member">
+	                    <il>
+	                        <a href="${path}/jayoung/login.do">
+	                        	<img src="${path}/images/login.png" alt="login">
+	                            <span>로그인</span>
+	                        </a>
+	                    </il>
+	                    <il>
+	                        <a href="${path}/jayoung/insert.do">
+	                        <img src="${path}/images/register.png" alt="register">
+	                            <span>회원가입</span>
+	                        </a>
+	                    </il>
+	                    <il>
+	                        <a href="${path}/jjjjjjjjyyyyyyyy/memberPage.jsp">
+	                        <img src="${path}/images/mypage.png" alt="mypage">
+	                            <span>MyPage</span>
+	                        </a>
+	                    </il>
+	                </ul><!-- member -->
+				</c:if>	
+            </div><!-- contents -->
+        </div><!-- headerContents -->
+
+        <div class="nav">
+            <div class="contents">
+                <ul class="nav_menu">
+                    <li>
+                        <h2><a href="${path}/jayoung/showList.do?category=영화">영화</a></h2>
+                    </li>
+                    <li>
+                        <h2><a href="${path}/jayoung/showList.do?category=공연">공연</a></h2>
+                    </li>
+                    <li>
+                    	<%-- date 수정필요 --%>
+                        <h2><a href="placeDetail.do?place_num=1020&date=2022-06-11">극장</a></h2>
+                    </li>
+                    <li>
+                        <h2><a href="#">예매</a></h2>
+                    </li>
+                    <li>
+                        <h2></h2>
+                    </li>
+                    <li class="sherch">
+                        <h2><input id="search" value="${word}">
+                            <a href="${path}/jayoung/result.do?word=${word}">검색</a>
+                        </h2>
+                    </li>
+                </ul>
+            </div><!-- contens -->
+        </div><!-- nav -->
+    </div><!-- header -->
 </body>
 </html>

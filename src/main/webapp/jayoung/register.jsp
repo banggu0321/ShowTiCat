@@ -23,6 +23,7 @@ $(function() {
 	$("#m_id").on("keyup",checkID);
 	$("#m_pw").on("keyup",checkPW);
 	$("#pw2").on("keyup",checkPW);
+	$("#phone").on("keyup",checkPhone);
 	$("#select").on("change",selectChange);
 	$("#resetBtn").on("click",reset);
 	$("#sendSMS").on("click",sendSMS);
@@ -85,13 +86,33 @@ function checkID() {
 	});
 }
 
+function checkPhone() {
+	var phone = $("#phone").val().trim();
+	if(phone.length < 11) {
+		$("#phoneMsg").html("연락처는 필수입력입니다.");
+		return;
+	}
+	$.ajax({
+		url:"phoneCheck.do",
+		data:{"phone":phone},
+		success: function(resData) {
+			if(resData==0) {
+				$("#phoneMsg").html("사용가능한 연락처입니다.");
+			}else {
+				$("#phoneMsg").html("사용불가한 연락처입니다.");	
+			}
+		},
+		fail: function() {}
+	});
+}
+
 function isChecked() {
 	var idMsg = $("#idMsg").html().trim();
 	var pwMsg = $("#pwMsg").html().trim();
 
 	var name = $("#m_name").val();
 	var email = $("#email1").val();
-	var phone = $("#phone").val();
+	var phoneMsg = $("#phoneMsg").val();
 	var random = $("#random").val();
 	
 	if(idMsg != "사용가능한 ID입니다.") {
@@ -106,7 +127,7 @@ function isChecked() {
 	}else if(email==null||email==''){
 		$("#email").focus();
 		return false;
-	}else if(phone==null||phone==''){
+	}else if(phoneMsg != "사용가능한 연락처입니다."){
 		$("#phone").focus();
 		return false;
 	}else if(random==null||random==''){
@@ -128,14 +149,14 @@ function selectChange() {
 var code="";
 function sendSMS() {
 	var phone = $("#phone").val();
-	if(phone==null||phone=='') {
-		alert("연락처를 입력해주세요.");
+	var phoneMsg = $("#phoneMsg").html();
+	if(phoneMsg != "사용가능한 연락처입니다."){
+		alert("올바른 연락처를 입력해주세요.");
 		$("#phone").focus();
 		return;
 	}
 
 	$("#check").show();
-	
 	$.ajax({
 		url:"sendSMS.do",
 		data:{"phone":phone},
@@ -213,6 +234,7 @@ function reset() {
 	<label>PHONE </label>
 	<input class="form-control" type="text" name="phone" id="phone" placeholder="하이픈(-)제외 11자리 입력" pattern="[01]{2}[01679]{1}[0-9]{7,8}">
 	<input class="btn btn-outline-danger" type="button" id="sendSMS" value="인증번호받기">
+	<span id="phoneMsg"></span>
 </div>
 
 <div id="check" class="form-group">

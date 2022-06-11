@@ -23,7 +23,7 @@ public class PlaceDetail extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		int place_num = Integer.parseInt(request.getParameter("place_num"));
-		/* Date show_start = DateUtil.convertToDate(request.getParameter("date")); */
+		Date show_start = DateUtil.convertToDate(request.getParameter("date"));
 
 		PlaceService ps = new PlaceService();
 		TheaterService ts = new TheaterService();
@@ -34,7 +34,7 @@ public class PlaceDetail extends HttpServlet {
 		request.setAttribute("placeList", ps.selectAll()); 
 		request.setAttribute("showList", sss.selectAll());
 		request.setAttribute("theaterList", ts.selectByPlace(place_num));
-		request.setAttribute("list", ss.selectByTheater(place_num/* , show_start */));
+		request.setAttribute("list", ss.selectByTheater(place_num, show_start));
 		request.setAttribute("dateList", DateUtil.dateList());
 		
 		RequestDispatcher rd = request.getRequestDispatcher("placeDetail.jsp");

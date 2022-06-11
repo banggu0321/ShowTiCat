@@ -37,7 +37,7 @@ function sList() {
 
 function scheduleList() {
 	
-	location.href="placeDetail.do?place_num=1020";
+	location.href="placeDetail.do?place_num=1020&date=${sysdate}";
 }
 
 </script>

@@ -36,7 +36,7 @@ a:hover {
 .show {
 	display: inline-block;
 }
-.reservBtn {
+.reservBtn, .dateBtn {
 	margin-right: 10px;
 }
 .title {
@@ -56,8 +56,8 @@ function reservation() {
 }
 
 function changeDate() {
-	/*var date = $(this).attr("date");
-	location.href="placeDetail.do?place_num="+${place.place_num} +"&date="+date ;*/
+	var date = $(this).attr("date");
+	location.href="placeDetail.do?place_num="+${place.place_num} +"&date="+date ;
 }
 </script>
 </head>
@@ -69,15 +69,16 @@ function changeDate() {
 <%-- 극장목록 --%>
 <c:forEach items="${placeList}" var="place" varStatus="s">
 	<c:if test="${s.first}">
-		| <a href="placeDetail.do?place_num=${place.place_num}">
+		| <a href="placeDetail.do?place_num=${place.place_num}&date=${dateList[0]}">
 		ShowTiCat ${place.place_name}</a> |
 	</c:if>
 	<c:if test="${s.first==false}">
-		 <a href="placeDetail.do?place_num=${place.place_num}">
+		 <a href="placeDetail.do?place_num=${place.place_num}&date=${dateList[0]}">
 		 ShowTiCat ${place.place_name}</a> |
 	</c:if>
 </c:forEach>
 <hr>
+
 <%-- 극장정보 --%>
 <img class="left img" src="${path}/images/theater.webp" width="300px" height="400px">
 <div class="left">
@@ -91,7 +92,10 @@ function changeDate() {
 	<button class="btn btn-outline-dark dateBtn" date="${date}">${date}</button>
 </c:forEach>
 <hr>
+
 <%-- 상영스케줄 --%>
+<c:if test="${empty list}"><h4>해당 일자에 상영중인 영화 & 공연이 없습니다.</h4></c:if>
+
 <c:forEach items="${list}" var="value" varStatus="s">
 <c:forEach items="${theaterList}" var="theater" varStatus="v">
 <c:forEach items="${showList}" var="show">
@@ -105,7 +109,7 @@ function changeDate() {
 		<p>${v.count}관 | ${theater.theater_name} | 총 ${theater.last_seat}석</p>
 		<div class="show">
 			<button class="btn btn-outline-primary reservBtn" num="${value.schedule_num}">
-				${value.show_name}<br>${value.show_start}<br>${value.start_time}<br>좌석 : /${theater.last_seat}
+				${value.show_start}<br>${value.start_time}<br>좌석 : /${theater.last_seat}
 			</button>
 		
 	</c:if>
@@ -116,7 +120,7 @@ function changeDate() {
 			<%-- 상영관이 같은경우 --%>
 			<c:if test="${list.get(s.index).theater_num==list.get(s.index-1).theater_num}">
 				<button class="btn btn-outline-primary reservBtn" num="${value.schedule_num}">
-					${value.show_name}<br>${value.show_start}<br>${value.start_time}<br>좌석 : /${theater.last_seat}
+					${value.show_start}<br>${value.start_time}<br>좌석 : /${theater.last_seat}
 				</button>
 			</c:if>
 
@@ -126,7 +130,7 @@ function changeDate() {
 				<p>${v.count}관 | ${theater.theater_name} | 총 ${theater.last_seat}석</p>
 				<div class="show">
 				<button class="btn btn-outline-primary reservBtn" num="${value.schedule_num}">
-					${value.show_name}<br>${value.show_start}<br>${value.start_time}<br>좌석 : /${theater.last_seat}
+					${value.show_start}<br>${value.start_time}<br>좌석 : /${theater.last_seat}
 				</button>
 			</c:if>
 		</c:if>
@@ -141,7 +145,7 @@ function changeDate() {
 			<p>${v.count}관 | ${theater.theater_name} | 총 ${theater.last_seat}석</p>
 			<div class="show">
 			<button class="btn btn-outline-primary reservBtn" num="${value.schedule_num}">
-				${value.show_name}<br>${value.show_start}<br>${value.start_time}<br>좌석 : /${theater.last_seat}
+				${value.show_start}<br>${value.start_time}<br>좌석 : /${theater.last_seat}
 			</button>
 		</c:if>
 	</c:if>
@@ -150,6 +154,6 @@ function changeDate() {
 </c:forEach>
 </c:forEach>
 </div>
-<hr>
+
 </body>
 </html>

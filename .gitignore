@@ -2,7 +2,7 @@
 /src/main/webapp/WEB-INF/wallet_db/
 
 # Eclipse Core      
-.ShowTiCat
+.project
 
 # JDT-specific (Eclipse Java Development Tools)     
 .classpath
