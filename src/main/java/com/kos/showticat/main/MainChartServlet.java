@@ -22,7 +22,7 @@ public class MainChartServlet extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		System.out.println("aa");
+		// System.out.println("aa");
 		TabShowService service = new TabShowService();
 		List<ShowVO> showList1 = service.selectChartMovie();
 		List<ShowVO> showList2 = service.selectChartPer();
@@ -34,8 +34,29 @@ public class MainChartServlet extends HttpServlet {
 		// System.out.println(showList2.get(1).getPoster());
 
 		String notReady = "notReady.jpg";
+		ShowVO noneshow = new ShowVO("#", "준비중", notReady); // show_code가 #이면 다시 메인으로
 		String image_dir = request.getSession().getServletContext().getRealPath("/") + "images"
 				+ java.io.File.separator;
+
+		System.out.println(showList2.size());
+
+		if (showList1.size() == 0) {
+			showList1.add(noneshow);
+			showList1.add(noneshow);
+		} else if (showList1.size() == 1) {
+			showList1.add(noneshow);
+		} else {
+		}
+		
+		if (showList2.size() == 0) {
+			showList2.add(noneshow);
+			showList2.add(noneshow);
+		} else if (showList2.size() == 1) {
+			showList2.add(noneshow);
+		} else {
+		}
+		//System.out.println(showList2);
+
 		File file1 = new File(image_dir + showList1.get(0).getPoster());
 		File file2 = new File(image_dir + showList1.get(1).getPoster());
 		File file3 = new File(image_dir + showList2.get(0).getPoster());
