@@ -13,42 +13,7 @@
 <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.slim.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
-<link rel="stylesheet" href="common.css">
-
-
-<style>
-.left {
-	float: left;
-}
-.poster {
-	padding: 20px;
-}
-.title {
-	padding-top: 20px;
-	font-size: 50px;
-	font-weight: bold;
-}
-.info {
-	font-size: 20px;
-}
-.deBtn {
-	font-size: 20px;
-	margin-right: 20px;
-}
-pre {
-	font-size: 15px;
-}
-a:hover {
-	text-decoration: none;
-}
-.url {
-	color: black;
-}
-.modal-body {
-	margin: 0 auto;
-}
-</style>
-
+<link rel="stylesheet" href="css/common.css">
 
 <script>
 $(function() {
@@ -61,15 +26,56 @@ function reservation() {
 }
 
 function stop() {
-	$("iframe")[0].contentWindow.postMessage('{"event":"command","func":"stopVideo","args":""}', '*');
+	
 }
 </script>
+
+<style>
+.left {
+	float: left;
+}
+.poster {
+	padding: 20px;
+}
+.title {
+	padding-top: 20px;
+	font-size: 30px;
+	font-weight: bold;
+}
+.info {
+	font-size: 18px;
+}
+.deBtn {
+	font-size: 20px;
+	margin-top: 50px;
+	margin-right: 20px;
+}
+a:hover {
+	text-decoration: none;
+}
+.url {
+	color: black;
+}
+.modal-body {
+	margin: 0 auto;
+}
+.summary {
+	white-space: pre;
+	padding: 5px 0px 5px 20px;
+	font-size: 18px;
+}
+.t {
+	padding: 5px 0px 5px 20px;
+}
+</style>
+
 </head>
 <body>
-<h1 class="left">SHOW DETAIL</h1>
+<c:set var="path" value="${pageContext.request.contextPath}"/>
 <jsp:include page="header.jsp"/>
+<h4>SHOW DETAIL</h4>
 <hr>
-<img class="left poster" alt="${show.show_name}" src="../${show.poster}" width="300px" height="400px">
+<img class="left poster" alt="${show.show_name}" src="${path}/images/${show.poster}" width="300px" height="400px">
 <div class="left">
 	<p class="title">${show.show_name}</p>
 	<hr>
@@ -82,19 +88,25 @@ function stop() {
 			<c:if test="${s.last&&cast.cast_url!=null}">
 				<a href="${cast.cast_url}" class="url" target="_blank">${cast.cast_name}</a>
 			</c:if>
-			<c:if test="${cast.cast_url==null}">${cast.cast_name}</c:if>
+			<c:if test="${s.last==false&&cast.cast_url==null}">${cast.cast_name},</c:if>
+			<c:if test="${s.last&&cast.cast_url==null}">${cast.cast_name}</c:if>
 		</c:forEach>
 	</p>
 	<p class="info">상영시간 : ${show.show_time}분</p>
 	<p class="info">개봉일 : ${show.opening_date}</p>
 	<button class="btn btn-outline-primary deBtn" data-toggle="modal" data-target="#myModal">예고편보기</button>
 	<button class="btn btn-primary deBtn" id="reservBtn">예매하기</button>
-
 </div>
 <hr>
-<c:import url="showSummary.jsp?show=${show}"/>
+<h4 class="t">줄거리</h4>
+<p class="summary">${show.summary}</p>
+<hr>
+<h4 class="t">예매자 통계</h4>
+<c:import url="showChart.jsp"></c:import>
 
-<!-- The Modal -->
+
+
+<!-- 예고편 모달 -->
 <div class="modal" id="myModal">
   <div class="modal-dialog modal-lg">
     <div class="modal-content">
@@ -107,7 +119,7 @@ function stop() {
       
       <!-- Modal body -->
       <div class="modal-body">
-        <iframe width="560" height="315" src="https://www.youtube.com/embed/${show.trailer}?autoplay=1&mute=1" 
+        <iframe width="650" height="366" src="https://www.youtube.com/embed/${show.trailer}?autoplay=1&mute=1" 
         	title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
       </div>
         
