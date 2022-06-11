@@ -12,6 +12,10 @@ public class ScheduleService {
 
 	ScheduleDAO scdao = new ScheduleDAO();
 	
+	public List<ChartVO> selectChartShowCode(){
+		return scdao.selectChartShowCode();
+	}
+	
 	public int selectMembersPointByID(String mID) {
 		return scdao.selectMembersPointByID(mID);
 	}

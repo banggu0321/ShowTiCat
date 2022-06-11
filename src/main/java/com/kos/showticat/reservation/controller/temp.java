@@ -10,6 +10,7 @@ import java.util.Calendar;
 import java.util.List;
 
 import com.kos.showticat.reservation.dao.temp.ScheduleService;
+import com.kos.showticat.reservation.dao.temp.ChartVO;
 import com.kos.showticat.reservation.dao.temp.MembersVO;
 import com.kos.showticat.reservation.dao.temp.PlaceVO;
 import com.kos.showticat.reservation.dao.temp.ReservationVO;
@@ -27,15 +28,15 @@ public class temp {
 //		f7();  //place talbe select all
 		
 //		f6(); //schedule table insert row
-//		f5();  //reservation table Á¶È¸
-//		f4(); //1~2: ÀÎ¿ø¼ö ¼±ÅÃ(¼öÁ¤)
-//		f3beta(); //reservation number¿¡ µû¸¥ paymentYN update
-//		f3(); 	//2(³ª¸ÓÁö update).ÀÎ¿ø(ÁÂ¼®)¼±ÅÃ, ÃÑºñ¿ë(½ºÄÉÁì³Ñ¹ö-> °¡°Ý, ÀÎ¿ø ¼±ÅÃ-> ÃÑ ºñ¿ë) 
-//		f2(); //reservation tableÀÇ (½ºÄÉÁì ³Ñ¹ö¿Í reservation dateÀ» ¸ÕÀú °áÁ¤), ³ª¸ÓÁö(ÀÓ½Ã °ª) & reservation detail tableÀÇ ÇØ´çÇÏ´Â row ÀÛ¼º
-		//1.[½ºÄÉÁì(¿µÈ­, ±ØÀå, ³¯Â¥, ½Ã°£ ¼±ÅÃ)->] ½ºÄÉÁì ³Ñ¹ö(reservationNum, m_id, scheduleNum, reservationDate)&³ª¸ÓÁö(temp °ª) ÀÔ·Â-> ½ºÄÉÁì_detail table ÇØ´ç row ÀÔ·Â
+//		f5();  //reservation table ï¿½ï¿½È¸
+//		f4(); //1~2: ï¿½Î¿ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½(ï¿½ï¿½ï¿½ï¿½)
+//		f3beta(); //reservation numberï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ paymentYN update
+//		f3(); 	//2(ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ update).ï¿½Î¿ï¿½(ï¿½Â¼ï¿½)ï¿½ï¿½ï¿½ï¿½, ï¿½Ñºï¿½ï¿½(ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ñ¹ï¿½-> ï¿½ï¿½ï¿½ï¿½, ï¿½Î¿ï¿½ ï¿½ï¿½ï¿½ï¿½-> ï¿½ï¿½ ï¿½ï¿½ï¿½) 
+//		f2(); //reservation tableï¿½ï¿½ (ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ñ¹ï¿½ï¿½ï¿½ reservation dateï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½), ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½(ï¿½Ó½ï¿½ ï¿½ï¿½) & reservation detail tableï¿½ï¿½ ï¿½Ø´ï¿½ï¿½Ï´ï¿½ row ï¿½Û¼ï¿½
+		//1.[ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½(ï¿½ï¿½È­, ï¿½ï¿½ï¿½ï¿½, ï¿½ï¿½Â¥, ï¿½Ã°ï¿½ ï¿½ï¿½ï¿½ï¿½)->] ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ñ¹ï¿½(reservationNum, m_id, scheduleNum, reservationDate)&ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½(temp ï¿½ï¿½) ï¿½Ô·ï¿½-> ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½_detail table ï¿½Ø´ï¿½ row ï¿½Ô·ï¿½
 	
 
-		f1();  //update point in members table, select members table
+//		f1();  //update point in members table, select members table
 		
 //		f15(); //reservation table select schedule number
 //		f14(); //show table select price
@@ -49,17 +50,27 @@ public class temp {
 //		f18(); //schedule table select show code
 //		f19(); //chart table update (rate_M or rate_W)
 //		f19beta(); //chart table select rate_m and rate_w
-//		f20();  //reservation table select ID
-		f21(); //reservation table  update pay_YN
+//		f20();  //reservation table select ID		
+		f21();  //chart table select show_code
 	}
 
 	private static void f21() {
+		List<ChartVO> temp = new ArrayList<>();
 		
+		ScheduleService service = new ScheduleService();
+		temp = service.selectChartShowCode();
+		
+		for(ChartVO arr: temp) {
+			System.out.println(arr);
+			if(arr.getShowCode().equals("AA7")) {
+				System.out.println("select AA7");
+			}
+		}		
 	}
 
 	private static void f20() {
 		
-		int reservationNum = 2; //reservation number ¹Þ¾Æ¿À±â
+		int reservationNum = 2; //reservation number ï¿½Þ¾Æ¿ï¿½ï¿½ï¿½
 		
 		ScheduleService service = new ScheduleService();
 		System.out.println(service.selectReservationUserIDByReservationNum(reservationNum));
@@ -67,15 +78,15 @@ public class temp {
 
 	private static void f19() {
 		
-		String gender = "W"; //selectµÈ gender ¹Þ¾Æ¿À±â
+		String gender = "W"; //selectï¿½ï¿½ gender ï¿½Þ¾Æ¿ï¿½ï¿½ï¿½
 		
 		List<String> rateWM = new ArrayList<>();
-		String showCode="BB34"; //selectµÈ showcode ¹Þ¾Æ¿À±â
+		String showCode="BB34"; //selectï¿½ï¿½ showcode ï¿½Þ¾Æ¿ï¿½ï¿½ï¿½
 		
 		ScheduleService service = new ScheduleService();
 		rateWM = service.selectChartByShowCode(showCode);
 		
-		int rate = 0;  //gender¿¡ µû¶ó ÃÊ±â°ª °áÁ¤
+		int rate = 0;  //genderï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ê±â°ª ï¿½ï¿½ï¿½ï¿½
 		if(gender.equals("W")) {
 			rate = Integer.parseInt(rateWM.get(0));			
 		}else if(gender.equals("M")) {
@@ -93,7 +104,7 @@ public class temp {
 	private static void f19beta() {
 		
 		List<String> rateWM = new ArrayList<>();
-		String showCode="BB34"; //selectµÈ showcode ¹Þ¾Æ¿À±â
+		String showCode="BB34"; //selectï¿½ï¿½ showcode ï¿½Þ¾Æ¿ï¿½ï¿½ï¿½
 		
 		ScheduleService service = new ScheduleService();
 		rateWM = service.selectChartByShowCode(showCode);
@@ -105,7 +116,7 @@ public class temp {
 
 	private static void f18() {
 		
-		int scheduleNum = 16; //selectµÈ schedule number °¡Á®¿À±â
+		int scheduleNum = 16; //selectï¿½ï¿½ schedule number ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 		
 		ScheduleService service = new ScheduleService();
 		System.out.println(service.selectScheduleByScheduleNum(scheduleNum));
@@ -114,7 +125,7 @@ public class temp {
 
 	private static void f17() {
 		
-		int reservationNum = 469540; //session¿¡ ÀúÀåµÈ reservation number °¡Á®¿À±â
+		int reservationNum = 469540; //sessionï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ reservation number ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 		
 		ScheduleService service = new ScheduleService();
 		System.out.println(service.selectReservationByReservationNum(reservationNum));
@@ -123,7 +134,7 @@ public class temp {
 
 	private static void f16() {
 
-		String mID = "yong";  //session¿¡ ÀúÀåµÈ member obj¿¡¼­ m_id °¡Á®¿À±â
+		String mID = "yong";  //sessionï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ member objï¿½ï¿½ï¿½ï¿½ m_id ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 		
 		ScheduleService service = new ScheduleService();
 		System.out.println(service.selectMemberByID(mID));
@@ -148,7 +159,7 @@ public class temp {
 
 	private static void f13() {
 		
-		int scheduleNum = 10; //ÀúÀåµÈ schedule number °¡Á®¿À±â
+		int scheduleNum = 10; //ï¿½ï¿½ï¿½ï¿½ï¿½ schedule number ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 		
 		ScheduleService service = new ScheduleService();
 		System.out.println(service.selectScheduleByScheduleNum(scheduleNum));
@@ -156,9 +167,9 @@ public class temp {
 
 
 	private static void f12() {
-		int scheduleNum = 711691055; //»ý¼ºÇÑ schedule number ºÒ·¯¿À±â(session ¿¡ ÀúÀåÇÏ°í ºÒ·¯¿À±â)
+		int scheduleNum = 711691055; //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ schedule number ï¿½Ò·ï¿½ï¿½ï¿½ï¿½ï¿½(session ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï°ï¿½ ï¿½Ò·ï¿½ï¿½ï¿½ï¿½ï¿½)
 
-		String startShow = "2022-06-09 10:10:00";  //user°¡ ½Ã°£À» ¼±ÅÃ
+		String startShow = "2022-06-09 10:10:00";  //userï¿½ï¿½ ï¿½Ã°ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 		
 		//string -> timestamp -> date
 		Timestamp sStart = Timestamp.valueOf(startShow);
@@ -167,7 +178,7 @@ public class temp {
 		ScheduleService service = new ScheduleService();
 		service.updateScheduleShowstart(sDate, scheduleNum);
 	}
-	private Date stringToDate(String myDate, String myTime) {  //dateSampleServlet¿¡¼­ »ç¿ë
+	private Date stringToDate(String myDate, String myTime) {  //dateSampleServletï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½
 		
 		String timeTemp = myTime+":00";
 //		System.out.println(timeTemp);
@@ -182,11 +193,11 @@ public class temp {
 
 	private static void f11() {
 		
-		int scheduleNum = 711691055; //»ý¼ºÇÑ schedule number ºÒ·¯¿À±â(session ¿¡ ÀúÀåÇÏ°í ºÒ·¯¿À±â)
+		int scheduleNum = 711691055; //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ schedule number ï¿½Ò·ï¿½ï¿½ï¿½ï¿½ï¿½(session ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï°ï¿½ ï¿½Ò·ï¿½ï¿½ï¿½ï¿½ï¿½)
 
-		String theaterNum = "D2"; //user ¼±ÅÃÀ» ¹Þ¾Æ¿È
+		String theaterNum = "D2"; //user ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Þ¾Æ¿ï¿½
 		ScheduleService service = new ScheduleService();
-		int placeNum = service.selectPlaceByTheaterNum(theaterNum);  //ÇØ´çÇÏ´Â place numberÀ» ¹Þ¾Æ¿È
+		int placeNum = service.selectPlaceByTheaterNum(theaterNum);  //ï¿½Ø´ï¿½ï¿½Ï´ï¿½ place numberï¿½ï¿½ ï¿½Þ¾Æ¿ï¿½
 //		System.out.println(placeNum);
 		
 		service.updateScheduleTheaterPlacenum(theaterNum, placeNum, scheduleNum);		
@@ -194,9 +205,9 @@ public class temp {
 
 	private static void f10() {
 		
-		int scheduleNum = createScheduleNumber("cansu"); //user°¡ ¿¹¸Å ½ÃÀÛ½Ã »ý¼º
+		int scheduleNum = createScheduleNumber("cansu"); //userï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Û½ï¿½ ï¿½ï¿½ï¿½ï¿½
 //		System.out.println(scheduleNum);
-		String showCode = "AA9";  //userÀÇ ¿µÈ­ ¼±ÅÃ ¹ÞÀ½ 
+		String showCode = "AA9";  //userï¿½ï¿½ ï¿½ï¿½È­ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ 
 		
 		ScheduleService service = new ScheduleService();
 		service.insertScheduleInforNum(scheduleNum, showCode);
@@ -265,14 +276,14 @@ public class temp {
 
 	private static void f6() {
 		
-		int scheduleNum = 44;  //±ÔÄ¢¿¡ µû¶ó ºÎ¿©(¿µÈ­, »ó¿µ°ü °í·Á)
+		int scheduleNum = 44;  //ï¿½ï¿½Ä¢ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Î¿ï¿½(ï¿½ï¿½È­, ï¿½ó¿µ°ï¿½ ï¿½ï¿½ï¿½)
 		
-		String showCode = "AA3"; //user ¼±ÅÃÀ» ¹Þ¾Æ¼­ °áÁ¤
+		String showCode = "AA3"; //user ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Þ¾Æ¼ï¿½ ï¿½ï¿½ï¿½ï¿½
 		
-		String theaterNum = "B2"; //user ¼±ÅÃÀ» ¹Þ¾Æ¼­ °áÁ¤
-		int placeNum = 1002; //theater°¡ °áÁ¤µÇ¸é¼­ µû¶ó¼­ °áÁ¤
+		String theaterNum = "B2"; //user ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Þ¾Æ¼ï¿½ ï¿½ï¿½ï¿½ï¿½
+		int placeNum = 1002; //theaterï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ç¸é¼­ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 		
-		String showStartStr = "2022-06-07 16:16:00";  //½Ã°£ ³¯Â¥ ¼±ÅÃÀ» ¹Þ¾Æ¼­ °áÁ¤(DateTimeFormatter->LocalDateTime) 
+		String showStartStr = "2022-06-07 16:16:00";  //ï¿½Ã°ï¿½ ï¿½ï¿½Â¥ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Þ¾Æ¼ï¿½ ï¿½ï¿½ï¿½ï¿½(DateTimeFormatter->LocalDateTime) 
 													//SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd kk:mm:ss");
 		
 		ScheduleService service = new ScheduleService();
@@ -283,7 +294,7 @@ public class temp {
 	private static void f5() {
 //		int scheduleNum = 10; 
 //		String m_id="cansu"; 
-//		int reservationNum = Integer.parseInt(eachChartoString(m_id, scheduleNum)); //»ý¼ºµÈ ¿¹¾à¹øÈ£À» ?
+//		int reservationNum = Integer.parseInt(eachChartoString(m_id, scheduleNum)); //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½È£ï¿½ï¿½ ?
 		
 		
 		int reservationNum = 469543;
@@ -297,9 +308,9 @@ public class temp {
 	private static void f3beta() {
 		int scheduleNum = 10; 
 		String m_id="cansu"; 
-		int reservationNum = Integer.parseInt(eachChartoString(m_id, scheduleNum)); //»ý¼ºµÈ ¿¹¾à¹øÈ£À» ?
+		int reservationNum = Integer.parseInt(eachChartoString(m_id, scheduleNum)); //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½È£ï¿½ï¿½ ?
 		
-		String yn="Y"; //check¸¦ ÅëÇØ Y or N °áÁ¤
+		String yn="Y"; //checkï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ Y or N ï¿½ï¿½ï¿½ï¿½
 		
 		ScheduleService service = new ScheduleService();
 		service.updateReservationPaymentYN(yn, reservationNum);
@@ -309,34 +320,34 @@ public class temp {
 	private static void f4() {
 		int scheduleNum = 10; 
 		String m_id="cansu"; 
-		int reservationNum = Integer.parseInt(eachChartoString(m_id, scheduleNum)); //»ý¼ºµÈ ¿¹¾à¹øÈ£À» ?
+		int reservationNum = Integer.parseInt(eachChartoString(m_id, scheduleNum)); //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½È£ï¿½ï¿½ ?
 		
-		String seatNumbArr = "11 12 14 15"; //ÀÚ¸® ¼±ÅÃÇÑ °á°ú °¡Á®¿À±â
+		String seatNumbArr = "11 12 14 15"; //ï¿½Ú¸ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 		String[] seatNum = seatNumbArr.trim().split(" ");
-		int countSeat = seatNum.length;  //°¹¼ö ±¸ÇÏ±â
+		int countSeat = seatNum.length;  //ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ï±ï¿½
 		
-		//seat_num¿¡ ÇÑ°³ °ªÀÎ »óÈ²		
+		//seat_numï¿½ï¿½ ï¿½Ñ°ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½È²		
 		ScheduleService service = new ScheduleService();
 		for(String arr: seatNum) {
 			service.insertReservationDetailInfor(reservationNum, arr);
 		}
 
 		
-		//seat_num¿¡ ¿©·¯°³ °ªÀÎ »óÈ²(f2¿¡¼­ reservation row»ý¼º½Ã ÇØ´ç reservation detail row»ý¼ºÇØ¼­ updateÇßÀ½)
-//		String seatNumb = "11 12 14 15";  //ÀÚ¸® ¼±ÅÃ
-//		int countSeat = seatNumb.trim().split(" ").length; //strip()¾çÃø°ø¹éÁ¦°Å(trimº¸´Ù ´Ù¾çÇÑ À¯´ÏÄÚµå °ø¹é Á¦°Å °¡´É. 11v¿¡¼­ Á¦°ø)
+		//seat_numï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½È²(f2ï¿½ï¿½ï¿½ï¿½ reservation rowï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ø´ï¿½ reservation detail rowï¿½ï¿½ï¿½ï¿½ï¿½Ø¼ï¿½ updateï¿½ï¿½ï¿½ï¿½)
+//		String seatNumb = "11 12 14 15";  //ï¿½Ú¸ï¿½ ï¿½ï¿½ï¿½ï¿½
+//		int countSeat = seatNumb.trim().split(" ").length; //strip()ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½(trimï¿½ï¿½ï¿½ï¿½ ï¿½Ù¾ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Úµï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½. 11vï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½)
 //		ScheduleService service = new ScheduleService();
 //		service.updateReservationDetailInfor(seatNumb, reservationNum);
 	}
 
 	private static void f3() {
 		
-		String payment = "card"; //payment ¹æ½Ä ¼±ÅÃ
-		int totalPrice = 2200;  //ÀÎ¿ø¼ö °áÁ¤ÈÄ  ÃÖÁ¾ ±Ý¾× °áÁ¤(ÁÂ¼® ¼±ÅÃÈÄ)
+		String payment = "card"; //payment ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
+		int totalPrice = 2200;  //ï¿½Î¿ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½  ï¿½ï¿½ï¿½ï¿½ ï¿½Ý¾ï¿½ ï¿½ï¿½ï¿½ï¿½(ï¿½Â¼ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½)
 		
 		int scheduleNum = 10; 
 		String m_id="cansu"; 
-		int reservationNum = Integer.parseInt(eachChartoString(m_id, scheduleNum)); //»ý¼ºµÈ ¿¹¾à¹øÈ£À» ?
+		int reservationNum = Integer.parseInt(eachChartoString(m_id, scheduleNum)); //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½È£ï¿½ï¿½ ?
 		
 		ScheduleService service = new ScheduleService();
 		service.updateReservationInfor(payment, totalPrice, reservationNum);
@@ -344,16 +355,16 @@ public class temp {
 	}
 
 	private static void f2() {
-		//(reservationNum, m_id, scheduleNum, reservationDate, ³ª¸ÓÁö´Â ÀÓ½Ã°ª) reservation table insert ÇÏ±â
+		//(reservationNum, m_id, scheduleNum, reservationDate, ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ó½Ã°ï¿½) reservation table insert ï¿½Ï±ï¿½
 		
-		int scheduleNum = 2;  //schedule ¹øÈ£ °¡Á®¿À±â
-		String m_id="cansu"; //m_id °¡Á®¿À±â
+		int scheduleNum = 2;  //schedule ï¿½ï¿½È£ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+		String m_id="cansu"; //m_id ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 		
-		int reservationNum = Integer.parseInt(eachChartoString(m_id, scheduleNum));  //id¿¡ µû¶ó ÀÏÁ¤ÇÑ ¼ýÀÚ·Î º¯È¯+"scheduleNumber"
+		int reservationNum = Integer.parseInt(eachChartoString(m_id, scheduleNum));  //idï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ú·ï¿½ ï¿½ï¿½È¯+"scheduleNumber"
 		
 		ScheduleService service = new ScheduleService();
 		service.insertReservationInfor(reservationNum, m_id, scheduleNum);
-//		service.insertReservationDetailInfor(reservationNum);  //reservation table¿¡ row»ý¼ºÈÄ ÇØ´çÇÏ´Â reservation detail table¿¡µµ »ý¼º
+//		service.insertReservationDetailInfor(reservationNum);  //reservation tableï¿½ï¿½ rowï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ø´ï¿½ï¿½Ï´ï¿½ reservation detail tableï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 		
 	}
 	
