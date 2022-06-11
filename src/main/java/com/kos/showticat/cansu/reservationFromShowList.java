@@ -59,6 +59,7 @@ public class reservationFromShowList extends HttpServlet {
 		int dayNum = calendartoString();
 //		System.out.println(dayNum);
 		String scheduleNum = eachChartoString(mID, dayNum);
+		System.out.println(scheduleNum);
 
 		return Integer.parseInt(scheduleNum.substring(3, scheduleNum.length()));
 		
@@ -66,14 +67,15 @@ public class reservationFromShowList extends HttpServlet {
 
 	private static int calendartoString() {
 		Calendar now = Calendar.getInstance();
-		int nowYear = now.get(Calendar.YEAR);
+//		int nowYear = now.get(Calendar.YEAR);
 		int nowMonth = now.get(Calendar.MONTH)+1;
 		int nowDay = now.get(Calendar.DATE);
 		int nowHour = now.get(Calendar.HOUR);
-		int nowMinute = now.get(Calendar.MINUTE);
+//		int nowMinute = now.get(Calendar.MINUTE);
 //		System.out.println(nowYear+"-"+nowMonth+"-"+nowDay+" "+nowHour+":"+nowMinute);
 		
-		String dayNum = Integer.toString(nowMonth)+Integer.toString(nowDay)+Integer.toString(nowHour)+Integer.toString(nowMinute);
+		String dayNum = Integer.toString(nowMonth)+Integer.toString(nowDay)+Integer.toString(nowHour);
+//		String dayNum = Integer.toString(nowMonth)+Integer.toString(nowDay)+Integer.toString(nowHour)+Integer.toString(nowMinute);
 //		System.out.println(dayNum);
 		return Integer.parseInt(dayNum);
 	}
