@@ -14,7 +14,6 @@ import javax.servlet.http.HttpServletResponse;
 import com.kos.showticat.admin.vo.PlaceVO;
 import com.kos.showticat.admin.vo.ScheduleVO;
 import com.kos.showticat.admin.vo.ShowVO;
-import com.kos.showticat.admin.vo.TheaterVO;
 
 /**
  * Servlet implementation class ScheduleInsertServlet
@@ -24,17 +23,17 @@ public class ScheduleInsertServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		int place_num = 1000;
+		//int place_num = 1000;
 		//place_num = Integer.parseInt(request.getParameter("place_num"));
 		
 		ScheduleService sService = new ScheduleService();
 		List<ShowVO> slist = sService.selectShowInsertSchedule();
 		List<PlaceVO> plist = sService.selectPlaceInsertSchedule();
-		List<TheaterVO> tlist = sService.selectTheaterInsertSchedule(place_num);
+		//List<TheaterVO> tlist = sService.selectTheaterInsertSchedule(place_num);
 		
 		request.setAttribute("slist", slist);
 		request.setAttribute("plist", plist);
-		request.setAttribute("tlist", tlist);
+		//request.setAttribute("tlist", tlist);
 		
 		
 		// 화면보여주기
