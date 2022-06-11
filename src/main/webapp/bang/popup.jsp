@@ -22,7 +22,7 @@ b{
 	color: white;
 	float: right;
 }
-.divpop1 > img{
+#divpop1 > img{
 	width: 200px; 
 	height: 200px; 
 	margin: 60px;
