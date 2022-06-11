@@ -22,12 +22,12 @@ public class MainChartServlet extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		// System.out.println("aa");
+		System.out.println("aa");
 		TabShowService service = new TabShowService();
 		List<ShowVO> showList1 = service.selectChartMovie();
 		List<ShowVO> showList2 = service.selectChartPer();
-		// System.out.println(showList1);
-		// System.out.println(showList2);
+		//System.out.println(showList1);
+		//System.out.println(showList2);
 		// System.out.println(showList1.get(0).getPoster());
 		// System.out.println(showList1.get(1).getPoster());
 		// System.out.println(showList2.get(0).getPoster());
