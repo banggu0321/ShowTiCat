@@ -15,6 +15,7 @@
 </head>
 
 <body>
+<jsp:include page="popup.jsp"/>
 	<div class="header">
 		<!-- 헤더 컨텐츠 -->
 		<div class="headerContents">
@@ -28,12 +29,12 @@
 				</h1>
 				<!-- 회원관련창 -->
 				<ul class="member">
-					<il> <!-- 로그인 이미지 추가해야댐 --> <a href="#"><img src="#"
-						alt=" "> <span>로그인</span> </a> </il>
-					<il> <!-- 회원가입 이미지 추가해야댐 --> <a href="#"><img src="#"
-						alt=" "> <span>회원가입</span> </a> </il>
-					<il> <!-- 마이페이지 이미지 추가해야댐 --> <a href="#"><img src="#"
-						alt=" "> <span>MyShow</span> </a> </il>
+					<li> <!-- 로그인 이미지 추가해야댐 --> <a href="#"><img src="#"
+						alt=" "> <span>로그인</span> </a> </li>
+					<li> <!-- 회원가입 이미지 추가해야댐 --> <a href="#"><img src="#"
+						alt=" "> <span>회원가입</span> </a> </li>
+					<li> <!-- 마이페이지 이미지 추가해야댐 --> <a href="#"><img src="#"
+						alt=" "> <span>MyShow</span> </a> </li>
 				</ul>
 				<!-- member -->
 			</div>
