@@ -13,7 +13,7 @@ request.setCharacterEncoding("UTF-8");
 <title>파일 업로드해보기</title>
 </head>
 <body>
-	<form action="${contextPath}/upload.do" method="post"
+	<form action="${contextPath}/bang/upload.do" method="post"
 		enctype="multipart/form-data">
 		파일1: <input type="file" name="photos"><br> 파일2: <input
 			type="file" name="photos"> <br> 파라미터1: <input

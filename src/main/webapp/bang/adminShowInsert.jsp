@@ -37,7 +37,7 @@ label {
 <body>
 	<jsp:include page="adminHeader.jsp" />
 	<h1>공연 추가</h1>
-	<form action="showInsert.do" method="post">
+	<form action="showInsert.do" method="post" enctype="multipart/form-data">
 		<div class="form-group">
 			<label>show코드</label> <input class="form-control" type="text"
 				name="show_code" value="BB">
@@ -57,7 +57,7 @@ label {
 		</div>
 		<div class="form-group">
 			<label>개봉일자</label> <input class="form-control" type="date"
-				name="opening_date" value="3000-03-21">
+				name="opening_date" value="2020-03-21">
 		</div>
 		<div class="form-group">
 			<label>러닝타임</label> <input class="form-control" type="number"
@@ -75,9 +75,10 @@ label {
 			<textarea class="form-control" name="summary"></textarea>
 		</div>
 		<div class="form-group">
-			<label>포스터</label> <input class="form-control" type="text"
-				name="poster" value="img">
-			<!-- 이미지input -->
+			<label>포스터</label>
+			<!-- <input class="form-control" type="text"
+				name="poster" value="img"> -->
+			<input type="file" name="file">
 		</div>
 		<div class="form-group">
 			<label>가격</label> <input class="form-control" type="number"
