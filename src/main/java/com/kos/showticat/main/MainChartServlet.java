@@ -33,6 +33,7 @@ public class MainChartServlet extends HttpServlet {
 		// System.out.println(showList2.get(0).getPoster());
 		// System.out.println(showList2.get(1).getPoster());
 
+		//main_images
 		String notReady = "notReady.jpg";
 		ShowVO noneshow = new ShowVO("#", "준비중", notReady); // show_code가 #이면 다시 메인으로
 		String image_dir = request.getSession().getServletContext().getRealPath("/") + "images"

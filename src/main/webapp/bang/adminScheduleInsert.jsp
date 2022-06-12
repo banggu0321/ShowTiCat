@@ -22,6 +22,11 @@ label {
 	display: inline-block;
 	width: 150px;
 }
+
+.nav_menu_1 a {
+	font-weight: bold;
+	color: red;
+}
 </style>
 </head>
 <body>
@@ -44,7 +49,9 @@ label {
 			</select>
 		</div>
 		<div class="form-group">
-			<div><label>상영관 번호</label></div>
+			<div>
+				<label>상영관 번호</label>
+			</div>
 			<div id="theater">
 				<select class="form-control" id="therter_num" name="theater_num">
 					<option value="">선택하세요</option>
