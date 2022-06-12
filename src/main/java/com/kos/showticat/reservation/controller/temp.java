@@ -51,7 +51,33 @@ public class temp {
 //		f19(); //chart table update (rate_M or rate_W)
 //		f19beta(); //chart table select rate_m and rate_w
 //		f20();  //reservation table select ID		
-		f21();  //chart table select show_code
+//		f21();  //chart table select show_code
+		
+//		f22(); //schedule table select schedule by showcode(plist, date complete-> update shceulde complete)
+		f23(); //update schedule table other attribute by schedule
+	}
+	
+	private static void f23() {
+		String theaterNum ="A1";
+		String showStart ="2022-06-13";
+		int placeNum = 1000;
+		
+		int scheduleNum = 71110;
+		
+		ScheduleService service = new ScheduleService();
+		service.updateScheduleByScheduleNum(theaterNum, placeNum, showStart, scheduleNum);
+	}
+
+	private static void f22() {
+		String showcode="BB32";
+		List<ScheduleVO> sList = new ArrayList<>();
+		
+		ScheduleService service = new ScheduleService();
+		sList = service.selectScheduleByShowcode(showcode);
+		
+		for(ScheduleVO temp: sList) {
+			System.out.println(temp);
+		}
 	}
 
 	private static void f21() {

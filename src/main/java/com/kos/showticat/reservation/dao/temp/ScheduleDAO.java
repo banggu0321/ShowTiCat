@@ -19,6 +19,8 @@ import com.kos.showticat.util.DBUtil2;
 
 public class ScheduleDAO {
 
+	final static String SQL_SCHEDULE_UPDATE_OTHER_BY_SHCEDULE_NUMBER="UPDATE SCHEDULE SET THEATER_NUM=?, PLACE_NUM=?, SHOW_START=? WHERE SCHEDULE_NUM=?";
+	final static String SQL_SCHEDULE_SELECT_SCHEDULE_BY_SHOW_CODE="SELECT THEATER_NUM, PLACE_NUM , SHOW_START FROM SCHEDULE WHERE SHOW_CODE=?";
 	final static String SQL_SCHEDULE_SELECT_SHOW_CODE="SELECT SHOW_CODE FROM SCHEDULE WHERE SCHEDULE_NUM=?";
 	final static String SQL_SCHEDULE_UPDATE_SHOW_START = "UPDATE schedule SET show_start=? WHERE  SCHEDULE_NUM =?";
 	final static String SQL_SCHEDULE_UPDATE_THEATER_PLACE_NUMBER="UPDATE schedule SET THEATER_NUM=?, PLACE_NUM=? WHERE  SCHEDULE_NUM =?";
@@ -51,6 +53,69 @@ public class ScheduleDAO {
 	final static String SQL_CHART_SELECT_RATE_WM_BY_SHOW_CODE="SELECT RATE_M, RATE_W FROM CHART WHERE SHOW_CODE=?";
 	final static String SQL_CHART_UPDATE_GENDER_M_BY_CHECK="UPDATE CHART SET RATE_M=? WHERE SHOW_CODE=?";
 	final static String SQL_CHART_UPDATE_GENDER_W_BY_CHECK="UPDATE CHART SET RATE_W=? WHERE SHOW_CODE=?";
+	
+	
+	public void updateScheduleByScheduleNum(String theaterNum, int placeNum, String showStart, int scheduleNum) {
+		Connection con = DBUtil2.getConnection();
+		PreparedStatement ppst=null;
+		
+		try {
+			ppst = con.prepareStatement(SQL_SCHEDULE_UPDATE_OTHER_BY_SHCEDULE_NUMBER);
+			ppst.setString(1, theaterNum);
+			ppst.setInt(2, placeNum);
+			ppst.setString(3, showStart);
+			ppst.setInt(4, scheduleNum);
+			
+			int result = ppst.executeUpdate();
+			if(result == 1) {
+				System.out.println("ScheduleDAO.updateScheduleByScheduleNum=>update data");
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				ppst.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+			DBUtil2.dbClose(con);
+		}		
+	}
+	
+	public List<ScheduleVO> selectScheduleByShowcode(String showCode){
+		
+		List<ScheduleVO> sList = new ArrayList<>();
+		
+		Connection con = DBUtil2.getConnection();
+		PreparedStatement ppst=null;
+		ResultSet rs = null;
+		
+		try {
+			ppst = con.prepareStatement(SQL_SCHEDULE_SELECT_SCHEDULE_BY_SHOW_CODE);
+			ppst.setString(1, showCode);
+			rs = ppst.executeQuery();
+
+			while(rs.next()) {
+				ScheduleVO svo = new ScheduleVO();
+				svo.setTheaterNum(rs.getString("theater_num"));
+				svo.setPlaceNum(rs.getInt("place_num"));
+				svo.setShowStart(rs.getString("show_start"));
+//				System.out.println(svo);
+				sList.add(svo);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				rs.close();
+				ppst.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+			DBUtil2.dbClose(con);
+		}			
+		return sList;
+	}
 
 	public List<ChartVO> selectChartShowCode(){
 		List<ChartVO> cList = new ArrayList<>();
@@ -836,7 +901,7 @@ public class ScheduleDAO {
 				scvo.setScheduleNum(String.valueOf(rs.getInt("schedule_num")));
 				scvo.setShowCode(rs.getString("show_code"));
 				scvo.setTheaterNum(rs.getString("theater_num"));
-				scvo.setPlaceNum(String.valueOf(rs.getInt("place_num")));
+				scvo.setPlaceNum(rs.getInt("place_num"));
 				scvo.setShowStart(rs.getString("show_start"));
 				scdList.add(scvo);
 			}
