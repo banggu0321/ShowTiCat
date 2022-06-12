@@ -24,12 +24,18 @@
                 </h1>
                 <!-- 회원관련창 -->
 	            <ul class="member">
+		            <li></li>
                 <c:if test="${member != null}">
-	                    <li></li>
 	                    <il>
 	                        <a href="${path}/jayoung/logout.do">
 	                        	<img src="${path}/images/login.png" alt="logout">
 	                            <span>로그아웃</span>
+	                        </a>
+	                    </il>
+	                    <il>
+	                        <a href="${path}/jjjjjjjjyyyyyyyy/memberPage.jsp">
+	                        <img src="${path}/images/mypage.png" alt="mypage">
+	                            <span>MyPage</span>
 	                        </a>
 	                    </il>
 				</c:if>	
@@ -47,12 +53,6 @@
 	                        </a>
 	                    </il>
 				</c:if>	
-	                    <il>
-	                        <a href="${path}/jjjjjjjjyyyyyyyy/memberPage.jsp">
-	                        <img src="${path}/images/mypage.png" alt="mypage">
-	                            <span>MyPage</span>
-	                        </a>
-	                    </il>
 	            </ul><!-- member -->
             </div><!-- contents -->
         </div><!-- headerContents -->
@@ -72,8 +72,8 @@
                     <li>
                         <h2><a href="#">예매</a></h2>
                     </li>
-                    <li><h2></h2></li>
-                    <li><h2></h2></li>
+                    <li></li>
+                    <li></li>
                     <li class="search">
                         <form action="result.do" id="formH">
 							<input type="text" name="word" id="searchH" value="${word}">

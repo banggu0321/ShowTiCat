@@ -43,12 +43,9 @@ function stop() {
 	font-size: 30px;
 	font-weight: bold;
 }
-.info {
-	font-size: 18px;
-}
+
 .deBtn {
-	font-size: 20px;
-	margin-top: 50px;
+	margin-top: 70px;
 	margin-right: 20px;
 }
 .url {
@@ -104,6 +101,7 @@ hr {
 	<h4 class="t">예매자 통계</h4>
 	<c:import url="showChart.jsp"></c:import>
 	
+	
 	<!-- 예고편 모달 -->
 	<div class="modal" id="myModal">
 	  <div class="modal-dialog modal-lg">
@@ -117,7 +115,7 @@ hr {
 	      
 	      <!-- Modal body -->
 	      <div class="modal-body">
-	        <iframe width="650" height="366" src="https://www.youtube.com/embed/${show.trailer}?autoplay=1&mute=1" 
+	        <iframe width="700" height="395" src="https://www.youtube.com/embed/${show.trailer}?autoplay=1&mute=1" 
 	        	title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 	      </div>
 	        

@@ -95,7 +95,7 @@ header
 nav
 =============================================================================*/
 .nav {
-    margin: -68px;
+    margin: -70px 0px;
     height: 65px;
     padding: 5px;
     border-bottom: 1px solid #ddd;
@@ -117,7 +117,7 @@ nav
 }
 
 .nav_menu {
-    width: 1300px;
+    width: 1000px;
     display: inline-flex;
 }
 

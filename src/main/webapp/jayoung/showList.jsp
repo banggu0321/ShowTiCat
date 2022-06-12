@@ -54,13 +54,14 @@ function showDetail() {
 	opacity: 1;
 }
 .box {
-	border: 2px gray solid;
+	border: 1px gray solid;
 	display: inline-block;
 	margin: 20px;
 	padding: 13px;
 }
 .name {
 	font-size: 18px;
+	font-weight: bold;
 }
 .info {
 	margin: 10px 20px 10px 20px;

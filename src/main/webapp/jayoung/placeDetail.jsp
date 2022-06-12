@@ -23,13 +23,13 @@ a {
 a:hover {
 	text-decoration: none;
 }
+.placeList{
+	line-height: 30px;
+}
 .name {
 	padding-top: 20px;
-	font-size: 30px;
+	font-size: 25px;
 	font-weight: bold;
-}
-.info {
-	font-size: 15px;
 }
 .img {
 	padding: 20px;
@@ -38,17 +38,17 @@ a:hover {
 	display: inline-block;
 	padding-bottom: 15px;
 }
-.reservBtn {
-	margin-right: 10px;
-}
 .title {
-	font-size: 20px;
+	font-size: 25px;
 }
 .nullMsg {
 	text-align: center;
 }
-.dateBtn, .place {
-	margin: 0px 10px;
+.reservBtn, .dateBtn, .place {
+	margin: 0px 10px;	
+}
+.dateBtn {
+	font-size: 18px;
 }
 </style>
 
@@ -75,15 +75,16 @@ function changeDate() {
 <jsp:include page="header.jsp"/>
 <div class="contents">
 	<%-- 극장목록 --%>
+	<div class="placeList">
 	<c:forEach items="${placeList}" var="place" varStatus="s">
-		| <a href="placeDetail.do?place_num=${place.place_num}&date=${dateList[0]}" class="place">
+		 <a href="placeDetail.do?place_num=${place.place_num}&date=${dateList[0]}" class="place">
 			ShowTiCat ${place.place_name}
-		</a> 
-	</c:forEach> |
-
+		</a> |
+	</c:forEach> </div>
+	<hr>
 	
 	<%-- 극장정보 --%>
-	<img class="left img" src="${path}/images/theater.webp" width="300px" height="400px">
+	<img class="left img" src="${path}/images/theater.webp" width="225px" height="300px">
 	<div class="left">
 		<p class="name">ShowTiCat ${place.place_name}</p>
 		<hr>
@@ -94,7 +95,7 @@ function changeDate() {
 	
 	<%-- 날짜선택 --%>
 	<c:forEach items="${dateList}" var="date">
-		<button class="btn btn-outline-dark dateBtn ${date}" date="${date}">${date}</button>
+		<button class="btn btn-light dateBtn" date="${date}">${date}</button>
 	</c:forEach>
 	<hr>
 	

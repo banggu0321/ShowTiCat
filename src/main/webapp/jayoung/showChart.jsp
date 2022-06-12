@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -20,24 +21,71 @@
 #myChart, #ageChart {
 	margin: 0 auto;
 }
+.chartImg{
+	position: relative;
+}
+.man, .woman, .r10, .r20, .r30, .r40, .r50 {
+	position: absolute;
+	font-weight: bold;
+}
+.man {
+	top:30%;
+	right: 10%;
+}
+.woman {
+	top:30%;
+	left: 15%;
+}
+.r10 {
+	top: 60%;
+	left: 12%;
+}
+.r20 {
+	top: 60%;
+	left: 30%;
+}
+.r30 {
+	top: 60%;
+	right: 42%;
+}
+.r40 {
+	top: 60%;
+	right: 23%;
+}
+.r50 {
+	top: 60%;
+	right: 5%;
+}
 </style>
 </head>
 <body>
-<ul class="">
+<c:set var="sum" value="${chart.rate_m+chart.rate_w}"/>
+<ul class="chartBox">
 <li class="chart">
-	<p class="chartTitle">성별 예매 분포</p>
-	<canvas id="myChart" width="500" height="300"></canvas>
+	<div class="chartImg">
+		<p class="chartTitle">성별 예매 분포</p>
+		<div class="man">남성<br>${Math.round(chart.rate_m/sum*1000)/10}%</div>
+		<div class="woman">여성<br>${Math.round(chart.rate_w/sum*1000)/10}%</div>
+		<canvas id="myChart" width="500" height="300"></canvas>
+	</div>
 </li>
 <li class="chart">
-	<p class="chartTitle">연령별 예매 분포</p>
-	<canvas id="ageChart" width="500" height="300"></canvas>
+	<div class="chartImg">
+		<p class="chartTitle">연령별 예매 분포</p>
+		<div class="r10">10대<br>${Math.round(chart.rate_10/sum*1000)/10}%</div>
+		<div class="r20">20대<br>${Math.round(chart.rate_20/sum*1000)/10}%</div>
+		<div class="r30">30대<br>${Math.round(chart.rate_30/sum*1000)/10}%</div>
+		<div class="r40">40대<br>${Math.round(chart.rate_40/sum*1000)/10}%</div>
+		<div class="r50">50대<br>${Math.round(chart.rate_50/sum*1000)/10}%</div>
+		<canvas id="ageChart" width="500" height="300"></canvas>
+	</div>
 </li>
 </ul>
 
 <script>
 const ctx = document.getElementById('ageChart').getContext('2d');
 const ageChart = new Chart(ctx, {
-    type: 'doughnut',
+    type: 'bar',
     data: {
         labels: ['10대', '20대', '30대', '40대', '50대'],
         datasets: [{
