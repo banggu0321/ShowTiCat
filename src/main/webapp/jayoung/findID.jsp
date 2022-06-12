@@ -83,7 +83,7 @@ function checkNum() {
 <div class="contents">
 	<form action="findID.do" method="post" id="findForm">
 	<div class="form-group">
-		<label>이름 :</label>
+		<label>이름 </label>
 		<input class="form-control" type="text" name="m_name" id="m_name">
 	</div>
 	

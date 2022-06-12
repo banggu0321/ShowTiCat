@@ -25,16 +25,11 @@
                 <!-- 회원관련창 -->
 	            <ul class="member">
                 <c:if test="${member != null}">
+	                    <li></li>
 	                    <il>
 	                        <a href="${path}/jayoung/logout.do">
 	                        	<img src="${path}/images/login.png" alt="logout">
 	                            <span>로그아웃</span>
-	                        </a>
-	                    </il>
-	                    <il>
-	                        <a href="${path}/jayoung/login.do">
-	                        <img src="${path}/images/mypage.png" alt="mypage">
-	                            <span>MyPage</span>
 	                        </a>
 	                    </il>
 				</c:if>	
@@ -51,13 +46,13 @@
 	                            <span>회원가입</span>
 	                        </a>
 	                    </il>
+				</c:if>	
 	                    <il>
 	                        <a href="${path}/jjjjjjjjyyyyyyyy/memberPage.jsp">
 	                        <img src="${path}/images/mypage.png" alt="mypage">
 	                            <span>MyPage</span>
 	                        </a>
 	                    </il>
-				</c:if>	
 	            </ul><!-- member -->
             </div><!-- contents -->
         </div><!-- headerContents -->

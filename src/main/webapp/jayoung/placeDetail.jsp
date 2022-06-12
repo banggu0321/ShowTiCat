@@ -36,6 +36,7 @@ a:hover {
 }
 .show {
 	display: inline-block;
+	padding-bottom: 15px;
 }
 .reservBtn, .dateBtn {
 	margin-right: 10px;
@@ -110,7 +111,7 @@ function changeDate() {
 				<span> ${show.category} | ${show.show_time}분 | ${show.opening_date} OPEN</span>
 			</div>
 			<p>${v.count}관 | ${theater.theater_name} | 총 ${theater.last_seat}석</p>
-			<!-- <div class="show"> -->
+			<div class="show">
 				<button class="btn btn-outline-primary reservBtn" num="${value.schedule_num}">
 					${value.show_start}<br>${value.start_time}<br>좌석 : /${theater.last_seat}
 				</button>
@@ -128,10 +129,10 @@ function changeDate() {
 				</c:if>
 	
 				<c:if test="${list.get(s.index).theater_num!=list.get(s.index-1).theater_num}">
-					<!-- </div> -->
+					</div>
 					<br> <%-- 상영관 구분 --%>
 					<p>${v.count}관 | ${theater.theater_name} | 총 ${theater.last_seat}석</p>
-					<!-- <div class="show"> -->
+					<div class="show">
 					<button class="btn btn-outline-primary reservBtn" num="${value.schedule_num}">
 						${value.show_start}<br>${value.start_time}<br>좌석 : /${theater.last_seat}
 					</button>
@@ -139,14 +140,14 @@ function changeDate() {
 			</c:if>
 					
 			<c:if test="${list.get(s.index).show_name!=list.get(s.index-1).show_name}">
-				<!-- </div>  -->
+				</div>
 				<hr> <%-- 영화/공연 구분 --%>
 				<div>
 					<a href="showDetail.do?show_code=${show.show_code}" class="title">${value.show_name}</a>
 					<span> ${show.category} | ${show.show_time}분 | ${show.opening_date} OPEN</span>
 				</div>
 				<p>${v.count}관 | ${theater.theater_name} | 총 ${theater.last_seat}석</p>
-				<!-- <div class="show"> -->
+				<div class="show">
 				<button class="btn btn-outline-primary reservBtn" num="${value.schedule_num}">
 					${value.show_start}<br>${value.start_time}<br>좌석 : /${theater.last_seat}
 				</button>
@@ -156,7 +157,7 @@ function changeDate() {
 	</c:forEach>
 	</c:forEach>
 	</c:forEach>
-	<!-- </div> -->
+	</div>
 </div>
 </body>
 </html>
