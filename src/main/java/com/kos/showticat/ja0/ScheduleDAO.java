@@ -19,7 +19,7 @@ public class ScheduleDAO {
 	static final String SQL_SELECT_BY_SHOW ="select * from schedule where place_num =? and show_code=?";
 	static final String SQL_SELECT_THEATER ="SELECT SHOW_CODE,SHOW_NAME,schedule_num,theater_num,s.place_num, show_start "
 			+ " FROM schedule s JOIN show using(show_code) JOIN theater using(theater_num)"
-			+ " where s.place_num=? and SHOW_START >= ? and SHOW_START < ? ORDER BY 2,4,6"; /**/
+			+ " where s.place_num=? and SHOW_START >= ? and SHOW_START < ? ORDER BY 2,4,6"; 
 	
 	Connection conn;
 	Statement st;

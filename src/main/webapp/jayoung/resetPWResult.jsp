@@ -16,8 +16,13 @@
 <link rel="stylesheet" href="css/common.css">
 
 <style>
-#welcome {
+#resetPW {
 	text-align: center;
+}
+.resetPW {
+	width: 500px;
+	margin: auto;
+	padding-top: 50px;
 }
 </style>
 <script>
@@ -32,10 +37,10 @@ function login() {
 </head>
 <body>
 <jsp:include page="header.jsp"/>
-<div class="contents">
-	<div id="welcome">
+<div class="contents resetPW">
+	<div id="resetPW">
 	<p>비밀번호 수정이 완료되었습니다.</p>
-	<button class="btn btn-light" id="login">로그인</button>
+	<button class="btn btn-success" id="login">로그인</button>
 	</div>
 </div>
 </body>

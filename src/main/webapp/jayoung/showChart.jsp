@@ -4,35 +4,34 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels"></script>
+
 <style>
-.chart li {
+.chart {
+	width: 50%;
 	float:left;
-	padding: 5px 30px 50px 5px;
 	text-align: center;
 }
 .chart p {
 	font-size: 18px;
 }
+#myChart, #ageChart {
+	margin: 0 auto;
+}
 </style>
 </head>
 <body>
-<ul class="chart">
+<ul class="">
 <li class="chart">
-	<p class="chartTitle">성별 예매 분포</p> <hr>
+	<p class="chartTitle">성별 예매 분포</p>
 	<canvas id="myChart" width="500" height="300"></canvas>
 </li>
 <li class="chart">
-	<p class="chartTitle">연령별 예매 분포</p> <hr>
+	<p class="chartTitle">연령별 예매 분포</p>
 	<canvas id="ageChart" width="500" height="300"></canvas>
 </li>
-<!-- <li class="chart">
-	<p>테스트</p> <hr>
-	<canvas id="testChart" width="300" height="300"></canvas>
-	<div id="js_lll"></div>
-</li> -->
 </ul>
 
 <script>
@@ -96,63 +95,7 @@ const myChart = new Chart(ctx2, {
         }
     }
 });
-
-/* var chart;
-
-function DoughnutChart(data) {
-	var doughnutOptions = {
-		tooltips: {
-			enabled: false
-		},
-		legend: {
-			display: false
-		},
-		plugins: {
-			datalabels: {
-				formatter: (value,ctx) => {
-					let datasets = cts.chart.data.datasets[0].data;
-					if(value!=0) {
-						let sum = 0;
-						dataArr = ctx.chart.data.datasets[0].data;
-						dataArr.map(data => {
-							sum += parseInt(data);
-						});
-						let percentage = Math.round((value*100/sum))+"%";
-						return percentage;
-					} else {
-						let percentage="";
-						return percentage;
-					}
-				},
-				color:'#fff',
-			}
-		}
-	};
-	
-	vat data = {
-		type: 'doughnut',
-		data: {
-	        labels: ['남', '여'],
-	        datasets: [{
-	            data: [${chart.rate_m}, ${chart.rate_w}],
-	            backgroundColor: [
-	            	'rgba(54, 162, 235, 0.8)',
-	            	'rgba(255, 159, 64, 0.8)'
-	            ]
-	        }],
-	},
-	options: doughnutOptions
-};
-
-	if(chart) {
-		chart.destory();
-		chart = new Chart($("#testChart"),data);
-	} else {
-		chart = new Chart($("#testChart"),data);	
-	}
-	
-	$("#js_lll").html(chart.generateLegend());
-}; */
 </script>
+
 </body>
 </html>

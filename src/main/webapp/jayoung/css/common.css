@@ -132,3 +132,10 @@ hr {
 	float:right;
 	padding-right: 20px;
 }
+.formDiv {
+	height: 330px;
+	width: 700px;
+	margin: 0 auto;
+	margin-top: 150px;
+	padding: 25px;
+}

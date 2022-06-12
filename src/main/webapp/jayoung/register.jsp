@@ -182,6 +182,8 @@ function reset() {
 	$("#pwMsg").empty();
 	$("#msg").empty();
 	$("#check").hide();
+	$("#phone").attr("readonly",false);
+	$("#phoneMsg").empty();
 }
 </script>
 

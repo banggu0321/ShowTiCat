@@ -59,6 +59,9 @@ function showDetail() {
 	margin: 20px;
 	padding: 13px;
 }
+.name {
+	font-size: 18px;
+}
 .info {
 	margin: 10px 20px 10px 20px;
 	text-align: center;
@@ -87,7 +90,7 @@ a:hover {
 			<img alt="${show.show_name}" src="${path}/images/${show.poster}" width="250px" height="335px">
 			<button class="detail btn btn-outline-secondary">상세보기</button>
 		</div>
-		<p class="info">${show.show_name}</p>
+		<p class="info name">${show.show_name}</p>
 		<p class="info">${show.opening_date} OPEN</p>
 		<button class="reservBtn btn btn-outline-primary btn-sm reservBtn" code="${show.show_code}">예매하기</button>
 	</div>

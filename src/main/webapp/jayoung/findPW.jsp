@@ -19,9 +19,19 @@
 $(function() {
 	$("#findForm").on("submit",isEmpty);
 	$("#check").hide();
+	$("#findID").on("click", findID);
+	$("#findPW").on("click", findPW);
 	$("#sendSMS").on("click",sendSMS);
 	$("#checkNum").on("click",checkNum);
 })
+
+function findID() {
+	location.href="findID.do";
+}
+
+function findPW() {
+	location.href="findPW.do";
+}
 
 var code="";
 function sendSMS() {
@@ -74,10 +84,14 @@ function checkNum() {
 	}
 }
 </script>
+
 </head>
 <body>
 <jsp:include page="header.jsp"/>
 <div class="contents">
+	<button id="findID" class="btn btn-outline-success">아이디 찾기</button> 
+	<button id="findPW" class="btn btn-success">비밀번호 찾기</button> 
+	<hr>
 	<form action="findPW.do" method="post" id="findForm">
 	<div class="form-group">
 		<label>ID </label>
