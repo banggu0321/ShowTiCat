@@ -1,4 +1,5 @@
 @charset "UTF-8";
+
 .contents {
 	width: 980px;
 	height: 100%;
@@ -138,6 +139,7 @@ nav
 
 .nav_menu :nth-child(6) {
 	width: 1550px;
+	border: 1px solid;
 }
 /*===========================================================================
 container
@@ -172,4 +174,25 @@ chart
 .chart .contents {
 	height: 50%;
 	padding: 50px 30px 60px;
+}
+/*===========================================================================
+topbutton
+=============================================================================*/
+#topButton {
+	position: fixed;
+	right: 10%;
+	bottom: 50px;
+	/* display: none; */
+	z-index: 999;
+    overflow: hidden;
+}
+#topButtonImg {
+	width: 100px;
+	height: 100px;	
+	border-radius: 70%;
+    object-fit: cover;
+}
+#reserveButtonImg{
+    width: auto;
+    height: 80px;
 }

@@ -4,30 +4,8 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
 <script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
 
-<style >
-form {
-    position: absolute;
-    left: 40%;
-    top: 20%;
-    /* align-content: center; */
-    /* margin-left: -563px; */
-    z-index: 1000;
-    background-color: black;
-    color: white;
-}
-b{
-	color: white;
-	float: right;
-}
-#divpop1 > img{
-	width: 200px; 
-	height: 200px; 
-	margin: 60px;
-}
-</style>
 <script type="text/javascript">
 	//쿠키설정    
 	function setCookie(name, value, expiredays) {
