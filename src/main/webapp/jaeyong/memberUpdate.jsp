@@ -23,6 +23,15 @@ $(function() {
 
 });
 
+$(function(){
+	$("#delete").click(function(){
+		var m_id = $(this).attr("data-m_id");
+		if(confirm(m_id + "삭제?"))
+			location.href = "memberDelete1.do?m_id="+m_id;
+			)}
+	})
+
+
 function checkPW() {
     var pw1= $("#m_pw").val();
     var pw2= $("#pw2").val();
@@ -35,7 +44,7 @@ function checkPW() {
     
     }
 function Delete() {
-	location.href="/jaeyong/memberDelete.do";
+	location.href="/jaeyong/memberDelete1.do";
 }
  
 </script>
@@ -117,6 +126,11 @@ p {
 		<option value="평촌">평촌</option>
 		</select>
 		<br>
+		
+		<label>포인트 : </label>
+		<input type="text"
+			   name="point"
+			   value="${member.point}">
 
 		<br><br>
 		<input type="submit"

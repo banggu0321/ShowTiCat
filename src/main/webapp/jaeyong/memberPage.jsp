@@ -6,7 +6,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>MemberUpdate</title>
+<title>MemberPage</title>
 <script
 	src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.slim.min.js"></script>
 <script
@@ -17,6 +17,8 @@
 <script>
 </script>
 <style>
+#point {
+	color : yellow;}
 p {
 	margin: 0;
 	font-size: 0.25em;
@@ -37,7 +39,7 @@ p {
 			   
 		<label>비밀번호 : </label>
 		<input value ="${member.m_pw}"
-			   type  ="text"
+			   type  ="password"
 			   name  ="password"
  			   disabled="disabled"><br>
 		
@@ -71,7 +73,14 @@ p {
 			
 		<label>관심매장 : </label>
 		<c:if test="${member!=null}">
-		           "${member.place_num}"
+		           "${member.place_num}"<br>
+		           
+		<label>포인트 : </label>
+		<input value ="${member.point}"
+			   type ="text"
+			   id   ="point"
+ 			   readonly="readonly"><br>
+		
 		</c:if><br>
 		<br>
 		<input type="submit"
