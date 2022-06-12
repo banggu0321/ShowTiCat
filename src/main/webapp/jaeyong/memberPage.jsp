@@ -72,16 +72,16 @@ p {
  			   disabled="disabled"><br>
 			
 		<label>관심매장 : </label>
-		<c:if test="${member!=null}">
-		           "${member.place_num}"<br>
+		<input value = "${member.place_num}"
+			   type  = "text"
+			   id    = "place"><br>
 		           
 		<label>포인트 : </label>
 		<input value ="${member.point}"
 			   type ="text"
 			   id   ="point"
  			   readonly="readonly"><br>
-		
-		</c:if><br>
+
 		<br>
 		<input type="submit"
 			   value="수정하기" >

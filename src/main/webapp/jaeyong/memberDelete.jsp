@@ -34,7 +34,7 @@ $(function ()delerte{
 	}
 }
 		function memberDelete() {
-			location.href = "/jaeyong/memberDelete.jave";
+			location.href = "/jaeyong/memberDelete.java";
 	}
 }
 </script>
