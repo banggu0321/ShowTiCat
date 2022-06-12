@@ -12,6 +12,7 @@ html, body, h1, ol, ul, li, div, h2 {
 /* body * {
     outline: 3px dotted tomato;
 } */
+
 a {
 	color: black;
 	text-decoration: none;
@@ -83,7 +84,7 @@ list table */
 	float: right;
 	/* float: revert; */
 	margin-right: 20%;
-	/* right: 10%;
+	/* right: 10%;*/
     }
 
 table, td {
@@ -93,8 +94,9 @@ table, td {
 }
 
 form {
+	
 	/* border: 1px solid lightgray; */
 	width: 50%;
 	padding: 20px;
-	margin: 0 auto;
+	margin: 0 0 0 600px;
 }

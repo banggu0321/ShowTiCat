@@ -1,5 +1,6 @@
 package com.kos.showticat.admin;
 
+import java.io.File;
 import java.io.IOException;
 import java.sql.Date;
 
@@ -33,8 +34,23 @@ public class ShowInsertServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		request.setCharacterEncoding("utf-8");
-		String location = "C:\\Kosta_241";
+		String applicationPath = request.getSession().getServletContext().getRealPath("/");
+		String applicationPathStr = applicationPath.substring(0,30);
+		
+		//int index = applicationPath.indexOf(".");
+		//System.out.println(index);
+		//String dstr  = 
+		//String tstr = applicationPath.substring(30,);
+		//System.out.println(dstr);
+		//System.out.println(tstr);
+		
+		
+		String UPLOAD_DIR = "ShowTiCat\\src\\main\\webapp\\images";
+		String location = applicationPathStr + File.separator + UPLOAD_DIR + File.separator;
+		//System.out.println(applicationPath);
+		System.out.println(location);
 		int maxSize = 1024 * 1024 * 5;
+		
 		MultipartRequest multi = new MultipartRequest(request, location, maxSize, "utf-8",
 				new DefaultFileRenamePolicy());
 		String fileName = multi.getFilesystemName("file");
@@ -53,7 +69,7 @@ public class ShowInsertServlet extends HttpServlet {
 
 	private ShowVO makeS(MultipartRequest request, String fileName) {
 		ShowVO s = new ShowVO();
-		System.out.println(fileName);
+		//System.out.println(fileName);
 		s.setShow_code(request.getParameter("show_code"));
 		s.setShow_name(request.getParameter("show_name"));
 		s.setDirector(request.getParameter("director"));

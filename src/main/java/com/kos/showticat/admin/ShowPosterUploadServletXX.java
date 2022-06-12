@@ -20,7 +20,7 @@ import org.apache.commons.fileupload.servlet.ServletFileUpload;
  * Servlet implementation class ShowPosterUpload
  */
 @WebServlet("/bang/upload.do")
-public class ShowPosterUploadServlet extends HttpServlet {
+public class ShowPosterUploadServletXX extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	//private static final String UPLOAD_DIR = "images";
 	

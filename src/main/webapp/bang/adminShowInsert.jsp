@@ -25,19 +25,23 @@ label {
 
 .form-control {
 	display: inline-block;
-	width: auto;
+	width: 50%;
 }
 
 .nav_menu_2 a {
 	font-weight: bold;
 	color: red;
 }
+.custom-file-label {
+    width: 100%;
+}
 </style>
 </head>
 <body>
 	<jsp:include page="adminHeader.jsp" />
 	<h1>공연 추가</h1>
-	<form action="showInsert.do" method="post" enctype="multipart/form-data">
+	<form action="showInsert.do" method="post"
+		enctype="multipart/form-data">
 		<div class="form-group">
 			<label>show코드</label> <input class="form-control" type="text"
 				name="show_code" value="BB">
@@ -76,9 +80,14 @@ label {
 		</div>
 		<div class="form-group">
 			<label>포스터</label>
+			<div class="custom-file form-control">
+				<input type="file" class="custom-file-input" id="customFile"
+					name="file"> <label class="custom-file-label"
+					for="customFile">Choose file</label>
+			</div>
 			<!-- <input class="form-control" type="text"
 				name="poster" value="img"> -->
-			<input type="file" name="file">
+			<!-- <input class="form-control" type="file" name="file"> -->
 		</div>
 		<div class="form-group">
 			<label>가격</label> <input class="form-control" type="number"
@@ -104,6 +113,13 @@ label {
 				document.getElementById("price").value = 100000;
 			}
 		}
+		$(".custom-file-input").on(
+				"change",
+				function() {
+					var fileName = $(this).val().split("\\").pop();
+					$(this).siblings(".custom-file-label").addClass("selected")
+							.html(fileName);
+				});
 	</script>
 </body>
 </html>

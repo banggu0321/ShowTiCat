@@ -62,9 +62,9 @@
 			$("#divpop1").hide();
 		}
 	});
-	function deleteCookie(){
-	    document.cookie = "divpop1=" + "N" + ";path=/; expires=-1" ;
-	  }
+	function deleteCookie() {
+		document.cookie = "divpop1=" + "N" + ";path=/; expires=-1";
+	}
 </script>
 </head>
 <body>
@@ -79,18 +79,18 @@
 				</a>
 				<div class="carousel-inner">
 					<div class="carousel-item active">
-						<img src="../images/broker_banner.jpg" alt="" width="100%"
-							height="500">
+						<a href='#'><img src="../images/broker_banner.jpg" alt=""
+							width="100%" height="500"></a>
 						<!--  width="980" -->
 					</div>
 					<div class="carousel-item">
-						<img src="../images/deathnote_banner.jpg" alt="" width="100%"
-							height="500">
+						<a href='#'><img src="../images/deathnote_banner.jpg" alt=""
+							width="100%" height="500"></a>
 						<!--  width="980" -->
 					</div>
 					<div class="carousel-item">
-						<img src="../images/crimecity2_banner.jpg" alt="" width="100%"
-							height="500">
+						<a href='#'> <img src="../images/crimecity2_banner.jpg" alt=""
+							width="100%" height="500"></a>
 						<!--  width="980" -->
 					</div>
 
