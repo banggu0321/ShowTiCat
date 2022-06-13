@@ -33,4 +33,9 @@ public class MemberService {
 		return dao.Delete(m_id);
 	}
 
+	public int Delete(MemberVO member) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
 }
