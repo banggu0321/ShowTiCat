@@ -1,42 +1,91 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels"></script>
+
 <style>
 .chart {
+	width: 50%;
 	float:left;
-	list-style: none;
-	padding: 5px 30px 50px 5px;
 	text-align: center;
+}
+.chart p {
+	font-size: 18px;
+}
+#myChart, #ageChart {
+	margin: 0 auto;
+}
+.chartImg{
+	position: relative;
+}
+.man, .woman, .r10, .r20, .r30, .r40, .r50 {
+	position: absolute;
+	font-weight: bold;
+}
+.man {
+	top:30%;
+	right: 10%;
+}
+.woman {
+	top:30%;
+	left: 15%;
+}
+.r10 {
+	top: 60%;
+	left: 12%;
+}
+.r20 {
+	top: 60%;
+	left: 30%;
+}
+.r30 {
+	top: 60%;
+	right: 42%;
+}
+.r40 {
+	top: 60%;
+	right: 23%;
+}
+.r50 {
+	top: 60%;
+	right: 5%;
 }
 </style>
 </head>
 <body>
-<ul>
+<c:set var="sum" value="${chart.rate_m+chart.rate_w}"/>
+<ul class="chartBox">
 <li class="chart">
-	<p>성별 예매 분포</p> <hr>
-	<canvas id="myChart" width="500" height="300"></canvas>
+	<div class="chartImg">
+		<p class="chartTitle">성별 예매 분포</p>
+		<div class="man">남성<br>${Math.round(chart.rate_m/sum*1000)/10}%</div>
+		<div class="woman">여성<br>${Math.round(chart.rate_w/sum*1000)/10}%</div>
+		<canvas id="myChart" width="500" height="300"></canvas>
+	</div>
 </li>
 <li class="chart">
-	<p>연령별 예매 분포</p> <hr>
-	<canvas id="ageChart" width="500" height="300"></canvas>
+	<div class="chartImg">
+		<p class="chartTitle">연령별 예매 분포</p>
+		<div class="r10">10대<br>${Math.round(chart.rate_10/sum*1000)/10}%</div>
+		<div class="r20">20대<br>${Math.round(chart.rate_20/sum*1000)/10}%</div>
+		<div class="r30">30대<br>${Math.round(chart.rate_30/sum*1000)/10}%</div>
+		<div class="r40">40대<br>${Math.round(chart.rate_40/sum*1000)/10}%</div>
+		<div class="r50">50대<br>${Math.round(chart.rate_50/sum*1000)/10}%</div>
+		<canvas id="ageChart" width="500" height="300"></canvas>
+	</div>
 </li>
-<!-- <li class="chart">
-	<p>테스트</p> <hr>
-	<canvas id="testChart" width="300" height="300"></canvas>
-	<div id="js_lll"></div>
-</li> -->
 </ul>
 
 <script>
 const ctx = document.getElementById('ageChart').getContext('2d');
 const ageChart = new Chart(ctx, {
-    type: 'doughnut',
+    type: 'bar',
     data: {
         labels: ['10대', '20대', '30대', '40대', '50대'],
         datasets: [{
@@ -94,63 +143,7 @@ const myChart = new Chart(ctx2, {
         }
     }
 });
-
-/* var chart;
-
-function DoughnutChart(data) {
-	var doughnutOptions = {
-		tooltips: {
-			enabled: false
-		},
-		legend: {
-			display: false
-		},
-		plugins: {
-			datalabels: {
-				formatter: (value,ctx) => {
-					let datasets = cts.chart.data.datasets[0].data;
-					if(value!=0) {
-						let sum = 0;
-						dataArr = ctx.chart.data.datasets[0].data;
-						dataArr.map(data => {
-							sum += parseInt(data);
-						});
-						let percentage = Math.round((value*100/sum))+"%";
-						return percentage;
-					} else {
-						let percentage="";
-						return percentage;
-					}
-				},
-				color:'#fff',
-			}
-		}
-	};
-	
-	vat data = {
-		type: 'doughnut',
-		data: {
-	        labels: ['남', '여'],
-	        datasets: [{
-	            data: [${chart.rate_m}, ${chart.rate_w}],
-	            backgroundColor: [
-	            	'rgba(54, 162, 235, 0.8)',
-	            	'rgba(255, 159, 64, 0.8)'
-	            ]
-	        }],
-	},
-	options: doughnutOptions
-};
-
-	if(chart) {
-		chart.destory();
-		chart = new Chart($("#testChart"),data);
-	} else {
-		chart = new Chart($("#testChart"),data);	
-	}
-	
-	$("#js_lll").html(chart.generateLegend());
-}; */
 </script>
+
 </body>
 </html>

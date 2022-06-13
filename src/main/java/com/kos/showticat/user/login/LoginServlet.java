@@ -32,6 +32,7 @@ public class LoginServlet extends HttpServlet {
 		
 		HttpSession session = request.getSession();
 		session.setAttribute("member", member);
+		
 		String path = (String)session.getAttribute("reqPath");
 		
 		if(member == null) {
@@ -40,8 +41,13 @@ public class LoginServlet extends HttpServlet {
 			writer.println("<script>alert('아이디/비밀번호 확인 후 다시 로그인해주세요.');  location.href='login.do';</script>");
 			writer.close();
 		}else {
-			if(path==null) path = request.getContextPath() + "/jayoung/main.jsp";
-			response.sendRedirect(path);
+			if(member.getM_id().equals("admin")) {
+				path = request.getContextPath() + "/bang/schedule.do";
+				response.sendRedirect(path);
+			}else if(path==null) {
+				path = request.getContextPath() + "/jayoung/main.go";
+				response.sendRedirect(path);
+			}
 		}
 	}
 }
