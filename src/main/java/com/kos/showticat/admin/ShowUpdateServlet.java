@@ -24,7 +24,7 @@ public class ShowUpdateServlet extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String show_code = request.getParameter("show_code");
-		System.out.println(show_code);
+		//System.out.println(show_code);
 		
 		ShowService service = new ShowService();
 		ShowVO show = service.selectByCode(show_code);

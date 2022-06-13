@@ -1,0 +1,177 @@
+@charset "UTF-8";
+
+.contents {
+	width: 980px;
+	height: 100%;
+	margin: 0 auto;
+}
+
+/*===========================================================================
+common
+=============================================================================*/
+html, body {
+	height: 100%;
+}
+
+html, body, h1, ol, ul, li, div, h2 {
+	margin: 0;
+	padding: 0;
+}
+
+/* body * {
+    outline: 3px dotted tomato;
+} */
+a {
+	color: black;
+	text-decoration: none;
+}
+
+ul, ol, li {
+	list-style: none;
+}
+
+/*===========================================================================
+header
+=============================================================================*/
+.header {
+	margin-bottom: 50px;
+	height: 113px;
+	border-bottom: 1px solid #ddd;
+}
+
+.headerContents {
+	width: 100%;
+	height: 113px;
+	margin: 0 0 50px;
+}
+
+.headerContents h1 {
+	width: 274px;
+	height: 57px;
+}
+
+.headerContents .contents {
+	padding: 30px 5px 25px 5px;
+	display: flex;
+	justify-content: space-between;
+}
+
+.header h1 img {
+	width: 117px;
+	height: 100%;
+	/* 이미지 임시 표시 */
+	/* outline: 1px solid #708090; */
+}
+
+.header h1 span {
+	font-size: 18.5px;
+}
+
+.member {
+	width: 400px;
+	height: 57px;
+	padding-left: 0;
+	display: flex;
+	align-items: center;
+	text-align: center;
+	justify-content: space-evenly;
+}
+
+.member li {
+	width: 50px;
+	height: 100%;
+}
+
+.member a {
+	height: 57px;
+	display: flex;
+	flex-direction: column;
+	font-size: 12px;
+}
+
+.member img {
+	height: 100%;
+	/* 이미지 임시 표시 */
+	/* outline: 1px solid #708090; */
+}
+
+/*===========================================================================
+nav
+=============================================================================*/
+.nav {
+	height: 50px;
+	margin: -50px;
+	/* height: 40px;
+    padding: 5px; */
+}
+
+.nav_menu a {
+	font-size: 20px;
+}
+
+.nav_menu li {
+	width: 100%;
+}
+
+.nav_menu li h2 {
+	font-weight: bold;
+}
+/* .nav li {
+    width: 100%;
+    height: 40px;
+} */
+.nav_menu {
+	width: 980px;
+	display: inline-flex;
+}
+
+.nav_menu .sherch {
+	display: flex;
+}
+
+.nav_menu input {
+	width: 65%;
+}
+
+.nav_menu :nth-child(5) {
+	width: 100px;
+}
+
+.nav_menu :nth-child(6) {
+	width: 1550px;
+	/* border: 1px solid; */
+}
+/*===========================================================================
+container
+=============================================================================*/
+.contaniner {
+	width: 100%;
+	height: 500px;
+	position: relative;
+	background-color: #000;
+	margin: 50px 0 0 0;
+}
+
+/* .contaniner .contents{
+	width : 100%;
+}
+ */
+.banner {
+	width: 100%;
+	height: 100%;
+	background: url(../images/exPoster1) no-repeat center;
+	background-size: 50% 50%;
+}
+
+/*===========================================================================
+chart
+=============================================================================*/
+.chart {
+	width: 100%;
+	height: fit-content;
+}
+
+.chart .contents {
+	height: 50%;
+	padding: 50px 30px 60px;
+}

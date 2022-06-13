@@ -1,0 +1,20 @@
+@charset "UTF-8";
+form {
+    position: absolute;
+    left: 40%;
+    top: 20%;
+    /* align-content: center; */
+    /* margin-left: -563px; */
+    z-index: 1000;
+    background-color: black;
+    color: white;
+}
+b{
+	color: white;
+	float: right;
+}
+#divpop1 > img{
+	width: 200px; 
+	height: 200px; 
+	margin: 60px;
+}
