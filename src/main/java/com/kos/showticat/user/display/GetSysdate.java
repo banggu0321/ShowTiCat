@@ -1,6 +1,7 @@
 package com.kos.showticat.user.display;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -13,20 +14,17 @@ import javax.servlet.http.HttpSession;
 import com.kos.showticat.util.DateUtil;
 
 
-@WebServlet("/jayoung/main.go")
-public class DisplayMain extends HttpServlet {
+@WebServlet("/jayoung/getSysdate.do")
+public class GetSysdate extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {	
-		HttpSession session = request.getSession();
-		session.setAttribute("sysdate", DateUtil.sysdate());
 		
-		RequestDispatcher rd = request.getRequestDispatcher("main.jsp");
-		rd.forward(request, response);
+		PrintWriter out = response.getWriter();
+		out.print(DateUtil.sysdate());
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		doGet(request, response);
 	}
-
 }
