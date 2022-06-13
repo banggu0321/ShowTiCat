@@ -23,6 +23,6 @@
 	});
 </script>
 <div id="topButton" style="cursor: pointer">
-	<img src="main_images/ticket.png" id="reserveButtonImg"> <img
-		src="main_images/up.jpg" id="topButtonImg">
+	<img src="../images/main_ticket.png" id="reserveButtonImg"> 
+	<img src="../images/main_up.jpg" id="topButtonImg">
 </div>
