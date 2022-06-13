@@ -101,7 +101,11 @@ public class ScheduleDAO {
 			pst = conn.prepareStatement(SQL_SELECT_THEATER);
 			pst.setInt(1, place_num);
 			pst.setDate(2, show_date); 
+//<<<<<<< HEAD
 //			pst.setDate(3, DateUtil.dayAfter(show_date));
+//=======
+			pst.setDate(3, DateUtil.dayAfter(show_date));
+//>>>>>>> branch 'master' of https://github.com/banggu0321/ShowTiCat.git
 			rs = pst.executeQuery();
 			
 			while(rs.next()) {
