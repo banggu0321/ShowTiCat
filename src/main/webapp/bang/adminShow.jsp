@@ -164,8 +164,8 @@
 						id="category" onchange="OnChange()">
 						<option value="영화">영화</option>
 						<option value="공연">공연</option>
-					</select><br> <label>줄거리</label><input class="form-control" type="text"
-						id="summary" name="summary"><br> 
+					</select><br> <label>줄거리</label><textarea class="form-control" type="text"
+						id="summary" name="summary"></textarea><br> 
 						
 				<label>포스터</label> 
 				<input class="form-control" type="text" id="poster" name="poster" readonly="readonly">

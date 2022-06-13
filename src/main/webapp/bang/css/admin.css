@@ -122,4 +122,6 @@ form {
 .row{
 	clear: both;
 }
-
+textarea.form-control {
+    height: 200px;
+}
