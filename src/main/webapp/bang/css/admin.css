@@ -99,10 +99,23 @@ form {
 	padding: 20px;
 	margin: 0 auto;
 }
+.modalForm{
+	width: 100%;
+	padding: 20px;
+	margin: 0 auto;
+}
 #insertshowform {
     /* border: 1px solid lightgray; */
     width: 50%;
     padding: 20px;
     margin: 0 0 0 600px;
 }
-    
+.logo img {
+    width: 300px;
+    height: auto;
+
+}
+.row{
+	clear: both;
+}
+

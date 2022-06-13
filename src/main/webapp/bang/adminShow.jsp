@@ -148,7 +148,7 @@
 				</div>
 
 				<!-- Modal body -->
-				<form class="modal-body form-group" action="showUpdate.do"
+				<form class="modalForm modal-body form-group" action="showUpdate.do"
 					method="post">
 					<label>코드</label><input class="form-control" type="text"
 						id="show_code" name="show_code" readonly="readonly"><br>
