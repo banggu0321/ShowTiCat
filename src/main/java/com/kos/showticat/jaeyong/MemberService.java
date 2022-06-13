@@ -7,7 +7,6 @@ import com.kos.showticat.jaeyong.MemberVO;
 public class MemberService {
 	MemberDAO dao = new MemberDAO();
 
-
 	// 개인정보 수정
 	public int memberUpdate(MemberVO member) {
 		return dao.memberUpdate(member);
@@ -31,11 +30,6 @@ public class MemberService {
 	// 회원 탈퇴
 	public int Delete(String m_id) {
 		return dao.Delete(m_id);
-	}
-
-	public int Delete(MemberVO member) {
-		// TODO Auto-generated method stub
-		return 0;
 	}
 
 }

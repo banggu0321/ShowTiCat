@@ -8,10 +8,12 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>MemberUpdate</title>
 
-<script
-	src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
-<script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<link rel="stylesheet" href="../css/common.css">
 
 <script>
 $(function() {
@@ -104,8 +106,8 @@ p {
 		<label>
 		<input type="radio"
 		       name="gender"
-		       value="W">여<br>
-		</label>
+		       value="W">여
+		</label><br>
 		<label>이메일 : </label>
 		<input type="email"
 			   name="email"
@@ -133,8 +135,10 @@ p {
 
 		<br><br>
 		<input type="submit"
+			   class="btn btn-outline-success"
 			   value="수정완료">
 		<input type="button"
+			   class="btn btn-outline-success"		
 			   value="회원탈퇴"
 			   id="delete">
 	</form>

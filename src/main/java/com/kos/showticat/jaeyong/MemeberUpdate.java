@@ -30,7 +30,6 @@ public class MemeberUpdate extends HttpServlet {
 			throws ServletException, IOException {
 
 		HttpSession session = request.getSession();
-		//
 		String m_id = request.getParameter("m_id");
 		String m_pw = request.getParameter("m_pw");
 		String m_name = request.getParameter("m_name");
@@ -59,7 +58,7 @@ public class MemeberUpdate extends HttpServlet {
 		}
 
 		RequestDispatcher rd;
-		rd = request.getRequestDispatcher("memberPage.jsp");
+		rd = request.getRequestDispatcher("result.jsp");
 		rd.forward(request, response);
 
 	}
