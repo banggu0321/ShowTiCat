@@ -2,6 +2,7 @@ package com.kos.showticat.user.display;
 
 import java.io.IOException;
 import java.sql.Date;
+import java.util.Calendar;
 import java.util.List;
 
 import javax.servlet.RequestDispatcher;
@@ -33,10 +34,17 @@ public class PlaceDetail extends HttpServlet {
 		request.setAttribute("place", ps.selectByNum(place_num)); 
 		request.setAttribute("placeList", ps.selectAll()); 
 		request.setAttribute("showList", sss.selectAll());
-		request.setAttribute("theaterList", ts.selectByPlace(place_num));
-		request.setAttribute("list", ss.selectByTheater(place_num/* , show_start */));
-		request.setAttribute("dateList", DateUtil.dateList());
+		request.setAttribute("theaterList", ts.selectByPlace(place_num));  //select * from theater where place_num=?
+		request.setAttribute("list", ss.selectByTheater(place_num/* , show_start */));  
 		
+//		SQL_SELECT_THEATER ="SELECT SHOW_CODE,SHOW_NAME,schedule_num,theater_num,s.place_num, show_start "
+//				+ " FROM schedule s JOIN show using(show_code) JOIN theater using(theater_num)"
+//				+ " where s.place_num=? ORDER BY 2,4,6"
+
+		request.setAttribute("dateList", DateUtil.dateList());  //year Calendar.DATE+1 nowDay(7)
+
+		
+		//		
 		RequestDispatcher rd = request.getRequestDispatcher("placeDetail.jsp");
 		rd.forward(request, response);
 	}

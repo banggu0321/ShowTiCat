@@ -1,12 +1,13 @@
 package com.kos.showticat.reservation.dao.temp;
 
 public class ScheduleVO {
-	private String showCode, theaterNum, placeNum, showStart, scheduleNum;
+	private String showCode, theaterNum, showStart, scheduleNum;
+	private int placeNum;
 
 	public ScheduleVO() {
 	}
 
-	public ScheduleVO(String showCode, String theaterNum, String placeNum, String showStart, String scheduleNum) {
+	public ScheduleVO(String showCode, String theaterNum, int placeNum, String showStart, String scheduleNum) {
 		this.showCode = showCode;
 		this.theaterNum = theaterNum;
 		this.placeNum = placeNum;
@@ -31,11 +32,11 @@ public class ScheduleVO {
 		this.theaterNum = theaterNum;
 	}
 
-	public String getPlaceNum() {
+	public int getPlaceNum() {
 		return placeNum;
 	}
 
-	public void setPlaceNum(String placeNum) {
+	public void setPlaceNum(int placeNum) {
 		this.placeNum = placeNum;
 	}
 
