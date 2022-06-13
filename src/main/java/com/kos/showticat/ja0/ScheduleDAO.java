@@ -20,6 +20,8 @@ public class ScheduleDAO {
 	static final String SQL_SELECT_THEATER ="SELECT SHOW_CODE,SHOW_NAME,schedule_num,theater_num,s.place_num, show_start "
 			+ " FROM schedule s JOIN show using(show_code) JOIN theater using(theater_num)"
 			+ " where s.place_num=? and SHOW_START >= ? and SHOW_START < ? ORDER BY 2,4,6"; 
+	static final String SQL_SELECT_CNT ="SELECT DISTINCT schedule_num, count(*) OVER(PARTITION BY schedule_num) "
+			+ " FROM schedule JOIN reservation using(schedule_num) JOIN RESERV_DETAIL USING(reservation_num)";
 	
 	Connection conn;
 	Statement st;
@@ -112,6 +114,31 @@ public class ScheduleDAO {
 		}
 		
 		return scheduleList;
+	}
+	
+	//남은좌석
+	public List<ScheduleVO> selectCnt() {
+		List<ScheduleVO> scheduleList = new ArrayList<>();
+		conn = DBUtil.getConnection();
+		try {
+			pst = conn.prepareStatement(SQL_SELECT_CNT);
+			rs = pst.executeQuery();
+			
+			while(rs.next()) {
+				scheduleList.add(makeCnt(rs));
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			DBUtil.dbClose(rs, pst, conn);
+		}
+		
+		return scheduleList;
+	}
+
+	private ScheduleVO makeCnt(ResultSet rs2) throws SQLException {
+		ScheduleVO schedule = new ScheduleVO(rs.getInt(1), rs.getInt(2));
+		return schedule;
 	}
 
 	private ScheduleVO makeSchedule(ResultSet rs) throws SQLException {

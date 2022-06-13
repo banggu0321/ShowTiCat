@@ -28,4 +28,8 @@ public class ScheduleService {
 		return dao.selectByTheater(place_num , show_date);
 	}
 
+	//남은좌석
+	public List<ScheduleVO> selectCnt() {
+		return dao.selectCnt();
+	}
 }

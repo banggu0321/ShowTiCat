@@ -5,20 +5,8 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<link rel="stylesheet" href="css/header.css">
-<script>
+<link rel="stylesheet" href="../css/header.css">
 
-var susdate = "";
-$(function() {
-	$.ajax({
-		url:"jayoung/getSysdate.do",
-		success: function(resData) {
-			var sysdate = resData;
-			}
-	});
-
-})
-</script>
 </head>
 
 <body>
@@ -29,16 +17,15 @@ $(function() {
             <div class="contents">
                 <!-- 로고 및 사이트 이름 -->
                 <h1>
-                    <a href="${path}/jayoung/main.go">
+                    <a href="${path}">
 	                    <img src="${path}/images/222.png" alt="ShowTiCat">
 	                    <!-- 사이트 이름 -->
-                    <!-- <span>S h o w T i C a t</span> -->
                     </a>
                 </h1>
                 <!-- 회원관련창 -->
 	            <ul class="member">
 		            <li></li>
-                <c:if test="${member != null}">
+                	<c:if test="${member != null}">
 	                    <il>
 	                        <a href="${path}/jayoung/logout.do">
 	                        	<img src="${path}/images/login.png" alt="logout">
@@ -51,8 +38,14 @@ $(function() {
 	                            <span>MyPage</span>
 	                        </a>
 	                    </il>
-				</c:if>	
-                <c:if test="${member == null}">
+                		<il id="m_info">
+		                    <span><br>
+			                    ${member.m_name}님<br>
+				                ${member.point}점
+			                </span>
+	                    </il>
+					</c:if>	
+	                <c:if test="${member == null}">
 	                    <il>
 	                        <a href="${path}/jayoung/login.do">
 	                        	<img src="${path}/images/login.png" alt="login">
@@ -65,7 +58,13 @@ $(function() {
 	                            <span>회원가입</span>
 	                        </a>
 	                    </il>
-				</c:if>	
+	                    <il>
+	                        <a href="${path}/jaeyong/memberPage.jsp">
+	                        <img src="${path}/images/mypage.png" alt="mypage">
+	                            <span>MyPage</span>
+	                        </a>
+	                    </il>
+					</c:if>	
 	            </ul><!-- member -->
             </div><!-- contents -->
         </div><!-- headerContents -->
@@ -88,7 +87,7 @@ $(function() {
                     <li></li>
                     <li></li>
                     <li class="search">
-                        <form action="result.do" id="formH">
+                        <form action="${path}/jayoung/result.do" id="formH">
 							<input type="text" name="word" id="searchH" value="${word}">
 							<input class="btn btn-light btn-sm" type="submit" value="검색">
 						</form>
