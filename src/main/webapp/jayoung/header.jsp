@@ -33,7 +33,7 @@
 	                        </a>
 	                    </il>
 	                    <il>
-	                        <a href="${path}/jjjjjjjjyyyyyyyy/memberPage.jsp">
+	                        <a href="${path}/jaeyong/memberPage.jsp">
 	                        <img src="${path}/images/mypage.png" alt="mypage">
 	                            <span>MyPage</span>
 	                        </a>
