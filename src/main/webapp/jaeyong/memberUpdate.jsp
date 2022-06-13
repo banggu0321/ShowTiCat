@@ -9,8 +9,6 @@
 <title>MemberUpdate</title>
 
 <script
-	src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.slim.min.js"></script>
-<script
 	src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
@@ -22,6 +20,15 @@ $(function() {
 	$("#delete").on("click",Delete);
 
 });
+
+$(function(){
+	$("#delete").click(function(){
+		var m_id = $(this).attr("m_id");
+		if(confirm(m_id + "삭제?"))
+			location.href = "memberDelete.do?m_id="+m_id;
+			)}
+	})
+
 
 function checkPW() {
     var pw1= $("#m_pw").val();
@@ -117,6 +124,12 @@ p {
 		<option value="평촌">평촌</option>
 		</select>
 		<br>
+		
+		<label>포인트 : </label>
+		<input type="text"
+			   name="point"
+			   value="${member.point}"
+			   disabled="disabled">
 
 		<br><br>
 		<input type="submit"

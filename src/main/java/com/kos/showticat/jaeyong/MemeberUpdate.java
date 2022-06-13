@@ -20,8 +20,7 @@ import com.kos.showticat.util.DateUtil;
 public class MemeberUpdate extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-	protected void doGet(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		RequestDispatcher rd;
 		rd = request.getRequestDispatcher("memberUpdate.jsp");
 		rd.forward(request, response);
@@ -51,9 +50,6 @@ public class MemeberUpdate extends HttpServlet {
 
 		MemberService service = new MemberService();
 		int result = service.memberUpdate(member);
-		
-		System.out.println(member);
-		System.out.println(result);
 		
 		String msg = "수정실패";
 		if (result > 0) {

@@ -12,7 +12,7 @@
 			//alert("load 후");
 			if($(".tchart").hasClass("active")){
 				$.ajax({
-					url:"tab1.do",
+					url:"bang/tab1.do",
 					type:"get",
 					success:function(responseData){
 						//alert("서버에 다녀옴 : "+ responseData);
@@ -23,7 +23,7 @@
 			
 			$(".tscreen").click(function() {
 				$.ajax({
-					url:"tab2.do",
+					url:"bang/tab2.do",
 					type:"get",
 					success:function(responseData){
 						//alert("서버에 다녀옴 : "+ responseData);
@@ -39,12 +39,12 @@
 	<div class="container mt-3">
 	  <br>
 	  <!-- Nav tabs -->
-	  <ul class="tabmenu nav nav-tabs">
-	    <li class="nav-item">
-	      <a class="nav-link tchart active" data-toggle="tab" href="#home">무비차트</a>
+	  <ul class="tabmenu nav nav-tabs" id="tabmenu_nav">
+	    <li id="tabmenu_li" class="nav-item">
+	      <a id="tabmenu_a" class="nav-link tchart active" data-toggle="tab" href="#home">무비차트</a>
 	    </li>
-	    <li class="nav-item">
-	      <a class="nav-link tscreen" data-toggle="tab" href="#menu1">상영예정작</a>
+	    <li id="tabmenu_li" class="nav-item">
+	      <a id="tabmenu_a" class="nav-link tscreen" data-toggle="tab" href="#menu1">상영예정작</a>
 	    </li>
 	  </ul>
 	  
@@ -55,7 +55,7 @@
 				<div class="posters">
 				    <div class="posterWrap">
 						<div class="movieImage"">
-							<a><input class="pImage" type="image" src=" main_images/notReady.jpg"></a>
+							<input class="pImage" type="image" src="bang/main_images/notReady.jpg">
 						</div>
 						<!-- movieImamge -->
 						<div class="movieName">
@@ -64,7 +64,7 @@
 					</div><!-- posterWrap -->
 					<div class="posterWrap">
 						<div class="movieImage"">
-							<a><input class="pImage" type="image" src=" main_images/notReady.jpg"></a>
+							<input class="pImage" type="image" src="bang/main_images/notReady.jpg">
 						</div>
 						<!-- movieImamge -->
 						<div class="movieName">
@@ -74,7 +74,7 @@
 					<div class="posterWrapBar"></div><!-- posterWrapBar -->
 					<div class="posterWrap">
 						<div class="movieImage"">
-							<a><input class="pImage" type="image" src=" main_images/notReady.jpg"></a>
+							<input class="pImage" type="image" src="bang/main_images/notReady.jpg">
 						</div>
 						<!-- movieImamge -->
 						<div class="movieName">
@@ -83,7 +83,7 @@
 					</div><!-- posterWrap -->
 					<div class="posterWrap">
 						<div class="movieImage"">
-							<a><input class="pImage" type="image" src=" main_images/notReady.jpg"></a>
+							<input class="pImage" type="image" src="bang/main_images/notReady.jpg">
 						</div>
 						<!-- movieImamge -->
 						<div class="movieName">
@@ -98,7 +98,7 @@
 				<div class="posters">
 					<div class="posterWrap">
 						<div class="movieImage"">
-							<a><input class="pImage" type="image" src=" main_images/notReady.jpg"></a>
+							<input class="pImage" type="image" src="bang/main_images/notReady.jpg">
 						</div>
 						<!-- movieImamge -->
 						<div class="movieName">
@@ -107,7 +107,7 @@
 					</div><!-- posterWrap -->
 					<div class="posterWrap">
 						<div class="movieImage"">
-							<a><input class="pImage" type="image" src=" main_images/notReady.jpg"></a>
+							<input class="pImage" type="image" src="bang/main_images/notReady.jpg">
 						</div>
 						<!-- movieImamge -->
 						<div class="movieName">
@@ -117,7 +117,7 @@
 					<div class="posterWrapBar"></div><!-- posterWrapBar -->
 					<div class="posterWrap">
 						<div class="movieImage"">
-							<a><input class="pImage" type="image" src=" main_images/notReady.jpg"></a>
+							<input class="pImage" type="image" src="bang/main_images/notReady.jpg">
 						</div>
 						<!-- movieImamge -->
 						<div class="movieName">
@@ -126,7 +126,7 @@
 					</div><!-- posterWrap -->
 					<div class="posterWrap">
 						<div class="movieImage"">
-							<a><input class="pImage" type="image" src=" main_images/notReady.jpg"></a>
+							<input class="pImage" type="image" src="bang/main_images/notReady.jpg">
 						</div>
 						<!-- movieImamge -->
 						<div class="movieName">

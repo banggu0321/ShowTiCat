@@ -37,8 +37,7 @@ public class Register extends HttpServlet {
 			writer.println("<script>alert('회원가입에 실패하였습니다. 확인 후 다시 시도해주세요.'); location.href='insert.do';</script>");
 			writer.close();
 		}else {
-			HttpSession session = request.getSession();
-			session.setAttribute("m_id", member.getM_id());
+			request.setAttribute("m_id", member.getM_id());
 			
 			RequestDispatcher rd = request.getRequestDispatcher("registerResult.jsp");
 			rd.forward(request, response);

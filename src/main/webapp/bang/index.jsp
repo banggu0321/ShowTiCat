@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"  %>
 <!DOCTYPE html>
 <html lang="ko">
 
@@ -57,9 +58,9 @@
 
 	$(function() {
 		if (getCookie("divpop1") == "Y") {
-			$("#divpop1").show();
-		} else {
 			$("#divpop1").hide();
+		} else {
+			$("#divpop1").show();
 		}
 	});
 	function deleteCookie() {
@@ -68,6 +69,7 @@
 </script>
 </head>
 <body>
+<c:set var="path" value="${pageContext.request.contextPath}"></c:set>
 	<jsp:include page="mainHeader.jsp" />
 	<!-- /////////////////////////////////////////////////// -->
 	<!-- 틀만 잡았음 -->
@@ -79,17 +81,17 @@
 				</a>
 				<div class="carousel-inner">
 					<div class="carousel-item active">
-						<a href='#'><img src="../images/broker_banner.jpg" alt=""
+						<a href='#'><img src="${path}/images/broker_banner.jpg" alt=""
 							width="100%" height="500"></a>
 						<!--  width="980" -->
 					</div>
 					<div class="carousel-item">
-						<a href='#'><img src="../images/deathnote_banner.jpg" alt=""
+						<a href='#'><img src="${path}/images/deathnote_banner.jpg" alt=""
 							width="100%" height="500"></a>
 						<!--  width="980" -->
 					</div>
 					<div class="carousel-item">
-						<a href='#'> <img src="../images/crimecity2_banner.jpg" alt=""
+						<a href='#'> <img src="${path}/images/crimecity2_banner.jpg" alt=""
 							width="100%" height="500"></a>
 						<!--  width="980" -->
 					</div>

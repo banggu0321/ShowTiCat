@@ -24,7 +24,7 @@ public class PlaceDetail extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		int place_num = Integer.parseInt(request.getParameter("place_num"));
-		/* Date show_start = DateUtil.convertToDate(request.getParameter("date")); */
+		Date show_start = DateUtil.convertToDate(request.getParameter("date"));
 
 		PlaceService ps = new PlaceService();
 		TheaterService ts = new TheaterService();
@@ -34,17 +34,11 @@ public class PlaceDetail extends HttpServlet {
 		request.setAttribute("place", ps.selectByNum(place_num)); 
 		request.setAttribute("placeList", ps.selectAll()); 
 		request.setAttribute("showList", sss.selectAll());
-		request.setAttribute("theaterList", ts.selectByPlace(place_num));  //select * from theater where place_num=?
-		request.setAttribute("list", ss.selectByTheater(place_num/* , show_start */));  
-		
-//		SQL_SELECT_THEATER ="SELECT SHOW_CODE,SHOW_NAME,schedule_num,theater_num,s.place_num, show_start "
-//				+ " FROM schedule s JOIN show using(show_code) JOIN theater using(theater_num)"
-//				+ " where s.place_num=? ORDER BY 2,4,6"
-
-		request.setAttribute("dateList", DateUtil.dateList());  //year Calendar.DATE+1 nowDay(7)
-
-		
-		//		
+		request.setAttribute("theaterList", ts.selectByPlace(place_num));
+		request.setAttribute("list", ss.selectByTheater(place_num, show_start));
+		request.setAttribute("reservCnt", ss.selectCnt());
+		request.setAttribute("dateList", DateUtil.dateList());
+	
 		RequestDispatcher rd = request.getRequestDispatcher("placeDetail.jsp");
 		rd.forward(request, response);
 	}

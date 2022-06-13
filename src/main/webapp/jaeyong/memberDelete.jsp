@@ -5,7 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Member/title>
+<title>Member</title>
 <script
 	src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.slim.min.js"></script>
 <script
@@ -14,7 +14,7 @@
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 
 <script>
-$(function ()delerte{
+$(function ()delete{
 	$("#m_pw").on("keyup",checkPW);
 	$("#pw2").on("keyup",checkPW);
 	$("#delete").on("click",Delete);
@@ -34,7 +34,7 @@ $(function ()delerte{
 	}
 }
 		function memberDelete() {
-			location.href = "/jaeyong/memberDelete.jave";
+			location.href = "/jaeyong/memberDelete.java";
 	}
 }
 </script>

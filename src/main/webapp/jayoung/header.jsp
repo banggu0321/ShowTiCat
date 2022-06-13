@@ -5,73 +5,97 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<link rel="stylesheet" href="../css/header.css">
 
-<title>Insert title here</title>
-
-<style>
-.left {
-	float:left;
-	padding-right: 20px;
-}
-.right {
-	float:right;
-	padding-right: 20px;
-}
-</style>
-<script>
-$(function() {	
-	$("#mainH").on("click",main);
-	$("#loginH").on("click",login);
-	$("#logoutH").on("click",logout);
-	$("#joinH").on("click",join);
-	
-})
-
-function main() {
-	location.href="main.jsp";
-}
-
-function login() {
-	location.href="login.do";
-}
-
-function logout() {
-	location.href="logout.do";
-}
-
-function join() {
-	location.href="insert.do";
-}
-</script>
 </head>
+
 <body>
-<h1 class="left" id="mainH">Show TiCat</h1>
-<div>
-	<span class="right">
-		<c:if test="${member != null}">
-			<p id="user">${member.m_name}님 로그인</p>
-		</c:if>	
-	</span>
-	<span class="right">
-		<c:if test="${member != null}">
-<<<<<<< HEAD
-			<button class="btn btn-light" id="logoutH">로그아웃</button>			
-=======
-		<a class="right" href="${path}/jaeyong/memberPage.jsp"><button class="btn btn-light">마이페이지</button></a>
-		<a class="right" href="${path}/logout"><button class="btn btn-light">로그아웃</button></a>
-			
->>>>>>> branch 'master' of https://github.com/banggu0321/ShowTiCat
-		</c:if>
-		<c:if test="${member == null}">
-			<button class="btn btn-light" id="loginH">로그인</button>
-			<button class="btn btn-light" id="joinH">회원가입</button>
-		</c:if>
-	</span>
-	<form action="result.do" class="right" id="formH">
-		<input class="form-control" type="text" name="word" id="searchH" value="${word}">
-		<input class="btn btn-success" type="submit" value="검색">
-	</form>
-<hr>
-</div>
+<c:set var="path" value="${pageContext.request.contextPath}"/>
+    <div class="header">
+        <!-- 헤더 컨텐츠 -->
+        <div class="headerContents">
+            <div class="contents">
+                <!-- 로고 및 사이트 이름 -->
+                <h1>
+                    <a href="${path}">
+	                    <img src="${path}/images/222.png" alt="ShowTiCat">
+	                    <!-- 사이트 이름 -->
+                    </a>
+                </h1>
+                <!-- 회원관련창 -->
+	            <ul class="member">
+		            <li></li>
+                	<c:if test="${member != null}">
+	                    <il>
+	                        <a href="${path}/jayoung/logout.do">
+	                        	<img src="${path}/images/login.png" alt="logout">
+	                            <span>로그아웃</span>
+	                        </a>
+	                    </il>
+	                    <il>
+	                        <a href="${path}/jaeyong/memberPage.jsp">
+	                        <img src="${path}/images/mypage.png" alt="mypage">
+	                            <span>MyPage</span>
+	                        </a>
+	                    </il>
+                		<il id="m_info">
+		                    <span><br>
+			                    ${member.m_name}님<br>
+				                ${member.point}점
+			                </span>
+	                    </il>
+					</c:if>	
+	                <c:if test="${member == null}">
+	                    <il>
+	                        <a href="${path}/jayoung/login.do">
+	                        	<img src="${path}/images/login.png" alt="login">
+	                            <span>로그인</span>
+	                        </a>
+	                    </il>
+	                    <il>
+	                        <a href="${path}/jayoung/insert.do">
+	                        <img src="${path}/images/register.png" alt="register">
+	                            <span>회원가입</span>
+	                        </a>
+	                    </il>
+	                    <il>
+	                        <a href="${path}/jaeyong/memberPage.jsp">
+	                        <img src="${path}/images/mypage.png" alt="mypage">
+	                            <span>MyPage</span>
+	                        </a>
+	                    </il>
+					</c:if>	
+	            </ul><!-- member -->
+            </div><!-- contents -->
+        </div><!-- headerContents -->
+        
+        <div class="nav">
+            <div class="contents">
+                <ul class="nav_menu">
+                    <li>
+                        <h2><a href="${path}/jayoung/showList.do?category=영화">영화</a></h2>
+                    </li>
+                    <li>
+                        <h2><a href="${path}/jayoung/showList.do?category=공연">공연</a></h2>
+                    </li>
+                    <li>
+                        <h2><a href="${path}/jayoung/placeDetail.do?place_num=1020&date=${sysdate}">극장</a></h2>
+                    </li>
+                    <li>
+                        <h2><a href="#">예매</a></h2>
+                    </li>
+                    <li></li>
+                    <li></li>
+                    <li class="search">
+                        <form action="${path}/jayoung/result.do" id="formH">
+							<input type="text" name="word" id="searchH" value="${word}">
+							<input class="btn btn-light btn-sm" type="submit" value="검색">
+						</form>
+                    </li>
+                </ul>
+            </div><!-- contens -->
+        </div><!-- nav -->
+    </div><!-- header -->
+
 </body>
 </html>
