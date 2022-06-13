@@ -6,11 +6,7 @@ import com.kos.showticat.jaeyong.MemberVO;
 
 public class MemberService {
 	MemberDAO dao = new MemberDAO();
-	
-	// 전체조회
-	public List<MemberVO> selectAll() {
-		return dao.selectAll();
-	}
+
 
 	// 개인정보 수정
 	public int memberUpdate(MemberVO member) {

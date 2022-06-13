@@ -7,11 +7,12 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>MemberUpdate</title>
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
-<script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.slim.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+<script
+	src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
 <script>
 $(function() {
 	$("#m_pw").on("keyup",checkPW);
@@ -24,8 +25,9 @@ $(function(){
 	$("#delete").click(function(){
 		var m_id = $(this).attr("m_id");
 		if(confirm(m_id + "삭제?"))
-			location.href = "memberDelete.do?m_id="+m_id;)}
-	});
+			location.href = "memberDelete.do?m_id="+m_id;
+			)}
+	})
 
 
 function checkPW() {
@@ -39,6 +41,9 @@ function checkPW() {
         }
     
     }
+function Delete() {
+	location.href="/jaeyong/memberDelete.do";
+}
  
 </script>
 <style>
@@ -70,6 +75,7 @@ p {
 		<input type="password"
 			   id="pw2"
 			   name="m_pw">
+			   
 		<span  id="pwMsg"></span><br>
 		
 		<label>이름 : </label>
@@ -98,9 +104,8 @@ p {
 		<label>
 		<input type="radio"
 		       name="gender"
-		       value="W">여
+		       value="W">여<br>
 		</label>
-		       <br>
 		<label>이메일 : </label>
 		<input type="email"
 			   name="email"
@@ -129,7 +134,6 @@ p {
 		<br><br>
 		<input type="submit"
 			   value="수정완료">
-			   
 		<input type="button"
 			   value="회원탈퇴"
 			   id="delete">
