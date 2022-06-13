@@ -5,7 +5,7 @@
 <c:forEach items="${showList1 }" var="img" varStatus="status">
 	<div class="posterWrap">
 		<div class="movieImage" data-poster="${img.show_code }">
-			<a href="zzz?show_code=${img.show_code }"><input class="pImage" type="image" src=" ../images/${img.poster }"></a>
+			<a href="showDetail.do?show_code=${img.show_code }"><input class="pImage" type="image" src=" images/${img.poster }"></a>
 		</div>
 		<!-- movieImamge -->
 		<div class="movieName">
@@ -17,7 +17,7 @@
 <c:forEach items="${showList2 }" var="img" varStatus="status">
 	<div class="posterWrap">
 		<div class="movieImage" data-poster="${img.show_code }">
-			<a href="zzz?show_code=${img.show_code }"><input class="pImage" type="image" src=" ../images/${img.poster }"></a>
+			<a href="showDetail.do?show_code=${img.show_code}"><input class="pImage" type="image" src="images/${img.poster}"></a>
 		</div>
 		<!-- movieImamge -->
 		<div class="movieName">
