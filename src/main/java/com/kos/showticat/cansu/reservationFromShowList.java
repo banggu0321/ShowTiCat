@@ -19,7 +19,7 @@ import com.kos.showticat.reservation.dao.temp.ScheduleService;
 import com.kos.showticat.reservation.dao.temp.ScheduleVO;
 
 
-@WebServlet("/jayoung/reservation.do")
+@WebServlet("/reservationFromShowList")
 public class reservationFromShowList extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 

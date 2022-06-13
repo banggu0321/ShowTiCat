@@ -41,6 +41,7 @@ text-decoration: none;
 
 #title{
 font-size: xx-large;
+width: 290px;
 }
 
 
@@ -57,6 +58,9 @@ font-size: xx-large;
 			<hr>
 			<p>감독 : ${show.director}</p>
 			<p>상영시간 : ${show.showTime}분</p>
+			<form action="">
+			<input type="button" name="reSet" value="예매 취소">
+			</form>
 		</div>
 
 		<div id="sub2">
