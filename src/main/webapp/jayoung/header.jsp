@@ -5,15 +5,12 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<link rel="stylesheet" href="css/header.css">
+<link rel="stylesheet" href="../css/header.css">
 <script>
-
-var susdate = "";
 $(function() {
 	$.ajax({
-		url:"jayoung/getSysdate.do",
+		url:"getSysdate.do",
 		success: function(resData) {
-			var sysdate = resData;
 			}
 	});
 
@@ -29,10 +26,9 @@ $(function() {
             <div class="contents">
                 <!-- 로고 및 사이트 이름 -->
                 <h1>
-                    <a href="${path}/jayoung/main.go">
+                    <a href="${path}">
 	                    <img src="${path}/images/222.png" alt="ShowTiCat">
 	                    <!-- 사이트 이름 -->
-                    <!-- <span>S h o w T i C a t</span> -->
                     </a>
                 </h1>
                 <!-- 회원관련창 -->
@@ -88,7 +84,7 @@ $(function() {
                     <li></li>
                     <li></li>
                     <li class="search">
-                        <form action="result.do" id="formH">
+                        <form action="${path}/jayoung/result.do" id="formH">
 							<input type="text" name="word" id="searchH" value="${word}">
 							<input class="btn btn-light btn-sm" type="submit" value="검색">
 						</form>

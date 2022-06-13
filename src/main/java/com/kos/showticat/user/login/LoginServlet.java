@@ -45,7 +45,7 @@ public class LoginServlet extends HttpServlet {
 				path = request.getContextPath() + "/bang/schedule.do";
 				response.sendRedirect(path);
 			}else if(path==null) {
-				path = request.getContextPath() + "/jayoung/main.go";
+				path = request.getContextPath() ;
 				response.sendRedirect(path);
 			}
 		}

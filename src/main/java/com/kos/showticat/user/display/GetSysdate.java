@@ -19,9 +19,8 @@ public class GetSysdate extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {	
-		
-		PrintWriter out = response.getWriter();
-		out.print(DateUtil.sysdate());
+		HttpSession session = request.getSession();
+		session.setAttribute("sysdate", DateUtil.sysdate());
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
