@@ -56,14 +56,11 @@ a:hover {
 $(function() {	
 	$(".reservBtn").on("click",reservation);
 	$(".dateBtn").on("click",changeDate);
-
 })
-
 function reservation() {
 	var num = $(this).attr("num");
 	location.href="reservation.do?schedule_num="+num;
 }
-
 function changeDate() {
 	var date = $(this).attr("date");
 	location.href="placeDetail.do?place_num="+${place.place_num} +"&date="+date ;

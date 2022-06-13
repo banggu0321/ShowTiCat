@@ -1,7 +1,10 @@
 package com.kos.showticat.cansu;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.List;
+import java.util.Random;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -13,6 +16,7 @@ import javax.servlet.http.HttpSession;
 
 import com.kos.showticat.VO.MemberVO;
 import com.kos.showticat.reservation.dao.temp.ScheduleService;
+import com.kos.showticat.reservation.dao.temp.ScheduleVO;
 
 
 @WebServlet("/jayoung/reservation.do")
@@ -23,40 +27,58 @@ public class reservationFromShowList extends HttpServlet {
 			throws ServletException, IOException {
 		
 		//log in check
-		String logInPath = "../jayoung/main.jsp";
+		String logInPath = "../index.jsp";
 		HttpSession session = request.getSession();
 		
 		MemberVO member = new MemberVO();
 		member = (MemberVO) session.getAttribute("member");
 		System.out.println(member);
-		if(member==null) {  //log in ���� ���Ž� main page�� ������
+		if(member==null) {  //log in 
 			response.sendRedirect(logInPath);
 			return;
 		}
-		String m_id=member.getM_id(); //m_id �������� (ex)String m_id="cansu"; 
+		String m_id=member.getM_id(); //m_id(ex)String m_id="cansu"; 
 				
-		//user ��ȭ������ �޾ƿ�
+		//user
 		String showCode = request.getParameter("show_code");
 		System.out.println(showCode);
-//		String showCode = "AA3"; //user ������ �޾Ƽ� ����
 		
-		// schedule number�� session�� ����
+		// schedule number session
 		int scheduleNum = createScheduleNumber(m_id);  		
-		session.setAttribute("scheduleNumber", scheduleNum); //session�������� �ڽ��� scheduleNumberã��
+//		System.out.println(m_id);
+		session.setAttribute("scheduleNumber", scheduleNum); //session
 		
 		ScheduleService service = new ScheduleService();
 		service.insertScheduleInforNum(scheduleNum, showCode);
 		System.out.println("create schedule");
 		
-		//����(���弱��)
-		RequestDispatcher rd = request.getRequestDispatcher("/placeListServilet");
+		//sample 1
+//		RequestDispatcher rd = request.getRequestDispatcher("/placeListServilet");
+//		rd.forward(request, response);
+
+		//sample 2: showCode -> relative schedule
+		List<ScheduleVO> sList = new ArrayList<>();
+		sList = service.selectScheduleByShowcode(showCode);		
+		request.setAttribute("ScheduleList", sList);		
+
+		//위임
+		RequestDispatcher rd = request.getRequestDispatcher("/reservationFromSListUSchedule");	
 		rd.forward(request, response);
-		
 	}
 	private static int createScheduleNumber(String mID) {
 		
 //		System.out.println(mID);
-		int dayNum = calendartoString();
+//		int dayNum = calendartoString();
+//		System.out.println(dayNum);
+		
+		//random number
+		Random random = new Random();
+		random.setSeed(System.currentTimeMillis());
+		
+		int dayNum = random.nextInt();
+		if(dayNum<0) {
+			dayNum = -dayNum;
+		}
 //		System.out.println(dayNum);
 		String scheduleNum = eachChartoString(mID, dayNum);
 		System.out.println(scheduleNum);
@@ -65,20 +87,20 @@ public class reservationFromShowList extends HttpServlet {
 		
 	}
 
-	private static int calendartoString() {
-		Calendar now = Calendar.getInstance();
-//		int nowYear = now.get(Calendar.YEAR);
-		int nowMonth = now.get(Calendar.MONTH)+1;
-		int nowDay = now.get(Calendar.DATE);
-		int nowHour = now.get(Calendar.HOUR);
-//		int nowMinute = now.get(Calendar.MINUTE);
-//		System.out.println(nowYear+"-"+nowMonth+"-"+nowDay+" "+nowHour+":"+nowMinute);
-		
-		String dayNum = Integer.toString(nowMonth)+Integer.toString(nowDay)+Integer.toString(nowHour);
-//		String dayNum = Integer.toString(nowMonth)+Integer.toString(nowDay)+Integer.toString(nowHour)+Integer.toString(nowMinute);
-//		System.out.println(dayNum);
-		return Integer.parseInt(dayNum);
-	}
+//	private static int calendartoString() {
+//		Calendar now = Calendar.getInstance();
+////		int nowYear = now.get(Calendar.YEAR);
+//		int nowMonth = now.get(Calendar.MONTH)+1;
+//		int nowDay = now.get(Calendar.DATE);
+//		int nowHour = now.get(Calendar.HOUR);
+////		int nowMinute = now.get(Calendar.MINUTE);
+////		System.out.println(nowYear+"-"+nowMonth+"-"+nowDay+" "+nowHour+":"+nowMinute);
+//		
+//		String dayNum = Integer.toString(nowMonth)+Integer.toString(nowDay)+Integer.toString(nowHour);
+////		String dayNum = Integer.toString(nowMonth)+Integer.toString(nowDay)+Integer.toString(nowHour)+Integer.toString(nowMinute);
+////		System.out.println(dayNum);
+//		return Integer.parseInt(dayNum);
+//	}
 
 	private static String eachChartoString(String name, int number) {
 		
@@ -88,7 +110,11 @@ public class reservationFromShowList extends HttpServlet {
 			result += (int)ch;
 		}
 		
-		return result.substring(0, 6)+Integer.toString(number);
+		String numberTemp = String.valueOf(number);
+		System.out.println(numberTemp);
+		return result.substring(0, 6)+numberTemp.substring(0, 2);
+		
+//		return result.substring(0, 6)+Integer.toString(number);
 	}
 
 
