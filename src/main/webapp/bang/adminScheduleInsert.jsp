@@ -31,42 +31,48 @@ label {
 </head>
 <body>
 	<jsp:include page="adminHeader.jsp" />
-	<h1>스케줄 추가</h1>
-	<form action="scheduleInsert.do" method="post">
-		<div class="form-group">
-			<label>show 제목</label> <select class="form-control" name="show_code">
-				<c:forEach items="${slist}" var="s">
-					<option value="${s.show_code}">${s.show_name}</option>
-				</c:forEach>
-			</select>
-		</div>
-		<div class="form-group">
-			<label>극장이름</label> <select class="form-control" id="place_num"
-				name="place_num" onchange="OnChange()">
-				<c:forEach items="${plist}" var="p">
-					<option class="placeN" value="${p.place_num}">${p.place_num}-${p.place_name}</option>
-				</c:forEach>
-			</select>
-		</div>
-		<div class="form-group">
-			<div>
-				<label>상영관 번호</label>
+	<div>
+		<div>
+			<div id="listTitle">
+				<h1>스케줄 추가</h1>
 			</div>
-			<div id="theater">
-				<select class="form-control" id="therter_num" name="theater_num">
-					<option value="">선택하세요</option>
+		</div>
+		<form action="scheduleInsert.do" method="post" id="insertscheduleform">
+			<div class="form-group">
+				<label>show 제목</label> <select class="form-control" name="show_code">
+					<c:forEach items="${slist}" var="s">
+						<option value="${s.show_code}">${s.show_name}</option>
+					</c:forEach>
 				</select>
 			</div>
-		</div>
-		<div class="form-group">
-			<label>시작시간</label> <input class="form-control" type="datetime-local"
-				name="show_start">
-			<!-- <input type="time"> -->
-		</div>
-		<input class="btn btn-primary" type="submit" value="등록"> <input
-			class="btn btn-secondary" type="reset" value="리셋"> <input
-			class="btn btn-secondary" type="button" value="돌아가기" id="return">
-	</form>
+			<div class="form-group">
+				<label>극장이름</label> <select class="form-control" id="place_num"
+					name="place_num" onchange="OnChange()">
+					<c:forEach items="${plist}" var="p">
+						<option class="placeN" value="${p.place_num}">${p.place_num}-${p.place_name}</option>
+					</c:forEach>
+				</select>
+			</div>
+			<div class="form-group">
+				<div>
+					<label>상영관 번호</label>
+				</div>
+				<div id="theater">
+					<select class="form-control" id="therter_num" name="theater_num">
+						<option value="">선택하세요</option>
+					</select>
+				</div>
+			</div>
+			<div class="form-group">
+				<label>시작시간</label> <input class="form-control"
+					type="datetime-local" name="show_start">
+				<!-- <input type="time"> -->
+			</div>
+			<input class="btn btn-primary" type="submit" value="등록"> <input
+				class="btn btn-secondary" type="reset" value="리셋"> <input
+				class="btn btn-secondary" type="button" value="돌아가기" id="return">
+		</form>
+	</div>
 	<script>
 		$(function() {
 			$("#return").click(function() {

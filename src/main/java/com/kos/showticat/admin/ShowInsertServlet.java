@@ -34,8 +34,8 @@ public class ShowInsertServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		request.setCharacterEncoding("utf-8");
-		String applicationPath = request.getSession().getServletContext().getRealPath("/");
-		String applicationPathStr = applicationPath.substring(0,30);
+		String applicationPath = request.getSession().getServletContext().getRealPath(".");
+		//String applicationPathStr = applicationPath.substring(0,30);
 		
 		//int index = applicationPath.indexOf(".");
 		//System.out.println(index);
@@ -45,8 +45,8 @@ public class ShowInsertServlet extends HttpServlet {
 		//System.out.println(tstr);
 		
 		
-		String UPLOAD_DIR = "ShowTiCat\\src\\main\\webapp\\images";
-		String location = applicationPathStr + File.separator + UPLOAD_DIR + File.separator;
+		String UPLOAD_DIR = "images";
+		String location = applicationPath + File.separator + UPLOAD_DIR + File.separator;
 		//System.out.println(applicationPath);
 		System.out.println(location);
 		int maxSize = 1024 * 1024 * 5;
