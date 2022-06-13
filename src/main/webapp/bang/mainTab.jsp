@@ -4,13 +4,8 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
-  <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.slim.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
   <link rel="stylesheet" href="css/main_tab.css">
 <script>
 		$(function() {//tchart active하면
@@ -58,14 +53,86 @@
 	    <div id="home" class="container tab-pane active"><br>
 			<div class="movieChart">	
 				<div class="posters">
-				    
+				    <div class="posterWrap">
+						<div class="movieImage"">
+							<a><input class="pImage" type="image" src=" main_images/notReady.jpg"></a>
+						</div>
+						<!-- movieImamge -->
+						<div class="movieName">
+							<strong>준비중</strong>
+						</div><!-- movieName -->
+					</div><!-- posterWrap -->
+					<div class="posterWrap">
+						<div class="movieImage"">
+							<a><input class="pImage" type="image" src=" main_images/notReady.jpg"></a>
+						</div>
+						<!-- movieImamge -->
+						<div class="movieName">
+							<strong>준비중</strong>
+						</div><!-- movieName -->
+					</div><!-- posterWrap -->
+					<div class="posterWrapBar"></div><!-- posterWrapBar -->
+					<div class="posterWrap">
+						<div class="movieImage"">
+							<a><input class="pImage" type="image" src=" main_images/notReady.jpg"></a>
+						</div>
+						<!-- movieImamge -->
+						<div class="movieName">
+							<strong>준비중</strong>
+						</div><!-- movieName -->
+					</div><!-- posterWrap -->
+					<div class="posterWrap">
+						<div class="movieImage"">
+							<a><input class="pImage" type="image" src=" main_images/notReady.jpg"></a>
+						</div>
+						<!-- movieImamge -->
+						<div class="movieName">
+							<strong>준비중</strong>
+						</div><!-- movieName -->
+					</div><!-- posterWrap -->
 				</div><!-- posters -->
 			</div><!-- movieChart -->
 	    </div>
 	    <div id="menu1" class="container tab-pane"><br>
 	    	<div class="movieChart">	
 				<div class="posters">
-					
+					<div class="posterWrap">
+						<div class="movieImage"">
+							<a><input class="pImage" type="image" src=" main_images/notReady.jpg"></a>
+						</div>
+						<!-- movieImamge -->
+						<div class="movieName">
+							<strong>준비중</strong>
+						</div><!-- movieName -->
+					</div><!-- posterWrap -->
+					<div class="posterWrap">
+						<div class="movieImage"">
+							<a><input class="pImage" type="image" src=" main_images/notReady.jpg"></a>
+						</div>
+						<!-- movieImamge -->
+						<div class="movieName">
+							<strong>준비중</strong>
+						</div><!-- movieName -->
+					</div><!-- posterWrap -->
+					<div class="posterWrapBar"></div><!-- posterWrapBar -->
+					<div class="posterWrap">
+						<div class="movieImage"">
+							<a><input class="pImage" type="image" src=" main_images/notReady.jpg"></a>
+						</div>
+						<!-- movieImamge -->
+						<div class="movieName">
+							<strong>준비중</strong>
+						</div><!-- movieName -->
+					</div><!-- posterWrap -->
+					<div class="posterWrap">
+						<div class="movieImage"">
+							<a><input class="pImage" type="image" src=" main_images/notReady.jpg"></a>
+						</div>
+						<!-- movieImamge -->
+						<div class="movieName">
+							<strong>준비중</strong>
+						</div><!-- movieName -->
+					</div><!-- posterWrap -->
 				</div><!-- posters -->
 			</div><!-- screen -->
 	    </div>
