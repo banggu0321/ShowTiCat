@@ -1,264 +1,137 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="ko">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<style>
-	.contents {
-    width: 980px;
-    height: 100%;
-    margin: 0 auto;
-}
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet"
+	href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
+<script
+	src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.slim.min.js"></script>
+<script
+	src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+<script
+	src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
+<link rel="stylesheet" href="css/index.css">
+<link rel="stylesheet" href="css/popup.css">
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<title>TicKet은 역시 ShowTiCat!!</title>
+<script type="text/javascript">
+	//쿠키설정    
+	function setCookie(name, value, expiredays) {
+		var todayDate = new Date();
+		todayDate.setDate(todayDate.getDate() + expiredays);
+		document.cookie = name + '=' + escape(value) + '; path=/; expires='
+				+ todayDate.toGMTString() + ';'
+	}
 
-/*===========================================================================
-common
-=============================================================================*/
-html,
-body {
-    height: 100%;
-    
-}
+	//쿠키 불러오기
+	function getCookie(name) {
+		var obj = name + "=";
+		var x = 0;
+		while (x <= document.cookie.length) {
+			var y = (x + obj.length);
+			if (document.cookie.substring(x, y) == obj) {
+				if ((endOfCookie = document.cookie.indexOf(";", y)) == -1)
+					endOfCookie = document.cookie.length;
+				return unescape(document.cookie.substring(y, endOfCookie));
+			}
+			x = document.cookie.indexOf(" ", x) + 1;
 
-html,body,h1,ol,ul,li,div,h2 {
-    margin: 0;
-    padding: 0;
-}
+			if (x == 0)
+				break;
+		}
+		return "";
+	}
 
-/* body * {
-    outline: 3px dotted tomato;
-} */
+	//닫기 버튼 클릭시
+	function closeWin(key) {
+		if ($("#todaycloseyn").prop("checked")) {
+			setCookie('divpop' + key, 'Y', 1);
+		}
+		$("#divpop" + key + "").hide();
+	}
 
-a {
-    color: black;
-    text-decoration: none;
-    
-}
-ul,ol,li{
-    list-style: none;
- 
-}
-
-/*===========================================================================
-header
-=============================================================================*/
-.header {
-    margin-bottom: 50px;
-    height: 113px;
-    border-bottom: 1px solid #ddd;
-}
-
-.headerContents {
-    width: 100%;
-    height: 113px;
-    margin: 0 0 50px;
-}
-
-.headerContents h1 {
-    width: 274px;
-    height: 57px;
-}
-
-.headerContents .contents {
-    padding: 30px 5px 25px 5px;
-    display: flex;
-    justify-content: space-between;
-}
-
-.header h1 img {
-    width: 117px;
-    height: 100%;
-
-    /* 이미지 임시 표시 */
-    outline: 1px solid #708090;
-}
-
-.header h1 span {
-    font-size: 18.5px;
-}
-
-
-.member {
-    width: 400px;
-    height: 57px;
-    padding-left: 0;
-    display: flex;
-    align-items: center;
-    text-align: center;
-    justify-content: space-evenly;
-}
-
-.member li {
-    width: 36px;
-    height: 100%;
-}
-
-.member a {
-    height: 57px;
-    display: flex;
-    flex-direction: column;
-    font-size: 13px;
-}
-
-.member img {
-    height: 100%;
-
-    /* 이미지 임시 표시 */
-    outline: 1px solid #708090;
-}
-
-/*===========================================================================
-nav
-=============================================================================*/
-.nav {
-    margin: -50px;
-    /* height: 40px;
-    padding: 5px; */
-}
-
-.nav a {
-    font-size: 16px;
-}
-
-/* .nav li {
-    width: 100%;
-    height: 40px;
-} */
-
-.nav_menu {
-    width: 980px;
-    display: inline-flex;
-}
-
-.nav_menu .sherch {
-    display: flex;
-}
-
-.nav_menu input {
-    width: 65%;
-}
-
-/*===========================================================================
-container
-=============================================================================*/
-.contaniner {
-    width: 100%;
-    height: 500px;
-    position: relative;
-    background-color: #000;
-
-}
-
-.banner {
-    width: 100%;
-    height: 100%;
-    background: url(../images/exPoster1) no-repeat center;
-    background-size: 50% 50%;
-
-}
-
-/*===========================================================================
-chart
-=============================================================================*/
-.chart {
-    width: 100%;
-    height: fit-content;
-}
-
-.chart .contents {
-    height: 50%;
-    padding: 50px 30px 60px;
-
-}
-
-	</style>
-    <title>TicKet은 역시 ShowTiCat!!</title>
+	$(function() {
+		if (getCookie("divpop1") == "Y") {
+			$("#divpop1").show();
+		} else {
+			$("#divpop1").hide();
+		}
+	});
+	function deleteCookie() {
+		document.cookie = "divpop1=" + "N" + ";path=/; expires=-1";
+	}
+</script>
 </head>
-
 <body>
-    <div class="header">
-        <!-- 헤더 컨텐츠 -->
-        <div class="headerContents">
-            <div class="contents">
-                <!-- 로고 및 사이트 이름 -->
-                <h1>
-                    <!-- 로고 이미지 추가해야댐 -->
-                    <img src="#" alt="">
-                    <!-- 사이트 이름 -->
-                    <span>S h o w T i C a t</span>
-                </h1>
-                <!-- 회원관련창 -->
-                <ul class="member">
-                    <il>
-                        <!-- 로그인 이미지 추가해야댐 -->
-                        <a href="#"><img src="#" alt=" ">
-                            <span>로그인</span>
-                        </a>
-                    </il>
-                    <il>
-                        <!-- 회원가입 이미지 추가해야댐 -->
-                        <a href="#"><img src="#" alt=" ">
-                            <span>회원가입</span>
-                        </a>
-                    </il>
-                    <il>
-                        <!-- 마이페이지 이미지 추가해야댐 -->
-                        <a href="#"><img src="#" alt=" ">
-                            <span>MyShow</span>
-                        </a>
-                    </il>
-                </ul><!-- member -->
-            </div><!-- contents -->
-        </div><!-- headerContents -->
+	<jsp:include page="mainHeader.jsp" />
+	<!-- /////////////////////////////////////////////////// -->
+	<!-- 틀만 잡았음 -->
+	<div class="contaniner container-fluid">
+		<div class="contents">
+			<div id="slideWrap" class="carousel slide" data-ride="carousel">
+				<a class="carousel-control-prev" href="#slideWrap" data-slide="prev">
+					<span class="carousel-control-prev-icon"></span>
+				</a>
+				<div class="carousel-inner">
+					<div class="carousel-item active">
+						<a href='#'><img src="../images/broker_banner.jpg" alt=""
+							width="100%" height="500"></a>
+						<!--  width="980" -->
+					</div>
+					<div class="carousel-item">
+						<a href='#'><img src="../images/deathnote_banner.jpg" alt=""
+							width="100%" height="500"></a>
+						<!--  width="980" -->
+					</div>
+					<div class="carousel-item">
+						<a href='#'> <img src="../images/crimecity2_banner.jpg" alt=""
+							width="100%" height="500"></a>
+						<!--  width="980" -->
+					</div>
 
-        <div class="nav">
-            <div class="contents">
-                <ul class="nav_menu">
-                    <li>
-                        <h2><a href="#">영화</a></h2>
-                    </li>
-                    <li>
-                        <h2><a href="#">공연</a></h2>
-                    </li>
-                    <li>
-                        <h2><a href="#">극장</a></h2>
-                    </li>
-                    <li>
-                        <h2><a href="#">예매</a></h2>
-                    </li>
-                    <li>
-                        <h2></h2>
-                    </li>
-                    <li class="sherch">
-                        <h2><input>
-                            <a href="#">검색</a>
-                        </h2>
-                    </li>
-                </ul>
-            </div><!-- contens -->
-        </div><!-- nav -->
-    </div><!-- header -->
-    <!-- /////////////////////////////////////////////////// -->
-    <!-- 틀만 잡았음 -->
-    <div class="contaniner">
-        <div class="contents">
-            <div class="banner">
-
-            </div><!-- banner -->
-        </div><!-- contents -->
-    </div><!-- contaniner -->
-    <!-- /////////////////////////////////////////////////// -->
-    <div class="chart">
-        <div class="contents">
-        	<jsp:include page="mainTab.jsp"/>
-        </div><!-- contents -->
-    </div><!-- chart -->
-
-    <footer>
-
-    </footer>
+				</div>
+				<a class="carousel-control-next" href="#slideWrap" data-slide="next">
+					<span class="carousel-control-next-icon"></span>
+				</a>
+				<ul class="carousel-indicators">
+					<li data-target="#slideWrap" data-slide-to="0" class="active"></li>
+					<li data-target="#slideWrap" data-slide-to="1"></li>
+					<li data-target="#slideWrap" data-slide-to="2"></li>
+				</ul>
+			</div>
+		</div>
+		<!-- contents -->
+	</div>
+	<!-- contaniner -->
+	<!-- /////////////////////////////////////////////////// -->
+	<div class="chart">
+		<div class="contents">
+			<jsp:include page="mainTab.jsp" />
+		</div>
+		<!-- contents -->
+	</div>
+	<!-- chart -->
+	<%-- <jsp:include page="mainPopup.jsp" /> --%>
+	<form name="notice_form">
+		<div id="divpop1" class="divpop">
+			<img alt="" src="main_images/QR_22739206_.png">
+			<div class="button_area">
+				<input type='checkbox' name='chkbox' id='todaycloseyn' value='Y'>오늘
+				하루 이 창을 열지 않음 <a href='#' onclick="javascript:closeWin(1);"><B>[닫기]</B></a>
+			</div>
+		</div>
+	</form>
+	<jsp:include page="mainUpTicket.jsp" />
+	<footer>
+		<!-- <form>
+			<input type=button value="쿠키삭제" onClick="deleteCookie()">
+		</form> -->
+	</footer>
 </body>
 
 </html>
