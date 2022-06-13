@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 /**
  * Servlet implementation class ScheduleDeleteServlet
  */
-@WebServlet("/bang/scheduleDelete.do")
+@WebServlet("/jaeyong/memberDelete.do")
 public class MemberDelete extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -22,6 +22,6 @@ public class MemberDelete extends HttpServlet {
 		int result = service.Delete(m_id);
 		request.setAttribute("message", result > 0 ? "삭제성공" : "삭제실패");
 
-		response.sendRedirect("schedule.do");
+		response.sendRedirect("memberPage.do");
 	}
 }
