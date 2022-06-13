@@ -52,7 +52,7 @@ $(function() {
 
 function reservation() {
 	var num = $(this).attr("num");
-	location.href="reservation.do?schedule_num="+num;
+	location.href="http://localhost:9090/ShowTiCat/reservationBeta.do?schedule_num="+num;
 }
 
 function changeDate() {
@@ -66,6 +66,8 @@ function changeDate() {
 <jsp:include page="header.jsp"/>
 <h4>Schedule List</h4>
 <hr>
+
+
 <%-- 극장목록 --%>
 <c:forEach items="${placeList}" var="place" varStatus="s">
 	<c:if test="${s.first}">
@@ -86,11 +88,15 @@ function changeDate() {
 <p class="info">위치 : ${place.place_loc}</p>
 <p class="info">문의 : ${place.place_phone}</p>
 </div>
+
+
 <hr>
 <c:forEach items="${dateList}" var="date">
 	<button class="btn btn-outline-dark dateBtn" date="${date}">${date}</button>
 </c:forEach>
 <hr>
+
+
 <%-- 상영스케줄 --%>
 <c:forEach items="${list}" var="value" varStatus="s">
 <c:forEach items="${theaterList}" var="theater" varStatus="v">
@@ -151,5 +157,8 @@ function changeDate() {
 </c:forEach>
 </div>
 <hr>
+
+<script>
+</script>
 </body>
 </html>
