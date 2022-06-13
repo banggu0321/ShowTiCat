@@ -14,7 +14,7 @@ import javax.servlet.http.HttpSession;
 import com.kos.showticat.util.DateUtil;
 
 
-@WebServlet("/jayoung/getSysdate.do")
+@WebServlet("/getSysdate.do")
 public class GetSysdate extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 

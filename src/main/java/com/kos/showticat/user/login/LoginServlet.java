@@ -43,11 +43,10 @@ public class LoginServlet extends HttpServlet {
 		}else {
 			if(member.getM_id().equals("admin")) {
 				path = request.getContextPath() + "/bang/schedule.do";
-				response.sendRedirect(path);
 			}else if(path==null) {
 				path = request.getContextPath() ;
-				response.sendRedirect(path);
 			}
+			response.sendRedirect(path);
 		}
 	}
 }

@@ -6,16 +6,7 @@
 <head>
 <meta charset="UTF-8">
 <link rel="stylesheet" href="../css/header.css">
-<script>
-$(function() {
-	$.ajax({
-		url:"getSysdate.do",
-		success: function(resData) {
-			}
-	});
 
-})
-</script>
 </head>
 
 <body>
@@ -34,7 +25,7 @@ $(function() {
                 <!-- 회원관련창 -->
 	            <ul class="member">
 		            <li></li>
-                <c:if test="${member != null}">
+                	<c:if test="${member != null}">
 	                    <il>
 	                        <a href="${path}/jayoung/logout.do">
 	                        	<img src="${path}/images/login.png" alt="logout">
@@ -47,8 +38,14 @@ $(function() {
 	                            <span>MyPage</span>
 	                        </a>
 	                    </il>
-				</c:if>	
-                <c:if test="${member == null}">
+                		<il id="m_info">
+		                    <span><br>
+			                    ${member.m_name}님<br>
+				                ${member.point}점
+			                </span>
+	                    </il>
+					</c:if>	
+	                <c:if test="${member == null}">
 	                    <il>
 	                        <a href="${path}/jayoung/login.do">
 	                        	<img src="${path}/images/login.png" alt="login">
@@ -61,7 +58,13 @@ $(function() {
 	                            <span>회원가입</span>
 	                        </a>
 	                    </il>
-				</c:if>	
+	                    <il>
+	                        <a href="${path}/jaeyong/memberPage.jsp">
+	                        <img src="${path}/images/mypage.png" alt="mypage">
+	                            <span>MyPage</span>
+	                        </a>
+	                    </il>
+					</c:if>	
 	            </ul><!-- member -->
             </div><!-- contents -->
         </div><!-- headerContents -->

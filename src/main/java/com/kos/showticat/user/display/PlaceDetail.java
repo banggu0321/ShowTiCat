@@ -36,6 +36,7 @@ public class PlaceDetail extends HttpServlet {
 		request.setAttribute("showList", sss.selectAll());
 		request.setAttribute("theaterList", ts.selectByPlace(place_num));
 		request.setAttribute("list", ss.selectByTheater(place_num, show_start));
+		request.setAttribute("reservCnt", ss.selectCnt());
 		request.setAttribute("dateList", DateUtil.dateList());
 	
 		RequestDispatcher rd = request.getRequestDispatcher("placeDetail.jsp");

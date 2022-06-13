@@ -112,8 +112,8 @@ function isChecked() {
 
 	var name = $("#m_name").val();
 	var email = $("#email1").val();
-	var phoneMsg = $("#phoneMsg").val();
-	var random = $("#random").val();
+	var phoneMsg = $("#phoneMsg").html();
+	var msg = $("#msg").html();
 	
 	if(idMsg != "사용가능한 ID입니다.") {
 		$("#m_id").focus();
@@ -130,7 +130,7 @@ function isChecked() {
 	}else if(phoneMsg != "사용가능한 연락처입니다."){
 		$("#phone").focus();
 		return false;
-	}else if(random==null||random==''){
+	}else if(msg != "인증성공"){
 		return false;
 	}
 }

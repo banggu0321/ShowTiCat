@@ -85,10 +85,19 @@ header
     display: flex;
     flex-direction: column;
     font-size: 13px;
+    font-weight: bold;
 }
-
+.member a:hover {
+    color: black;
+    text-decoration: none;	
+}
 .member img {
     height: 100%;
+}
+.member #m_info {
+	font-weight: bold;
+	margin-top: 10px;
+	
 }
 
 /*===========================================================================
@@ -109,6 +118,8 @@ nav
 .nav a:hover {
     font-size: 18px;
     font-weight: bold;
+    color: black;
+    text-decoration: none;
 }
 
 .nav li {
