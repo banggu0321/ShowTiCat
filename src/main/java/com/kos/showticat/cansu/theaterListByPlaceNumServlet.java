@@ -29,7 +29,6 @@ public class theaterListByPlaceNumServlet extends HttpServlet {
 		pList = service.selectTheaterByPlaceNum(placenum);
 		request.setAttribute("theaterByNumber", pList);
 		
-		//ю╖юс
 		RequestDispatcher rd = request.getRequestDispatcher("cansu/theaterListByNumber.jsp");
 		rd.forward(request, response);
 	}

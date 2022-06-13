@@ -44,7 +44,7 @@ public class seatSampleServletBeta extends HttpServlet {
 		
 		
 		//위임 (paymentSample.jsp)
-		RequestDispatcher rd = request.getRequestDispatcher("cansu/paymentSample.jsp");
+		RequestDispatcher rd = request.getRequestDispatcher("/reservationCompleteFromShowList");
 		rd.forward(request, response);
 
 	}

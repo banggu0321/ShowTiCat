@@ -24,21 +24,27 @@ public class reservationCompletePayYNandRate extends HttpServlet {
 
 		HttpSession seesion = request.getSession();
 		ScheduleService service = new ScheduleService();
-
-		//session�� ����� reservation number �������� -> select schedule number ->	show code
+		
+		//session reservation number -> select schedule number ->	show code
 		int reservationNum = (int)seesion.getAttribute("reservationNumber");
 		//		System.out.println(reservationNum);
+				
+		//update payment		
+		String payment = request.getParameter("pay");
+		System.out.println(payment);		
+		service.updateReservationPaymentByResNum(payment, reservationNum);
+		
 
 		int scheduleNum = service.selectReservationByReservationNum(reservationNum);
 		String showCode = service.selectScheduleByScheduleNum(scheduleNum);		
 		//		System.out.println(showCode);
 
 		//reservation table pay_YN update		
-		String yn="Y"; //check�� ���� Y or N ����
+		String yn="Y"; //check Y or N 
 		service.updateReservationPaymentYN(yn, reservationNum);
 
 
-		//reservation number���� select m_id -> gender Ȯ��
+		//reservation number select m_id -> gender 
 		String mID = service.selectReservationUserIDByReservationNum(reservationNum);
 		String gender = service.selectMemberByID(mID);
 
@@ -61,7 +67,7 @@ public class reservationCompletePayYNandRate extends HttpServlet {
 			List<String> rateWM = new ArrayList<>();
 			rateWM = service.selectChartByShowCode(showCode);
 
-			int rate = 0;  //gender�� ���� �ʱⰪ ����
+			int rate = 0;  //gender
 			if(gender.equals("W")) {
 				rate = Integer.parseInt(rateWM.get(0));			
 			}else if(gender.equals("M")) {
@@ -77,7 +83,7 @@ public class reservationCompletePayYNandRate extends HttpServlet {
 			System.out.println("ScheduleDAO.reservationCompletePayYNandRate=>update data");
 		}
 
-		//����(jayoung/main.jsp)
+		//(index.jsp)
 		RequestDispatcher rd = request.getRequestDispatcher("index.jsp");
 		rd.forward(request, response);
 	}

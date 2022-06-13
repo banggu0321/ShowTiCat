@@ -24,17 +24,19 @@ public class reservationFromTheater extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) 
 			throws ServletException, IOException {
-		String scheduleNum = request.getParameter("schedule_num");
-		System.out.println("scheduleNum:"+scheduleNum);
-
 		//log in check -> get id
-		String logInPath = "../jayoung/main.jsp";
+		String logInPath = "index.jsp";
 		HttpSession session = request.getSession();
+
+		String scheduleNum = request.getParameter("schedule_num");
+		session.setAttribute("scheduleNumber", scheduleNum);
+		System.out.println("scheduleNum:"+scheduleNum);
+//		session.setAttribute("schedulNum", scheduleNum);
 
 		MemberVO member = new MemberVO();
 		member = (MemberVO) session.getAttribute("member");
 //		System.out.println(member);
-		if(member==null) {  //log in ���� ���Ž� main page�� ������
+		if(member==null) {  
 			response.sendRedirect(logInPath);
 			return;
 		}
@@ -50,8 +52,9 @@ public class reservationFromTheater extends HttpServlet {
 			reservationNumBeta = Integer.parseInt(scheduleNum)*20;
 		}
 		
+		//session
 		session.setAttribute("reservationNumber", reservationNumBeta);
-		System.out.println(reservationNumBeta);
+		System.out.println("reservation number:"+reservationNumBeta);
 				
 		ScheduleService service = new ScheduleService();
 		service.insertReservationInfor(reservationNumBeta, m_id, Integer.parseInt(scheduleNum));
@@ -64,7 +67,6 @@ public class reservationFromTheater extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) 
 			throws ServletException, IOException {
-
 	}
 	
 	private static String eachChartoStringBeta(String name) {
@@ -74,7 +76,6 @@ public class reservationFromTheater extends HttpServlet {
 		for(char ch: temp) {
 			result += (int)ch;
 		}
-		
 		return result.substring(0, 6);
 	}
 	

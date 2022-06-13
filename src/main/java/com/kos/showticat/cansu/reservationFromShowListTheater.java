@@ -20,15 +20,10 @@ public class reservationFromShowListTheater extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-//	    String theaterNumber = request.getParameter("theaterNum");
-//	    String placeNumber = request.getParameter("placeNum");
 	    
-//	    System.out.println(theaterNumber);
-//	    System.out.println(placeNumber);
-	    
-	    String theaterNum = request.getParameter("theaterNum"); //user ¼±ÅÃÀ» ¹Þ¾Æ¿È
-		ScheduleService service = new ScheduleService();
-		int placeNum = service.selectPlaceByTheaterNum(theaterNum);  //ÇØ´çÇÏ´Â place numberÀ» ¹Þ¾Æ¿È
+	    String theaterNum = request.getParameter("theaterNum"); //user 
+	    ScheduleService service = new ScheduleService();
+		int placeNum = service.selectPlaceByTheaterNum(theaterNum);  //ï¿½Ø´ï¿½ï¿½Ï´ï¿½ place numberï¿½ï¿½ ï¿½Þ¾Æ¿ï¿½
 		System.out.println("placeNum: "+placeNum);
 		
 		HttpSession session = request.getSession();
@@ -37,7 +32,7 @@ public class reservationFromShowListTheater extends HttpServlet {
 		
 		service.updateScheduleTheaterPlacenum(theaterNum, placeNum, scheduleNum);		
 		
-		//À§ÀÓ(dateTemp.jsp)
+		//(dateTemp.jsp)
 		RequestDispatcher rd = request.getRequestDispatcher("cansu/dateTemp.jsp");
 		rd.forward(request, response);   
 	}
