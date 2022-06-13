@@ -54,6 +54,20 @@ public class DateUtil {
 		return date;
 	}
 	
+	public static Date dayAfter(Date date) {
+		Calendar cal = Calendar.getInstance();
+		java.util.Date d = new java.util.Date();
+		
+		cal.setTime(date);
+		cal.add(Calendar.DATE, +1);
+
+		d = cal.getTime();
+		String sdf = new SimpleDateFormat("yyyy-MM-dd").format(d);
+		Date date2 = convertToDate(sdf);
+
+		return date2;
+	}
+	
 	public static List<Date> dateList() {
 		List<Date> dateList = new ArrayList<>();
 		dateList.add(sysdate());
@@ -70,9 +84,5 @@ public class DateUtil {
 			dateList.add(convertToDate(sdf));
 		}
 		return dateList;
-	}
-	
-	public static void main(String[] args) {
-		System.out.println(dateList());
 	}
 }

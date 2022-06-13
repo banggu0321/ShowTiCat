@@ -15,6 +15,7 @@ public class MemberDAO {
 	static final String SQL_FIND_ID = "select * from members where m_name=? and phone=?";
 	static final String SQL_FIND_PW = "select * from members where m_id=? and m_name=? and phone=?";
 	static final String SQL_SELECT_ID = "select count(*) from members where m_id=?";
+	static final String SQL_SELECT_PHONE = "select count(*) from members where phone=?";
 	static final String SQL_INSERT = "insert into members values(?,?,?,?,?,?,?,sysdate,0,null)";
 	static final String SQL_UPDATE_PW = "update members set m_pw = ? where m_id = ?";
 	
@@ -118,6 +119,27 @@ public class MemberDAO {
 		try {
 			pst = conn.prepareStatement(SQL_SELECT_ID);
 			pst.setString(1, m_id); 
+			rs = pst.executeQuery();
+			
+			while(rs.next()) {
+				result = rs.getInt(1);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			DBUtil.dbClose(rs, pst, conn);
+		}
+		return result;
+	}
+	
+	//연락처 중복확인
+	public int checkPhone(String phone) {
+		int result = 0;
+		conn = DBUtil.getConnection();   
+		
+		try {
+			pst = conn.prepareStatement(SQL_SELECT_PHONE);
+			pst.setString(1, phone); 
 			rs = pst.executeQuery();
 			
 			while(rs.next()) {

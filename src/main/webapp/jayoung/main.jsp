@@ -13,41 +13,81 @@
 <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.slim.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
-<link rel="stylesheet" href="common.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<link rel="stylesheet" href="css/common.css">
 
-<script>
-$(function() {
-	$("#aList").on("click",aList);
-	$("#mList").on("click",mList);
-	$("#sList").on("click",sList);
-	$("#scheduleList").on("click",scheduleList);
-})
-
-function aList() {
-	location.href="showAllList.do";
-}
-
-function mList() {
-	location.href="showList.do?category=영화";
-}
-
-function sList() {
-	location.href="showList.do?category=공연";
-}
-
-function scheduleList() {
-	
-	location.href="placeDetail.do?place_num=1020";
-}
-
-</script>
 </head>
 <body>
 <jsp:include page="header.jsp"/>
+    <!-- 틀만 잡았음 -->
+    <div class="contaniner">
+        <div class="contents">
+            <div class="banner">
+            
+            </div><!-- banner -->
+        </div><!-- contents -->
+    </div><!-- contaniner -->
+    <!-- /////////////////////////////////////////////////// -->
+    <div class="chart">
+        <div class="contents">
+            <!--  -->
+            <div class="movieChart">
+                <h2><a href="#">무비차트</a></h2>
+            </div><!-- movieChart -->
+            <div class="posters">
+                <div class="posterWrap">
+                    <div class="movieImage">
+                    </div><!-- movieImamge -->
+                    <div class="movieName">
+                        <strong>영화제목</strong>
+                    </div><!-- movieName -->
+                    <img src="#" alt=" "><span>예매율</span>
+                </div><!-- posterWrap -->
 
-<button class="btn btn-primary" id="aList">영화/공연 목록보기</button>
-<button class="btn btn-primary" id="mList" hidden="hidden">영화 목록보기</button>
-<button class="btn btn-primary" id="sList" hidden="hidden">공연 목록보기</button>
-<button class="btn btn-primary" id="scheduleList">극장별로 조회</button>
+                <div class="posterWrap">
+                    <div class="movieImage">
+                    </div><!-- movieImamge -->
+                    <div class="movieName">
+                        <strong>영화제목</strong>
+                    </div><!-- movieName -->
+                    <img src="#" alt=" "><span>예매율</span>
+                </div><!-- posterWrap -->
+
+                <div class="posterWrap">
+                    <div class="movieImage">
+                    </div><!-- movieImamge -->
+                    <div class="movieName">
+                        <strong>영화제목</strong>
+                    </div><!-- movieName -->
+                    <img src="#" alt=" "><span>예매율</span>
+                </div><!-- posterWrap -->
+
+                <div class="posterWrap">
+                    <div class="movieImage">
+                    </div><!-- movieImamge -->
+                    <div class="movieName">
+                        <strong>영화제목</strong>
+                    </div><!-- movieName -->
+                    <img src="#" alt=" "><span>예매율</span>
+                </div><!-- posterWrap -->
+
+                <div class="posterWrap">
+                    <div class="movieImage">
+                    </div><!-- movieImamge -->
+                    <div class="movieName">
+                        <strong>영화제목</strong>
+                    </div><!-- movieName -->
+                    <img src="#" alt=" "><span>예매율</span>
+                </div><!-- posterWrap -->
+
+            </div><!-- posters -->
+
+
+        </div><!-- contents -->
+    </div><!-- chart -->
+
+    <footer>
+
+    </footer>
 </body>
 </html>

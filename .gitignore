@@ -6,8 +6,12 @@
 
 # JDT-specific (Eclipse Java Development Tools)     
 <<<<<<< HEAD
+<<<<<<< HEAD
 .classpath
 =======
 .classpath
 ```
+>>>>>>> branch 'master' of https://github.com/banggu0321/ShowTiCat
+=======
+.classpath
 >>>>>>> branch 'master' of https://github.com/banggu0321/ShowTiCat

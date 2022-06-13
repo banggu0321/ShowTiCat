@@ -34,16 +34,16 @@ public class FindPW extends HttpServlet {
 		MemberService service = new MemberService();
 		MemberVO member = service.findPW(m_id, m_name, phone);
 		
-		HttpSession session = request.getSession();
-		session.setAttribute("member", member);
-		
 		if(member == null) {
 			response.setContentType("text/html; charset=UTF-8");
 			PrintWriter writer = response.getWriter();
 			writer.println("<script>alert('일치하는 회원 정보가 없습니다. 확인 후 다시 시도해주세요.');  location.href='findPW.do';</script>");
 			writer.close();
 		}else {
-			response.sendRedirect("resetPW.do");
+			request.setAttribute("m_id", m_id);
+			
+			RequestDispatcher rd = request.getRequestDispatcher("resetPW.jsp");
+			rd.forward(request, response);
 		}
 	}
 

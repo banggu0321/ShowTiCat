@@ -30,6 +30,11 @@ public class MemberService {
 		return dao.checkID(m_id);
 	}
 	
+	//연락처 중복확인
+	public int checkPhone(String phone) {
+		return dao.checkPhone(phone);
+	}
+	
 	//회원가입
 	public int memberInsert(MemberVO member) {
 		return dao.memberInsert(member);
