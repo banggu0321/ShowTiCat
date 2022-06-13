@@ -24,8 +24,8 @@ public class ScheduleService {
 	}
 
 	//상영관별로 조회
-	public List<ScheduleVO> selectByTheater(int place_num/* , Date show_date */) {
-		return dao.selectByTheater(place_num/* , show_date */);
+	public List<ScheduleVO> selectByTheater(int place_num, Date show_date) {
+		return dao.selectByTheater(place_num , show_date);
 	}
 
 }
