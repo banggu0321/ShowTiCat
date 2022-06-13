@@ -6,6 +6,19 @@
 <head>
 <meta charset="UTF-8">
 <link rel="stylesheet" href="css/header.css">
+<script>
+
+var susdate = "";
+$(function() {
+	$.ajax({
+		url:"jayoung/getSysdate.do",
+		success: function(resData) {
+			var sysdate = resData;
+			}
+	});
+
+})
+</script>
 </head>
 
 <body>
@@ -17,9 +30,9 @@
                 <!-- 로고 및 사이트 이름 -->
                 <h1>
                     <a href="${path}/jayoung/main.go">
-	                    <img src="${path}/images/Ticat.png" alt="ShowTiCat">
+	                    <img src="${path}/images/222.png" alt="ShowTiCat">
 	                    <!-- 사이트 이름 -->
-                    <span>S h o w T i C a t</span>
+                    <!-- <span>S h o w T i C a t</span> -->
                     </a>
                 </h1>
                 <!-- 회원관련창 -->
@@ -33,7 +46,7 @@
 	                        </a>
 	                    </il>
 	                    <il>
-	                        <a href="${path}/jjjjjjjjyyyyyyyy/memberPage.jsp">
+	                        <a href="${path}/jaeyong/memberPage.jsp">
 	                        <img src="${path}/images/mypage.png" alt="mypage">
 	                            <span>MyPage</span>
 	                        </a>
