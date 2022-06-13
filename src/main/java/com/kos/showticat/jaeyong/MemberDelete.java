@@ -23,7 +23,7 @@ public class MemberDelete extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 			RequestDispatcher rd;
-			rd = request.getRequestDispatcher("memberUpdate.jsp");
+			rd = request.getRequestDispatcher("memberPage.jsp");
 			rd.forward(request, response);
 		}
 	

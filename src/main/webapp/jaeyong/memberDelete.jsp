@@ -14,7 +14,7 @@
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 
 <script>
-$(function ()delerte{
+$(function ()delete{
 	$("#m_pw").on("keyup",checkPW);
 	$("#pw2").on("keyup",checkPW);
 	$("#delete").on("click",Delete);
