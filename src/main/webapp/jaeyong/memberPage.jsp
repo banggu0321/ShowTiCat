@@ -80,7 +80,7 @@ p {
 		<input value ="${member.point}"
 			   type ="text"
 			   id   ="point"
- 			   readonly="readonly"><br>
+ 			   disabled="disabled"><br>
 
 		<br>
 		<input type="submit"

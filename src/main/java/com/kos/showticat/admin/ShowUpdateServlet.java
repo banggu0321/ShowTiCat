@@ -1,5 +1,6 @@
 package com.kos.showticat.admin;
 
+import java.io.File;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.Date;
@@ -14,6 +15,8 @@ import javax.servlet.http.HttpServletResponse;
 import org.json.simple.JSONObject;
 
 import com.kos.showticat.admin.vo.ShowVO;
+import com.oreilly.servlet.MultipartRequest;
+import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 
 /**
  * Servlet implementation class ShowUpdateServlet
@@ -52,8 +55,20 @@ public class ShowUpdateServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		request.setCharacterEncoding("utf-8");
+		String applicationPath = request.getSession().getServletContext().getRealPath(".");
 
-		ShowVO s = makeS(request);
+		String UPLOAD_DIR = "images";
+		String location = applicationPath + File.separator + UPLOAD_DIR + File.separator;
+		//System.out.println(applicationPath);
+		System.out.println(location);
+		int maxSize = 1024 * 1024 * 5;
+		
+		MultipartRequest multi = new MultipartRequest(request, location, maxSize, "utf-8",
+				new DefaultFileRenamePolicy());
+		String fileName = multi.getFilesystemName("file");
+		System.out.println(fileName);
+		
+		ShowVO s = makeS(multi, fileName);
 		ShowService service = new ShowService();
 		int result = service.updateShow(s);
 		if(result==0) {
@@ -67,9 +82,10 @@ public class ShowUpdateServlet extends HttpServlet {
 		
 	}
 
-	private ShowVO makeS(HttpServletRequest request) {
+	private ShowVO makeS(MultipartRequest request, String fileName) {
 		ShowVO s = new ShowVO();
-
+		
+		//System.out.println(fileName);
 		s.setShow_code(request.getParameter("show_code"));
 		s.setShow_name(request.getParameter("show_name"));
 		s.setDirector(request.getParameter("director"));
@@ -78,16 +94,16 @@ public class ShowUpdateServlet extends HttpServlet {
 		s.setShow_time(readInt(request, "show_time"));
 		s.setCategory(request.getParameter("category"));
 		s.setSummary(request.getParameter("summary"));
-		s.setPoster(request.getParameter("poster"));
+		s.setPoster(fileName);
 		s.setPrice(readInt(request, "price"));
 
 		return s;
 	}
-	private Date readDate(HttpServletRequest request, String column) {
+	private Date readDate(MultipartRequest request, String column) {
 		String data = request.getParameter(column);
 		return com.kos.showticat.util.DateUtil.convertToDate(data);
 	}
-	private int readInt(HttpServletRequest request, String column) {
+	private int readInt(MultipartRequest request, String column) {
 		String data = request.getParameter(column);
 		return Integer.parseInt(data);
 	}

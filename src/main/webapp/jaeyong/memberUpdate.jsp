@@ -9,8 +9,6 @@
 <title>MemberUpdate</title>
 
 <script
-	src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.slim.min.js"></script>
-<script
 	src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
@@ -25,9 +23,9 @@ $(function() {
 
 $(function(){
 	$("#delete").click(function(){
-		var m_id = $(this).attr("data-m_id");
+		var m_id = $(this).attr("m_id");
 		if(confirm(m_id + "삭제?"))
-			location.href = "memberDelete1.do?m_id="+m_id;
+			location.href = "memberDelete.do?m_id="+m_id;
 			)}
 	})
 
@@ -44,7 +42,7 @@ function checkPW() {
     
     }
 function Delete() {
-	location.href="/jaeyong/memberDelete1.do";
+	location.href="/jaeyong/memberDelete.do";
 }
  
 </script>
@@ -130,7 +128,8 @@ p {
 		<label>포인트 : </label>
 		<input type="text"
 			   name="point"
-			   value="${member.point}">
+			   value="${member.point}"
+			   disabled="disabled">
 
 		<br><br>
 		<input type="submit"

@@ -66,6 +66,7 @@
 	function deleteCookie() {
 		document.cookie = "divpop1=" + "N" + ";path=/; expires=-1";
 	}
+<<<<<<< HEAD
 	
 	$(function() {
 		$.ajax({
@@ -75,6 +76,8 @@
 		});
 
 	})
+=======
+>>>>>>> branch 'master' of https://github.com/banggu0321/ShowTiCat.git
 </script>
 </head>
 
@@ -85,7 +88,7 @@
 	<!-- /////////////////////////////////////////////////// -->
 	<!-- 틀만 잡았음 -->
 	<div class="contaniner container-fluid">
-		<div class="contents">
+		<div id="banner_contents" class="contents">
 			<div id="slideWrap" class="carousel slide" data-ride="carousel">
 				<a class="carousel-control-prev" href="#slideWrap" data-slide="prev">
 					<span class="carousel-control-prev-icon"></span>
