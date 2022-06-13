@@ -42,7 +42,7 @@ function checkPW() {
     
     }
 function Delete() {
-	location.href="/jaeyong/memberDelete.do";
+	location.href="/jaeyong/memberDelete1.do";
 }
  
 </script>
