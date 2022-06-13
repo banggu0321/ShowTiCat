@@ -14,9 +14,10 @@
 <script	src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
 <script	src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
 <script	src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+<link rel="stylesheet" href="css/header.css">
 <link rel="stylesheet" href="css/common.css">
 <link rel="stylesheet" href="css/main_tab.css">
-<!-- <link rel="stylesheet" href="css/index.css"> -->
 <link rel="stylesheet" href="css/popup.css">
 
 <script type="text/javascript">
@@ -65,6 +66,15 @@
 	function deleteCookie() {
 		document.cookie = "divpop1=" + "N" + ";path=/; expires=-1";
 	}
+	
+	$(function() {
+		$.ajax({
+			url:"getSysdate.do",
+			success: function(resData) {
+				}
+		});
+
+	})
 </script>
 </head>
 
@@ -82,17 +92,17 @@
 				</a>
 				<div class="carousel-inner">
 					<div class="carousel-item active">
-						<a href='showDetail.do?show_code=AA7'><img src="${path}/images/broker_banner.jpg" alt=""
+						<a href='jayoung/showDetail.do?show_code=AA7'><img src="${path}/images/broker_banner.jpg" alt=""
 							width="100%" height="500"></a>
 						<!--  width="980" -->
 					</div>
 					<div class="carousel-item">
-						<a href='showDetail.do?show_code=AA10'><img src="${path}/images/deathnote_banner.jpg"
+						<a href='jayoung/showDetail.do?show_code=AA10'><img src="${path}/images/deathnote_banner.jpg"
 							alt="" width="100%" height="500"></a>
 						<!--  width="980" -->
 					</div>
 					<div class="carousel-item">
-						<a href='showDetail.do?show_code=AA6'> <img src="${path}/images/crimecity2_banner.jpg"
+						<a href='jayoung/showDetail.do?show_code=AA6'> <img src="${path}/images/crimecity2_banner.jpg"
 							alt="" width="100%" height="500"></a>
 						<!--  width="980" -->
 					</div>

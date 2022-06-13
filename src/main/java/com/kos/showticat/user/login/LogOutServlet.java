@@ -19,6 +19,6 @@ public class LogOutServlet extends HttpServlet {
 		HttpSession session = request.getSession();
 		session.invalidate();
 		
-		response.sendRedirect("main.go");
+		response.sendRedirect("../");
 	}
 }
