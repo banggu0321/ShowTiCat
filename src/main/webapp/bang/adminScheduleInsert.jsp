@@ -34,12 +34,10 @@ label {
 	<div>
 		<div>
 			<div id="listTitle">
-				<h1>공연 추가</h1>
+				<h1>스케줄 추가</h1>
 			</div>
 		</div>
-
-		<h1>스케줄 추가</h1>
-		<form action="scheduleInsert.do" method="post">
+		<form action="scheduleInsert.do" method="post" id="insertscheduleform">
 			<div class="form-group">
 				<label>show 제목</label> <select class="form-control" name="show_code">
 					<c:forEach items="${slist}" var="s">

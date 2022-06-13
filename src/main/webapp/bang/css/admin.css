@@ -105,10 +105,14 @@ form {
 	margin: 0 auto;
 }
 #insertshowform {
+	clear : both;
     /* border: 1px solid lightgray; */
     width: 50%;
     padding: 20px;
     margin: 0 0 0 400px;
+}
+#insertscheduleform{
+	clear : both;
 }
 .logo img {
     width: 300px;

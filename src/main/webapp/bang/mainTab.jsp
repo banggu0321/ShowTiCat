@@ -39,12 +39,12 @@
 	<div class="container mt-3">
 	  <br>
 	  <!-- Nav tabs -->
-	  <ul class="tabmenu nav nav-tabs">
-	    <li class="nav-item">
-	      <a class="nav-link tchart active" data-toggle="tab" href="#home">무비차트</a>
+	  <ul class="tabmenu nav nav-tabs" id="tabmenu_nav">
+	    <li id="tabmenu_li" class="nav-item">
+	      <a id="tabmenu_a" class="nav-link tchart active" data-toggle="tab" href="#home">무비차트</a>
 	    </li>
-	    <li class="nav-item">
-	      <a class="nav-link tscreen" data-toggle="tab" href="#menu1">상영예정작</a>
+	    <li id="tabmenu_li" class="nav-item">
+	      <a id="tabmenu_a" class="nav-link tscreen" data-toggle="tab" href="#menu1">상영예정작</a>
 	    </li>
 	  </ul>
 	  

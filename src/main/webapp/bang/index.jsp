@@ -57,8 +57,8 @@
 	}
 
 	$(function() {
-		if (getCookie("divpop1") != "Y") {
-			$("#divpop1").hideshow();
+		if (getCookie("divpop1") == "Y") {
+			$("#divpop1").hide();
 		} else {
 			$("#divpop1").show();
 		}
