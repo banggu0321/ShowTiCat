@@ -66,7 +66,6 @@
 	function deleteCookie() {
 		document.cookie = "divpop1=" + "N" + ";path=/; expires=-1";
 	}
-<<<<<<< HEAD
 	
 	$(function() {
 		$.ajax({
@@ -76,8 +75,6 @@
 		});
 
 	})
-=======
->>>>>>> branch 'master' of https://github.com/banggu0321/ShowTiCat.git
 </script>
 </head>
 
