@@ -40,7 +40,7 @@ label {
 <body>
 	<jsp:include page="adminHeader.jsp" />
 	<h1>공연 추가</h1>
-	<form action="showInsert.do" method="post"
+	<form action="showInsert.do" id="insertshowform" method="post"
 		enctype="multipart/form-data">
 		<div class="form-group">
 			<label>show코드</label> <input class="form-control" type="text"
