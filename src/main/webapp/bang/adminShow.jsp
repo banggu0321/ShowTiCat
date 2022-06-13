@@ -149,7 +149,7 @@
 
 				<!-- Modal body -->
 				<form class="modalForm modal-body form-group" action="showUpdate.do"
-					method="post">
+					method="post" enctype="multipart/form-data">
 					<label>코드</label><input class="form-control" type="text"
 						id="show_code" name="show_code" readonly="readonly"><br>
 					<label>제목</label><input class="form-control" type="text"
@@ -158,17 +158,24 @@
 					<label>트레일러</label><input class="form-control" type="text"
 						id="trailer" name="trailer"><br> <label>개봉일자</label><input
 						class="form-control" type="date" id="opening_date"
-						name="opening_date"><br> <label>러닝타임</label><input
+						name="opening_date"><br> <label>러닝타임</label> <input
 						class="form-control" type="number" id="show_time" name="show_time"><br>
 					<label>카테고리</label> <select class="form-control" name="category"
 						id="category" onchange="OnChange()">
 						<option value="영화">영화</option>
 						<option value="공연">공연</option>
 					</select><br> <label>줄거리</label><input class="form-control" type="text"
-						id="summary" name="summary"><br> <label>포스터</label><input
-						class="form-control" type="text" id="poster" name="poster"><br>
-					<label>가격</label><input class="form-control" type="text" id="price"
-						name="price" readonly="readonly"><br>
+						id="summary" name="summary"><br> 
+						
+				<label>포스터</label> 
+				<input class="form-control" type="text" id="poster" name="poster" readonly="readonly">
+					<div class="custom-file form-control">
+						<input type="file" class="custom-file-input" id="customFile"
+							name="file"> <label class="custom-file-label"
+							for="customFile">Choose file</label>
+					</div>
+					<br> <label>가격</label><input class="form-control" type="text"
+						id="price" name="price" readonly="readonly"><br>
 
 					<!-- Modal footer -->
 					<div class="modal-footer">
@@ -190,6 +197,13 @@
 				document.getElementById("price").value = 100000;
 			}
 		}
+		$(".custom-file-input").on(
+				"change",
+				function() {
+					var fileName = $(this).val().split("\\").pop();
+					$(this).siblings(".custom-file-label").addClass("selected")
+							.html(fileName);
+				});
 	</script>
 </body>
 </html>
