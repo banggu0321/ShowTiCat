@@ -99,8 +99,11 @@ hr {
 	<p class="summary">${show.summary}</p>
 	<hr>
 	<h4 class="t">예매자 통계</h4>
-	<c:import url="showChart.jsp"></c:import>
-	
+	<c:import url="showChart.jsp"/>
+	<hr>
+	<h4 class="t">리뷰</h4>
+	<jsp:include page="showReview.jsp"/>
+	<hr>
 	
 	<!-- 예고편 모달 -->
 	<div class="modal" id="myModal">

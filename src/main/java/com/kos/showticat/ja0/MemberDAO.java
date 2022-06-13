@@ -18,6 +18,8 @@ public class MemberDAO {
 	static final String SQL_SELECT_PHONE = "select count(*) from members where phone=?";
 	static final String SQL_INSERT = "insert into members values(?,?,?,?,?,?,?,sysdate,0,null)";
 	static final String SQL_UPDATE_PW = "update members set m_pw = ? where m_id = ?";
+	static final String SQL_UPDATE_PLACE = "update members set place_num = ? where m_id = ?";
+	static final String SQL_DELTE_PLACE = "update members set place_num = null where m_id = ?";
 	
 	Connection conn;
 	Statement st;
@@ -100,6 +102,43 @@ public class MemberDAO {
 			pst = conn.prepareStatement(SQL_UPDATE_PW);
 			pst.setString(1, m_pw); 
 			pst.setString(2, m_id); 
+			rs = pst.executeQuery();
+			
+			result = pst.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			DBUtil.dbClose(rs, pst, conn);
+		}
+		return result;
+	}
+
+	//관심매장 변경
+	public int updatePlace(int place_num, String m_id) {
+		conn = DBUtil.getConnection();   
+		
+		try {
+			pst = conn.prepareStatement(SQL_UPDATE_PLACE);
+			pst.setInt(1, place_num); 
+			pst.setString(2, m_id); 
+			rs = pst.executeQuery();
+			
+			result = pst.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			DBUtil.dbClose(rs, pst, conn);
+		}
+		return result;
+	}
+	
+	//관심매장 삭제
+	public int deletePlace(String m_id) {
+		conn = DBUtil.getConnection();   
+		
+		try {
+			pst = conn.prepareStatement(SQL_DELTE_PLACE);
+			pst.setString(1, m_id); 
 			rs = pst.executeQuery();
 			
 			result = pst.executeUpdate();

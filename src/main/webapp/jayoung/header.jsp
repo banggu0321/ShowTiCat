@@ -82,7 +82,7 @@
                         <h2><a href="${path}/jayoung/placeDetail.do?place_num=1020&date=${sysdate}">극장</a></h2>
                     </li>
                     <li>
-                        <h2><a href="#">예매</a></h2>
+                        <h2><a href="${path}/jayoung/interestPlace.do">예매</a></h2>
                     </li>
                     <li></li>
                     <li></li>
