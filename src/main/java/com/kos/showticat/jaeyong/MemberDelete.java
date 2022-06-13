@@ -15,7 +15,7 @@ import com.kos.showticat.jaeyong.MemberService;
 import com.kos.showticat.util.DateUtil;
 
 /**
- * Servlet implementation class MemberUpdate
+ * Servlet implementation class MemberDelete
  */
 @WebServlet("/jaeyong/memberDelete.do")
 public class MemberDelete extends HttpServlet {

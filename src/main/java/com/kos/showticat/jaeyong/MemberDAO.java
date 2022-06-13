@@ -27,7 +27,7 @@ public class MemberDAO {
 
 /////////////////////////////////////////////////////////////////////
 /////////////////////////////테스트//////////////////////////////
-	public List<MemberVO> selectAll() {
+	public List<MemberVO>selectAll() {
 		List<MemberVO> mlist = new ArrayList<>();
 		MemberVO member = null;
 		conn = DBUtil.getConnection();
