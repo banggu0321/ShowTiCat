@@ -58,7 +58,7 @@ function isEmpty() {
 	
 	<div class="form-group">
 		<label>비밀번호 </label>
-		<input class="form-control" type="text" name="m_pw" id="m_pw">
+		<input class="form-control" type="password" name="m_pw" id="m_pw">
 	</div>
 	
 	<input class="btn btn-success" type="submit" value="로그인">

@@ -14,6 +14,7 @@ import com.kos.showticat.util.DBUtil;
 
 public class ReviewDAO {
 	static final String SQL_SELECT = "select * from review where show_code=?";
+	static final String SQL_SELECT_REVIEW = "select * from review where review_num=?";
 	static final String SQL_INSERT = "insert into review values(seq_review_no.nextval,?,?,?,?,sysdate)";
 	static final String SQL_SELECT_MYREVIEW = "select * from review where m_id=?";
 	static final String SQL_UPDATE_MYREVIEW = "update review set content = ?, grade = ? where review_num = ?";
@@ -43,6 +44,27 @@ public class ReviewDAO {
 		}
 			
 		return reviewList;
+	}
+	
+	//리뷰
+	public ReviewVO selectReview(int review_num) {
+		ReviewVO review = new ReviewVO();
+		conn = DBUtil.getConnection();
+		try {
+			pst = conn.prepareStatement(SQL_SELECT_REVIEW);
+			pst.setInt(1, review_num);
+			rs = pst.executeQuery();
+			
+			while(rs.next()) {
+				review = makeReview(rs);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			DBUtil.dbClose(rs, pst, conn);
+		}
+		
+		return review;
 	}
 	
 	//리뷰등록

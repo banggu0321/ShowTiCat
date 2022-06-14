@@ -12,6 +12,11 @@ public class ReviewService {
 		return dao.selectAll(show_code);
 	}
 	
+	//리뷰
+	public ReviewVO selectReview(int review_num) {
+		return dao.selectReview(review_num);
+	}
+	
 	//리뷰등록
 	public int insertReview(ReviewVO review) {
 		return dao.insertReview(review);
