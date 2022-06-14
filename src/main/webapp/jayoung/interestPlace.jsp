@@ -18,11 +18,21 @@
 $(function() {
 	$("#placeForm").hide();
 	$(".myPlaceBtn").on("click", myPlace);
+	$(".resetBtn").on("click", reset);
 	$(".delBtn").on("click", delMyPlace);
+	$(".reviewBtn").on("click", review);
 })
 
 function myPlace() {
 	$("#placeForm").show();
+}
+
+function reset() {
+	$("#placeForm").hide();
+}
+
+function review() {
+	location.href="myReview.do";
 }
 
 function delMyPlace() {
@@ -63,11 +73,11 @@ function delMyPlace() {
 				</c:forEach>
 		    </select>
 			<input class="btn btn-outline-primary" type="submit" value="등록">
+			<input class="btn btn-outline-primary resetBtn" type="reset" value="취소">
 		</div>
 	</form>
-
 	
-	<jsp:include page="myReview.jsp"/>
+	<button class="btn btn-outline-primary reviewBtn">리뷰</button>
 </div>
 </body>
 </html>

@@ -36,7 +36,7 @@ public class InsertReview extends HttpServlet {
 		int result = service.insertReview(review);
 		
 		if(result >= 1) {
-			RequestDispatcher rd = request.getRequestDispatcher("../jaeyong/memberPage.jsp");
+			RequestDispatcher rd = request.getRequestDispatcher("myReview.do");
 			rd.forward(request, response);
 		} else {
 			response.setContentType("text/html; charset=UTF-8");

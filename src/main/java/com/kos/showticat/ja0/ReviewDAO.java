@@ -13,10 +13,10 @@ import com.kos.showticat.VO.ReviewVO;
 import com.kos.showticat.util.DBUtil;
 
 public class ReviewDAO {
-	static final String SQL_SELECT = "select * from review where show_code=?";
-	static final String SQL_SELECT_REVIEW = "select * from review where review_num=?";
+	static final String SQL_SELECT = "select * from review join show using(show_code) where show_code=?";
+	static final String SQL_SELECT_REVIEW = "select * from review join show using(show_code) where review_num=?";
 	static final String SQL_INSERT = "insert into review values(seq_review_no.nextval,?,?,?,?,sysdate)";
-	static final String SQL_SELECT_MYREVIEW = "select * from review where m_id=?";
+	static final String SQL_SELECT_MYREVIEW = "select * from review join show using(show_code) where m_id=?";
 	static final String SQL_UPDATE_MYREVIEW = "update review set content = ?, grade = ? where review_num = ?";
 	
 	Connection conn;
@@ -138,6 +138,7 @@ public class ReviewDAO {
 		review.setReview_date(rs.getDate("review_date"));
 		review.setReview_num(rs.getInt("review_num"));
 		review.setShow_code(rs.getString("show_code"));
+		review.setShow_name(rs.getString("show_name"));
 		
 		return review;
 	}

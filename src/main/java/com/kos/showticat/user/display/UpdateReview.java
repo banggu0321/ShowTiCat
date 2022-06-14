@@ -22,11 +22,7 @@ public class UpdateReview extends HttpServlet {
 		int review_num = Integer.parseInt(request.getParameter("review_num"));
 		
 		ReviewService service = new ReviewService();
-		ReviewVO review = service.selectReview(review_num);
-		request.setAttribute("review", review);
-		
-		ShowService ss = new ShowService();
-		request.setAttribute("show", ss.selectShow(review.getShow_code()));
+		request.setAttribute("review", service.selectReview(review_num));
 		
 		RequestDispatcher rd = request.getRequestDispatcher("updateReview.jsp");
 		rd.forward(request, response);
@@ -38,13 +34,13 @@ public class UpdateReview extends HttpServlet {
 		String content = request.getParameter("content");
 		String grade = request.getParameter("grade");
 		
-		ReviewVO review = new ReviewVO(review_num, null, null, content, grade, null);
+		ReviewVO review = new ReviewVO(review_num, null, null, null, content, grade, null);
 		ReviewService service = new ReviewService();
 		
 		int result = service.updateMyReview(review);
 		
 		if(result >= 1) {
-			RequestDispatcher rd = request.getRequestDispatcher("../jaeyong/memberPage.jsp");
+			RequestDispatcher rd = request.getRequestDispatcher("myReview.do");
 			rd.forward(request, response);
 		} else {
 			response.setContentType("text/html; charset=UTF-8");

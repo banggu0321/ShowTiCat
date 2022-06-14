@@ -14,13 +14,23 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <link rel="stylesheet" href="../css/common.css">
+
+<style>
+#name {
+	width:500px;
+}
+#content {
+	width: 500px;
+	height: 80px;
+}
+</style>
 </head>
 <body>
 <jsp:include page="header.jsp"/>
 <div class="contents">
 	<form action="insertReview.do" method="post">
 		<div class="form-group">
-			<label>SHOW NAME : ${show.show_name}</label>
+			<label id="name">SHOW NAME : ${show.show_name}</label>
 			<input type="hidden" name="show_code" value="${show.show_code}">
 		</div>
 
@@ -28,7 +38,7 @@
 		
 		<div class="form-group">
 			<label>CONTENT </label>
-			<input class="form-control" type="text" name="content" >
+			<input class="form-control" type="text" name="content" id="content">
 		</div>
 		
 		<div class="form-group">

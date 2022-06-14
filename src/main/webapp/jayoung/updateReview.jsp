@@ -14,6 +14,16 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <link rel="stylesheet" href="../css/common.css">
+
+<style>
+#name {
+	width:500px;
+}
+#content {
+	width: 500px;
+	height: 80px;
+}
+</style>
 </head>
 <body>
 <jsp:include page="header.jsp"/>
@@ -22,12 +32,12 @@
 		<input type="hidden" name="review_num" value="${review.review_num}">
 		
 		<div class="form-group">
-			<label>SHOW NAME : ${show.show_name}</label>
+			<label id="name">SHOW NAME : ${review.show_name}</label>
 		</div>
 
 		<div class="form-group">
 			<label>CONTENT </label>
-			<input class="form-control" type="text" name="content" maxlength="500" value="${review.content}">
+			<input class="form-control" type="text" name="content" id="content" maxlength="500" value="${review.content}">
 		</div>
 		
 		<div class="form-group">

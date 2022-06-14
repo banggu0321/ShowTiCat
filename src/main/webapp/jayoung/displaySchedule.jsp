@@ -14,7 +14,8 @@
 	<c:forEach items="${list}" var="value" varStatus="s">
 	<c:forEach items="${theaterList}" var="theater" varStatus="v">
 	<c:forEach items="${showList}" var="show">
-	<c:if test="${theater.theater_num==value.theater_num&&value.show_code==show.show_code}">
+	<c:forEach items="${cntList}" var="cnt">
+	<c:if test="${theater.theater_num==value.theater_num&&value.show_code==show.show_code&&cnt.key==value.schedule_num}">
 		<%-- 첫번째 --%>
 		<c:if test="${s.first}">
 			<div>
@@ -50,13 +51,10 @@
 			</c:if>
 		</c:if>
 		<button class="btn btn-outline-primary reservBtn" num="${value.schedule_num}">
-			${value.start_time}<br>
-			<c:forEach items="${cntList}" var="cnt">
-				<c:if test="${cnt.key==value.schedule_num}"> ${cnt.value} </c:if>
-			</c:forEach>
-			 / ${theater.last_seat} 석
+			${value.start_time}<br> ${theater.last_seat - cnt.value} 석
 		</button>
 	</c:if>
+	</c:forEach>
 	</c:forEach>
 	</c:forEach>
 	</c:forEach>

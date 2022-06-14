@@ -31,11 +31,10 @@ public class InterestPlace extends HttpServlet {
 			writer.close();
 		} else {
 			PlaceService ps = new PlaceService();
-			ReviewService rs = new ReviewService();
+			
 			request.setAttribute("placeList", ps.selectAll());
 			request.setAttribute("myPlace", ps.selectMyPlace(member.getM_id()));
-			request.setAttribute("myReview", rs.selectMyReview(member.getM_id()));
-			
+
 			RequestDispatcher rd = request.getRequestDispatcher("interestPlace.jsp");
 			rd.forward(request, response);
 		}
@@ -54,7 +53,7 @@ public class InterestPlace extends HttpServlet {
 		
 		response.setContentType("text/html; charset=UTF-8");
 		PrintWriter writer = response.getWriter();
-		writer.println("<script>alert('관심매장이 등록되었습니다.'); location.href='../jaeyong/memberPage.jsp';</script>");
+		writer.println("<script>alert('관심매장이 등록되었습니다.'); location.href='interestPlace.do';</script>");
 		writer.close();
 	}
 }

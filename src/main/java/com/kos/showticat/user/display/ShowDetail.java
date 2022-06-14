@@ -35,7 +35,7 @@ public class ShowDetail extends HttpServlet {
 			request.setAttribute("show", service.selectShow(show_code)); 
 			request.setAttribute("castList", cservice.selectCast(show_code)); 
 			request.setAttribute("chart",cs.selectShow(show_code));
-			request.setAttribute("review",rs.selectAll(show_code));
+			request.setAttribute("reviewList",rs.selectAll(show_code));
 			
 			RequestDispatcher rd = request.getRequestDispatcher("showDetail.jsp");
 			rd.forward(request, response);

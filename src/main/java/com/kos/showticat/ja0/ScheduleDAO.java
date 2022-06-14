@@ -22,7 +22,7 @@ public class ScheduleDAO {
 	static final String SQL_SELECT_THEATER ="SELECT SHOW_CODE,SHOW_NAME,schedule_num,theater_num,s.place_num, show_start "
 			+ " FROM schedule s JOIN show using(show_code) JOIN theater using(theater_num)"
 			+ " where s.place_num=? and SHOW_START >= ? and SHOW_START < ? ORDER BY 2,4,6"; 
-	static final String SQL_COUNT = "SELECT DISTINCT schedule_num , last_seat - count(*) OVER(PARTITION BY schedule_num)"
+	static final String SQL_COUNT = "SELECT DISTINCT schedule_num , count(*) OVER(PARTITION BY schedule_num)"
 			+ " FROM reservation JOIN reserv_detail using(reservation_num) JOIN SCHEDULE s USING(schedule_num)"
 			+ " JOIN theater using(theater_num) WHERE pay_yn ='Y' AND s.place_num = ?";
 	
@@ -104,11 +104,8 @@ public class ScheduleDAO {
 			pst = conn.prepareStatement(SQL_SELECT_THEATER);
 			pst.setInt(1, place_num);
 			pst.setDate(2, show_date); 
-//<<<<<<< HEAD
-//			pst.setDate(3, DateUtil.dayAfter(show_date));
-//=======
 			pst.setDate(3, DateUtil.dayAfter(show_date));
-//>>>>>>> branch 'master' of https://github.com/banggu0321/ShowTiCat.git
+			
 			rs = pst.executeQuery();
 			
 			while(rs.next()) {
