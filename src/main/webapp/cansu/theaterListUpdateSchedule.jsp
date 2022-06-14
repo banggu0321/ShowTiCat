@@ -17,19 +17,16 @@ body {
 	margin: 0 auto;
 	width: 60%;
 }
-
-div {
-	display: inline-block;
-}
-
 h1 {
 	text-align: center;
 }
 
+div {
+	display: inline-block;
+}
 tr, td{
 	text-align: center;
 }
-
 a{
 text-decoration: none;
 }
@@ -58,8 +55,8 @@ width: 290px;
 			<hr>
 			<p>감독 : ${show.director}</p>
 			<p>상영시간 : ${show.showTime}분</p>
-			<form action="">
-			<input type="button" name="reSet" value="예매 취소">
+			<form action="http://localhost:9090/ShowTiCat/reservationShowDetailCancel">
+			<input  class="btn btn-primary btn-lg" type="submit" name="reSet" value="예매 취소">
 			</form>
 		</div>
 

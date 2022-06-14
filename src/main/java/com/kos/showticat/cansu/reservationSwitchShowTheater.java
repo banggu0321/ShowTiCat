@@ -20,7 +20,7 @@ public class reservationSwitchShowTheater extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) 
 			throws ServletException, IOException {
 		//log in check
-		String logInPath = "../index.jsp";
+		String logInPath = "../jayoung/login.do";
 		HttpSession session = request.getSession();
 
 		MemberVO member = new MemberVO();
