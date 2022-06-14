@@ -12,6 +12,10 @@ public class ScheduleService {
 
 	ScheduleDAO scdao = new ScheduleDAO();
 	
+	public ScheduleVO selectScheduleByScheduleNumBeta(int scheduleNum) {
+		return scdao.selectScheduleByScheduleNumBeta(scheduleNum);
+	}
+
 	public ShowVO selectShowByShowcode(String showCode) {
 		return scdao.selectShowByShowcode(showCode);
 	}
