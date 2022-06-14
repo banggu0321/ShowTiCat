@@ -19,12 +19,9 @@ import com.kos.showticat.util.DateUtil;
 @WebServlet("/jaeyong/memberDetail.do")
 public class MemeberDetail extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		RequestDispatcher rd;
 		rd = request.getRequestDispatcher("memberPage.jsp");
 		rd.forward(request, response);
 	}
-
-	 
 }

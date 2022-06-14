@@ -54,6 +54,8 @@ p {
 </head>
 
 <body>
+<jsp:include page="../jayoung/header.jsp"/>
+	<div class="contents">
 	<h1>MemberUpdate</h1>
 	<form action="memberUpdate.do" method="post">
 		<br> 
@@ -141,6 +143,6 @@ p {
 			   value="회원탈퇴"
 			   id="btnDelete">
 	</form>
-
+	</div><!-- contents -->
 </body>
 </html>

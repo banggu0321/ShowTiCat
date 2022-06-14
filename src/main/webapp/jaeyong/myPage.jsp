@@ -7,6 +7,9 @@
 <title>Insert title here</title>
 </head>
 <body>
-
+<jsp:include page="../jayoung/header.jsp"/>
+	<div class="contents">
+	
+	</div><!-- contents -->
 </body>
 </html>

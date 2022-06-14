@@ -14,17 +14,13 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <link rel="stylesheet" href="../css/common.css">
 <style>
-#point {
-	color : yellow;}
-p {
-	margin: 0;
-	font-size: 0.25em;
-	color: tomato;
-}
+
 </style>
 </head>
 
 <body>
+<jsp:include page="../jayoung/header.jsp"/>
+	<div class="contents">
 	<h1>MemberPage</h1>
 	<form action="memberUpdate.do" method="get" name="myFrom">
 		<br>
@@ -86,6 +82,6 @@ p {
 			   value="수정하기" >
  
 	</form>
-
+	</div><!-- contents -->
 </body>
 </html>
