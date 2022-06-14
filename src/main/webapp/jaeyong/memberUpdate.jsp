@@ -58,15 +58,15 @@ p {
 	<div class="fbx">
 		<div class=mySide>
 			<div class="favorite">
-			<a>관심매장</a>
+			<a href = "#">관심매장</a>
 			</div><!-- favorite -->
 
 			<div class="reservation">
-			<a>예매</a>			
+			<a href = "#">예매</a>			
 			</div><!-- reservation -->
 
 			<div class="delete">
-			<a>회원탈퇴</a>
+			<a href = "#">회원탈퇴</a>
 			</div><!-- delete -->
 
 		</div><!-- mySide -->
@@ -146,9 +146,8 @@ p {
 		<label>포인트 : ${member.point} </label>
 		<input type="hidden"
 			   name="point"
-			   value="${member.point}"
-			    >
-		<br><br><br>
+			   value="${member.point}">
+		<br>
 		
 		<input type="submit"
 			   class="btn btn-outline-success"

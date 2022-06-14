@@ -20,7 +20,7 @@ public class MemberDelete extends HttpServlet {
 
 		MemberService service = new MemberService();
 		int result = service.Delete(m_id);
-		request.setAttribute("message", result > 0 ? "삭제성공" : "삭제실패");
+		request.setAttribute("msg", result > 0 ? "삭제성공" : "삭제실패");
 
 		response.sendRedirect("memberDetail.do");
 	}
