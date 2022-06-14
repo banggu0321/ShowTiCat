@@ -25,7 +25,8 @@ html,body,h1,ol,ul,li,div,h2 {
     outline: 3px dotted tomato;
 }*/ 
 
-a {
+a {	
+	cursor: revert;
     color: black;
     text-decoration: none;
     
