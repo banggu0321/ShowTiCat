@@ -95,12 +95,16 @@ p {
 		<label>
 		<input type="radio"
 			   name="gender"
-			   value="M">남
+			   value="M"
+			   ${member.gender=="M"?"checked":""}
+			   >남
 		</label>
 		<label>
 		<input type="radio"
 		       name="gender"
-		       value="W">여
+		       value="W"
+		        ${member.gender=="W"?"checked":""}
+		       >여
 		</label><br>
 		<label>이메일 : </label>
 		<input type="email"
@@ -121,11 +125,11 @@ p {
 		</select>
 		<br><br>
 		
-		<label>포인트 : </label>
-		<input type="text"
+		<label>포인트 : ${member.point} </label>
+		<input type="hidden"
 			   name="point"
 			   value="${member.point}"
-			   disabled="disabled">
+			    >
 		<br><br><br>
 		
 		<input type="submit"
@@ -136,7 +140,6 @@ p {
 			   class="btn btn-outline-success"		
 			   value="회원탈퇴"
 			   id="btnDelete">
-		></button>
 	</form>
 
 </body>

@@ -76,6 +76,7 @@ p {
 		<label>포인트 : </label>
 		<input value ="${member.point}"
 			   type ="text"
+			   name ="point"
 			   id   ="point"
  			   disabled="disabled"><br><br>
 
