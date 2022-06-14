@@ -40,5 +40,6 @@ function findPW() {
 	<h5>아이디는 ${m_id} 입니다.</h5>
 	<button id="findPW" class="btn btn-outline-success">비밀번호 찾기</button>
 </div>
+<jsp:include page="../bang/mainUpTicket.jsp" />
 </body>
 </html>

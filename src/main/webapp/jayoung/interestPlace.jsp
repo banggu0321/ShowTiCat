@@ -79,5 +79,6 @@ function delMyPlace() {
 	
 	<button class="btn btn-outline-primary reviewBtn">리뷰</button>
 </div>
+<jsp:include page="../bang/mainUpTicket.jsp" />
 </body>
 </html>

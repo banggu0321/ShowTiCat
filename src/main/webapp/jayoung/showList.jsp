@@ -97,5 +97,6 @@ a:hover {
 	</div>
 	</c:forEach>
 </div>
+<jsp:include page="../bang/mainUpTicket.jsp"/>
 </body>
 </html>

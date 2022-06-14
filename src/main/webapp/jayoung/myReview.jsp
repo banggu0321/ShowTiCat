@@ -121,5 +121,6 @@ function insertReview() {
 	<hr>
 	<button class="btn btn-outline-info reviewBtn">리뷰등록</button>
 </div>
+<jsp:include page="../bang/mainUpTicket.jsp" />
 </body>
 </html>

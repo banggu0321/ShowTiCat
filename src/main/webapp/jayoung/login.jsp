@@ -66,5 +66,6 @@ function isEmpty() {
 	<button id="findID" class="btn btn-outline-success">아이디 찾기</button>
 	<button id="findPW" class="btn btn-outline-success">비밀번호 찾기</button>
 </div>
+<jsp:include page="../bang/mainUpTicket.jsp" />
 </body>
 </html>

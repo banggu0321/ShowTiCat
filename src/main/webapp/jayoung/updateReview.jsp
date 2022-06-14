@@ -57,5 +57,6 @@
 		<input type="reset" class="btn btn-secondary" value="초기화">
 	</form>
 </div>
+<jsp:include page="../bang/mainUpTicket.jsp"/>
 </body>
 </html>

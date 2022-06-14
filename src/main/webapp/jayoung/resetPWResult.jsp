@@ -43,5 +43,6 @@ function login() {
 	<button class="btn btn-success" id="login">로그인</button>
 	</div>
 </div>
+<jsp:include page="../bang/mainUpTicket.jsp"/>
 </body>
 </html>

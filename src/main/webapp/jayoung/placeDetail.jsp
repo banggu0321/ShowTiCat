@@ -126,7 +126,7 @@ function myPlace() {
 		<button class="btn btn-light dateBtn" date="${date}">${date}</button>
 	</c:forEach>
 	<hr>
-	<jsp:include page="displaySchedule.jsp"/>
 </div>
+<jsp:include page="displaySchedule.jsp"/>
 </body>
 </html>

@@ -69,5 +69,6 @@ function reset() {
 	<input type="submit" class="btn btn-success" type="submit" value="비밀번호 변경하기">
 	</form>
 </div>
+<jsp:include page="../bang/mainUpTicket.jsp"/>
 </body>
 </html>

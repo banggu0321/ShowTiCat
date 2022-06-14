@@ -129,5 +129,6 @@ hr {
 	  </div>
 	</div>
 </div>
+<jsp:include page="../bang/mainUpTicket.jsp"/>
 </body>
 </html>
