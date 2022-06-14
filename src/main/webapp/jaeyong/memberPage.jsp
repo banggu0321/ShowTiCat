@@ -13,6 +13,8 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <link rel="stylesheet" href="../css/common.css">
+<link rel="stylesheet" href="../css/memberMyPage.css">
+
 <style>
 
 </style>
@@ -20,8 +22,24 @@
 
 <body>
 <jsp:include page="../jayoung/header.jsp"/>
-	<div class="contents">
-	<h1>MemberPage</h1>
+	<div class="fbx">
+		<div class=mySide>
+			<div class="favorite">
+			<a>관심매장</a>
+			</div><!-- favorite -->
+
+			<div class="reservation">
+			<a>예매</a>			
+			</div><!-- reservation -->
+
+			<div class="delete">
+			<a>회원탈퇴</a>
+			</div><!-- delete -->
+
+		</div><!-- mySide -->
+		
+		<div class="centerHidden">
+			<h1>MemberPage</h1>
 	<form action="memberUpdate.do" method="get" name="myFrom">
 		<br>
 		<label>아이디 : </label>
@@ -82,6 +100,11 @@
 			   value="수정하기" >
  
 	</form>
-	</div><!-- contents -->
+		</div><!-- centerHidden -->
+
+		<div class="rightHidden">
+		</div><!-- rightHidden -->
+
+	</div><!-- fbx -->
 </body>
 </html>

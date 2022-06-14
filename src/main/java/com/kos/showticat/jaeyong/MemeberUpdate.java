@@ -59,7 +59,7 @@ public class MemeberUpdate extends HttpServlet {
 		}
 
 		RequestDispatcher rd;
-		rd = request.getRequestDispatcher("result.jsp");
+		rd = request.getRequestDispatcher("../");
 		rd.forward(request, response);
 
 	}

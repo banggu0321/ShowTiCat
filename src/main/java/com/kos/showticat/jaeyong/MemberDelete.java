@@ -22,6 +22,6 @@ public class MemberDelete extends HttpServlet {
 		int result = service.Delete(m_id);
 		request.setAttribute("message", result > 0 ? "삭제성공" : "삭제실패");
 
-		response.sendRedirect("memberPage.do");
+		response.sendRedirect("memberDetail.do");
 	}
 }

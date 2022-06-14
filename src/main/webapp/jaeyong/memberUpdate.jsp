@@ -5,15 +5,15 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
 <title>MemberUpdate</title>
-
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
 <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.slim.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <link rel="stylesheet" href="../css/common.css">
+<link rel="stylesheet" href="../css/memberMyPage.css">
+
 
 <script>
 $(function() {
@@ -24,7 +24,7 @@ $(function() {
 
 $(function(){
 	$("#btnDelete").click(function(){
-		var bno = $(this).attr("data-m_id");
+		var m_id = $(this).attr("m_mm");
 		if(confirm(m_id + "삭제?"))
 			location.href = "memberDelete.do?m_id="+m_id;
 	});
@@ -52,11 +52,27 @@ p {
 }
 </style>
 </head>
+	<body>
+	<jsp:include page="../jayoung/header.jsp"/>
+	
+	<div class="fbx">
+		<div class=mySide>
+			<div class="favorite">
+			<a>관심매장</a>
+			</div><!-- favorite -->
 
-<body>
-<jsp:include page="../jayoung/header.jsp"/>
-	<div class="contents">
-	<h1>MemberUpdate</h1>
+			<div class="reservation">
+			<a>예매</a>			
+			</div><!-- reservation -->
+
+			<div class="delete">
+			<a>회원탈퇴</a>
+			</div><!-- delete -->
+
+		</div><!-- mySide -->
+		
+		<div class="centerHidden">
+			<h1>MemberUpdate</h1>
 	<form action="memberUpdate.do" method="post">
 		<br> 
 		<label>아이디 : </label>
@@ -139,10 +155,16 @@ p {
 			   value="수정완료">
 			   
 		<input type="button"
-			   class="btn btn-outline-success"		
+			   class="btn btn-outline-success"
+			   m_mm = "${member.m_id}"
 			   value="회원탈퇴"
 			   id="btnDelete">
 	</form>
-	</div><!-- contents -->
+		</div><!-- centerHidden -->
+
+		<div class="rightHidden">
+		</div><!-- rightHidden -->
+
+	</div><!-- fbx -->
 </body>
 </html>

@@ -12,16 +12,16 @@ public class MemberService {
 		return dao.memberUpdate(member);
 	}
 
-//	// 포인트 확인
-//	public MemberVO memberPoint(String m_name, int point) {
-//		return dao.selectByPoint(m_name, point);
-//	}
+	// 포인트 확인
+	//public MemberVO memberPoint(String m_name, int point) {
+	//	return dao.selectByPoint(m_name, point);
+	//}
 
-//	// 관심매장 확인 및 수정
-//	public MemberVO memberPlace(String m_name, String place) {
-//		return dao.selectByPlace(m_name, place);
-//
-//	}
+	// 관심매장 확인 및 수정
+	//public MemberVO memberPlace(String m_name, String place) {
+	//	return dao.selectByPlace(m_name, place);
+
+	//}
 
 	// 예매 및 취소내역 확인
 
