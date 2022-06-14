@@ -19,10 +19,10 @@ public class InsertReview extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String show_code = request.getParameter("show_code");
+		int reservation_num = Integer.parseInt(request.getParameter("reservation_num"));
 		
 		ShowService service = new ShowService();
-		request.setAttribute("show", service.selectShow(show_code));
+		request.setAttribute("show", service.selectByReservation(reservation_num));
 		
 		RequestDispatcher rd = request.getRequestDispatcher("insertReview.jsp");
 		rd.forward(request, response);

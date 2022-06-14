@@ -19,16 +19,12 @@
 <script>
 $(function() {
 	$("#reservBtn").on("click", reservation);
-	$("#close").on("click", stop);
 })
 
 function reservation() {
 	location.href="reservation.do?show_code=${show.show_code}";
 }
 
-function stop() {
-	
-}
 </script>
 
 <style>
@@ -44,7 +40,7 @@ function stop() {
 	font-weight: bold;
 }
 
-.deBtn {
+.trailerBtn, #reservBtn {
 	margin-top: 70px;
 	margin-right: 20px;
 }
@@ -55,11 +51,13 @@ function stop() {
 	margin: 0 auto;
 }
 .summary {
-	white-space: pre;
 	padding: 5px 0px 5px 20px;
-	font-size: 18px;
+	font-size: 17px;
+	overflow: auto;
+	white-space : pre-wrap;
+	word-break: break-all;
 }
-.t {
+.ti {
 	padding: 5px 0px 5px 20px;
 }
 hr {
@@ -91,17 +89,17 @@ hr {
 		</p>
 		<p class="info">상영시간 : ${show.show_time}분</p>
 		<p class="info">개봉일 : ${show.opening_date}</p>
-		<button class="btn btn-outline-primary deBtn" data-toggle="modal" data-target="#myModal">예고편보기</button>
-		<button class="btn btn-primary deBtn" id="reservBtn">예매하기</button>
+		<button class="btn btn-outline-primary trailerBtn" data-toggle="modal" data-target="#myModal">예고편보기</button>
+		<button class="btn btn-primary" id="reservBtn">예매하기</button>
 	</div>
 	<hr>
-	<h4 class="t">줄거리</h4>
+	<h4 class="ti">줄거리</h4>
 	<p class="summary">${show.summary}</p>
 	<hr>
-	<h4 class="t">예매자 통계</h4>
+	<h4 class="ti">예매자 통계</h4>
 	<c:import url="showChart.jsp"/>
 	<hr>
-	<h4 class="t">리뷰</h4>
+	<h4 class="ti">리뷰</h4>
 	<jsp:include page="showReview.jsp"/>
 	<hr>
 	
@@ -119,7 +117,7 @@ hr {
 	      <!-- Modal body -->
 	      <div class="modal-body">
 	        <iframe width="700" height="395" src="https://www.youtube.com/embed/${show.trailer}?autoplay=1&mute=1" 
-	        	title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    			title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 	      </div>
 	        
 	      <!-- Modal footer -->

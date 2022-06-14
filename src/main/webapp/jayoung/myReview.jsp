@@ -30,7 +30,7 @@ function deleteReview() {
 		success: function(resData) {
 			if(resData >= 1) {
 				alert("리뷰가 삭제되었습니다.");
-				location.reload();
+				location.href="myReview.do";
 			}
 		}
 	})
@@ -42,13 +42,38 @@ function updateReview() {
 }
 
 function insertReview() {
-	location.href="insertReview.do";
+	var reservation_num = $(this).attr("num");
+	location.href="insertReview.do?reservation_num=3700"/* +reservation_num */;
 }
 </script>
 
 <style type="text/css">
+.table {
+	table-layout: fixed;
+
+}
+.n, .b, .d, .t {
+	text-align: center;
+}
+.n {
+	width: 6%;
+	text-align: center;
+}
+.b {
+	width: 10%;
+}
 .c {
-	width= 500px;;
+	width: 45%;
+	text-align: center;
+}
+.d {
+	width: 11%;
+}
+.t {
+	width: 12%;
+	overflow:hidden;
+	white-space : nowrap;
+	text-overflow: ellipsis;
 }
 </style>
 </head>
@@ -57,32 +82,33 @@ function insertReview() {
 <div class="contents">
 	<c:if test="${empty myReview}">등록한 리뷰가 없습니다.</c:if>
 	
+	<c:if test="${!empty myReview}">
 	<table class="table">
-		<thead>
+		<thead id="thead">
 			<tr>
-				<th>번호</th>
-				<th>제목</th>
-				<th>평점</th>
+				<th class="n">번호</th>
+				<th class="t">제목</th>
+				<th class="n">평점</th>
 				<th class="c">한줄평</th>
-				<th>작성일</th>
-				<th></th>
-				<th></th>
+				<th class="d">작성일</th>
+				<th class="b"></th>
+				<th class="b"></th>
 			</tr>
 		</thead>
 		<tbody>
 		<c:forEach items="${myReview}" var="review">
 			<tr>
-				<td>${review.review_num}</td>
-				<td>${review.show_name}</td>
-				<td>${review.grade}</td>
-				<td class="c">${review.content}</td>
-				<td>${review.review_date}</td>
-				<td>
+				<td class="n">${review.review_num}</td>
+				<td class="t">${review.show_name}</td>
+				<td class="n">${review.grade}</td>
+				<td>${review.content}</td>
+				<td class="d">${review.review_date}</td>
+				<td class="b">
 					<button class="btn btn-info btn-sm updateBtn" num="${review.review_num}">
 						리뷰수정
 					</button>
 				</td>
-				<td>
+				<td class="b">
 					<button class="btn btn-outline-info btn-sm delBtn" num="${review.review_num}">
 						리뷰삭제
 					</button>
@@ -91,7 +117,7 @@ function insertReview() {
 		</c:forEach>
 		</tbody>
 	</table>
-	
+	</c:if>
 	<hr>
 	<button class="btn btn-outline-info reviewBtn">리뷰등록</button>
 </div>

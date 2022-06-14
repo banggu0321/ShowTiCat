@@ -50,7 +50,7 @@
 				<input class="form-check-input" type="radio" name="grade" value="soso">그냥그랬어요..
 			</label>
 			<label class="form-check-inline">
-				<input class="form-check-input" type="radio" name="grade" value="bad">별로였어요....
+				<input class="form-check-input" type="radio" name="grade" value="bad">별로였어요ㅠㅠ
 			</label>
 		</div>
 		<br>

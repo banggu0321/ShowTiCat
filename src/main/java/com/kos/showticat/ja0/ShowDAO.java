@@ -16,6 +16,8 @@ public class ShowDAO {
 	static final String SQL_SELECT_CATEGORY ="select * from show where category = ?";
 	static final String SQL_SELECT_CODE ="select * from show where show_code=?";
 	static final String SQL_SEARCH ="select * from show where show_name like '%'||"+"?"+"||'%'";
+	static final String SQL_SELECT_BY_RESERVATION ="SELECT * FROM reservation JOIN schedule using(schedule_num)"
+					+ " JOIN show USING(show_code) where reservation_num  = ?";
 	
 	Connection conn;
 	Statement st;
@@ -71,6 +73,26 @@ public class ShowDAO {
 		try {
 			pst = conn.prepareStatement(SQL_SELECT_CODE);
 			pst.setString(1, show_code);
+			rs = pst.executeQuery();
+			
+			while(rs.next()) {
+				show = makeShow(rs);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			DBUtil.dbClose(rs, pst, conn);
+		}
+		return show;
+	}
+	
+	//예약번호로 조회
+	public ShowVO selectByReservation(int reservation_num) {
+		ShowVO show = new ShowVO();
+		conn = DBUtil.getConnection();
+		try {
+			pst = conn.prepareStatement(SQL_SELECT_BY_RESERVATION);
+			pst.setInt(1, reservation_num);
 			rs = pst.executeQuery();
 			
 			while(rs.next()) {

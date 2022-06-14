@@ -9,8 +9,22 @@
 <style>
 .table {
 	margin-bottom: 100px;
+	table-layout: fixed;
 }
-
+.n, .b, .d, .t {
+	text-align: center;
+}
+.n {
+	width: 6%;
+	text-align: center;
+}
+.c {
+	width: 67%;
+	text-align: center;
+}
+.d {
+	width: 11%;
+}
 </style>
 </head>
 <body>
@@ -19,19 +33,19 @@
 <table class="table">
 	<thead>
 		<tr>
-			<th>번호</th>
-			<th>평점</th>
-			<th>한줄평</th>
-			<th>작성일</th>
+			<th class="n">번호</th>
+			<th class="n">평점</th>
+			<th class="c">한줄평</th>
+			<th class="d">작성일</th>
 		</tr>
 	</thead>
 	<tbody>
 		<c:forEach items="${reviewList}" var="review">
 			<tr>
-				<td>${review.review_num}</td>
-				<td>${review.grade}</td>
-				<td id="content">${review.content}</td>
-				<td>${review.review_date}</td>
+				<td class="n">${review.review_num}</td>
+				<td class="n">${review.grade}</td>
+				<td>${review.content}</td>
+				<td class="d">${review.review_date}</td>
 			</tr>
 		</c:forEach>
 	</tbody>
