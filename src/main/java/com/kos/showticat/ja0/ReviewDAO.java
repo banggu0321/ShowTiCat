@@ -13,11 +13,12 @@ import com.kos.showticat.VO.ReviewVO;
 import com.kos.showticat.util.DBUtil;
 
 public class ReviewDAO {
-	static final String SQL_SELECT = "select * from review join show using(show_code) where show_code=?";
-	static final String SQL_SELECT_REVIEW = "select * from review join show using(show_code) where review_num=?";
+	static final String SQL_SELECT = "select * from review join show using(show_code) where show_code=? ORDER BY 6 desc";
+	static final String SQL_SELECT_REVIEW = "select * from review join show using(show_code) where review_num=? ";
 	static final String SQL_INSERT = "insert into review values(seq_review_no.nextval,?,?,?,?,sysdate)";
-	static final String SQL_SELECT_MYREVIEW = "select * from review join show using(show_code) where m_id=?";
+	static final String SQL_SELECT_MYREVIEW = "select * from review join show using(show_code) where m_id=? ORDER BY 6 desc";
 	static final String SQL_UPDATE_MYREVIEW = "update review set content = ?, grade = ? where review_num = ?";
+	static final String SQL_DELETE_REVIEW = "delete from review where review_num = ?";
 	
 	Connection conn;
 	Statement st;
@@ -119,6 +120,24 @@ public class ReviewDAO {
 			pst.setString(2, review.getGrade());
 			pst.setInt(3, review.getReview_num());
 
+			result = pst.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			DBUtil.dbClose(rs, pst, conn);
+		}
+		
+		return result;
+	}
+	
+	//리뷰삭제
+	public int deleteMyReview(int review_num) {
+		int result = 0;
+		conn = DBUtil.getConnection();
+		try {
+			pst = conn.prepareStatement(SQL_DELETE_REVIEW);
+			pst.setInt(1, review_num);
+			
 			result = pst.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();

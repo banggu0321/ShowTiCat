@@ -18,7 +18,23 @@
 $(function() {
 	$(".updateBtn").on("click", updateReview);
 	$(".reviewBtn").on("click", insertReview);
+	$(".delBtn").on("click", deleteReview);
 })
+
+function deleteReview() {
+	var review_num = $(this).attr("num");
+	
+	$.ajax({
+		url:"deleteReview.do",
+		data:{"review_num":review_num},
+		success: function(resData) {
+			if(resData >= 1) {
+				alert("리뷰가 삭제되었습니다.");
+				location.reload();
+			}
+		}
+	})
+}
 
 function updateReview() {
 	var review_num = $(this).attr("num");
@@ -29,6 +45,12 @@ function insertReview() {
 	location.href="insertReview.do";
 }
 </script>
+
+<style type="text/css">
+.c {
+	width= 500px;;
+}
+</style>
 </head>
 <body>
 <jsp:include page="header.jsp"/>
@@ -41,8 +63,9 @@ function insertReview() {
 				<th>번호</th>
 				<th>제목</th>
 				<th>평점</th>
-				<th>한줄평</th>
+				<th class="c">한줄평</th>
 				<th>작성일</th>
+				<th></th>
 				<th></th>
 			</tr>
 		</thead>
@@ -52,11 +75,16 @@ function insertReview() {
 				<td>${review.review_num}</td>
 				<td>${review.show_name}</td>
 				<td>${review.grade}</td>
-				<td>${review.content}</td>
+				<td class="c">${review.content}</td>
 				<td>${review.review_date}</td>
 				<td>
 					<button class="btn btn-info btn-sm updateBtn" num="${review.review_num}">
 						리뷰수정
+					</button>
+				</td>
+				<td>
+					<button class="btn btn-outline-info btn-sm delBtn" num="${review.review_num}">
+						리뷰삭제
 					</button>
 				</td>
 			</tr>

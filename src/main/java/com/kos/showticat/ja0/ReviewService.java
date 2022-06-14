@@ -31,4 +31,9 @@ public class ReviewService {
 	public int updateMyReview(ReviewVO review) {
 		return dao.updateMyReview(review);
 	}
+	
+	//리뷰삭제
+	public int deleteMyReview(int review_num) {
+		return dao.deleteMyReview(review_num);
+	}
 }

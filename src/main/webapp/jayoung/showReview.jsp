@@ -10,11 +10,12 @@
 .table {
 	margin-bottom: 100px;
 }
+
 </style>
 </head>
 <body>
 <c:if test="${empty reviewList}">아직 등록된 리뷰가 없습니다.</c:if>
-
+<c:if test="${!empty reviewList}">
 <table class="table">
 	<thead>
 		<tr>
@@ -29,11 +30,12 @@
 			<tr>
 				<td>${review.review_num}</td>
 				<td>${review.grade}</td>
-				<td>${review.content}</td>
+				<td id="content">${review.content}</td>
 				<td>${review.review_date}</td>
 			</tr>
 		</c:forEach>
 	</tbody>
 </table>
+</c:if>
 </body>
 </html>
