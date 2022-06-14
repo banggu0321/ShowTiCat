@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import javax.websocket.Session;
 
 import com.kos.showticat.VO.MemberVO;
 import com.kos.showticat.reservation.dao.temp.ScheduleService;
@@ -25,45 +26,49 @@ public class seatSampleServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		
-//user�� Ŭ���� ��ġ �� ��������
 		Enumeration<String> seatName = request.getParameterNames();
 		List<String> seatPosition = new ArrayList<>();
 		
 		while(seatName.hasMoreElements()) {
 			seatPosition.add(request.getParameter(seatName.nextElement()));
 		}
-//		for(String arr: seatPosition) {
-//			System.out.println(arr);
-//		}
+		for(String arr: seatPosition) {
+			System.out.println(arr);
+		}
 		
-//���� �ܰ迡�� �ۼ��� schedule number, ID ��������
-		HttpSession seesion = request.getSession();
-		int scheduleNum = (int)seesion.getAttribute("scheduleNumber");
+		HttpSession session = request.getSession();
+		int scheduleNum = (int)session.getAttribute("scheduleNumber"); 
+		System.out.println(scheduleNum);
+		
 		
 		MemberVO member = new MemberVO();
-		member = (MemberVO) seesion.getAttribute("member");
+		member = (MemberVO) session.getAttribute("member");
 		String m_id=member.getM_id(); 
 		
-//reservation number�� reservation detail table���� row ����鼭 �����
-		int reservationNum = Integer.parseInt(eachChartoString(m_id, scheduleNum).substring(8)); //������ �����ȣ�� session�� ����
-		seesion.setAttribute("reservationNumber", reservationNum);
+		int reservationNum = Integer.parseInt(eachChartoString(m_id, scheduleNum).substring(8));
+		session.setAttribute("reservationNumber", reservationNum);
 		
-//�Է¹��� �¼���ġ�� DB�� �ݿ�(seat_num�� �Ѱ� ���� ��Ȳ)	
-		int countSeat = seatPosition.size();  //���� ���ϱ�
-		seesion.setAttribute("seatNumber", countSeat);
+		int countSeat = seatPosition.size(); 
+		session.setAttribute("seatNumber", countSeat);
 		
-		//reservation table�� row�����(�ӽ� data ����ϱ�)
+		//reservation table
 		ScheduleService service = new ScheduleService();
 		service.insertReservationInfor(reservationNum, m_id, scheduleNum);
 		
-		//reservation detail table�� row�����(�ϼ��ϱ�)
+		//reservation detail table
 		for(String arr: seatPosition) {
 			service.insertReservationDetailInfor(reservationNum, arr);
 		}
+				
 		
-		//����(paymentSample.jsp)
-		RequestDispatcher rd = request.getRequestDispatcher("cansu/paymentSample.jsp");
+//		//sample1 (paymentSample.jsp)
+//		RequestDispatcher rd = request.getRequestDispatcher("cansu/paymentSample.jsp");
+//		rd.forward(request, response);
+		
+		//sample2 (reservationResult.jsp) add seatTemp.jsp request
+		RequestDispatcher rd = request.getRequestDispatcher("/reservationCompleteFromShowList");
 		rd.forward(request, response);
+		
 	}
 
 

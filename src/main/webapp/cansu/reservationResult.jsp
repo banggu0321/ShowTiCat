@@ -17,7 +17,12 @@
 <input type="text" value="schedule number" disabled ><input type="text" value=${reservationData.getScheduleNum()}><br>
 <input type="text" value="payment" disabled ><input type="text" value=${reservationData.getPayment()}><br>
 <input type="text" value="total price" disabled ><input type="text" value=${reservationData.getTotalPrice()}><br>
-<input type="text" value="pay YES or NOT" disabled ><input type="text" value=${reservationData.getPayYN()}><br>
+
+<select name="pay">
+<option value="checkCard">check card</option>
+<option value="creditCard">credit card</option>
+<option value="onlineBank">online bank</option>
+</select>
 <input type="submit" value="ม๖บา">
 </form>
 

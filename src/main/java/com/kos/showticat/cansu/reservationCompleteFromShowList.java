@@ -20,16 +20,16 @@ public class reservationCompleteFromShowList extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) 
 			throws ServletException, IOException {
-		String pay = request.getParameter("pay");
-		System.out.println(pay);
+//		String pay = request.getParameter("pay");
+		String pay = "temp";
 		
-		//session 에 저장된 seatNumber 가져오기
+		//session 
 		HttpSession seesion = request.getSession();
 		
 		String seatNum = String.valueOf(seesion.getAttribute("seatNumber"));
 		System.out.println(seatNum);
 
-		//session 에 저장된 reservationNumber 가져오기(reservationNum -> schedulNum -> showCode)
+		//(reservationNum -> schedulNum -> showCode)
 		int reservationNum = (int)seesion.getAttribute("reservationNumber");
 		
 		ScheduleService service = new ScheduleService();		
@@ -39,10 +39,10 @@ public class reservationCompleteFromShowList extends HttpServlet {
 		int showPrice = service.selectShowByShowCode(showCode);
 		System.out.println(showPrice);
 		
-		int totalPrice = Integer.parseInt(seatNum)*showPrice;  //인원수 결정후  최종 금액 결정(좌석 선택후)
+		int totalPrice = Integer.parseInt(seatNum)*showPrice;
 		service.updateReservationInfor(pay, totalPrice, reservationNum);
 		
-		//위임(reservationResult에 예약 결과 출력)
+		//(reservationResult)
 		RequestDispatcher rd = request.getRequestDispatcher("reservationResultFromShowList");
 		rd.forward(request, response);
 	}

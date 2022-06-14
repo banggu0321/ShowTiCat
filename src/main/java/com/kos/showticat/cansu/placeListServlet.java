@@ -31,7 +31,7 @@ public class placeListServlet extends HttpServlet {
 //		session.setAttribute("placeList", pList);
 		request.setAttribute("placeList", pList);
 		
-		//ю╖юс(placeList.jsp)
+		//(placeList.jsp)
 		RequestDispatcher rd = request.getRequestDispatcher("cansu/placeList.jsp");
 		rd.forward(request, response);
 
