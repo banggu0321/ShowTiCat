@@ -25,10 +25,6 @@
 </style>
 <script>
 	$(function() {
-		$(".btnM").click(function() {
-			$("#myModal").modal();
-		});
-
 		$(".btnUpd").click(function() {
 			var show_code = $(this).attr("data-showcode");
 			$("#show_code").val(show_code);
