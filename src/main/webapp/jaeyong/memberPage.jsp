@@ -32,55 +32,56 @@ p {
 		<input value ="${member.m_id}"
 			   type  ="text"
 			   name  ="m_id" 
-			   disabled="disabled"><br>
+			   disabled="disabled"><br><br>
 			   
 		<label>비밀번호 : </label>
 		<input value ="${member.m_pw}"
 			   type  ="password"
 			   name  ="password"
- 			   disabled="disabled"><br>
+ 			   disabled="disabled"><br><br>
 		
 		<label>이름 : </label>
 		<input value ="${member.m_name}"
 			   type  ="text"
 			   name  ="name"
- 			   disabled="disabled"><br>
+ 			   disabled="disabled"><br><br>
 		
 		<label>핸드폰 번호 : </label>
 		<input value ="${member.phone}"
 			   type  ="text"
 			   name  ="phone"
- 			   disabled="disabled"><br>
+ 			   disabled="disabled"><br><br>
 		
 		<label>생일 : </label>
 		<input value ="${member.birth}"
 			   type  ="text"
 			   name  ="birth"
- 			   disabled="disabled"><br>
+ 			   disabled="disabled"><br><br>
 		
 		<label>성별 : </label>		
 		<input value ="${member.gender}"
 			   type  ="text"
- 			   disabled="disabled"><br>
+ 			   disabled="disabled"><br><br>
 		
 		<label>이메일 : </label>
 		<input value ="${member.email}"
 			   type ="text"
- 			   disabled="disabled"><br>
+ 			   disabled="disabled"><br><br>
 			
 		<label>관심매장 : </label>
 		<input value = "${member.place_num}"
 			   type  = "text"
-			   id    = "place"><br>
+			   id    = "place"><br><br>
 		           
 		<label>포인트 : </label>
 		<input value ="${member.point}"
 			   type ="text"
 			   id   ="point"
- 			   disabled="disabled"><br>
+ 			   disabled="disabled"><br><br>
 
 		<br>
 		<input type="submit"
+			   class="btn btn-outline-success"	
 			   value="수정하기" >
  
 	</form>

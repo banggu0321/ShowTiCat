@@ -19,17 +19,16 @@
 $(function() {
 	$("#m_pw").on("keyup",checkPW);
 	$("#pw2").on("keyup",checkPW);
-	$("#delete").on("click",Delete);
 
 });
 
 $(function(){
-	$("#delete").click(function(){
-		var m_id = $(this).attr("m_id");
+	$("#btnDelete").click(function(){
+		var bno = $(this).attr("data-m_id");
 		if(confirm(m_id + "삭제?"))
 			location.href = "memberDelete.do?m_id="+m_id;
-			)}
-	})
+	});
+});
 
 
 function checkPW() {
@@ -43,9 +42,6 @@ function checkPW() {
         }
     
     }
-function Delete() {
-	location.href="/jaeyong/memberDelete1.do";
-}
  
 </script>
 <style>
@@ -53,7 +49,6 @@ p {
 	margin: 0;
 	font-size: 0.25em;
 	color: tomato;
-	
 }
 </style>
 </head>
@@ -66,7 +61,7 @@ p {
 		<input type="text"
 			   name="m_id"
 			   value="${member.m_id}"
-			   readonly="readonly"><br>
+			   readonly="readonly"><br><br>
 			    
 		<label>비밀번호 : </label>
 		<input type="password"
@@ -77,13 +72,12 @@ p {
 		<input type="password"
 			   id="pw2"
 			   name="m_pw">
-			   
-		<span  id="pwMsg"></span><br>
+		<span  id="pwMsg"></span><br><br>
 		
 		<label>이름 : </label>
 		<input type="text"
 			   name="m_name"
-			   value="${member.m_name}"><br>
+			   value="${member.m_name}"><br><br>
 		
 		<label>핸드폰 번호 : </label>
 		<input type="text"
@@ -95,7 +89,7 @@ p {
 		<label>생일 : </label>
 		<input type="date"
 			   name="birth"
-			   value="${member.birth}"><br>
+			   value="${member.birth}"><br><br>
 		
 		<label>성별 : </label>		
 		<label>
@@ -125,22 +119,24 @@ p {
 		<option value="일산">일산</option>
 		<option value="평촌">평촌</option>
 		</select>
-		<br>
+		<br><br>
 		
 		<label>포인트 : </label>
 		<input type="text"
 			   name="point"
 			   value="${member.point}"
 			   disabled="disabled">
-
-		<br><br>
+		<br><br><br>
+		
 		<input type="submit"
 			   class="btn btn-outline-success"
 			   value="수정완료">
+			   
 		<input type="button"
 			   class="btn btn-outline-success"		
 			   value="회원탈퇴"
-			   id="delete">
+			   id="btnDelete">
+		></button>
 	</form>
 
 </body>
