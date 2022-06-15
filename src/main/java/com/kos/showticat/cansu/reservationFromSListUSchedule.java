@@ -14,6 +14,7 @@ import javax.servlet.http.HttpSession;
 
 import com.kos.showticat.reservation.dao.temp.ScheduleService;
 import com.kos.showticat.reservation.dao.temp.ScheduleVO;
+import com.kos.showticat.reservation.dao.temp.ShowVO;
 
 @WebServlet("/reservationFromSListUSchedule")
 public class reservationFromSListUSchedule extends HttpServlet {
@@ -22,6 +23,13 @@ public class reservationFromSListUSchedule extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) 
 			throws ServletException, IOException {
+		
+		String showCode = String.valueOf(request.getAttribute("showCode"));
+//		System.out.println(showCode);
+		
+		ScheduleService service = new ScheduleService();
+		ShowVO svo = service.selectShowByShowcode(showCode);
+		request.setAttribute("show", svo);
 		
 		RequestDispatcher rd = request.getRequestDispatcher("cansu/theaterListUpdateSchedule.jsp");
 		rd.forward(request, response);

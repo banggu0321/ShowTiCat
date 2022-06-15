@@ -21,7 +21,7 @@ public class reservationFromShowLTBeta extends HttpServlet {
 		
 		String theaterNum = request.getParameter("theaterNum");
 		int placeNum = Integer.parseInt(request.getParameter("placeNum"));
-		String showStart = request.getParameter("showStart").substring(0, 10);
+		String showStart = request.getParameter("showStart"); //
 //		System.out.println(theaterNum);
 //		System.out.println(placeNum);		
 		

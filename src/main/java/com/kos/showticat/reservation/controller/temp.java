@@ -54,9 +54,54 @@ public class temp {
 //		f21();  //chart table select show_code
 		
 //		f22(); //schedule table select schedule by showcode(plist, date complete-> update shceulde complete)
-		f23(); //update schedule table other attribute by schedule
+//		f23(); //update schedule table other attribute by schedule
+		
+//		f24(); //update reservation table other(no payment)
+//		f25(); //update reservation table payment
+//		f26(); //select show table by showcode;
+		f27();  //select schedule table by schedule number;
 	}
 	
+	private static void f27() {
+		int scheduleNum = 19;
+		
+		ScheduleService service = new ScheduleService();
+		ScheduleVO svo = new ScheduleVO();
+		
+		svo = service.selectScheduleByScheduleNumBeta(scheduleNum);
+		System.out.println(svo);
+		service.updateScheduleByScheduleNum(svo.getTheaterNum(), svo.getPlaceNum(), svo.getShowStart(), 66677555);		
+		
+//		service.insertScheduleInforNum(66677555, svo.getShowCode());
+//		service.insertScheduleInfor(6622233, svo.getShowCode(), svo.getTheaterNum(), svo.getPlaceNum(), svo.getShowStart());
+	}
+
+	private static void f26() {
+		
+		String showCode = "AA8";
+		
+		ScheduleService service = new ScheduleService();
+		System.out.println(service.selectShowByShowcode(showCode));  //selectShowByShowcode
+	}
+
+	private static void f25() {
+		
+		String payment="creaditCard";
+		int reservationNum = 131;
+
+		ScheduleService service = new ScheduleService();
+		service.updateReservationPaymentByResNum(payment, reservationNum);
+	}
+
+	private static void f24() {
+		
+		int totalPrice = 613;
+		int reservationNum = 1460;
+		
+		ScheduleService service = new ScheduleService();
+		service.updateReservationByReserveNum(totalPrice, reservationNum);		
+	}
+
 	private static void f23() {
 		String theaterNum ="A1";
 		String showStart ="2022-06-13";

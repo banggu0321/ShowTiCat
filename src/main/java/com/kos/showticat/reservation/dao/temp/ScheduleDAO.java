@@ -19,6 +19,8 @@ import com.kos.showticat.util.DBUtil2;
 
 public class ScheduleDAO {
 
+	final static String SQL_SCHEDULE_SELECT_BY_SCHEDULE_NUM="SELECT SHOW_CODE, THEATER_NUM, PLACE_NUM , SHOW_START FROM SCHEDULE WHERE SCHEDULE_NUM=?";
+	final static String SQL_SCHEDULE_DELETE_BY_SCHEDULE_NUMBER = "DELETE FROM SCHEDULE WHERE SCHEDULE_NUM =?";
 	final static String SQL_SCHEDULE_UPDATE_OTHER_BY_SHCEDULE_NUMBER="UPDATE SCHEDULE SET THEATER_NUM=?, PLACE_NUM=?, SHOW_START=? WHERE SCHEDULE_NUM=?";
 	final static String SQL_SCHEDULE_SELECT_SCHEDULE_BY_SHOW_CODE="SELECT THEATER_NUM, PLACE_NUM , SHOW_START FROM SCHEDULE WHERE SHOW_CODE=?";
 	final static String SQL_SCHEDULE_SELECT_SHOW_CODE="SELECT SHOW_CODE FROM SCHEDULE WHERE SCHEDULE_NUM=?";
@@ -30,6 +32,8 @@ public class ScheduleDAO {
 	final static String SQL_SCHEDULE_POINT_SELECT_ALL ="select*from members";
 	final static String SQL_SCHEDULE_POINT_UPDATE="update members set point=? where m_id=?";
 
+	final static String SQL_RESERVATION_UPDATE_PAYMENT_BY_RESER_NUM = "UPDATE reservation SET PAYMENT=? WHERE RESERVATION_NUM =?";
+	final static String SQL_RESERVATION_UPDATE_TOTALPRICE_BY_RESER_NUM = "UPDATE reservation SET TOTAL_PRICE=? WHERE RESERVATION_NUM =?";
 	final static String SQL_RESERVATION_SELECT_ID_BY_RESERVATION_NUMBER="SELECT M_ID FROM RESERVATION WHERE RESERVATION_NUM =?";
 	final static String SQL_RESERVATION_SELECT_SCHEDULE_NUMBER_BY_RESERVATION_NUMBER="SELECT SCHEDULE_NUM  FROM RESERVATION WHERE RESERVATION_NUM=?";
 	final static String SQL_RESERVATION_INSERT="INSERT INTO RESERVATION values(?, ?, sysdate, ?, 'temp', 0, 'N')";
@@ -44,6 +48,8 @@ public class ScheduleDAO {
 	final static String SQL_THEATER_SELECT_BY_PLACE_NUMBER = "SELECT theater_num, theater_type, LAST_SEAT, PLACE_NUM FROM THEATER where PLACE_NUM=?";
 
 	final static String SQL_PLACE_SELECT_ALL = "SELECT place_num, place_name, place_loc, place_phone FROM PLACE";
+	
+	final static String SQL_SHOW_SELECT_BY_SHOW_CODE="SELECT SHOW_NAME, DIRECTOR, SHOW_TIME, POSTER FROM SHOW WHERE SHOW_CODE=?";
 	final static String SQL_SHOW_SELECT_PRICE_BY_SHOW_CODE="SELECT PRICE FROM SHOW WHERE SHOW_CODE=?";
 	final static String SQL_CHART_SELECT_ALL_SHOW_CODE="SELECT show_code FROM CHART";
 
@@ -55,15 +61,164 @@ public class ScheduleDAO {
 	final static String SQL_CHART_UPDATE_GENDER_W_BY_CHECK="UPDATE CHART SET RATE_W=? WHERE SHOW_CODE=?";
 	
 	
+	
+	
+	public ScheduleVO selectScheduleByScheduleNumBeta(int scheduleNum) {
+		
+		ScheduleVO svo = new ScheduleVO();
+		Connection con = DBUtil2.getConnection();
+		PreparedStatement ppst=null;
+		ResultSet rs = null;
+		
+		try {
+			ppst = con.prepareStatement(SQL_SCHEDULE_SELECT_BY_SCHEDULE_NUM);
+			ppst.setInt(1, scheduleNum);
+			rs = ppst.executeQuery();
+			
+			while(rs.next()) {
+				svo.setTheaterNum(rs.getString("theater_num"));
+				svo.setPlaceNum(rs.getInt("place_num"));
+				svo.setShowStart(rs.getString("show_start"));
+				svo.setShowCode(rs.getString("show_code"));
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				rs.close();
+				ppst.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+			DBUtil2.dbClose(con);
+		}			
+		return svo;
+	}
+	
+	public void deleteScheduleByScheduleNum(int scheduleNum) {
+		//DELETE FROM SCHEDULE WHERE SCHEDULE_NUM =?
+		
+		Connection con = DBUtil2.getConnection();
+		PreparedStatement ppst=null;
+		
+		try {
+			ppst = con.prepareStatement(SQL_SCHEDULE_DELETE_BY_SCHEDULE_NUMBER);
+			ppst.setInt(1, scheduleNum);
+			
+			int result = ppst.executeUpdate();
+			if(result == 1) {
+				System.out.println("ScheduleDAO.deleteScheduleByScheduleNum=>delete data");
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				ppst.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+			DBUtil2.dbClose(con);
+		}		
+	}
+	
+	public ShowVO selectShowByShowcode(String showCode) {
+		
+		ShowVO svo = new ShowVO();
+		Connection con = DBUtil2.getConnection();
+		PreparedStatement ppst=null;
+		ResultSet rs = null;
+		
+		try {
+			ppst = con.prepareStatement(SQL_SHOW_SELECT_BY_SHOW_CODE);
+			ppst.setString(1, showCode);
+			rs = ppst.executeQuery();
+			
+			while(rs.next()) {
+				svo.setShowName(rs.getString("show_name"));				
+				svo.setDirector(rs.getString("director"));
+				svo.setShowTime(rs.getString("show_time"));
+				svo.setPoster(rs.getString("poster"));
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				rs.close();
+				ppst.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+			DBUtil2.dbClose(con);
+		}		
+		return svo;
+	}
+	
+	public void updateReservationPaymentByResNum(String payment, int reservationNum) {
+		
+		Connection con = DBUtil2.getConnection();
+		PreparedStatement ppst=null;
+		
+		try {
+			ppst = con.prepareStatement(SQL_RESERVATION_UPDATE_PAYMENT_BY_RESER_NUM);
+			ppst.setString(1, payment);
+			ppst.setInt(2, reservationNum);
+			
+			int result = ppst.executeUpdate();
+			if(result == 1) {
+				System.out.println("ScheduleDAO.updateReservationPaymentByResNum=>update data");
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				ppst.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+			DBUtil2.dbClose(con);
+		}		
+		
+	}
+	
+	public void updateReservationByReserveNum(int totalPrice, int reservationNum) {
+		
+		Connection con = DBUtil2.getConnection();
+		PreparedStatement ppst=null;
+		
+		try {
+			ppst = con.prepareStatement(SQL_RESERVATION_UPDATE_TOTALPRICE_BY_RESER_NUM);
+			ppst.setInt(1, totalPrice);
+			ppst.setInt(2, reservationNum);
+			
+			int result = ppst.executeUpdate();
+			if(result == 1) {
+				System.out.println("ScheduleDAO.updateReservationByReserveNum=>update data");
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				ppst.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+			DBUtil2.dbClose(con);
+		}		
+	}
+	
 	public void updateScheduleByScheduleNum(String theaterNum, int placeNum, String showStart, int scheduleNum) {
 		Connection con = DBUtil2.getConnection();
 		PreparedStatement ppst=null;
+		
+		//string -> timestamp -> date
+		Timestamp sStart = Timestamp.valueOf(showStart);
+		Date sDate = new Date(sStart.getTime());
 		
 		try {
 			ppst = con.prepareStatement(SQL_SCHEDULE_UPDATE_OTHER_BY_SHCEDULE_NUMBER);
 			ppst.setString(1, theaterNum);
 			ppst.setInt(2, placeNum);
-			ppst.setString(3, showStart);
+			ppst.setDate(3, sDate);
 			ppst.setInt(4, scheduleNum);
 			
 			int result = ppst.executeUpdate();
@@ -439,6 +594,7 @@ public class ScheduleDAO {
 		Connection con = DBUtil2.getConnection();
 		PreparedStatement ppst=null;
 
+		
 		try {
 			ppst = con.prepareStatement(SQL_SCHEDULE_UPDATE_THEATER_PLACE_NUMBER);
 			ppst.setString(1, theaterNum);

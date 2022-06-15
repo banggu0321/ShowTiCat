@@ -21,7 +21,8 @@ public class reservationResultFromShowList extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) 
 			throws ServletException, IOException {
 		
-		//session 에 저장된 reservationNumber 가져오기
+		
+		//session 
 		HttpSession seesion = request.getSession();
 		int reservationNum = (int)seesion.getAttribute("reservationNumber");
 
@@ -39,7 +40,7 @@ public class reservationResultFromShowList extends HttpServlet {
 		service.updatePointMembers(id, point);
 		System.out.println("ScheduleDAO.reservationResultFromShowList=>update data");
 		
-		//위임(reservationResult.jsp)
+		//(reservationResult.jsp)
 		RequestDispatcher rd = request.getRequestDispatcher("cansu/reservationResult.jsp");
 		rd.forward(request, response);
 	}

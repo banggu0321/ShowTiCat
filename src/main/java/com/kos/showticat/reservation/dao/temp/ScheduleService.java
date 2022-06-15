@@ -12,6 +12,22 @@ public class ScheduleService {
 
 	ScheduleDAO scdao = new ScheduleDAO();
 	
+	public ScheduleVO selectScheduleByScheduleNumBeta(int scheduleNum) {
+		return scdao.selectScheduleByScheduleNumBeta(scheduleNum);
+	}
+
+	public ShowVO selectShowByShowcode(String showCode) {
+		return scdao.selectShowByShowcode(showCode);
+	}
+	
+	public void updateReservationPaymentByResNum(String payment, int reservationNum) {
+		scdao.updateReservationPaymentByResNum(payment, reservationNum);
+	}
+	
+	public void updateReservationByReserveNum(int totalPrice, int reservationNum) {
+		scdao.updateReservationByReserveNum(totalPrice, reservationNum);
+	}
+	
 	public void updateScheduleByScheduleNum(String theaterNum, int placeNum, String showStart, int scheduleNum) {
 		scdao.updateScheduleByScheduleNum(theaterNum, placeNum, showStart, scheduleNum);
 	}
