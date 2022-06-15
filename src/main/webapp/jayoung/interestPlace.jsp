@@ -13,6 +13,7 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <link rel="stylesheet" href="../css/common.css">
+<link rel="stylesheet" href="../css/memberMyPage.css">
 
 <script>
 $(function() {
@@ -20,7 +21,6 @@ $(function() {
 	$(".myPlaceBtn").on("click", myPlace);
 	$(".resetBtn").on("click", reset);
 	$(".delBtn").on("click", delMyPlace);
-	$(".reviewBtn").on("click", review);
 })
 
 function myPlace() {
@@ -29,10 +29,6 @@ function myPlace() {
 
 function reset() {
 	$("#placeForm").hide();
-}
-
-function review() {
-	location.href="myReview.do";
 }
 
 function delMyPlace() {
@@ -50,8 +46,30 @@ function delMyPlace() {
 </script>
 </head>
 <body>
-<jsp:include page="header.jsp"/>
+<jsp:include page="../jayoung/header.jsp"/>
+
+	<div class="fbx">
+		<div class=mySide>
+			<div class="favorite">
+			<a href = "">관심매장</a>
+			</div><!-- favorite -->
+			<div class="reservation">
+			<a href = "#">예매</a>			
+			</div><!-- reservation -->
+
+			<div class="memberDetail">
+			<a href = "../jaeyong/memberDetail.do">회원정보수정</a>			
+			</div><!-- reservation -->
+
+			<div class="delete">
+			<a href = "#">회원탈퇴</a>
+			</div><!-- delete -->
+
+		</div><!-- mySide -->
+		
+		<div class="centerHidden">
 <div class="contents">
+
 	<c:if test="${member.place_num == 0}">
 		등록된 관심매장이 없습니다.	
 		<button class="btn btn-primary myPlaceBtn">등록</button>
@@ -76,9 +94,12 @@ function delMyPlace() {
 			<input class="btn btn-outline-primary resetBtn" type="reset" value="취소">
 		</div>
 	</form>
-	
-	<button class="btn btn-outline-primary reviewBtn">리뷰</button>
+
 </div>
-<jsp:include page="../bang/mainUpTicket.jsp" />
+		</div><!-- centerHidden -->
+
+		<div class="rightHidden">
+		</div><!-- rightHidden -->
+	</div><!-- fbx -->
 </body>
 </html>

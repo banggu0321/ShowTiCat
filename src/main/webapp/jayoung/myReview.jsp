@@ -17,7 +17,6 @@
 <script>
 $(function() {
 	$(".updateBtn").on("click", updateReview);
-	$(".reviewBtn").on("click", insertReview);
 	$(".delBtn").on("click", deleteReview);
 })
 
@@ -41,10 +40,6 @@ function updateReview() {
 	location.href="updateReview.do?review_num="+review_num;
 }
 
-function insertReview() {
-	var reservation_num = $(this).attr("num");
-	location.href="insertReview.do?reservation_num=3700"/* +reservation_num */;
-}
 </script>
 
 <style type="text/css">
@@ -119,7 +114,6 @@ function insertReview() {
 	</table>
 	</c:if>
 	<hr>
-	<button class="btn btn-outline-info reviewBtn">리뷰등록</button>
 </div>
 <jsp:include page="../bang/mainUpTicket.jsp" />
 </body>
