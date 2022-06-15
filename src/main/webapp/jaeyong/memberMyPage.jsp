@@ -24,7 +24,7 @@
 			</div><!-- favorite -->
 
 			<div class="reservation">
-			<a href = "#">예매</a>			
+			<a href = "http://localhost:9090/ShowTiCat/mypage/confirm.do">예매</a>			
 			</div><!-- reservation -->
 
 			<div class="memberDetail">
@@ -38,6 +38,8 @@
 		</div><!-- mySide -->
 		
 		<div class="centerHidden">
+		
+		
 		
 		</div><!-- centerHidden -->
 
