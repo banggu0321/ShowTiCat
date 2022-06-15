@@ -30,7 +30,6 @@ public class MemeberUpdate extends HttpServlet {
 			throws ServletException, IOException {
 
 		HttpSession session = request.getSession();
-		
 		String m_id = request.getParameter("m_id");
 		String m_pw = request.getParameter("m_pw");
 		String m_name = request.getParameter("m_name");
@@ -38,6 +37,7 @@ public class MemeberUpdate extends HttpServlet {
 		String phone = request.getParameter("phone");
 		String birth = request.getParameter("birth");
 		String gender = request.getParameter("gender");
+		String point = request.getParameter("point");
 
 		MemberVO member = new MemberVO();
 		member.setM_id(m_id);
@@ -47,7 +47,7 @@ public class MemeberUpdate extends HttpServlet {
 		member.setPhone(phone);
 		member.setBirth(DateUtil.convertToDate(birth));
 		member.setGender(gender);
-
+		member.setPoint(Integer.parseInt(point));
 		MemberService service = new MemberService();
 		int result = service.memberUpdate(member);
 		
@@ -59,7 +59,7 @@ public class MemeberUpdate extends HttpServlet {
 		}
 
 		RequestDispatcher rd;
-		rd = request.getRequestDispatcher("memberPage.jsp");
+		rd = request.getRequestDispatcher("../");
 		rd.forward(request, response);
 
 	}

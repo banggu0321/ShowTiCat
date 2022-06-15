@@ -4,10 +4,10 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<meta http-equiv="refresh" content="3;url=memberUpdate.jsp">
-<title>Insert title here</title>
+<meta http-equiv="refresh" content="3;url=memberDetail.do">
+<title>잠시만 기다려주세요!!</title>
 </head>
 <body>
-<h1>${msg }</h1>
+<h1>${msg}</h1>
 </body>
 </html>
