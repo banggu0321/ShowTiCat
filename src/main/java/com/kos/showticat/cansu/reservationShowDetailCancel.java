@@ -17,9 +17,7 @@ public class reservationShowDetailCancel extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) 
 			throws ServletException, IOException {
 		
-		//delete(shcedule)
-		
-		
+		//delete(shcedule)=> user info. in reservation table		
 		//(main page)
 		RequestDispatcher rd = request.getRequestDispatcher("/index.jsp");
 		rd.forward(request, response);
