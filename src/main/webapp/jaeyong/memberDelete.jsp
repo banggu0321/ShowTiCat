@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>MemberUpdate</title>
+<title>MemberDelete</title>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
 <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.slim.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
@@ -30,7 +30,6 @@ $(function(){
 	});
 });
 
-
 function checkPW() {
     var pw1= $("#m_pw").val();
     var pw2= $("#pw2").val();
@@ -40,16 +39,10 @@ function checkPW() {
         } else {
             $("#pwMsg").html("fail")	        	
         }
-    
     }
  
 </script>
 <style>
-p {
-	margin: 0;
-	font-size: 0.25em;
-	color: tomato;
-}
 </style>
 </head>
 	<body>
@@ -66,11 +59,6 @@ p {
 			   id="pw2"
 			   name="m_pw">
 		<span  id="pwMsg"></span><br><br>
-
-		<input type="hidden"
-			   name="point"
-			   value="${member.point}">
-		<br>
 
 		<input type="button"
 			   class="btn btn-outline-success"
