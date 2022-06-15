@@ -111,6 +111,6 @@ function checkNum() {
 	<input class="btn btn-success" type="submit" value="아이디 찾기">
 	</form>
 </div>
-
+<jsp:include page="../bang/mainUpTicket.jsp" />
 </body>
 </html>

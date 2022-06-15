@@ -24,6 +24,16 @@ public class MemberService {
 	public int resetPW(String m_id, String m_pw) {
 		return dao.resetPW(m_id, m_pw);
 	}
+
+	//관심매장 변경
+	public int updatePlace(int place_num, String m_id) {
+		return dao.updatePlace(place_num, m_id);
+	}
+	
+	//관심매장 삭제
+	public int deletePlace(String m_id) {
+		return dao.deletePlace(m_id);
+	}
 	
 	//ID 중복확인
 	public int checkID(String m_id) {

@@ -70,5 +70,6 @@ div .title {
 		</c:otherwise>
 	</c:choose>
 </div>
+<jsp:include page="../bang/mainUpTicket.jsp"/>
 </body>
 </html>

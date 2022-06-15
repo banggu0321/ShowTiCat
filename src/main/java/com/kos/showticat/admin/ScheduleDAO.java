@@ -32,8 +32,8 @@ public class ScheduleDAO {
 	static final String SQL_INSERT_SCHEDULE ="INSERT INTO schedule values(seq_schedule_no.nextval,?,?,?,?)";
 	static final String SQL_SELECT_RESERVATION_DELETE_SCHEDULE =""
 			+ "SELECT count(r.RESERVATION_NUM) FROM SCHEDULE sc JOIN RESERVATION r  ON (sc.SCHEDULE_NUM = r.SCHEDULE_NUM )"
-			+ " sc.SCHEDULE_NUM  = ?"
-			+ "	AND r.PAY_YN = 'Y'";	
+			+ " WHERE sc.SCHEDULE_NUM  = ? "
+			+ "	AND r.PAY_YN = 'Y' ";	
 	static final String SQL_DELETE_SCHEDULE ="DELETE FROM schedule WHERE SCHEDULE_NUM =? ";
 	
 	

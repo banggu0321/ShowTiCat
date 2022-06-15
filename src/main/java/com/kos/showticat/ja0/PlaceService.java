@@ -16,4 +16,9 @@ public class PlaceService {
 	public PlaceVO selectByNum(int place_num) {
 		return dao.selectByNum(place_num);
 	}
+	
+	//관심매장 조회
+	public String selectMyPlace(String m_id) {
+		return dao.selectMyPlace(m_id);
+	}
 }

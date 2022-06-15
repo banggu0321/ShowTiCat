@@ -2,6 +2,7 @@ package com.kos.showticat.ja0;
 
 import java.sql.Date;
 import java.util.List;
+import java.util.Map;
 
 import com.kos.showticat.VO.ScheduleVO;
 
@@ -27,9 +28,9 @@ public class ScheduleService {
 	public List<ScheduleVO> selectByTheater(int place_num, Date show_date) {
 		return dao.selectByTheater(place_num , show_date);
 	}
-
-	//남은좌석
-	public List<ScheduleVO> selectCnt() {
-		return dao.selectCnt();
+	
+	//예약된 좌석
+	public Map<Integer, Integer> reservCnt(int place_num) {
+		return dao.reservCnt(place_num);
 	}
 }

@@ -44,7 +44,7 @@
 						<td>show제목</td>
 						<td>극장이름</td>
 						<td>상영관번호</td>
-						<td>상영날짜</td>
+						<td>관람일</td>
 						<td>시작시간</td>
 						<td>남은자리</td>
 						<td></td>

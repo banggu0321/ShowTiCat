@@ -33,8 +33,8 @@ public class LoginServlet extends HttpServlet {
 		HttpSession session = request.getSession();
 		session.setAttribute("member", member);
 		
-		String path = (String)session.getAttribute("reqPath");
-		
+		String path = request.getContextPath();
+
 		if(member == null) {
 			response.setContentType("text/html; charset=UTF-8");
 			PrintWriter writer = response.getWriter();
@@ -43,8 +43,6 @@ public class LoginServlet extends HttpServlet {
 		}else {
 			if(member.getM_id().equals("admin")) {
 				path = request.getContextPath() + "/bang/schedule.do";
-			}else if(path==null) {
-				path = request.getContextPath() ;
 			}
 			response.sendRedirect(path);
 		}

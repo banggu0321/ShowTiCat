@@ -24,7 +24,7 @@ public class ScheduleListServlet extends HttpServlet {
 		ScheduleService service = new ScheduleService();
 		request.setAttribute("schedulelist", service.selectAllSchedule());
 		
-		HttpSession session = request.getSession(false);
+		//HttpSession session = request.getSession(false);
 		//System.out.println((String)session.getAttributeNames());
 		//System.out.println(session.getId());
 		//MemberVO member = (MemberVO)session.getAttribute("member");
