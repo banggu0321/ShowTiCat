@@ -9,8 +9,11 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
+import com.kos.showticat.VO.MemberVO;
 import com.kos.showticat.VO.ReviewVO;
+import com.kos.showticat.ja0.MemberService;
 import com.kos.showticat.ja0.ReviewService;
 import com.kos.showticat.ja0.ShowService;
 
@@ -30,14 +33,20 @@ public class InsertReview extends HttpServlet {
 
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		HttpSession session = request.getSession();
+		MemberVO member = (MemberVO)session.getAttribute("member");
+		
 		ReviewVO review = makeReview(request);
 		ReviewService service = new ReviewService();
+		MemberService ms = new MemberService();
 		
-		int result = service.insertReview(review);
+		int result = service.insertReview(review) + ms.updatePoint(member.getPoint()+500, member.getM_id());
 		
-		if(result >= 1) {
+		if(result >= 2) {
 			RequestDispatcher rd = request.getRequestDispatcher("myReview.do");
 			rd.forward(request, response);
+			
+			session.setAttribute("member", ms.selectID(member.getM_id(), member.getM_pw()));
 		} else {
 			response.setContentType("text/html; charset=UTF-8");
 			PrintWriter writer = response.getWriter();

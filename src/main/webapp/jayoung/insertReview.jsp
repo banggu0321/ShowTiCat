@@ -20,8 +20,7 @@
 	width:500px;
 }
 #content {
-	width: 500px;
-	height: 80px;
+	width: 460px;
 }
 </style>
 </head>
@@ -38,7 +37,7 @@
 		
 		<div class="form-group">
 			<label>CONTENT </label>
-			<input class="form-control" type="text" name="content" id="content">
+			<textarea class="form-control" rows="2" id="content" name="content"></textarea>
 		</div>
 		
 		<div class="form-group">

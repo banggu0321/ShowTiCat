@@ -46,30 +46,12 @@ function delMyPlace() {
 </script>
 </head>
 <body>
-<jsp:include page="../jayoung/header.jsp"/>
+<jsp:include page="header.jsp"/>
+<jsp:include page="../jaeyong/mySide.jsp"/>
 
-	<div class="fbx">
-		<div class=mySide>
-			<div class="favorite">
-			<a href = "">관심매장</a>
-			</div><!-- favorite -->
-			<div class="reservation">
-			<a href = "#">예매</a>			
-			</div><!-- reservation -->
-
-			<div class="memberDetail">
-			<a href = "../jaeyong/memberDetail.do">회원정보수정</a>			
-			</div><!-- reservation -->
-
-			<div class="delete">
-			<a href = "#">회원탈퇴</a>
-			</div><!-- delete -->
-
-		</div><!-- mySide -->
-		
-		<div class="centerHidden">
 <div class="contents">
 
+<div class="centerHidden">
 	<c:if test="${member.place_num == 0}">
 		등록된 관심매장이 없습니다.	
 		<button class="btn btn-primary myPlaceBtn">등록</button>
@@ -94,12 +76,10 @@ function delMyPlace() {
 			<input class="btn btn-outline-primary resetBtn" type="reset" value="취소">
 		</div>
 	</form>
+</div><!-- centerHidden -->
 
+<div class="rightHidden">
+</div><!-- rightHidden -->
 </div>
-		</div><!-- centerHidden -->
 
-		<div class="rightHidden">
-		</div><!-- rightHidden -->
-	</div><!-- fbx -->
-</body>
 </html>

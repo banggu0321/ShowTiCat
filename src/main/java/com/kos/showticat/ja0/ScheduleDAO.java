@@ -19,9 +19,15 @@ public class ScheduleDAO {
 	static final String SQL_SELECT_ALL ="select * from schedule";
 	static final String SQL_SELECT_BY_NUM ="select * from schedule where place_num =?";
 	static final String SQL_SELECT_BY_SHOW ="select * from schedule where place_num =? and show_code=?";
+	
 	static final String SQL_SELECT_THEATER ="SELECT SHOW_CODE,SHOW_NAME,schedule_num,theater_num,s.place_num, show_start "
 			+ " FROM schedule s JOIN show using(show_code) JOIN theater using(theater_num)"
 			+ " where s.place_num=? and SHOW_START >= ? and SHOW_START < ? ORDER BY 2,4,6"; 
+	
+	static final String SQL_SELECT_IF_SYSDATE ="SELECT SHOW_CODE,SHOW_NAME,schedule_num,theater_num,s.place_num, show_start "
+			+ " FROM schedule s JOIN show using(show_code) JOIN theater using(theater_num)"
+			+ " where s.place_num=? and SHOW_START >= sysdate and SHOW_START < ? ORDER BY 2,4,6"; 
+	
 	static final String SQL_COUNT = "SELECT DISTINCT schedule_num , count(*) OVER(PARTITION BY schedule_num)"
 			+ " FROM reservation JOIN reserv_detail using(reservation_num) JOIN SCHEDULE s USING(schedule_num)"
 			+ " JOIN theater using(theater_num) WHERE pay_yn ='Y' AND s.place_num = ?";
@@ -105,6 +111,29 @@ public class ScheduleDAO {
 			pst.setInt(1, place_num);
 			pst.setDate(2, show_date); 
 			pst.setDate(3, DateUtil.dayAfter(show_date));
+			
+			rs = pst.executeQuery();
+			
+			while(rs.next()) {
+				scheduleList.add(makeSchedule(rs));
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			DBUtil.dbClose(rs, pst, conn);
+		}
+		
+		return scheduleList;
+	}
+	
+	//상영관별로 조회(오늘)
+	public List<ScheduleVO> selectByIfSysdate(int place_num) {
+		List<ScheduleVO> scheduleList = new ArrayList<>();
+		conn = DBUtil.getConnection();
+		try {
+			pst = conn.prepareStatement(SQL_SELECT_IF_SYSDATE);
+			pst.setInt(1, place_num);
+			pst.setDate(2, DateUtil.dayAfter(DateUtil.sysdate()));
 			
 			rs = pst.executeQuery();
 			
