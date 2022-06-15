@@ -24,10 +24,9 @@
 	<jsp:include page="../jayoung/header.jsp" />
 	<div class="contents">
 		<jsp:include page="../jaeyong/mySide.jsp" />
-	</div>
-	<!-- contents -->
-	</div>
-	<!-- fbx -->
+		
+		
+	</div><!-- contents -->
 </body>
 
 </html>
