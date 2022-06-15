@@ -8,13 +8,6 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 <style>
-body {
-	margin: 0 auto;
-	width: 60%;
-}
-h1 {
-	text-align: center;
-}
 input[type="checkbox"]{
 width: 25px;
 height: 25px;
@@ -48,13 +41,28 @@ top:20%;
 left: 45%;
 width:10%;
 }
+
+#main {
+	position: absolute;
+	top: 35%;
+	
+	display: inline-block;
+	width: 60%;
+	
+	position: absolute;
+	left: 20%;
+}
 </style>
 <title>ÁÂ¼® ¼±ÅÃ</title>
 <body>
-<h1>ÁÂ¼® ¼±ÅÃ</h1>
+	<div id="headerInclude">
+		<jsp:include page="/cansu/header.jsp" />
+	</div>
 
 <form action="http://localhost:9090/ShowTiCat/seatSampleServletBeta">
+<div id="main">
 <div id='sub1'>
+
 <div id='screen'>
 <p>SCREEN</p>
 </div>
@@ -98,10 +106,11 @@ width:10%;
 <div id='sub3'>
 <input type="submit" class="btn btn-primary" >
 </div>
-
-
 </div>
+</div>
+
 </form>
+
 
 </body>
 </html>

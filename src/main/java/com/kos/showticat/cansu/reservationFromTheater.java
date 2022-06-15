@@ -38,36 +38,33 @@ public class reservationFromTheater extends HttpServlet {
 			return;
 		}
 		String m_id=member.getM_id();
-		System.out.println(m_id);
+		System.out.println("ID: "+m_id);
 		
 		//get admin schedule
 		int scheduleNumFromTheater = Integer.parseInt(request.getParameter("schedule_num"));
 		ScheduleService service = new ScheduleService();
 		ScheduleVO svoTemp = new ScheduleVO();
-		svoTemp = service.selectScheduleByScheduleNumBeta(scheduleNumFromTheater);
+		String showCode = service.selectScheduleByScheduleNum(scheduleNumFromTheater);
+		session.setAttribute("showCode", showCode);
 		
+//		svoTemp = service.selectScheduleByScheduleNumBeta(scheduleNumFromTheater);
 		//session-user
-		int scheduleNum = createScheduleNumber(); 
-		session.setAttribute("scheduleNumber", scheduleNum);
-		System.out.println("scheduleNum:"+scheduleNum);
+//		int scheduleNum = createScheduleNumber(); 
+//		session.setAttribute("scheduleNumber", scheduleNum);
+//		System.out.println("scheduleNum:"+scheduleNum);
 		
 //		service.insertScheduleInfor(scheduleNum, m_id, svoTemp.getTheaterNum(), svoTemp.getPlaceNum(), svoTemp.getShowStart());
-		service.insertScheduleInforNum(scheduleNum, svoTemp.getShowCode());
-		service.updateScheduleByScheduleNum(svoTemp.getTheaterNum(), svoTemp.getPlaceNum(), svoTemp.getShowStart(), scheduleNum);		
+//		service.insertScheduleInforNum(scheduleNum, svoTemp.getShowCode());
+//		service.updateScheduleByScheduleNum(svoTemp.getTheaterNum(), svoTemp.getPlaceNum(), svoTemp.getShowStart(), scheduleNum);		
 		
-		//user schedule number -> reservation number
-		int reservationNumBeta = (int)scheduleNum/4;
-//		if (scheduleNum.length() > 7) {
-//			reservationNumBeta = Integer.parseInt(scheduleNum.substring(0, 6))/4;
-//		} else {
-//			reservationNumBeta = Integer.parseInt(scheduleNum)*20;
-//		}
+		//create reservation number
+		int reservationNumBeta = createScheduleNumber();
 		
 		//session
 		session.setAttribute("reservationNumber", reservationNumBeta);
 		System.out.println("reservation number:"+reservationNumBeta);
 				
-		service.insertReservationInfor(reservationNumBeta, m_id, scheduleNum);
+		service.insertReservationInfor(reservationNumBeta, m_id, scheduleNumFromTheater);
 		
 		//위임 seatTemp.jsp
 		RequestDispatcher rd = request.getRequestDispatcher("cansu/seatTempBeta.jsp");
@@ -92,16 +89,5 @@ public class reservationFromTheater extends HttpServlet {
 		System.out.println(randTemp.substring(0, 7));
 		
 		return Integer.parseInt(randTemp.substring(0, 7));
-	}
-	
-//	private static String eachChartoStringBeta(String name) {
-//		
-//		char[] temp = name.toCharArray();
-//		String result = "";
-//		for(char ch: temp) {
-//			result += (int)ch;
-//		}
-//		return result.substring(0, 6);
-//	}
-	
+	}	
 }

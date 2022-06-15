@@ -15,23 +15,34 @@ import com.kos.showticat.reservation.dao.temp.ScheduleService;
 @WebServlet("/reservationFromShowLTBeta")
 public class reservationFromShowLTBeta extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
+
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) 
 			throws ServletException, IOException {
+
+		HttpSession session = request.getSession();
 		
 		String theaterNum = request.getParameter("theaterNum");
 		int placeNum = Integer.parseInt(request.getParameter("placeNum"));
 		String showStart = request.getParameter("showStart"); //
-//		System.out.println(theaterNum);
-//		System.out.println(placeNum);		
+		String shoCode = String.valueOf(session.getAttribute("showCode"));
 		
-		HttpSession session = request.getSession();
-		int scheduleNum = (int)session.getAttribute("scheduleNumber"); 
-//		System.out.println(scheduleNum);
-//		
+		request.setAttribute("showCode", shoCode);
+		System.out.println("Show code: "+shoCode);
+		//		System.out.println(theaterNum);
+		//		System.out.println(placeNum);		
+
+		//session
 		ScheduleService service = new ScheduleService();
-		service.updateScheduleByScheduleNum(theaterNum, placeNum, showStart, scheduleNum);
+		int scheduleNum = service.selectScheduleBythreeAttri(shoCode, theaterNum, placeNum);
+		session.setAttribute("scheduleNumber", scheduleNum);
+
 		
+
+//		int scheduleNum = (int)session.getAttribute("scheduleNumber"); 
+		//		System.out.println(scheduleNum);
+		//		
+//		service.updateScheduleByScheduleNum(theaterNum, placeNum, showStart, scheduleNum);
+
 		RequestDispatcher rd = request.getRequestDispatcher("cansu/seatTemp.jsp");
 		rd.forward(request, response);
 	}

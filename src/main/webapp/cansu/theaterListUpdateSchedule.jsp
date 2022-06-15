@@ -13,50 +13,57 @@
 	src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
 
 <style>
-body {
-	margin: 0 auto;
-	width: 60%;
-}
-h1 {
+tr, td {
 	text-align: center;
 }
-
-div {
+#main {
+	position: absolute;
+	top: 35%;
+	
 	display: inline-block;
-}
-tr, td{
-	text-align: center;
-}
-a{
-text-decoration: none;
+	width: 60%;
+	
+	position: absolute;
+	left: 20%;
 }
 
 #sub1, #sub2 {
 	float: left;
-	margin: 25px;
+	margin: 15px;
 }
 
-#title{
-font-size: xx-large;
-width: 290px;
+#title {
+	font-size: xx-large;
+	width: 290px;
 }
 
-
+#aTheater {
+	text-decoration: none;
+	color: blue;
+}
 </style>
 
 <title>스케쥴 상세보기</title>
 </head>
-<body>
-	<h1>스케쥴 상세보기</h1>
+
+<body id="bodyM">
+	<div id="headerInclude">
+		<jsp:include page="/cansu/header.jsp" />
+	</div>
+
 	<div id="main">
 		<div id="sub1">
-			<img alt="${show.showName}" src="${pageContext.request.contextPath}/images/${show.poster}" width="300px" height="400px">
+			<img alt="${show.showName}"
+				src="${pageContext.request.contextPath}/images/${show.poster}"
+				width="300px" height="400px">
 			<p id="title">${show.showName}</p>
 			<hr>
 			<p>감독 : ${show.director}</p>
 			<p>상영시간 : ${show.showTime}분</p>
-			<form action="http://localhost:9090/ShowTiCat/reservationShowDetailCancel">
-			<input  class="btn btn-primary btn-lg" type="submit" name="reSet" value="예매 취소">
+			<form
+				action="http://localhost:9090/ShowTiCat/reservationShowDetailCancel">
+				<input class="btn btn-primary btn-lg" type="submit" name="reSet"
+					value="예매 취소">
 			</form>
 		</div>
 
@@ -70,7 +77,7 @@ width: 290px;
 
 				<c:forEach items="${ScheduleList}" var="scheduleAttr">
 					<tr>
-						<td><a
+						<td><a id="aTheater"
 							href="http://localhost:9090/ShowTiCat/reservationFromShowLTBeta?theaterNum=${scheduleAttr.theaterNum}&placeNum=${scheduleAttr.placeNum}&showStart=${scheduleAttr.showStart}">
 								${scheduleAttr.theaterNum}</a></td>
 						<td>${scheduleAttr.placeNum}</td>
