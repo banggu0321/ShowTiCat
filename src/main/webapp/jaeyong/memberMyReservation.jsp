@@ -32,16 +32,20 @@
 			</div><!-- reservation -->
 
 			<div class="delete">
-			<a href = "../jaeyong/DeletePwCheck.do">회원탈퇴</a>
+			<a href = "../jaeyong/pwCheck.do">회원탈퇴</a>
 			</div><!-- delete -->
 
 		</div><!-- mySide -->
+
+
 		
 		<div class="centerHidden">
 		
 		
-		
+				
 		</div><!-- centerHidden -->
+
+
 
 		<div class="rightHidden">
 		</div><!-- rightHidden -->

@@ -29,7 +29,7 @@
 			</div><!-- favorite -->
 
 			<div class="reservation">
-			<a href = "http://localhost:9090/ShowTiCat/mypage/confirm.do">예매</a>			
+			<a href = "../mypage/confirm.do">예매</a>	
 			</div><!-- reservation -->
 
 			<div class="memberDetail">
@@ -37,7 +37,7 @@
 			</div><!-- reservation -->
 
 			<div class="delete">
-			<a href = "#">회원탈퇴</a>
+			<a href = "../jaeyong/deletePwCheck.do">회원탈퇴</a>
 			</div><!-- delete -->
 
 		</div><!-- mySide -->
