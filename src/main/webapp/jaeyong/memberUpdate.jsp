@@ -66,11 +66,11 @@ p {
 			</div><!-- reservation -->
 
 			<div class="memberDetail">
-			<a href = "../jaeyong/memberDetail.do">회원정보수정</a>			
+			<a href = "../jaeyong/ModifyPwCheck.do">회원정보수정</a>			
 			</div><!-- reservation -->
 
 			<div class="delete">
-			<a href = "../jaeyong/pwCheck.do">회원탈퇴</a>
+			<a href = "../jaeyong/deletePwCheck.do">회원탈퇴</a>
 			</div><!-- delete -->
 
 		</div><!-- mySide -->
