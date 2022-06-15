@@ -49,4 +49,9 @@ public class ConfirmService {
 	public int updateReservation(int reservation_num) {
 		return confirmDAO.updateReservation(reservation_num);
 	}
+
+	// 2-4. rd 모두삭제SQL_DELETE_SEAT
+	public int DeleteSeat(int reservation_num) {
+		return confirmDAO.DeleteSeat(reservation_num);
+	}
 }

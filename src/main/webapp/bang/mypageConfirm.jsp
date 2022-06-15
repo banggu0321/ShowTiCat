@@ -18,7 +18,11 @@
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <script>
 		$(function() {
-			//리뷰
+			/* window.onload = function(){
+				if(${".status"}.val = "Y"){
+					${".status"}.val("예매완료");
+				}else{}				
+			} */
 			
 			//상세모달 .DetailBtn
 			$(".DetailBtn").click(function() {
@@ -72,28 +76,33 @@
 				var reservation_num = $(this).attr("data-reservationnum");
 				//alert(category);
 				//alert(reservation_num);
-				if (confirm(reservation_num + " 삭제?")) {
+				if (confirm(reservation_num + "번 예매를 취소하시겠습니까?")) {
 					if(category=="공연"){
 						$.ajax({
 							url : "../mypage/confirmDeleteShowCheck.do",
 							data : {"reservation_num" : reservation_num},
 							type : "get",
 							success : function(responseData) {
-								if(responseData == 1){
+								if(responseData >= 1){
 									$.ajax({
 										url : "../mypage/confirmDelete.do",
 										data : {
 											"reservation_num" : reservation_num
 										},
 										type : "get",
-										success : function() {
-											alert("[" + reservation_num + "]" + "삭제되었습니다.");
-											location.reload();
+										success : function(message) {
+											if(message >= 1 ){
+												alert("[" + reservation_num + "]" + "삭제되었습니다.");
+												location.reload();
+											}else{
+												alert("이미 취소된 좌석입니다.");
+												location.reload();
+											}
 										},
 										fail : {}
 									});
 								}else {
-									alert("삭제불가");
+									alert("공연취소는 하루전까지만 가능합니다.");
 								}
 							}
 						});
@@ -103,21 +112,26 @@
 							data : {"reservation_num" : reservation_num},
 							type : "get",
 							success : function(responseData) {
-								if(responseData == 1){
+								if(responseData >= 1){
 									$.ajax({
 										url : "../mypage/confirmDelete.do",
 										data : {
 											"reservation_num" : reservation_num
 										},
 										type : "get",
-										success : function() {
-											alert("[" + reservation_num + "]" + "삭제되었습니다.");
-											location.reload();
+										success : function(message) {
+											if(message >= 1 ){
+												alert("[" + reservation_num + "]" + "삭제되었습니다.");
+												location.reload();
+											}else{
+												alert("이미 취소된 좌석입니다.");
+												location.reload();
+											}
 										},
 										fail : {}
 									});
 								}else {
-									alert("삭제불가");
+									alert("영화취소는 하루전까지만 가능합니다.");
 								}
 							}
 						});
@@ -162,21 +176,36 @@
 							<td>${resevation.show_start_time }</td>
 							<td>${resevation.category }</td>
 							<td class="status">${resevation.pay_yn}</td>
-							<td><button class="reviewBtn btn btn-dark"
-									data-showcode="${resevation.show_code}"
-									data-mid="${resevation.m_id}">리뷰</button></td>
+							<!-- onclick, data-showcode, data-mid -->
+							
+							<td>
+								<c:if test="${empty resevation.cansle_yn}">
+									<button class="reviewBtn btn btn-dark"
+											onclick="location.href='zzz.do'+${resevation.show_code}"
+											data-showcode="${resevation.show_code}"
+											data-mid="${resevation.m_id}">리뷰
+									</button>
+								</c:if>
+							</td>
 							<td><button class="DetailBtn btn btn-dark"
 									data-reservationnum="${resevation.reservation_num}"
 									data-toggle="modal" data-target="#myModal">상세</button></td>
-							<td><button class="DelBtn btn btn-dark"
-									data-reservationnum="${resevation.reservation_num}"
-									data-category="${resevation.category}">삭제</button></td>
+							<td>
+								<c:if test="${empty resevation.review}">
+									<button class="DelBtn btn btn-dark"
+										data-reservationnum="${resevation.reservation_num}"
+										data-category="${resevation.category}">삭제
+									</button>
+								</c:if>
+							</td>
 						</tr>
 					</c:forEach>
 				</table>
 			</div>
 		</div>
 	</div>
+	
+	
 	<!-- The Modal -->
 	<div class="modal" id="myModal" style="display: none; z-index: 1050;">
 		<div class="modal-dialog">

@@ -18,7 +18,8 @@ public class MypageConfirmListServlet extends HttpServlet {
 		String m_id = "bang";
 		ConfirmService service = new ConfirmService();
 		request.setAttribute("resevationlist", service.selectAllReservation(m_id));
-
+		
+		
 		RequestDispatcher rd;
 		rd = request.getRequestDispatcher("../bang/mypageConfirm.jsp");
 		rd.forward(request, response);
