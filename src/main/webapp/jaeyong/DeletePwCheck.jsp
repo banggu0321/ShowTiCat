@@ -55,23 +55,7 @@ p {
 	<jsp:include page="../jayoung/header.jsp"/>
 	
 	<div class="fbx">
-		<div class=mySide>
-			<div class="favorite">
-			<a href = "#">관심매장</a>
-			</div><!-- favorite -->
-
-			<div class="reservation">
-			<a href = "../mypage/confirm.do">예매</a>	
-			</div><!-- reservation -->
-
-			<div class="memberDetail">
-			<a href = "../jaeyong/ModifyPwCheck.do">회원정보수정</a>			
-			</div><!-- reservation -->
-
-			<div class="delete">
-			<a href = "../jaeyong/deletePwCheck.do">회원탈퇴</a>
-			</div><!-- delete -->
-		</div><!-- mySide -->
+	<jsp:include page="../jaeyong/mySide.jsp"/>
 		
 		<div class="centerHidden">
 		<h1>Password Check</h1>
