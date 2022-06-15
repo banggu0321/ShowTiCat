@@ -59,10 +59,18 @@ p {
 		<jsp:include page="../jaeyong/mySide.jsp" />
 			<h1>Password Check</h1>
 			<form action="memberDelete.do" method="post">
-				<br> <input type="hidden" name="m_pw" id="m_pw"
-					value="${member.m_pw}"><br> <label>비밀번호 확인 : </label>
-				<input type="password" id="pw2" name="m_pw"> <input
-					type="submit" class="btn btn-outline-success" value="확인"><br>
+				<br> <input type="hidden"
+							name="m_pw"
+							id="m_pw"
+							value="${member.m_pw}"><br>
+					<label>비밀번호 확인 : </label>
+				<input type="password"
+					   id="pw2"
+					   name="m_pw"> <input
+					   type="submit"
+					   m_mm="${member.m_id}"
+					   class="btn btn-outline-success"
+					   value="확인"><br>
 				<span id="pwMsg"></span>
 			</form>
 		</div><!-- contents -->
