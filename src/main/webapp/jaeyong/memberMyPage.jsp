@@ -27,6 +27,10 @@
 			<a href = "#">예매</a>			
 			</div><!-- reservation -->
 
+			<div class="memberDetail">
+			<a href = "../jaeyong/memberDetail.do">회원정보수정</a>			
+			</div><!-- reservation -->
+
 			<div class="delete">
 			<a href = "#">회원탈퇴</a>
 			</div><!-- delete -->
