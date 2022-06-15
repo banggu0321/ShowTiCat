@@ -33,7 +33,7 @@
 	                        </a>
 	                    </il>
 	                    <il>
-	                        <a href="${path}/jaeyong/memberDetail.do">
+	                        <a href="${path}/jaeyong/memberMyPage.do">
 	                        <img src="${path}/images/mypage.png" alt="mypage">
 	                            <span>MyPage</span>
 	                        </a>
