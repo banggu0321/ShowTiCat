@@ -21,7 +21,12 @@ public class ShowService {
 	public ShowVO selectShow(String show_code) {
 		return dao.selectShow(show_code);
 	}
-
+	
+	//예약번호로 조회
+	public ShowVO selectByReservation(int reservation_num) {
+		return dao.selectByReservation(reservation_num);
+	}
+	
 	//검색목록 전체조회
 	public List<ShowVO> selectSearch(String word) {
 		return dao.selectSearch(word);

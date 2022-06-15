@@ -58,7 +58,7 @@ function isEmpty() {
 	
 	<div class="form-group">
 		<label>비밀번호 </label>
-		<input class="form-control" type="text" name="m_pw" id="m_pw">
+		<input class="form-control" type="password" name="m_pw" id="m_pw">
 	</div>
 	
 	<input class="btn btn-success" type="submit" value="로그인">
@@ -66,5 +66,6 @@ function isEmpty() {
 	<button id="findID" class="btn btn-outline-success">아이디 찾기</button>
 	<button id="findPW" class="btn btn-outline-success">비밀번호 찾기</button>
 </div>
+<jsp:include page="../bang/mainUpTicket.jsp" />
 </body>
 </html>

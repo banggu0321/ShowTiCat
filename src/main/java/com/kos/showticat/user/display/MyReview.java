@@ -1,7 +1,7 @@
 package com.kos.showticat.user.display;
 
 import java.io.IOException;
-import java.io.PrintWriter;
+import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -12,32 +12,32 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import com.kos.showticat.VO.MemberVO;
-import com.kos.showticat.ja0.ReservationService;
+import com.kos.showticat.VO.ReviewVO;
+import com.kos.showticat.ja0.ReviewService;
+import com.kos.showticat.ja0.ShowService;
 
 /**
- * Servlet implementation class ReservationList
+ * Servlet implementation class MyReview
  */
-@WebServlet("/jayoung/reservationList.do")
-public class ReservationList extends HttpServlet {
+@WebServlet("/jayoung/myReview.do")
+public class MyReview extends HttpServlet {
 	private static final long serialVersionUID = 1L;
- 
+
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session = request.getSession();
 		MemberVO member = (MemberVO)session.getAttribute("member");
 		
-		if(member == null) {
-			response.setContentType("text/html; charset=UTF-8");
-			PrintWriter writer = response.getWriter();
-			writer.println("<script>alert('로그인 후 이용 가능합니다.');  location.href='../';</script>");
-			writer.close();
-			return;
-		} else {
-			ReservationService service = new ReservationService();
-			request.setAttribute("reservationList", service.selectAll(member.getM_id()));
-		}
+		ReviewService rs = new ReviewService();
+		request.setAttribute("myReview", rs.selectMyReview(member.getM_id()));
 		
-		RequestDispatcher rd = request.getRequestDispatcher("reservationList.jsp");
+		RequestDispatcher rd = request.getRequestDispatcher("myReview.jsp");
 		rd.forward(request, response);
+	}
+
+
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// TODO Auto-generated method stub
+		doGet(request, response);
 	}
 
 }
