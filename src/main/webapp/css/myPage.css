@@ -1,0 +1,90 @@
+@import url(../css/common.css);
+/**************************************************
+***************************************************/
+.grayBox {
+    width: 75%;
+    height: 90%;
+    margin: 0 auto;
+    background-color: #80808037;
+    border-bottom: 1px solid #ccc;
+
+}
+/**************************************************
+***************************************************/
+.imgBox {
+    width: 200px;
+    height: 170px;
+    background-image: url();
+    outline: 3px solid #ccc;
+}
+
+.into {
+    display: flex;
+    align-items: center;
+    border-right: 1px solid #ccc;
+    
+}
+
+.loginInfo {
+    width: 80%;
+    height: fit-content;
+    margin-bottom: 35px;
+    padding: 50px 0 50px 50px;
+
+}
+
+.loginInfo h1 {
+    height: 30%;
+    padding: 0 0 70px 0;
+    border-bottom: 1px solid #ccc;
+    
+}
+
+.loginInfo .textBox {
+    width: 90%;
+    height: 150px;
+    margin-right: 5%;
+
+}
+
+/**************************************************
+***************************************************/
+.etcBox {
+    text-align: center;
+    display: flex;
+    justify-content: center;
+}
+
+.etcBox h2 {
+    margin-bottom: 55px;
+
+}
+
+.etcBox p {
+    margin: 0 auto;
+    width: 70%;
+    border-bottom: 1px solid #ccc ;
+}
+.etcBox .box1,.box2,.box3{
+    width: 30%;
+    height: 200px;
+}
+
+.etcBox .box1 {
+    border-right: 1px solid #ccc ;
+}
+.etcBox .box2 {
+    border-right: 1px solid #ccc ;
+}
+
+.fvBox .fv {
+    width: 100px;
+    height: 50px;
+    margin: 5px;
+    border: 5px solid #ccc ;
+}
+
+.etcBox .row {
+    display: flex;
+    justify-content: center;
+}

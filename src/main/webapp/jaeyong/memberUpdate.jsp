@@ -5,29 +5,30 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
 <title>MemberUpdate</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<link rel="stylesheet" href="../css/common.css">
+<link rel="stylesheet" href="../css/memberMyPage.css">
 
-<script
-	src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
-<script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 
 <script>
 $(function() {
 	$("#m_pw").on("keyup",checkPW);
 	$("#pw2").on("keyup",checkPW);
-	$("#delete").on("click",Delete);
 
 });
 
 $(function(){
-	$("#delete").click(function(){
-		var m_id = $(this).attr("m_id");
+	$("#btnDelete").click(function(){
+		var m_id = $(this).attr("m_mm");
 		if(confirm(m_id + "삭제?"))
 			location.href = "memberDelete.do?m_id="+m_id;
-			)}
-	})
+	});
+});
 
 
 function checkPW() {
@@ -41,9 +42,6 @@ function checkPW() {
         }
     
     }
-function Delete() {
-	location.href="/jaeyong/memberDelete.do";
-}
  
 </script>
 <style>
@@ -51,20 +49,41 @@ p {
 	margin: 0;
 	font-size: 0.25em;
 	color: tomato;
-	
 }
 </style>
 </head>
+	<body>
+	<jsp:include page="../jayoung/header.jsp"/>
+	
+	<div class="fbx">
+		<div class=mySide>
+			<div class="favorite">
+			<a href = "#">관심매장</a>
+			</div><!-- favorite -->
 
-<body>
-	<h1>MemberUpdate</h1>
+			<div class="reservation">
+			<a href = "#">예매</a>			
+			</div><!-- reservation -->
+
+			<div class="memberDetail">
+			<a href = "../jaeyong/memberDetail.do">회원정보수정</a>			
+			</div><!-- reservation -->
+
+			<div class="delete">
+			<a href = "#">회원탈퇴</a>
+			</div><!-- delete -->
+
+		</div><!-- mySide -->
+		
+		<div class="centerHidden">
+			<h1>MemberUpdate</h1>
 	<form action="memberUpdate.do" method="post">
 		<br> 
 		<label>아이디 : </label>
 		<input type="text"
 			   name="m_id"
 			   value="${member.m_id}"
-			   readonly="readonly"><br>
+			   readonly="readonly"><br><br>
 			    
 		<label>비밀번호 : </label>
 		<input type="password"
@@ -75,13 +94,12 @@ p {
 		<input type="password"
 			   id="pw2"
 			   name="m_pw">
-			   
-		<span  id="pwMsg"></span><br>
+		<span  id="pwMsg"></span><br><br>
 		
 		<label>이름 : </label>
 		<input type="text"
 			   name="m_name"
-			   value="${member.m_name}"><br>
+			   value="${member.m_name}"><br><br>
 		
 		<label>핸드폰 번호 : </label>
 		<input type="text"
@@ -93,19 +111,23 @@ p {
 		<label>생일 : </label>
 		<input type="date"
 			   name="birth"
-			   value="${member.birth}"><br>
+			   value="${member.birth}"><br><br>
 		
 		<label>성별 : </label>		
 		<label>
 		<input type="radio"
 			   name="gender"
-			   value="M">남
+			   value="M"
+			   ${member.gender=="M"?"checked":""}
+			   >남
 		</label>
 		<label>
 		<input type="radio"
 		       name="gender"
-		       value="W">여<br>
-		</label>
+		       value="W"
+		        ${member.gender=="W"?"checked":""}
+		       >여
+		</label><br>
 		<label>이메일 : </label>
 		<input type="email"
 			   name="email"
@@ -123,21 +145,29 @@ p {
 		<option value="일산">일산</option>
 		<option value="평촌">평촌</option>
 		</select>
+		<br><br>
+		
+		<label>포인트 : ${member.point} </label>
+		<input type="hidden"
+			   name="point"
+			   value="${member.point}">
 		<br>
 		
-		<label>포인트 : </label>
-		<input type="text"
-			   name="point"
-			   value="${member.point}"
-			   disabled="disabled">
-
-		<br><br>
 		<input type="submit"
+			   class="btn btn-outline-success"
 			   value="수정완료">
+			   
 		<input type="button"
+			   class="btn btn-outline-success"
+			   m_mm = "${member.m_id}"
 			   value="회원탈퇴"
-			   id="delete">
+			   id="btnDelete">
 	</form>
+		</div><!-- centerHidden -->
 
+		<div class="rightHidden">
+		</div><!-- rightHidden -->
+
+	</div><!-- fbx -->
 </body>
 </html>
