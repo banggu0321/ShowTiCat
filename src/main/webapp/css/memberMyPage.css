@@ -1,5 +1,4 @@
 @charset "UTF-8";
-
 /*===========================================================================
 관심매장, 예매, 회원탈퇴
 =============================================================================*/
@@ -9,33 +8,21 @@
 }
 
 .mySide {
+	position : absolute;
+	top:0;
+    left: -123px;
     width : 10%;
     height : fit-contents;
 }
 /* 버튼 폰트사이즈 
    자동 줄 바꿈 없앰*/
 .mySide a {
-	
 	font-size : 20px;
 	white-space:nowrap;
 }
 
-.centerHidden {
-	width : 1000px;
-	height : 300px;
-	
+.contents {
+	position:relative;
 }
 
-/* 틀만 잡고 안보여야할 태그 */
-.rightHidden {
-	width : 10%;
-	height : 300px;
-
-}
-
-/* 플랙스 박스 */
-.fbx {
-	display : flex;
-	justify-content: center;
-}
 
