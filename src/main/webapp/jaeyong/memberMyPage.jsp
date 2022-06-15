@@ -20,15 +20,15 @@
 	<div class="fbx">
 		<div class=mySide>
 			<div class="favorite">
-			<a>관심매장</a>
+			<a href = "#">관심매장</a>
 			</div><!-- favorite -->
 
 			<div class="reservation">
-			<a>예매</a>			
+			<a href = "#">예매</a>			
 			</div><!-- reservation -->
 
 			<div class="delete">
-			<a>회원탈퇴</a>
+			<a href = "#">회원탈퇴</a>
 			</div><!-- delete -->
 
 		</div><!-- mySide -->
