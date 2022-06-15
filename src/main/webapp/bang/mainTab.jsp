@@ -54,7 +54,7 @@
 			<div class="movieChart">	
 				<div class="posters">
 				    <div class="posterWrap">
-						<div class="movieImage"">
+						<div class="movieImage">
 							<input class="pImage" type="image" src="bang/main_images/notReady.jpg">
 						</div>
 						<!-- movieImamge -->
@@ -63,7 +63,7 @@
 						</div><!-- movieName -->
 					</div><!-- posterWrap -->
 					<div class="posterWrap">
-						<div class="movieImage"">
+						<div class="movieImage">
 							<input class="pImage" type="image" src="bang/main_images/notReady.jpg">
 						</div>
 						<!-- movieImamge -->
@@ -73,7 +73,7 @@
 					</div><!-- posterWrap -->
 					<div class="posterWrapBar"></div><!-- posterWrapBar -->
 					<div class="posterWrap">
-						<div class="movieImage"">
+						<div class="movieImage">
 							<input class="pImage" type="image" src="bang/main_images/notReady.jpg">
 						</div>
 						<!-- movieImamge -->
@@ -82,7 +82,7 @@
 						</div><!-- movieName -->
 					</div><!-- posterWrap -->
 					<div class="posterWrap">
-						<div class="movieImage"">
+						<div class="movieImage">
 							<input class="pImage" type="image" src="bang/main_images/notReady.jpg">
 						</div>
 						<!-- movieImamge -->
@@ -97,7 +97,7 @@
 	    	<div class="movieChart">	
 				<div class="posters">
 					<div class="posterWrap">
-						<div class="movieImage"">
+						<div class="movieImage">
 							<input class="pImage" type="image" src="bang/main_images/notReady.jpg">
 						</div>
 						<!-- movieImamge -->
@@ -106,7 +106,7 @@
 						</div><!-- movieName -->
 					</div><!-- posterWrap -->
 					<div class="posterWrap">
-						<div class="movieImage"">
+						<div class="movieImage">
 							<input class="pImage" type="image" src="bang/main_images/notReady.jpg">
 						</div>
 						<!-- movieImamge -->
@@ -116,7 +116,7 @@
 					</div><!-- posterWrap -->
 					<div class="posterWrapBar"></div><!-- posterWrapBar -->
 					<div class="posterWrap">
-						<div class="movieImage"">
+						<div class="movieImage">
 							<input class="pImage" type="image" src="bang/main_images/notReady.jpg">
 						</div>
 						<!-- movieImamge -->
@@ -125,7 +125,7 @@
 						</div><!-- movieName -->
 					</div><!-- posterWrap -->
 					<div class="posterWrap">
-						<div class="movieImage"">
+						<div class="movieImage">
 							<input class="pImage" type="image" src="bang/main_images/notReady.jpg">
 						</div>
 						<!-- movieImamge -->
