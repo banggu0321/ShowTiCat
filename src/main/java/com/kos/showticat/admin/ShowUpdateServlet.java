@@ -73,9 +73,7 @@ public class ShowUpdateServlet extends HttpServlet {
 		int result = service.updateShow(s);
 		if(result==0) {
 			request.setAttribute("message", result > 0 ? "성공" : "실패");
-			RequestDispatcher rd;
-			rd = request.getRequestDispatcher("result.jsp");
-			rd.forward(request, response);
+			response.sendRedirect("show.do");
 		}else {
 			response.sendRedirect("show.do");
 		}
