@@ -1,27 +1,27 @@
 package com.kos.showticat.jaeyong;
 
 import java.io.IOException;
+import java.sql.Date;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
+import com.kos.showticat.util.DateUtil;
 
 /**
- * Servlet implementation class ScheduleDeleteServlet
+ * Servlet implementation class ModifyPwCheck
  */
-@WebServlet("/jaeyong/memberDelete.do")
-public class MemberDelete extends HttpServlet {
+@WebServlet("/jaeyong/ModifyPwCheck.do")
+public class ModifyPwCheck extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String m_id = request.getParameter("m_id");
-
-		MemberService service = new MemberService();
-		int result = service.Delete(m_id);
-		request.setAttribute("msg", result > 0 ? "삭제성공" : "삭제실패");
-
-		response.sendRedirect("../");
+		RequestDispatcher rd;
+		rd = request.getRequestDispatcher("ModifyPwCheck.jsp");
+		rd.forward(request, response);
 	}
 }
