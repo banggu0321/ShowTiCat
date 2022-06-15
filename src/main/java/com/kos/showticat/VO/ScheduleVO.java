@@ -11,7 +11,6 @@ public class ScheduleVO {
 	private int place_num;
 	private Date show_start;
 	private Time start_time;
-	private int cntReserv;
 	
 	public ScheduleVO() {}
 
@@ -27,19 +26,6 @@ public class ScheduleVO {
 		this.start_time = start_time;
 	}
 
-	public ScheduleVO(int schedule_num, int cntReserv) {
-		super();
-		this.schedule_num = schedule_num;
-		this.cntReserv = cntReserv;
-	}
-
-	public int getCntReserv() {
-		return cntReserv;
-	}
-
-	public void setCntReserv(int cntReserv) {
-		this.cntReserv = cntReserv;
-	}
 
 	public String getShow_name() {
 		return show_name;

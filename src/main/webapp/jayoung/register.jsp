@@ -265,5 +265,6 @@ function reset() {
 	<input type="reset" class="btn btn-secondary" value="초기화" id="resetBtn">
 	</form>
 </div>
+<jsp:include page="../bang/mainUpTicket.jsp"/>
 </body>
 </html>

@@ -14,6 +14,7 @@ import com.kos.showticat.util.DBUtil;
 public class PlaceDAO {
 	static final String SQL_SELECT_ALL ="select * from place order by 2";
 	static final String SQL_SELECT ="select * from place where place_num = ?";
+	static final String SQL_MYPLACE ="SELECT place_name FROM place JOIN members using(place_num) WHERE m_id = ?";
 
 	Connection conn;
 	Statement st;
@@ -53,6 +54,27 @@ public class PlaceDAO {
 			
 			while(rs.next()) {
 				place = makePlace(rs);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			DBUtil.dbClose(rs, pst, conn);
+		}
+		
+		return place;
+	}
+	
+	//관심매장 조회
+	public String selectMyPlace(String m_id) {
+		String place ="";
+		conn = DBUtil.getConnection();
+		try {
+			pst = conn.prepareStatement(SQL_MYPLACE);
+			pst.setString(1, m_id);
+			rs = pst.executeQuery();
+			
+			while(rs.next()) {
+				place = rs.getString("place_name");
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();

@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.kos.showticat.ja0.CastService;
 import com.kos.showticat.ja0.ChartService;
+import com.kos.showticat.ja0.ReviewService;
 import com.kos.showticat.ja0.ShowService;
 
 /**
@@ -29,10 +30,12 @@ public class ShowDetail extends HttpServlet {
 			ShowService service = new ShowService();
 			CastService cservice = new CastService();
 			ChartService cs = new ChartService();
+			ReviewService rs = new ReviewService();
 			
 			request.setAttribute("show", service.selectShow(show_code)); 
 			request.setAttribute("castList", cservice.selectCast(show_code)); 
 			request.setAttribute("chart",cs.selectShow(show_code));
+			request.setAttribute("reviewList",rs.selectAll(show_code));
 			
 			RequestDispatcher rd = request.getRequestDispatcher("showDetail.jsp");
 			rd.forward(request, response);

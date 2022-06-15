@@ -2,8 +2,11 @@ package com.kos.showticat.user.display;
 
 import java.io.IOException;
 import java.sql.Date;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Calendar;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -12,6 +15,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.kos.showticat.VO.ScheduleVO;
 import com.kos.showticat.ja0.PlaceService;
 import com.kos.showticat.ja0.ScheduleService;
 import com.kos.showticat.ja0.ShowService;
@@ -36,10 +40,22 @@ public class PlaceDetail extends HttpServlet {
 		request.setAttribute("showList", sss.selectAll());
 		request.setAttribute("theaterList", ts.selectByPlace(place_num));
 		request.setAttribute("list", ss.selectByTheater(place_num, show_start));
-		request.setAttribute("reservCnt", ss.selectCnt());
 		request.setAttribute("dateList", DateUtil.dateList());
-	
+		Map<Integer, Integer> cntMap = cntList(ss.reservCnt(place_num),ss.selectByTheater(place_num, show_start));
+		request.setAttribute("cntList", cntMap);
+		
+		
 		RequestDispatcher rd = request.getRequestDispatcher("placeDetail.jsp");
 		rd.forward(request, response);
+	}
+	
+	private Map<Integer, Integer> cntList(Map<Integer, Integer> cntMap, List<ScheduleVO> schedule) {
+		
+		for(ScheduleVO s: schedule) {
+			if(!cntMap.containsKey(s.getSchedule_num())) {
+				cntMap.put(s.getSchedule_num(), 0);
+			}
+		}
+		return cntMap;
 	}
 }

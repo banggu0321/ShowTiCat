@@ -37,15 +37,15 @@
 	left: 15%;
 }
 .r10 {
-	top: 60%;
+	top: 70%;
 	left: 12%;
 }
 .r20 {
-	top: 60%;
+	top: 50%;
 	left: 30%;
 }
 .r30 {
-	top: 60%;
+	top: 50%;
 	right: 42%;
 }
 .r40 {
@@ -53,7 +53,7 @@
 	right: 23%;
 }
 .r50 {
-	top: 60%;
+	top: 70%;
 	right: 5%;
 }
 </style>

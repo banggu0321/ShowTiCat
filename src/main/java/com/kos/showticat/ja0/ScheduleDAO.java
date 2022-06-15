@@ -7,7 +7,9 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import com.kos.showticat.VO.ScheduleVO;
 import com.kos.showticat.util.DBUtil;
@@ -20,8 +22,9 @@ public class ScheduleDAO {
 	static final String SQL_SELECT_THEATER ="SELECT SHOW_CODE,SHOW_NAME,schedule_num,theater_num,s.place_num, show_start "
 			+ " FROM schedule s JOIN show using(show_code) JOIN theater using(theater_num)"
 			+ " where s.place_num=? and SHOW_START >= ? and SHOW_START < ? ORDER BY 2,4,6"; 
-	static final String SQL_SELECT_CNT ="SELECT DISTINCT schedule_num, count(*) OVER(PARTITION BY schedule_num) "
-			+ " FROM schedule JOIN reservation using(schedule_num) JOIN RESERV_DETAIL USING(reservation_num)";
+	static final String SQL_COUNT = "SELECT DISTINCT schedule_num , count(*) OVER(PARTITION BY schedule_num)"
+			+ " FROM reservation JOIN reserv_detail using(reservation_num) JOIN SCHEDULE s USING(schedule_num)"
+			+ " JOIN theater using(theater_num) WHERE pay_yn ='Y' AND s.place_num = ?";
 	
 	Connection conn;
 	Statement st;
@@ -101,11 +104,8 @@ public class ScheduleDAO {
 			pst = conn.prepareStatement(SQL_SELECT_THEATER);
 			pst.setInt(1, place_num);
 			pst.setDate(2, show_date); 
-//<<<<<<< HEAD
-//			pst.setDate(3, DateUtil.dayAfter(show_date));
-//=======
 			pst.setDate(3, DateUtil.dayAfter(show_date));
-//>>>>>>> branch 'master' of https://github.com/banggu0321/ShowTiCat.git
+			
 			rs = pst.executeQuery();
 			
 			while(rs.next()) {
@@ -120,16 +120,17 @@ public class ScheduleDAO {
 		return scheduleList;
 	}
 	
-	//남은좌석
-	public List<ScheduleVO> selectCnt() {
-		List<ScheduleVO> scheduleList = new ArrayList<>();
+	//예약된 좌석
+	public Map<Integer, Integer> reservCnt(int place_num) {
+		Map<Integer, Integer> cntList = new HashMap<>();
 		conn = DBUtil.getConnection();
 		try {
-			pst = conn.prepareStatement(SQL_SELECT_CNT);
+			pst = conn.prepareStatement(SQL_COUNT);
+			pst.setInt(1, place_num);
 			rs = pst.executeQuery();
 			
 			while(rs.next()) {
-				scheduleList.add(makeCnt(rs));
+				cntList.put(rs.getInt(1), rs.getInt(2));
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -137,14 +138,9 @@ public class ScheduleDAO {
 			DBUtil.dbClose(rs, pst, conn);
 		}
 		
-		return scheduleList;
+		return cntList;
 	}
-
-	private ScheduleVO makeCnt(ResultSet rs2) throws SQLException {
-		ScheduleVO schedule = new ScheduleVO(rs.getInt(1), rs.getInt(2));
-		return schedule;
-	}
-
+	
 	private ScheduleVO makeSchedule(ResultSet rs) throws SQLException {
 		ScheduleVO schedule = new ScheduleVO();
 		
