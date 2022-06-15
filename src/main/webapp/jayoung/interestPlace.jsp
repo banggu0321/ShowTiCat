@@ -47,9 +47,9 @@ function delMyPlace() {
 </head>
 <body>
 <jsp:include page="header.jsp"/>
-<jsp:include page="../jaeyong/mySide.jsp"/>
 
 <div class="contents">
+<jsp:include page="../jaeyong/mySide.jsp"/>
 
 <div class="centerHidden">
 	<c:if test="${member.place_num == 0}">
