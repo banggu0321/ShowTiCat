@@ -54,10 +54,10 @@ public class ConfirmDAO {
 			+ " WHERE r.RESERVATION_NUM = ? ";
 	static final String SQL_SELECT_CHECK_SHOW_RESERVATION = ""
 			+ " SELECT * FROM SCHEDULE s JOIN RESERVATION r ON (r.SCHEDULE_NUM =s.SCHEDULE_NUM) "
-			+ " WHERE s.SHOW_START - 1/24*0.5 > SYSDATE " + " AND r.RESERVATION_NUM = ? ";
+			+ " WHERE s.SHOW_START - 1 > SYSDATE " + " AND r.RESERVATION_NUM = ? ";
 	static final String SQL_SELECT_CHECK_MOVIE_RESERVATION = ""
 			+ " SELECT * FROM SCHEDULE s JOIN RESERVATION r ON (r.SCHEDULE_NUM =s.SCHEDULE_NUM) "
-			+ " WHERE s.SHOW_START - 1 > SYSDATE " + " AND r.RESERVATION_NUM = ? ";
+			+ " WHERE s.SHOW_START - 1/24*0.5 > SYSDATE " + " AND r.RESERVATION_NUM = ? ";
 	static final String SQL_UPDATE_RESERVATION = "UPDATE RESERVATION SET PAY_YN = 'N' WHERE RESERVATION_NUM = ? ";
 	static final String SQL_DELETE_SEAT = "DELETE FROM RESERV_DETAIL WHERE RESERVATION_NUM  = ? ";
 
@@ -224,7 +224,7 @@ public class ConfirmDAO {
 			while (rs.next()) {
 				result = rs.getInt(1);
 			}
-			System.out.println("공연SqlResult" + result);
+			//System.out.println("공연SqlResult" + result);
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
@@ -244,7 +244,7 @@ public class ConfirmDAO {
 			while (rs.next()) {
 				result = rs.getInt(1);
 			}
-			System.out.println("영화SqlResult" + result);
+			//System.out.println("영화SqlResult" + result);
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {

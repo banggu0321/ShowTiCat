@@ -72,11 +72,13 @@
 <li class="chart">
 	<div class="chartImg">
 		<p class="chartTitle">연령별 예매 분포</p>
+		<%-- 	
 		<div class="r10">10대<br>${Math.round(chart.rate_10/sum*1000)/10}%</div>
 		<div class="r20">20대<br>${Math.round(chart.rate_20/sum*1000)/10}%</div>
 		<div class="r30">30대<br>${Math.round(chart.rate_30/sum*1000)/10}%</div>
 		<div class="r40">40대<br>${Math.round(chart.rate_40/sum*1000)/10}%</div>
-		<div class="r50">50대<br>${Math.round(chart.rate_50/sum*1000)/10}%</div>
+		<div class="r50">50대<br>${Math.round(chart.rate_50/sum*1000)/10}%</div> 
+		--%>
 		<canvas id="ageChart" width="500" height="300"></canvas>
 	</div>
 </li>
@@ -100,8 +102,10 @@ const ageChart = new Chart(ctx, {
         }]
     },
     options: {
-    	legend: false,
     	responsive: false,
+    	legend: {
+    		display:false
+    	},
         scales: {
         	yAxes: {
        		 gridLines: {
@@ -129,8 +133,10 @@ const myChart = new Chart(ctx2, {
         }]
     },
     options: {
-    	legend: false,
     	responsive: false,
+    	legend: {
+    		display:false
+    	},
         scales: {
         	 yAxes: {
         		 gridLines: {

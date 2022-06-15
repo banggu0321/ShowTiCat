@@ -26,13 +26,18 @@ a:hover {
 .placeList{
 	line-height: 30px;
 }
+.info, .name, #display{
+	margin-left: 10px;
+}
 .name {
-	padding-top: 20px;
 	font-size: 25px;
 	font-weight: bold;
 }
-.img {
-	padding: 20px;
+#map {
+	width: 450px;
+	height: 300px;
+	margin: 0px 20px 20px 0px;
+	border: 3px solid gray; 
 }
 .show {
 	display: inline-block;
@@ -101,7 +106,7 @@ function myPlace() {
 	<hr>
 	
 	<%-- 극장정보 --%>
-	<img class="left img" src="${path}/images/theater.webp" width="225px" height="300px">
+	<div class="right" id="map"></div>
 	<div class="left">
 		<p class="name">ShowTiCat ${place.place_name}
 		<c:if test="${place.place_num != member.place_num}">
@@ -129,5 +134,6 @@ function myPlace() {
 <jsp:include page="displaySchedule.jsp"/>
 </div>
 <jsp:include page="../bang/mainUpTicket.jsp"/>
+<jsp:include page="placeMap.jsp"/>
 </body>
 </html>

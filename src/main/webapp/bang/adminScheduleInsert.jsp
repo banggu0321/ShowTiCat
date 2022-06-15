@@ -39,7 +39,7 @@ label {
 		</div>
 		<form action="scheduleInsert.do" method="post" id="insertscheduleform">
 			<div class="form-group">
-				<label>show 제목</label> <select class="form-control" name="show_code">
+				<label>show 제목</label> <select class="form-control" id="show_code" name="show_code" onchange="OnChangeShow()">
 					<c:forEach items="${slist}" var="s">
 						<option value="${s.show_code}">${s.show_name}</option>
 					</c:forEach>
@@ -47,7 +47,7 @@ label {
 			</div>
 			<div class="form-group">
 				<label>극장이름</label> <select class="form-control" id="place_num"
-					name="place_num" onchange="OnChange()">
+					name="place_num" onchange="OnChangePlace()">
 					<c:forEach items="${plist}" var="p">
 						<option class="placeN" value="${p.place_num}">${p.place_num}-${p.place_name}</option>
 					</c:forEach>
@@ -64,8 +64,12 @@ label {
 				</div>
 			</div>
 			<div class="form-group">
-				<label>시작시간</label> <input class="form-control"
-					type="datetime-local" name="show_start">
+				<div>
+					<label>시작시간</label> 
+				</div>
+				<div id="startdate">
+					<input class="form-control" id="opening_date" type="datetime-local" name="show_start">
+				</div>
 				<!-- <input type="time"> -->
 			</div>
 			<input class="btn btn-primary" type="submit" value="등록"> <input
@@ -84,7 +88,7 @@ label {
 				alert(place_num);
 			}); */
 		});
-		function OnChange() {
+		function OnChangePlace() {
 			var place_num = $("#place_num").val();
 			//alert(place_num);
 			$.ajax({
@@ -99,6 +103,29 @@ label {
 				}
 			});
 		}
+		function OnChangeShow() {
+			var show_code = $("#show_code").val();
+			alert(show_code);
+			$.ajax({
+				type : "GET",
+				url : "scheduleInsertDate.do",
+				data : {
+					"show_code" : show_code
+				},
+				success : function(responseData) {
+					
+					//alert("서버에 다녀옴 : "+ responseData);
+					var show = JSON.parse(responseData);
+					console.dir(show);
+					
+					var opening_date = show["opening_date"];
+					$("#opening_date").val(opening_date+"T00:00"); 
+					$("#opening_date").attr("min", opening_date+"T00:00"); 
+				}
+			});
+			
+		}
+		
 		/* $.ajax({
 		$("#show_code").val(show_code);
 		$.ajax({

@@ -29,6 +29,11 @@ public class ScheduleService {
 		return dao.selectByTheater(place_num , show_date);
 	}
 	
+	//상영관별로 조회(오늘)
+	public List<ScheduleVO> selectByIfSysdate(int place_num) {
+		return dao.selectByIfSysdate(place_num);
+	}
+	
 	//예약된 좌석
 	public Map<Integer, Integer> reservCnt(int place_num) {
 		return dao.reservCnt(place_num);

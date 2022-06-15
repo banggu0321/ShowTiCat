@@ -17,23 +17,24 @@
 <script>
 $(function() {
 	$(".updateBtn").on("click", updateReview);
-	$(".reviewBtn").on("click", insertReview);
 	$(".delBtn").on("click", deleteReview);
 })
 
 function deleteReview() {
 	var review_num = $(this).attr("num");
 	
-	$.ajax({
-		url:"deleteReview.do",
-		data:{"review_num":review_num},
-		success: function(resData) {
-			if(resData >= 1) {
-				alert("리뷰가 삭제되었습니다.");
-				location.href="myReview.do";
+	if(confirm("리뷰를 정말 삭제하시겠습니까?")) {
+		$.ajax({
+			url:"deleteReview.do",
+			data:{"review_num":review_num},
+			success: function(resData) {
+				if(resData >= 2) {
+					alert("리뷰가 삭제되었습니다.");
+					location.href="myReview.do";
+				}
 			}
-		}
-	})
+		})
+	}
 }
 
 function updateReview() {
@@ -41,10 +42,6 @@ function updateReview() {
 	location.href="updateReview.do?review_num="+review_num;
 }
 
-function insertReview() {
-	var reservation_num = $(this).attr("num");
-	location.href="insertReview.do?reservation_num=3700"/* +reservation_num */;
-}
 </script>
 
 <style type="text/css">
@@ -79,7 +76,11 @@ function insertReview() {
 </head>
 <body>
 <jsp:include page="header.jsp"/>
+
 <div class="contents">
+<jsp:include page="../jaeyong/mySide.jsp"/>
+
+<div class="centerHidden">
 	<c:if test="${empty myReview}">등록한 리뷰가 없습니다.</c:if>
 	
 	<c:if test="${!empty myReview}">
@@ -118,8 +119,11 @@ function insertReview() {
 		</tbody>
 	</table>
 	</c:if>
-	<hr>
-	<button class="btn btn-outline-info reviewBtn">리뷰등록</button>
+</div><!-- centerHidden -->
+
+<div class="rightHidden">
+</div><!-- rightHidden -->
+
 </div>
 <jsp:include page="../bang/mainUpTicket.jsp" />
 </body>
