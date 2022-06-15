@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Enumeration;
 import java.util.List;
+import java.util.Random;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -45,7 +46,9 @@ public class seatSampleServlet extends HttpServlet {
 		member = (MemberVO) session.getAttribute("member");
 		String m_id=member.getM_id(); 
 		
-		int reservationNum = Integer.parseInt(eachChartoString(m_id, scheduleNum).substring(8));
+		//session
+		int reservationNum =  createScheduleNumber();
+		System.out.println("reservation number:"+reservationNum);
 		session.setAttribute("reservationNumber", reservationNum);
 		
 		int countSeat = seatPosition.size(); 
@@ -75,6 +78,22 @@ public class seatSampleServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) 
 			throws ServletException, IOException {
 
+	}
+	
+	private static int createScheduleNumber() {
+
+		//random number
+		Random random = new Random();
+		random.setSeed(System.currentTimeMillis());
+
+		int dayNum = random.nextInt();
+		if(dayNum<0) {
+			dayNum = -dayNum;
+		}
+		String randTemp = String.valueOf(dayNum);
+		System.out.println(randTemp.substring(0, 7));
+		
+		return Integer.parseInt(randTemp.substring(0, 7));
 	}
 	
 	private static String eachChartoString(String name, int number) {

@@ -24,7 +24,8 @@ public class reservationFromSListUSchedule extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) 
 			throws ServletException, IOException {
 		
-		String showCode = String.valueOf(request.getAttribute("showCode"));
+		HttpSession session = request.getSession();
+		String showCode = String.valueOf(session.getAttribute("showCode"));
 //		System.out.println(showCode);
 		
 		ScheduleService service = new ScheduleService();
