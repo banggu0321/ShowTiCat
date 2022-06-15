@@ -10,12 +10,17 @@
 <body>
 	<div class=mySide>
 		<div class="favorite">
-			<a href="#">관심매장</a>
+			<a href="../jayoung/interestPlace.do">관심매장</a>
 		</div>
 		<!-- favorite -->
 
 		<div class="reservation">
 			<a href="../mypage/confirm.do">예매</a>
+		</div>
+		<!-- reservation -->
+		
+		<div class="review">
+			<a href="../jayoung/myReview.do">리뷰</a>
 		</div>
 		<!-- reservation -->
 
