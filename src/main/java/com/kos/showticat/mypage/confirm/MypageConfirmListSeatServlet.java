@@ -3,6 +3,7 @@ package com.kos.showticat.mypage.confirm;
 import java.io.IOException;
 import java.util.List;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -22,7 +23,11 @@ public class MypageConfirmListSeatServlet extends HttpServlet {
 		ConfirmService service = new ConfirmService();
 		List<ReservDetailVO> list = service.selectSeatNum(reservation_num);
 		request.setAttribute("seatlist", list);
+		System.out.println(list);
 		
+		RequestDispatcher rd;
+		rd = request.getRequestDispatcher("../bang/seatmodal.jsp");
+		rd.forward(request, response);
 		//response.
 		//Writer().append("Served at: ").append(request.getContextPath());
 		//Response.

@@ -119,29 +119,57 @@ public class ConfirmDAO {
 		c.setTheater_type(rs.getString("THEATER_TYPE"));
 		c.setPayment(rs.getString("PAYMENT"));
 		c.setTotal_price(rs.getInt("TOTAL_PRICE"));
-		System.out.println("예매내역"+rs.getString("PAY_YN"));
-		System.out.println("---");
-		c.setPay_yn(rs.getString("PAY_YN"));
-		/*if (String.valueOf(rs.getString("PAY_YN")) == "Y") {
+		//System.out.println("예매내역"+rs.getString("PAY_YN"));
+		//System.out.println("---");
+		//c.setPay_yn(rs.getString("PAY_YN"));
+		//상태 	1) Y && 날짜가 오늘보다 이후 	-> 예매완료 -> 상세 삭제
+		//	  	2) Y && 날짜가 오늘보다 이전 	-> 관람완료 -> 상세 리뷰
+		//	 	3) N  				   	-> 예매취소 -> 상세
+		
+		//1) Y && 날짜가 오늘보다 이후 	-> 예매완료 -> 상세 삭제
+		//2) Y && 날짜가 오늘보다 이전 	-> 관람완료 -> 상세 리뷰
+		//3) N  				   	-> 예매취소 -> 상세
+		if(rs.getString("PAY_YN").equals("Y")) {
+			if(rs.getDate("SHOW_START").after(date)) { //이후 공연
+				c.setPay_yn("예매완료");
+				c.setDetail("Y");
+				c.setCancel_yn("Y");
+				c.setReview(null);//리뷰가능
+			}else {
+				c.setPay_yn("관람완료");
+				c.setDetail("Y");
+				c.setCancel_yn(null);
+				c.setReview("Y"); //리뷰불가능
+			}
+		}else {
+			//3
+			c.setPay_yn("예매취소");
+			c.setDetail("Y");
+			c.setCancel_yn(null);
+			c.setReview(null);
+		}
+		/*
+		if (rs.getString("PAY_YN").equals("Y")) {
 			c.setPay_yn(rs.getString("PAY_YN"));
-			System.out.println("y");
+			//System.out.println("y");
 		}else {
 			c.setPay_yn("예매취소");
-			System.out.println("n");
+			//System.out.println("n");
+		}
+		if(rs.getDate("SHOW_START").before(date)){ //이전 공연
+			c.setCancel_yn(null); //Cancel불가
+		}else {
+			c.setCancel_yn("YY"); //CancelY가능
+		}
+		if(rs.getDate("SHOW_START").after(date)) { //이후 공연
+			c.setReview("YY");//리뷰가능
+		}else {
+			c.setReview(null); //리뷰불가능
 		}*/
-		if(rs.getDate("SHOW_START").before(date)){ //이전
-			c.setCansle_yn(null);
-		}else {
-			c.setCansle_yn("YY");
-		}
-		if(rs.getDate("SHOW_START").after(date)) { //이후
-			c.setReview(null);
-		}else {
-			c.setReview("YY");
-		}
-		System.out.println(c.getPay_yn());
-		System.out.println(c.getCansle_yn());
-		System.out.println(c.getReview());
+		//System.out.println(c.getPay_yn());
+		//System.out.println(c.getDetail());
+		//System.out.println(c.getCancel_yn());
+		//System.out.println(c.getReview());
 		// c.setSeat_num(rs.getString("SEAT_NUM"));
 		return c;
 	}
@@ -179,7 +207,7 @@ public class ConfirmDAO {
 	private ReservDetailVO makesSeatlist(ResultSet rs2) throws SQLException {
 		ReservDetailVO c = new ReservDetailVO();
 		c.setReservation_num(rs.getInt("RESERVATION_NUM"));
-		c.setSeatNum(rs.getString("SEATNUM"));
+		c.setSeatNum(rs.getString("SEAT_NUM"));
 		return c;
 	}
 
