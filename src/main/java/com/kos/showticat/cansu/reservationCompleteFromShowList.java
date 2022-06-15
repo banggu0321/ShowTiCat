@@ -20,24 +20,22 @@ public class reservationCompleteFromShowList extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) 
 			throws ServletException, IOException {
-//		String pay = request.getParameter("pay");
-		String pay = "temp";
-		
-		//session 
+		String pay = "temp";		
+		//(session)seat number 
 		HttpSession seesion = request.getSession();
-		
 		String seatNum = String.valueOf(seesion.getAttribute("seatNumber"));
 		System.out.println(seatNum);
 
-		//(reservationNum -> schedulNum -> showCode)
+		//(session)reservationNum, (request)showCode
 		int reservationNum = (int)seesion.getAttribute("reservationNumber");
 		
 		ScheduleService service = new ScheduleService();		
-		int schedulNum = service.selectReservationByReservationNum(reservationNum);
-		String showCode = service.selectScheduleByScheduleNum(schedulNum);
+//		int schedulNum = service.selectReservationByReservationNum(reservationNum);
+//		String showCode = service.selectScheduleByScheduleNum(schedulNum);
 		
+		String showCode= String.valueOf(seesion.getAttribute("showCode"));
 		int showPrice = service.selectShowByShowCode(showCode);
-		System.out.println(showPrice);
+		System.out.println("show price:"+showPrice);
 		
 		int totalPrice = Integer.parseInt(seatNum)*showPrice;
 		service.updateReservationInfor(pay, totalPrice, reservationNum);

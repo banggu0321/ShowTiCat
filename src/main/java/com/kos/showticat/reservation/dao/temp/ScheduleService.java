@@ -12,6 +12,15 @@ public class ScheduleService {
 
 	ScheduleDAO scdao = new ScheduleDAO();
 	
+	public List<ReservationVO> selectReservationByID(String mID) {
+		return scdao.selectReservationByID(mID);
+	}
+
+	
+	public int selectScheduleBythreeAttri(String showCode, String theaterNum, int placeNum) {
+		return scdao.selectScheduleBythreeAttri(showCode, theaterNum, placeNum);
+	}
+	
 	public ScheduleVO selectScheduleByScheduleNumBeta(int scheduleNum) {
 		return scdao.selectScheduleByScheduleNumBeta(scheduleNum);
 	}
