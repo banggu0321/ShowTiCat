@@ -26,6 +26,7 @@
 		<jsp:include page="../jaeyong/mySide.jsp" />
 		
 		
+		
 	</div><!-- contents -->
 </body>
 

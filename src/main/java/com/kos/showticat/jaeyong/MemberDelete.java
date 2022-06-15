@@ -7,6 +7,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  * Servlet implementation class ScheduleDeleteServlet
@@ -20,7 +21,13 @@ public class MemberDelete extends HttpServlet {
 
 		MemberService service = new MemberService();
 		int result = service.Delete(m_id);
-		request.setAttribute("msg", result > 0 ? "삭제성공" : "삭제실패");
+		String msg = "삭제실패";
+		if (result > 0) {
+			msg = "수정성공";
+			request.setAttribute("msg", msg);
+		}
+		
+		/* request.setAttribute("msg", result > 0 ? "삭제성공" : "삭제실패"); */
 
 		response.sendRedirect("../");
 	}

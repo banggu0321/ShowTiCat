@@ -44,8 +44,6 @@
 		}
 	}
 </script>
-<style>
-</style>
 </head>
 <body>
 	<jsp:include page="../jayoung/header.jsp" />

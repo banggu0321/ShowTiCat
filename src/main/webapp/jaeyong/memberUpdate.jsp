@@ -42,25 +42,15 @@
 		} else {
 			$("#pwMsg").html("fail")
 		}
-
 	}
 </script>
-<style>
-p {
-	margin: 0;
-	font-size: 0.25em;
-	color: tomato;
-}
-</style>
 </head>
 <body>
 	<jsp:include page="../jayoung/header.jsp" />
-
 	<div class="contents">
 		<jsp:include page="../jaeyong/mySide.jsp" />
 		<h1>MemberUpdate</h1>
-		
-		<form action="memberUpdate.do" method="post"><br>
+		<form action="memberDetail.do" method="post"><br>
 		<label>아이디 : </label>
 		<input type="text"
 			   name="m_id"
@@ -126,10 +116,12 @@ p {
 		</select> <br><br>
 		<label>포인트 : ${member.point} </label>
 		<input type="hidden"
-		       name="point" value="${member.point}"> <br> <input
-			   type="submit"
-			  class="btn btn-outline-success"
-			  value="수정완료">
+		       name="point" value="${member.point}"> <br>
+		       
+	   
+	    <input  type="submit"
+	            class="btn btn-outline-success"
+	            value="수정완료">
 
 <%-- 		<input type="button"
 		      class="btn btn-outline-success"

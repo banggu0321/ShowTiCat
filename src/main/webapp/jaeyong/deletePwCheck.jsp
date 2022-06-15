@@ -28,7 +28,7 @@
 	$(function() {
 		$("#btnDelete").click(function() {
 			var m_id = $(this).attr("m_mm");
-			if (confirm(m_id + "삭제?"))
+			if (confirm("아이디" + m_id + "(을)를 삭제하시겠습니까?"))
 				location.href = "memberDelete.do?m_id=" + m_id;
 		});
 	});
@@ -45,13 +45,6 @@
 
 	}
 </script>
-<style>
-p {
-	margin: 0;
-	font-size: 0.25em;
-	color: tomato;
-}
-</style>
 </head>
 <body>
 	<jsp:include page="../jayoung/header.jsp" />
@@ -63,14 +56,17 @@ p {
 							name="m_pw"
 							id="m_pw"
 							value="${member.m_pw}"><br>
-					<label>비밀번호 확인 : </label>
+							
+				<label>비밀번호 확인 : </label>
 				<input type="password"
 					   id="pw2"
-					   name="m_pw"> <input
-					   type="submit"
-					   m_mm="${member.m_id}"
+					   name="m_pw">
+					   
+				<input type="submit"						
 					   class="btn btn-outline-success"
-					   value="확인"><br>
+	                   m_mm="${member.m_id}"
+					   value="확인"
+					   id="btnDelete"><br>
 				<span id="pwMsg"></span>
 			</form>
 		</div><!-- contents -->
