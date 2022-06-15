@@ -28,12 +28,11 @@ public class temp {
 //		f7();  //place talbe select all
 		
 //		f6(); //schedule table insert row
-//		f5();  //reservation table ��ȸ
-//		f4(); //1~2: �ο��� ����(����)
-//		f3beta(); //reservation number�� ���� paymentYN update
-//		f3(); 	//2(������ update).�ο�(�¼�)����, �Ѻ��(������ѹ�-> ����, �ο� ����-> �� ���) 
-//		f2(); //reservation table�� (������ �ѹ��� reservation date�� ���� ����), ������(�ӽ� ��) & reservation detail table�� �ش��ϴ� row �ۼ�
-		//1.[������(��ȭ, ����, ��¥, �ð� ����)->] ������ �ѹ�(reservationNum, m_id, scheduleNum, reservationDate)&������(temp ��) �Է�-> ������_detail table �ش� row �Է�
+//		f5();  //reservation table 
+//		f4(); //1~2
+//		f3beta(); //reservation number
+//		f3(); 	//2 
+//		f2(); //1.
 	
 
 //		f1();  //update point in members table, select members table
@@ -62,9 +61,20 @@ public class temp {
 //		f27();  //select schedule table by schedule number;
 		
 //		f28(); //select schedule  tabel showCode, theaterNum, placeNum
-		f29();  //select reservation table by ID;
+//		f29();  //select reservation table by ID;
+		
+//		f33();  // match reservation number+seat number+show code
+//		f32(); //select schedule table show code
+//		f31(); //select reservation table schedule number
+		f30(); //select reservation detail table all(reservation number)
+		//reservation detail->reservation->schedule : SeatVO = show_code.seat_num
 	}
 	
+	private static void f30() {
+		// TODO Auto-generated method stub
+		
+	}
+
 	private static void f29() {		
 		String mID="ja0";
 		

@@ -7,16 +7,6 @@
 <meta charset="UTF-8">
 
 <style>
-.header {
-	height: 113px;
-	border-bottom: 1px solid #ddd;
-}
-
-.headerContents h1 {
-	width: 274px;
-	height: 57px;
-}
-
 .headerContents {
 	height: 113px;
 	border-bottom: 1px solid #ddd;
@@ -27,27 +17,17 @@
 }
 
 .headerContents .contents {
-	height: 113px;
-	border-bottom: 1px solid #ddd;
-	margin-bottom: 50px;
-	width: 100%;
-	height: 113px;
-	padding: 30px 25px 25px 5px;
+	padding: 30px 5px 25px 5px;
 	display: flex;
 	justify-content: space-between;
 }
 
 .header h1 img {
 	width: 240px;
-	height: 100%;
-}
-
-.header h1 span {
-	width: 274px;
-	height: 57px;
-	margin-top: 10px;
-	font-size: 20px;
-	font-weight: bold;
+		
+	position: absolute;
+	left:150px;
+	top: 10px
 }
 
 .member {
@@ -58,6 +38,9 @@
 	align-items: center;
 	text-align: center;
 	justify-content: space-evenly;
+	
+	position: absolute;
+	right: 100px;
 }
 
 .member li {
@@ -75,6 +58,7 @@
 	text-decoration: none;
 	color: black;
 }
+
 .member a:hover {
 	color: black;
 	text-decoration: none;
@@ -85,13 +69,11 @@
 
 .member #m_info {
 	font-weight: bold;
-	margin-top: 10px;
+	margin-top: 5px;
 }
 
 .nav {
-	margin: -70px 0px;
-	height: 75px;
-	padding: 20px;
+	height: 5px;
 	border-bottom: 1px solid #ddd;
 }
 
@@ -100,6 +82,9 @@
 	font-weight: bold;
 	color: black;
 	text-decoration: none;
+	
+	position: absolute;
+	top:130px;
 }
 
 .nav a:hover {
@@ -108,22 +93,25 @@
 	color: black;
 	text-decoration: none;
 }
+
 .nav li {
 	width: 100%;
 	height: 40px;
 	list-style: none;
-	
 }
+
 .nav_menu {
-	width: 1000px;
+	width: 500px;
 	display: inline-flex;
 }
 
 .nav_menu .search form {
-	margin-top: 8px;
+position:absolute;
+top:120px;
+right: 150px;
+
 	display: inline-flex;
 }
-
 .nav_menu .search .btn {
 	margin-left: 5px;
 	font-weight: bold;
@@ -200,8 +188,7 @@
 							<a href="#">예매</a>
 						</h2>
 					</li>
-					<li></li>
-					<li></li>
+
 					<li class="search">
 						<form action="${path}/jayoung/result.do" id="formH">
 							<input type="text" name="word" id="searchH" value="${word}">
