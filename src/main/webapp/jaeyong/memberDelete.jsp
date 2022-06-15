@@ -51,7 +51,7 @@
 	<jsp:include page="../jayoung/header.jsp" />
 	<div class="contens">
 		<jsp:include page="../jaeyong/mySide.jsp" />
-	<form action="memberUpdate.do" method="post">
+	<form action="memberDelete.do" method="post">
 		<br> <label>비밀번호 : </label> <input type="password" name="m_pw"
 			id="m_pw" value="${member.m_pw}"><br> <label>비밀번호
 			확인 : </label> <input type="password" id="pw2" name="m_pw"> <span
