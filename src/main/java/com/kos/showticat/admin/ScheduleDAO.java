@@ -26,9 +26,10 @@ public class ScheduleDAO {
 			+ "				JOIN THEATER t ON (sc.THEATER_NUM = t.THEATER_NUM ) "
 			+ "				JOIN PLACE p ON (sc.PLACE_NUM = p.PLACE_NUM )"
 			+ "	order by sc.SCHEDULE_NUM ";
-	static final String SQL_SELECT_SHOW_INSERT ="SELECT SHOW_CODE , SHOW_NAME FROM SHOW";
+	static final String SQL_SELECT_SHOW_INSERT ="SELECT SHOW_CODE , SHOW_NAME, OPENING_DATE  FROM SHOW";
 	static final String SQL_SELECT_PLACE_INSERT ="SELECT PLACE_NUM , PLACE_NAME FROM PLACE";
 	static final String SQL_SELECT_THEATER_INSERT ="SELECT THEATER_NUM, PLACE_NUM FROM THEATER WHERE PLACE_NUM = ?";	
+	static final String SQL_SELECT_OPENINGDATE_INSERT ="SELECT SHOW_CODE , SHOW_NAME, OPENING_DATE FROM SHOW WHERE SHOW_CODE = ?";	
 	static final String SQL_INSERT_SCHEDULE ="INSERT INTO schedule values(seq_schedule_no.nextval,?,?,?,?)";
 	static final String SQL_SELECT_RESERVATION_DELETE_SCHEDULE =""
 			+ "SELECT count(r.RESERVATION_NUM) FROM SCHEDULE sc JOIN RESERVATION r  ON (sc.SCHEDULE_NUM = r.SCHEDULE_NUM )"
@@ -88,7 +89,7 @@ public class ScheduleDAO {
 		ShowVO sh = new ShowVO();
 		sh.setShow_code(rs.getString("SHOW_CODE"));
 		sh.setShow_name(rs.getString("SHOW_NAME"));
-		
+		sh.setOpening_date(rs.getDate("OPENING_DATE"));
 		return sh;
 	}
 	//SQL_SELECT_PLACE_INSERT
@@ -142,7 +143,25 @@ public class ScheduleDAO {
 		
 		return t;
 	}
-	
+	//SQL_SELECT_OPENINGDATE_INSERT
+	// 2-1-4 개봉날짜
+	public ShowVO selectOpeningdateInsertSchedule(String show_code) {
+		ShowVO show = null;
+		conn = DBUtil.getConnection();
+		try {
+			pst = conn.prepareStatement(SQL_SELECT_OPENINGDATE_INSERT);
+			pst.setString(1, show_code); //첫번째 ?에 부서번호를 넣는다.
+			rs = pst.executeQuery();
+			while(rs.next()) {
+				show = makeshowlist(rs);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			DBUtil.dbClose(rs, pst, conn);
+		}
+		return show;
+	}
 	// 2-2. 스케줄 추가
 	public int insertSchedule(ScheduleVO sc) {
 		int result = 0;
