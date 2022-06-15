@@ -17,7 +17,7 @@ public class MypageConfirmDeleteShowCheckServlet extends HttpServlet {
 		int reservation_num = Integer.parseInt(request.getParameter("reservation_num"));
 		ConfirmService service = new ConfirmService();
 		int result = service.CheckShowReservation(reservation_num);
-		System.out.println("공연"+result);
+		//System.out.println("공연"+result);
 		PrintWriter out = response.getWriter();
         out.print(result);//1이상 삭제가능 0 삭제불가 
 	}
