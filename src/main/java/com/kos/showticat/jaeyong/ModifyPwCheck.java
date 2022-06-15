@@ -16,12 +16,12 @@ import com.kos.showticat.util.DateUtil;
 /**
  * Servlet implementation class ModifyPwCheck
  */
-@WebServlet("/jaeyong/ModifyPwCheck.do")
+@WebServlet("/jaeyong/modifyPwCheck.do")
 public class ModifyPwCheck extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		RequestDispatcher rd;
-		rd = request.getRequestDispatcher("ModifyPwCheck.jsp");
+		rd = request.getRequestDispatcher("modifyPwCheck.jsp");
 		rd.forward(request, response);
 	}
 }
