@@ -21,7 +21,8 @@ public class ConfirmVO {
 	private String payment;
 	private int total_price;
 	private String pay_yn;
-	private String cansle_yn;//이미 취소된 좌석
+	private String detail;
+	private String cancel_yn;//이미 취소된 좌석
 	private String review; //
 	
 	public ConfirmVO() {}
@@ -29,7 +30,7 @@ public class ConfirmVO {
 	public ConfirmVO(String m_id, String reservation_num, Date reservation_date, int schedule_num, String show_code,
 			String show_name, String category, int price, Date show_start_date, Time show_start_time, int place_num,
 			String place_name, String theater_num, String theater_type, String payment, int total_price, String pay_yn,
-			String cansle_yn, String review) {
+			String detail, String cancel_yn, String review) {
 		super();
 		this.m_id = m_id;
 		this.reservation_num = reservation_num;
@@ -48,7 +49,8 @@ public class ConfirmVO {
 		this.payment = payment;
 		this.total_price = total_price;
 		this.pay_yn = pay_yn;
-		this.cansle_yn = cansle_yn;
+		this.detail = detail;
+		this.cancel_yn = cancel_yn;
 		this.review = review;
 	}
 
@@ -188,12 +190,20 @@ public class ConfirmVO {
 		this.pay_yn = pay_yn;
 	}
 
-	public String getCansle_yn() {
-		return cansle_yn;
+	public String getDetail() {
+		return detail;
 	}
 
-	public void setCansle_yn(String cansle_yn) {
-		this.cansle_yn = cansle_yn;
+	public void setDetail(String detail) {
+		this.detail = detail;
+	}
+
+	public String getCancel_yn() {
+		return cancel_yn;
+	}
+
+	public void setCancel_yn(String cancel_yn) {
+		this.cancel_yn = cancel_yn;
 	}
 
 	public String getReview() {
@@ -214,9 +224,10 @@ public class ConfirmVO {
 				.append(", show_start_time=").append(show_start_time).append(", place_num=").append(place_num)
 				.append(", place_name=").append(place_name).append(", theater_num=").append(theater_num)
 				.append(", theater_type=").append(theater_type).append(", payment=").append(payment)
-				.append(", total_price=").append(total_price).append(", pay_yn=").append(pay_yn).append(", cansle_yn=")
-				.append(cansle_yn).append(", review=").append(review).append("]");
+				.append(", total_price=").append(total_price).append(", pay_yn=").append(pay_yn).append(", detail=")
+				.append(detail).append(", cancel_yn=").append(cancel_yn).append(", review=").append(review).append("]");
 		return builder.toString();
 	}
-
+	
+	
 }
