@@ -59,9 +59,33 @@ public class temp {
 //		f24(); //update reservation table other(no payment)
 //		f25(); //update reservation table payment
 //		f26(); //select show table by showcode;
-		f27();  //select schedule table by schedule number;
+//		f27();  //select schedule table by schedule number;
+		
+//		f28(); //select schedule  tabel showCode, theaterNum, placeNum
+		f29();  //select reservation table by ID;
 	}
 	
+	private static void f29() {		
+		String mID="ja0";
+		
+		ScheduleService service = new ScheduleService();
+		List<ReservationVO> rList = new ArrayList<>();
+		rList = service.selectReservationByID(mID);
+		
+		for(ReservationVO temp: rList) {
+			System.out.println(temp);
+		}
+	}
+
+	private static void f28() {
+		String showCode = "AA7";
+		String theaterNum ="A1";
+		int placeNum = 1002;
+		
+		ScheduleService service = new ScheduleService();
+		System.out.println(service.selectScheduleBythreeAttri(showCode, theaterNum, placeNum));
+	}
+
 	private static void f27() {
 		int scheduleNum = 19;
 		
