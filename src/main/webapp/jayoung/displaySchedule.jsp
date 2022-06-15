@@ -10,7 +10,7 @@
 
 <%-- 상영스케줄 --%>
 	<c:if test="${empty list}"><h5 class="nullMsg">해당 일자에 상영중인 영화 & 공연이 없습니다.</h5></c:if>
-	
+<div id="display">	
 	<c:forEach items="${list}" var="value" varStatus="s">
 	<c:forEach items="${theaterList}" var="theater" varStatus="v">
 	<c:forEach items="${showList}" var="show">
@@ -50,15 +50,17 @@
 				<div class="show">
 			</c:if>
 		</c:if>
+		
 		<button class="btn btn-outline-primary reservBtn" num="${value.schedule_num}">
 			${value.start_time}<br> ${theater.last_seat - cnt.value} 석
 		</button>
+		
 	</c:if>
 	</c:forEach>
 	</c:forEach>
 	</c:forEach>
 	</c:forEach>
 	</div>
-	
+</div>	
 </body>
 </html>

@@ -35,6 +35,11 @@ public class MemberService {
 		return dao.deletePlace(m_id);
 	}
 	
+	//리뷰 작성 시 포인트 적립
+	public int updatePoint(int point, String m_id) {
+		return dao.updatePoint(point, m_id);
+	}
+	
 	//ID 중복확인
 	public int checkID(String m_id) {
 		return dao.checkID(m_id);
