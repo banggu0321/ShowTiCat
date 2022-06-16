@@ -22,16 +22,14 @@
 	$(function() {
 		$("#m_pw").on("keyup", checkPW);
 		$("#pw2").on("keyup", checkPW);
-
-	});
-
-	$(function() {
-		$("#btnDelete").click(function() {
-			var m_id = $(this).attr("m_mm");
-			if (confirm(m_id + "삭제?"))
-				location.href = "memberDelete.do?m_id=" + m_id;
-		});
-	});
+		
+		$("#updateForm").on("submit",(function(){
+			var pwMsg = $("#pwMsg").html();
+			if(pwMsg != "pass"){
+				return false;
+			}
+		}));
+	});	
 
 	function checkPW() {
 		var pw1 = $("#m_pw").val();
@@ -50,9 +48,9 @@
 	<div class="contents">
 		<jsp:include page="../jaeyong/mySide.jsp" />
 		<h1>MemberUpdate</h1>
-		<form action="memberDetail.do" method="post"><br>
-		<label>아이디 : </label>
-		<input type="text"
+		<form action="memberUpdate.do" method="post" id="updateForm"><br>
+		<label>아이디 : ${member.m_id} </label>
+		<input type="hidden"
 			   name="m_id"
 			   value="${member.m_id}"
 			   readonly="readonly"><br><br>
@@ -60,13 +58,11 @@
 		<label>비밀번호 : </label>
 		<input type="password"
                name="m_pw"
-               id="m_pw"
-               value="${member.m_pw}"><br>
+               id="m_pw"><br>
                
 		<label>비밀번호확인 : </label>
 		<input type="password"
-			   id="pw2"
-			   name="m_pw">
+			   id="pw2">
 			   <span id="pwMsg"></span><br><br>
 			   
 			   <label>이름 : </label>
@@ -102,7 +98,7 @@
 		       name="email"
 			  value="${member.email}">
 		<p>ex) ShowTiCat@gamil.com</p>
-
+<%-- 
 		<label>관심매장 : </label>
 		    <select name="items">
 			<option value="#"></option>
@@ -117,7 +113,7 @@
 		<label>포인트 : ${member.point} </label>
 		<input type="hidden"
 		       name="point" value="${member.point}"> <br>
-		       
+		       --%> 
 	   
 	    <input  type="submit"
 	            class="btn btn-outline-success"

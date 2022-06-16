@@ -1,8 +1,6 @@
 package com.kos.showticat.jaeyong;
 
 import java.io.IOException;
-import java.io.PrintWriter;
-import java.sql.Date;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -12,7 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import com.kos.showticat.util.DateUtil;
+import com.kos.showticat.VO.MemberVO;
 
 /**
  * Servlet implementation class MemberMyPage
@@ -24,18 +22,20 @@ public class MemberMyPage extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		
-		HttpSession session = request.getSession();
-		String m_id = request.getParameter("m_id");
-		
-		MemberVO member = new MemberVO();
-		member.setM_id(m_id);
+		HttpSession session = request.getSession(false);		
+		MemberVO member = (MemberVO) session.getAttribute("member");
 
 		if (member == null) {
-			response.sendRedirect("../jaeyong/memberMyPage.do");
-		} else {
 			response.sendRedirect("../jayoung/login.do");
+		} else {
+			RequestDispatcher rd;
+			rd = request.getRequestDispatcher("../jaeyong/memberMyPage.jsp");
+			rd.forward(request, response);
 		}
 
+	}
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)throws ServletException, IOException {
+		doGet(request, response);
 	}
 
 }

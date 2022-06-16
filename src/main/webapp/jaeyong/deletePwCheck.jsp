@@ -20,18 +20,6 @@
 
 <script>
 	$(function() {
-		/* $("#m_pw").on("keyup", checkPW);
-		$("#pw2").on("keyup", checkPW); */
-		
-		/* $("#PWCheck").on("submit",(function() {
-			af();
-			if($("#pwMsg").val() == "Y"){
-				return true;
-			}else{
-				alert("비밀번호가 일치하지 않습니다.")
-				return false;
-			}
-		})); */
 		
 		$("#PWCheck").on("submit",(function(){
 			var m_pw = $("#pw2").val();
@@ -57,17 +45,6 @@
 			//return message;
 		}));
 	});
-	/* function checkPW() {
-		var pw1 = $("#m_pw").val();
-		var pw2 = $("#pw2").val();
-
-		if (pw1 == pw2) {
-			$("#pwMsg").html("pass")
-		} else {
-			$("#pwMsg").html("fail")
-		}
-
-	} */
 </script>
 <style>
 p {
@@ -83,7 +60,7 @@ p {
 		<jsp:include page="../jaeyong/mySide.jsp" />
 		<h1>Password Check</h1>
 
-		<form action="memberUpdate.do" method="get" id="PWCheck"><br>					   
+		<form action="memberDelete.do" method="post" id="PWCheck"><br>					   
 			<label>비밀번호 확인 : </label>
 			<input type="password" id="pw2" name="m_pw"> 
 			<input type="submit" class="btn btn-outline-success" value="확인"><br>

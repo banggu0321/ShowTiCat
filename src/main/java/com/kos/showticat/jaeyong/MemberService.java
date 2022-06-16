@@ -1,8 +1,6 @@
 package com.kos.showticat.jaeyong;
 
-import java.util.List;
-
-import com.kos.showticat.jaeyong.MemberVO;
+import com.kos.showticat.VO.MemberVO;
 
 public class MemberService {
 	MemberDAO dao = new MemberDAO();
