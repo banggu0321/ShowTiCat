@@ -24,7 +24,12 @@ public class ShowList extends HttpServlet {
 		ShowService service = new ShowService();
 		request.setAttribute("showList", service.selectCategory(category));
 		
-		RequestDispatcher rd = request.getRequestDispatcher("showList.jsp");
+		RequestDispatcher rd;
+		if(category.equals("공연")) {
+			rd = request.getRequestDispatcher("showList.jsp");			
+		}else {
+			rd = request.getRequestDispatcher("movieList.jsp");						
+		}
 		rd.forward(request, response);
 	}
 }
