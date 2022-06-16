@@ -24,12 +24,7 @@ public class InterestPlace extends HttpServlet {
 		HttpSession session = request.getSession();
 		MemberVO member = (MemberVO)session.getAttribute("member");
 		
-		if(member == null) {
-			response.setContentType("text/html; charset=UTF-8");
-			PrintWriter writer = response.getWriter();
-			writer.println("<script>alert('로그인 후 등록이 가능합니다.'); location.href='login.do';</script>");
-			writer.close();
-		} else {
+		if(member != null) {
 			PlaceService ps = new PlaceService();
 			
 			request.setAttribute("placeList", ps.selectAll());

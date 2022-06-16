@@ -55,6 +55,9 @@ a:hover {
 .dateBtn {
 	font-size: 18px;
 }
+#theaterList {
+	color: red;
+}
 </style>
 
 <script>
@@ -83,9 +86,6 @@ function myPlace() {
 			if(resData>=1) {
 				alert("관심매장으로 등록되었습니다.");
 				location.reload();
-			}else {
-				alert("로그인 후 등록가능합니다.");
-				location.href = "login.do";
 			}
 		}
 	})
