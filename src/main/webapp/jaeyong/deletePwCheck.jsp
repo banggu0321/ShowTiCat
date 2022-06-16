@@ -20,56 +20,52 @@
 
 <script>
 	$(function() {
-		$("#m_pw").on("keyup", checkPW);
-		$("#pw2").on("keyup", checkPW);
-
+		
+		$("#PWCheck").on("submit",(function(){
+			var m_pw = $("#pw2").val();
+			//var message = "";
+			//alert(m_pw);
+			$.ajax({
+				url : "memberPwCheck.do", //어디로
+				data : {
+					"m_pw" : m_pw
+				}, //가져갈 data{key,value}
+				type : "post",
+				//datatype : "json",
+				success : function(responseData) {
+					alert("responsedata : "+ responseData);
+					//message = responseData;
+					if(responseData != "Y"){
+						alert("비밀번호가 일치하지 않습니다.");
+						location.reload();
+					}else{
+					}
+				}
+			});
+			//return message;
+		}));
 	});
-
-	$(function() {
-		$("#btnDelete").click(function() {
-			var m_id = $(this).attr("m_mm");
-			if (confirm("아이디" + m_id + "(을)를 삭제하시겠습니까?"))
-				location.href = "memberDelete.do?m_id=" + m_id;
-		});
-	});
-
-	function checkPW() {
-		var pw1 = $("#m_pw").val();
-		var pw2 = $("#pw2").val();
-
-		if (pw1 == pw2) {
-			$("#pwMsg").html("pass")
-		} else {
-			$("#pwMsg").html("fail")
-		}
-
-	}
 </script>
+<style>
+p {
+	margin: 0;
+	font-size: 0.25em;
+	color: tomato;
+}
+</style>
 </head>
 <body>
 	<jsp:include page="../jayoung/header.jsp" />
-		<div class="contents">
+	<div class="contents">
 		<jsp:include page="../jaeyong/mySide.jsp" />
-			<h1>Password Check</h1>
-			<form action="memberDelete.do" method="post">
-				<br> <input type="hidden"
-							name="m_pw"
-							id="m_pw"
-							value="${member.m_pw}"><br>
-							
-				<label>비밀번호 확인 : </label>
-				<input type="password"
-					   id="pw2"
-					   name="m_pw">
-					   
-				<input type="submit"						
-					   class="btn btn-outline-success"
-	                   m_mm="${member.m_id}"
-					   value="확인"
-					   id="btnDelete"><br>
-				<span id="pwMsg"></span>
-			</form>
-		</div><!-- contents -->
+		<h1>Password Check</h1>
 
+		<form action="memberDelete.do" method="post" id="PWCheck"><br>					   
+			<label>비밀번호 확인 : </label>
+			<input type="password" id="pw2" name="m_pw"> 
+			<input type="submit" class="btn btn-outline-success" value="확인"><br>
+			<input type="hidden" id="pwMsg" name="pwMsg"></input>
+		</form>
+	</div><!-- contents -->
 </body>
 </html>

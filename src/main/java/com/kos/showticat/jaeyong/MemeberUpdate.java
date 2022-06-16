@@ -1,7 +1,6 @@
 package com.kos.showticat.jaeyong;
 
 import java.io.IOException;
-import java.sql.Date;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
