@@ -25,10 +25,7 @@ public class MemberMyPage extends HttpServlet {
 			throws ServletException, IOException {
 		
 		HttpSession session = request.getSession();
-		String m_id = request.getParameter("m_id");
-		
-		MemberVO member = new MemberVO();
-		member.setM_id(m_id);
+		MemberVO member = (MemberVO) session.getAttribute("member");
 
 		if (member == null) {
 			response.sendRedirect("../jaeyong/memberMyPage.do");
