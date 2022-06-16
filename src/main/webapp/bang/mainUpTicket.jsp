@@ -8,7 +8,7 @@
 
 		$(window).scroll(function() {
 			// top button controll
-			if ($(this).scrollTop() > 500) {
+			if ($(this).scrollTop() > 50) {
 				$('#topButton').fadeIn();
 			} else {
 				$('#topButton').fadeOut();
