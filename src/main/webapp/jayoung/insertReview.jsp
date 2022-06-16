@@ -27,6 +27,9 @@
 <body>
 <jsp:include page="header.jsp"/>
 <div class="contents">
+<jsp:include page="../jaeyong/mySide.jsp"/>
+<h3>리뷰작성</h3>
+<hr>
 	<form action="insertReview.do" method="post">
 		<div class="form-group">
 			<label id="name">SHOW NAME : ${show.show_name}</label>

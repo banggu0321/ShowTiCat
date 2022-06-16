@@ -33,7 +33,7 @@
 			}
 		})); */
 		
-		$("#PWCheck").on("submit",(function(){
+		$("#PWCheck").on("click",(function(){
 			var m_pw = $("#pw2").val();
 			//var message = "";
 			//alert(m_pw);
@@ -51,6 +51,7 @@
 						alert("비밀번호가 일치하지 않습니다.");
 						location.reload();
 					}else{
+						location.href="memberUpdate.do";
 					}
 				}
 			});
@@ -81,14 +82,10 @@ p {
 	<jsp:include page="../jayoung/header.jsp" />
 	<div class="contents">
 		<jsp:include page="../jaeyong/mySide.jsp" />
-		<h1>Password Check</h1>
-
-		<form action="memberUpdate.do" method="get" id="PWCheck"><br>					   
+		<h1>Password Check</h1>				   
 			<label>비밀번호 확인 : </label>
 			<input type="password" id="pw2" name="m_pw"> 
-			<input type="submit" class="btn btn-outline-success" value="확인"><br>
-			<input type="hidden" id="pwMsg" name="pwMsg"></input>
-		</form>
+			<button type="submit" class="btn btn-outline-success" id="PWCheck">확인</button>
 	</div><!-- contents -->
 </body>
 </html>
