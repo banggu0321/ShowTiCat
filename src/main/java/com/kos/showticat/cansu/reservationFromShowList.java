@@ -54,11 +54,11 @@ public class reservationFromShowList extends HttpServlet {
 //		System.out.println("create schedule: scheduleNum("+scheduleNum+")");
 
 
-		//sample 2: showCode -> relative schedule
-		List<ScheduleVO> sList = new ArrayList<>();
-		sList = service.selectScheduleByShowcode(showCode);
-		//		System.out.println(sList.size());
-		request.setAttribute("ScheduleList", sList);
+		//sample 2: showCode -> schedule
+//		List<ScheduleVO> sList = new ArrayList<>();
+//		sList = service.selectScheduleByShowcode(showCode);
+//		//		System.out.println(sList.size());
+//		request.setAttribute("ScheduleList", sList);
 				
 		List<ScheduleJoinPlaceVO> spList = new ArrayList<>();
 		spList = service.selectScheduleInfoByJoinPlace(showCode);
