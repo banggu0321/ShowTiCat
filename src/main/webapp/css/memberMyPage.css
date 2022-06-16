@@ -1,0 +1,31 @@
+@charset "UTF-8";
+
+/* body * {
+	outline : 3px solid tomato;
+} */
+
+.userImage {
+	width : 200px;
+	height : 200px;
+	background-image: url("../images/catUser.png");
+	background-size: 100% 100%;
+
+}
+
+.helloBox {
+	display: flex;
+    align-items: center;
+    border-right: 1px solid ddd;
+}
+
+.helloBox h1 {
+	width: fit-content;
+	display: inline;
+	
+}
+
+.helloTextBox {
+	width: fit-content;
+	height: 200px;
+	margin: auto 20px;
+}
