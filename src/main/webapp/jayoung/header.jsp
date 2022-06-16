@@ -73,16 +73,16 @@
             <div class="contents">
                 <ul class="nav_menu">
                     <li>
-                        <h2><a href="${path}/jayoung/showList.do?category=영화">영화</a></h2>
+                        <h2><a href="${path}/jayoung/showList.do?category=영화" id="movieList">영화</a></h2>
                     </li>
                     <li>
-                        <h2><a href="${path}/jayoung/showList.do?category=공연">공연</a></h2>
+                        <h2><a href="${path}/jayoung/showList.do?category=공연" id="showList">공연</a></h2>
                     </li>
                     <li>
-                        <h2><a href="${path}/jayoung/placeDetail.do?place_num=1020&date=${sysdate}">극장</a></h2>
+                        <h2><a href="${path}/jayoung/placeDetail.do?place_num=1020&date=${sysdate}" id="theaterList">극장</a></h2>
                     </li>
                     <li>
-                        <h2><a href="http://localhost:9090/ShowTiCat/reservationFromList">예매</a></h2>
+                        <h2><a href="http://localhost:9090/ShowTiCat/reservationFromList" id="reservation">예매</a></h2>
                     </li>
                     <li></li>
                     <li></li>
