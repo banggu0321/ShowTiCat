@@ -14,6 +14,7 @@ import com.kos.showticat.reservation.dao.temp.ChartVO;
 import com.kos.showticat.reservation.dao.temp.MembersVO;
 import com.kos.showticat.reservation.dao.temp.PlaceVO;
 import com.kos.showticat.reservation.dao.temp.ReservationVO;
+import com.kos.showticat.reservation.dao.temp.ScheduleJoinPlaceVO;
 import com.kos.showticat.reservation.dao.temp.ScheduleVO;
 import com.kos.showticat.reservation.dao.temp.TheaterVO;
 
@@ -63,16 +64,68 @@ public class temp {
 //		f28(); //select schedule  tabel showCode, theaterNum, placeNum
 //		f29();  //select reservation table by ID;
 		
-//		f33();  // match reservation number+seat number+show code
-//		f32(); //select schedule table show code
-//		f31(); //select reservation table schedule number
-		f30(); //select reservation detail table all(reservation number)
 		//reservation detail->reservation->schedule : SeatVO = show_code.seat_num
+//		f30(); //select reservation table by show code;
+//		f31(); //select reservation detail table  by reservation number;
+//		f32(); //select reservation detail table by f30();
+		f33(); //select schedule, place table by show code;
 	}
 	
-	private static void f30() {
-		// TODO Auto-generated method stub
+	private static void f33() {
 		
+		String showCode = "AA8";
+		
+		ScheduleService service = new ScheduleService();
+		List<ScheduleJoinPlaceVO> spList = new ArrayList<>();
+		spList = service.selectScheduleInfoByJoinPlace(showCode);
+		
+		for(ScheduleJoinPlaceVO temp: spList) {
+			System.out.println(temp);
+		}
+	}
+
+	private static void f32() {
+		String showCode = "AA37";
+		int scheduleNum = 1645075;
+		
+		ScheduleService service = new ScheduleService();
+		List<Integer> iList = new ArrayList<>();
+		iList = service.selectReservationByJoinSchedule(scheduleNum, showCode);
+		System.out.println(iList);
+		
+		List<String> temp = new ArrayList<>();
+		List<String> seatList = new ArrayList<>();
+		for(Integer arr: iList) {
+			temp = service.selectReservationDetailByNumber(arr);
+//			System.out.println(temp);
+			
+			for(String seatTemp: temp) {
+				seatList.add(seatTemp);
+			}
+		}
+		
+		System.out.println(seatList);
+	}
+
+	private static void f31() {
+		
+		int reservationNum = 9462054;
+		
+		ScheduleService service = new ScheduleService();
+		System.out.println(service.selectReservationDetailByNumber(reservationNum));
+	}
+
+	private static void f30() {
+		String showCode = "AA37";
+		int scheduleNum = 1645075;
+		
+		ScheduleService service = new ScheduleService();
+		List<Integer> iList = new ArrayList<>();
+		iList = service.selectReservationByJoinSchedule(scheduleNum, showCode);
+		
+		for(Integer arr: iList) {
+			System.out.println(arr);
+		}
 	}
 
 	private static void f29() {		

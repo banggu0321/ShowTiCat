@@ -63,7 +63,7 @@ tr, td {
 			<form
 				action="http://localhost:9090/ShowTiCat/reservationShowDetailCancel">
 				<input class="btn btn-primary btn-lg" type="submit" name="reSet"
-					value="예매 취소">
+					value="되돌아가기">
 			</form>
 		</div>
 
@@ -71,16 +71,16 @@ tr, td {
 			<table class="table table-bordered table-hover">
 				<tr>
 					<th>극장번호</th>
-					<th>장소 번호</th>
+					<th>장소 이름</th>
 					<th>상영기간</th>
 				</tr>
 
-				<c:forEach items="${ScheduleList}" var="scheduleAttr">
+				<c:forEach items="${ScheduleListAddPlace}" var="scheduleAttr">
 					<tr>
 						<td><a id="aTheater"
 							href="http://localhost:9090/ShowTiCat/reservationFromShowLTBeta?theaterNum=${scheduleAttr.theaterNum}&placeNum=${scheduleAttr.placeNum}&showStart=${scheduleAttr.showStart}">
 								${scheduleAttr.theaterNum}</a></td>
-						<td>${scheduleAttr.placeNum}</td>
+						<td>${scheduleAttr.placeName}</td>
 						<td>${scheduleAttr.showStart}</td>
 					</tr>
 				</c:forEach>
