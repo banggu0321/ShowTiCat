@@ -14,7 +14,7 @@ import javax.servlet.http.HttpSession;
 import com.kos.showticat.util.DateUtil;
 
 /**
- * Servlet implementation class ModifyPwCheck
+ * Servlet implementation class deletePwCheck
  */
 @WebServlet("/jaeyong/modifyPwCheck.do")
 public class ModifyPwCheck extends HttpServlet {

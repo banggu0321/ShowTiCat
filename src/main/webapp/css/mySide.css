@@ -18,11 +18,12 @@
    자동 줄 바꿈 없앰*/
 .mySide a {
 	font-size : 20px;
-	white-space:nowrap;
+
 }
 
 .contents {
 	position:relative;
+	width : 59.5%;
 }
 
 
