@@ -28,6 +28,9 @@
 <body>
 <jsp:include page="header.jsp"/>
 <div class="contents">
+<jsp:include page="../jaeyong/mySide.jsp"/>
+<h3>리뷰수정</h3>
+<hr>
 	<form action="updateReview.do" method="post">
 		<input type="hidden" name="review_num" value="${review.review_num}">
 		
@@ -37,7 +40,7 @@
 
 		<div class="form-group">
 			<label>CONTENT </label>
-			<input class="form-control" type="text" name="content" id="content" maxlength="500" value="${review.content}">
+			<textarea class="form-control" rows="2" id="content" name="content">${review.content}</textarea>
 		</div>
 		
 		<div class="form-group">

@@ -34,7 +34,8 @@ function showDetail() {
 }
 </script>
 <style>
-#showList {
+
+#movieList {
 	color: red;
 }
 </style>
