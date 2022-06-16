@@ -43,7 +43,7 @@ public class TabShowDAO {
 			+ " FROM (SELECT rownum AS rownumber, o.* "
 			+ "		FROM (SELECT * from SHOW s "
 			+ "		WHERE CATEGORY = '영화' "
-			+ "		AND OPENING_DATE > SYSDATE  "
+			+ "		AND OPENING_DATE > CURRENT_TIMESTAMP  "
 			+ "		ORDER BY OPENING_DATE) o ) r "
 			+ " WHERE r.rownumber <= 2 ";
 	static final String SQL_SELECT_SCREEN_PER = ""
@@ -51,7 +51,7 @@ public class TabShowDAO {
 			+ " FROM (SELECT rownum AS rownumber, o.* "
 			+ "		FROM (SELECT * from SHOW s "
 			+ "		WHERE CATEGORY = '공연' "
-			+ "		AND OPENING_DATE > SYSDATE  "
+			+ "		AND OPENING_DATE > CURRENT_TIMESTAMP  "
 			+ "		ORDER BY OPENING_DATE) o ) r "
 			+ " WHERE r.rownumber <= 2 ";
 	
