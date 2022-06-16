@@ -16,18 +16,16 @@ import javax.servlet.http.HttpSession;
 public class MemberDelete extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String m_id = request.getParameter("m_id");
 
 		MemberService service = new MemberService();
 		int result = service.Delete(m_id);
 		String msg = "삭제실패";
 		if (result > 0) {
-			msg = "수정성공";
+			msg = "삭제실패";
 			request.setAttribute("msg", msg);
 		}
-		
-		/* request.setAttribute("msg", result > 0 ? "삭제성공" : "삭제실패"); */
 
 		response.sendRedirect("../");
 	}

@@ -24,4 +24,11 @@ public class MemeberDetail extends HttpServlet {
 		rd = request.getRequestDispatcher("memberPage.jsp");
 		rd.forward(request, response);
 	}
+	
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		RequestDispatcher rd;
+		rd = request.getRequestDispatcher("memberPage.jsp");
+		rd.forward(request, response);
+	}
+	
 }
