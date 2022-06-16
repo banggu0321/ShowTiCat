@@ -9,10 +9,10 @@
 
 .mySide {
 	position : absolute;
-	top:0;
-    left: -123px;
-    width : 10%;
-    height : fit-contents;
+	top:1.6%;
+    left: -15%;
+    width : fit-content;
+    height : fit-content;
 }
 /* 버튼 폰트사이즈 
    자동 줄 바꿈 없앰*/
@@ -25,5 +25,4 @@
 	position:relative;
 	width : 59.5%;
 }
-
 
