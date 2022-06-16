@@ -27,16 +27,22 @@
 			<jsp:include page="../jaeyong/mySide.jsp" />
 			<h1>MemberPage</h1>
 			<form action="memberUpdate.do" method="get" name="myFrom">
+			
 				<br> <label>아이디 : </label> <input value="${member.m_id}"
 					type="text" name="m_id" disabled="disabled"><br>
+					
 				<br> <label>비밀번호 : </label> <input value="${member.m_pw}"
 					type="password" name="password" disabled="disabled"><br>
+					
 				<br> <label>이름 : </label> <input value="${member.m_name}"
 					type="text" name="name" disabled="disabled"><br>
+					
 				<br> <label>핸드폰 번호 : </label> <input value="${member.phone}"
 					type="text" name="phone" disabled="disabled"><br>
+					
 				<br> <label>생일 : </label> <input value="${member.birth}"
 					type="text" name="birth" disabled="disabled"><br>
+					
 				<br> <label>성별 : </label> <input value="${member.gender}"
 					type="text" disabled="disabled"><br>
 				<br> <label>이메일 : </label> <input value="${member.email}"

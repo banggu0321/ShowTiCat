@@ -29,6 +29,7 @@ a {
 	cursor: revert;
     color: black;
     text-decoration: none;
+    white-space:nowrap;
     
 }
 ul,ol,li{

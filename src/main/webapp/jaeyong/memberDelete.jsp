@@ -44,21 +44,30 @@
 		}
 	}
 </script>
-<style>
-</style>
 </head>
 <body>
 	<jsp:include page="../jayoung/header.jsp" />
-	<div class="contens">
+	<div class="contents">
 		<jsp:include page="../jaeyong/mySide.jsp" />
 	<form action="memberDelete.do" method="post">
-		<br> <label>비밀번호 : </label> <input type="password" name="m_pw"
-			id="m_pw" value="${member.m_pw}"><br> <label>비밀번호
-			확인 : </label> <input type="password" id="pw2" name="m_pw"> <span
-			id="pwMsg"></span><br>
-		<br> <input type="button" class="btn btn-outline-success"
-			del="${member.m_id}" value="확인" id="btnDelete">
+		<br> <label>비밀번호 : </label>
+	<input type="password"
+		   name="m_pw"
+		     id="m_pw"
+		  value="${member.m_pw}"><br>
+		  
+	<label>비밀번호확인 : </label>
+	<input type="password"
+		     id="pw2"
+		   name="m_pw">
+	<span id="pwMsg"></span><br><br>
+	
+	<input type="button"
+		  class="btn btn-outline-success"
+			del="${member.m_id}"
+		  value="확인"
+			 id="btnDelete">
 	</form>
-	</div><!-- contens -->
+	</div><!-- contents -->
 </body>
 </html>
