@@ -17,28 +17,39 @@ import com.kos.showticat.VO.MemberVO;
 /**
  * Servlet Filter implementation class mypagefilter
  */
-@WebFilter({ "/mypagefilter", "/jaeyong/memberMyPage.do", "/jayoung/interestPlace.do", "/mypage/confirm.do", "/jayoung/insertReview.do", "/jayoung/myReview.do", "/jayoung/updateReview.do", "/jaeyong/modifyPwCheck.do", "/jaeyong/memberUpdate.do", "/jaeyong/deletePwCheck.do", "/jaeyong/memberDelete.do", "/jayoung/myPlace.do" })
+@WebFilter({ "/mypagefilter", "/jaeyong/memberMyPage.do", "/jayoung/interestPlace.do", "/mypage/confirm.do",
+		"/jayoung/insertReview.do", "/jayoung/myReview.do", "/jayoung/updateReview.do", "/jaeyong/modifyPwCheck.do",
+		"/jaeyong/memberUpdate.do", "/jaeyong/deletePwCheck.do", "/jaeyong/memberDelete.do", "/jayoung/myPlace.do" })
 public class mypagefilter implements Filter {
 
-    public mypagefilter() {
-    }
+	public mypagefilter() {
+	}
+
 	public void destroy() {
 	}
-	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
+
+	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain)
+			throws IOException, ServletException {
 		HttpServletRequest hrequest = (HttpServletRequest) request;
-		HttpServletResponse hresponse =(HttpServletResponse) response;
+		HttpServletResponse hresponse = (HttpServletResponse) response;
 		HttpSession session = hrequest.getSession(false);
-		MemberVO member = (MemberVO)session.getAttribute("member");
 		String path = hrequest.getContextPath();
-		
-		if(member==null) {
-			hresponse.sendRedirect(path+"/jayoung/login.do");
+
+		if (session != null) {
+			MemberVO member = (MemberVO) session.getAttribute("member");
+			
+			if (member == null) {
+				hresponse.sendRedirect(path + "/jayoung/login.do");
+			} else {
+				chain.doFilter(request, response);
+			}
 		}else {
-			chain.doFilter(request, response);
+			hresponse.sendRedirect(path + "/jayoung/login.do");
 		}
 	}
+
 	public void init(FilterConfig fConfig) throws ServletException {
-		
+
 	}
 
 }

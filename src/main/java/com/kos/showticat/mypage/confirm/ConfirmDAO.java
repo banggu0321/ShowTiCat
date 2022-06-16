@@ -5,7 +5,9 @@ import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Time;
 import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -18,14 +20,16 @@ public class ConfirmDAO {
 	PreparedStatement pst;
 	ResultSet rs;
 	LocalDate localDate = LocalDate.now();
+	LocalTime localTime = LocalTime.now();
 	Date date = java.sql.Date.valueOf(localDate);
+	Time time = java.sql.Time.valueOf(localTime);
 	
 	static final String SQL_SELECT_ALL_RESERVATION = ""
 			+ "SELECT * FROM RESERVATION r JOIN SCHEDULE sc ON (r.SCHEDULE_NUM = sc.SCHEDULE_NUM ) "
 			+ "							JOIN THEATER t ON (t.THEATER_NUM=sc.THEATER_NUM) "
 			+ "							JOIN PLACE p ON (p.PLACE_NUM=sc.PLACE_NUM) "
 			+ "							JOIN SHOW s ON (s.SHOW_CODE=sc.SHOW_CODE) " + " WHERE r.M_ID = ? "
-			+ " ORDER BY r.RESERVATION_NUM ";
+			+ " ORDER BY sc.SHOW_START ";
 	static final String SQL_SELECT_DETAIL_RESERVATION = ""
 			+ "SELECT * FROM RESERVATION r JOIN SCHEDULE sc ON (r.SCHEDULE_NUM = sc.SCHEDULE_NUM ) "
 			+ "							JOIN THEATER t ON (t.THEATER_NUM=sc.THEATER_NUM) "
@@ -129,17 +133,41 @@ public class ConfirmDAO {
 		//1) Y && 날짜가 오늘보다 이후 	-> 예매완료 -> 상세 삭제
 		//2) Y && 날짜가 오늘보다 이전 	-> 관람완료 -> 상세 리뷰
 		//3) N  				   	-> 예매취소 -> 상세
+		System.out.println(date);
+		System.out.println(time);
+		System.out.println("getdate"+rs.getDate("SHOW_START"));
+		System.out.println("gettime"+rs.getTime("SHOW_START"));
+		System.out.println(rs.getTime("SHOW_START").before(time));
+		System.out.println("날짜 같음?"+rs.getDate("SHOW_START").equals(date));
+		//System.out.println(rs.getDate("SHOW_START").before(date)&&rs.getTime("SHOW_START").before(time));
 		if(rs.getString("PAY_YN").equals("Y")) {
-			if(rs.getDate("SHOW_START").after(date)) { //이후 공연
+			if(rs.getDate("SHOW_START").before(date)) { //이미 지난 공연
+				c.setPay_yn("관람완료"); 
+				c.setDetail("Y");
+				c.setCancel_yn(null);
+				c.setReview("Y"); //리뷰가능
+				System.out.println("지난공연");
+			}else if(rs.getDate("SHOW_START").after(date)){ //예정공연
 				c.setPay_yn("예매완료");
 				c.setDetail("Y");
 				c.setCancel_yn("Y");
-				c.setReview(null);//리뷰가능
-			}else {
-				c.setPay_yn("관람완료");
-				c.setDetail("Y");
-				c.setCancel_yn(null);
-				c.setReview("Y"); //리뷰불가능
+				c.setReview(null);//리뷰불가능	
+				System.out.println("예정공연");
+			}else {	
+				/*//당일 공연 경우 적용안됨
+				if(rs.getTime("SHOW_START").before(time)) { //시간 지난 공연
+					c.setPay_yn("관람완료"); 
+					c.setDetail("Y");
+					c.setCancel_yn(null);
+					c.setReview("Y"); //리뷰가능
+					System.out.println("오늘자 지난공연");
+				}else {										//예정공연
+					c.setPay_yn("예매완료");
+					c.setDetail("Y");
+					c.setCancel_yn("Y");
+					c.setReview(null);//리뷰불가능
+					System.out.println("오늘자 예정공연");
+				}*/
 			}
 		}else {
 			//3
