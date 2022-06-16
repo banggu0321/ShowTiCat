@@ -10,6 +10,8 @@ import java.util.List;
 
 import com.kos.showticat.util.DBUtil;
 
+import com.kos.showticat.VO.MemberVO;
+
 public class MemberDAO {
 	static final String SQL_SELECT_ALL = "select * from members order by 1 desc";
 	static final String SQL_UPDATE_MEMBER ="update members set m_pw=?,m_name=?,email=?,phone=?,birth=?,gender=? where m_id =?";

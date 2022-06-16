@@ -17,7 +17,7 @@ import com.kos.showticat.util.DateUtil;
  * Servlet implementation class deletePwCheck
  */
 @WebServlet("/jaeyong/deletePwCheck.do")
-public class DeletePwCheck extends HttpServlet {
+public class DeletePwCheckServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		RequestDispatcher rd;

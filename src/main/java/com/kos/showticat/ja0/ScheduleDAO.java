@@ -26,7 +26,7 @@ public class ScheduleDAO {
 	
 	static final String SQL_SELECT_IF_SYSDATE ="SELECT SHOW_CODE,SHOW_NAME,schedule_num,theater_num,s.place_num, show_start "
 			+ " FROM schedule s JOIN show using(show_code) JOIN theater using(theater_num)"
-			+ " where s.place_num=? and SHOW_START >= sysdate and SHOW_START < ? ORDER BY 2,4,6"; 
+			+ " where s.place_num=? and SHOW_START >= current_timestamp and SHOW_START < ? ORDER BY 2,4,6"; 
 	
 	static final String SQL_COUNT = "SELECT DISTINCT schedule_num , count(*) OVER(PARTITION BY schedule_num)"
 			+ " FROM reservation JOIN reserv_detail using(reservation_num) JOIN SCHEDULE s USING(schedule_num)"

@@ -1,4 +1,4 @@
-package com.kos.showticat.ja0;
+package com.kos.showticat.filter;
 
 import java.io.IOException;
 import javax.servlet.Filter;
