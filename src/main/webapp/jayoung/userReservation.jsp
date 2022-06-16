@@ -43,6 +43,15 @@
 	width: 15%;
 	text-align: center;
 }
+.checkStyle {
+	padding: 10px 0px;
+	margin: 0px;
+	background-color: gray;
+}
+.checkStyle a {
+	font-weight: bold;
+	color: white;
+}
 </style>
 </head>
 <body>
@@ -53,9 +62,18 @@
 	<div class="left showL">
 		<div class="reserv">영화</div>
 		<c:forEach items="${showList}" var="show">
+			<c:if test="${show_code==show.show_code}">
+			<div class="checkStyle">
 			<a href="userReservation.do?show_code=${show.show_code}&place_num=1020&date=${sysdate}">
 				${show.show_name}
 			</a>
+			</div>
+			</c:if>
+			<c:if test="${show_code!=show.show_code}">
+			<a href="userReservation.do?show_code=${show.show_code}&place_num=1020&date=${sysdate}">
+				${show.show_name}
+			</a>
+			</c:if>
 			<hr>
 		</c:forEach>
 	</div>
@@ -63,17 +81,37 @@
 	<div class="left place">
 		<div class="reserv">극장</div>
 		<c:forEach items="${placeList}" var="place" varStatus="s">
-			<a href="userReservation.do?show_code=${show_code}&place_num=${place.place_num}&date=${sysdate}">
-				ShowTiCat ${place.place_name}
-			</a>
-<hr>
+			<c:if test="${place_num==place.place_num}">
+			<div class="checkStyle">
+				<a href="userReservation.do?show_code=${show_code}&place_num=${place.place_num}&date=${sysdate}">
+					ShowTiCat ${place.place_name}
+				</a>
+			</div>
+			</c:if>
+			<c:if test="${place_num!=place.place_num}">
+				<a href="userReservation.do?show_code=${show_code}&place_num=${place.place_num}&date=${sysdate}">
+					ShowTiCat ${place.place_name}
+				</a>
+			</c:if>
+			<hr>
 		</c:forEach>
 	 </div>
 	 
 	<div class="left date">
 		<div class="reserv">날짜</div>
 		<c:forEach items="${dateList}" var="date" varStatus="s">
-			<a href="userReservation.do?show_code=${show_code}&place_num=${place_num}&date=${date}">${date}</a> <hr>
+			<c:if test="${show_start==date}">
+			<div class="checkStyle">
+			<a href="userReservation.do?show_code=${show_code}&place_num=${place_num}&date=${date}">
+				${date}
+			</a></div>
+			</c:if>
+			<c:if test="${show_start!=date}">
+			<a href="userReservation.do?show_code=${show_code}&place_num=${place_num}&date=${date}">
+				${date}
+			</a>
+			</c:if>
+			<hr>
 		</c:forEach>
 	</div>
 	

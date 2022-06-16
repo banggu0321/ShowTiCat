@@ -19,7 +19,7 @@ function reservation() {
 
 <style>
 .reservBtn{
-	display: inline;
+	margin: 0px 8px 5px 8px;
 }
 
 </style>

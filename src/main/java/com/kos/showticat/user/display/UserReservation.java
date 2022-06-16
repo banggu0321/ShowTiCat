@@ -35,6 +35,7 @@ public class UserReservation extends HttpServlet {
 		HttpSession session = request.getSession();
 		session.setAttribute("show_code", show_code);
 		session.setAttribute("place_num", place_num);
+		session.setAttribute("show_start", show_start);
 		
 		PlaceService ps = new PlaceService();
 		TheaterService ts = new TheaterService();
