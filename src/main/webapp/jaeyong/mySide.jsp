@@ -19,15 +19,15 @@
 		</div>
 		<!-- reservation -->
 		
-		<div class="review">
+		<div class="myReview">
 			<a href="../jayoung/myReview.do">리뷰</a>
 		</div>
-		<!-- reservation -->
+		<!-- myReview -->
 
-		<div class="memberDetail">
+		<div class="modifyPwCheck">
 			<a href="../jaeyong/modifyPwCheck.do">회원정보수정</a>
 		</div>
-		<!-- reservation -->
+		<!-- modifyPwCheck -->
 
 		<div class="delete">
 			<a href="../jaeyong/deletePwCheck.do">회원탈퇴</a>
