@@ -83,7 +83,7 @@ p {
 		<jsp:include page="../jaeyong/mySide.jsp" />
 		<h1>Password Check</h1>
 
-		<form action="memberUpdate.do" method="post" id="PWCheck"><br>					   
+		<form action="memberUpdate.do" method="get" id="PWCheck"><br>					   
 			<label>비밀번호 확인 : </label>
 			<input type="password" id="pw2" name="m_pw"> 
 			<input type="submit" class="btn btn-outline-success" value="확인"><br>

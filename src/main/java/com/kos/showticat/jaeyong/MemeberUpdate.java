@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import com.kos.showticat.util.DateUtil;
+import com.kos.showticat.VO.MemberVO;
 
 /**
  * Servlet implementation class MemberUpdate
@@ -36,7 +37,7 @@ public class MemeberUpdate extends HttpServlet {
 		String phone = request.getParameter("phone");
 		String birth = request.getParameter("birth");
 		String gender = request.getParameter("gender");
-		String point = request.getParameter("point");
+		//String point = request.getParameter("point");
 
 		MemberVO member = new MemberVO();
 		member.setM_id(m_id);
@@ -46,7 +47,7 @@ public class MemeberUpdate extends HttpServlet {
 		member.setPhone(phone);
 		member.setBirth(DateUtil.convertToDate(birth));
 		member.setGender(gender);
-		member.setPoint(Integer.parseInt(point));
+		//member.setPoint(Integer.parseInt(point));
 		MemberService service = new MemberService();
 		int result = service.memberUpdate(member);
 		
@@ -58,7 +59,7 @@ public class MemeberUpdate extends HttpServlet {
 		}
 
 		RequestDispatcher rd;
-		rd = request.getRequestDispatcher("../");
+		rd = request.getRequestDispatcher("../jaeyong/memberMyPage.do");
 		rd.forward(request, response);
 
 	}
