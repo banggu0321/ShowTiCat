@@ -5,7 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <title>mySide</title>
-<link rel="stylesheet" href="../css/memberMyPage.css">
+<link rel="stylesheet" href="../css/mySide.css">
 </head>
 <body>
 	<div class=mySide>
