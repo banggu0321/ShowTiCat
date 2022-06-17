@@ -14,9 +14,6 @@ import com.kos.showticat.ja0.ChartService;
 import com.kos.showticat.ja0.ReviewService;
 import com.kos.showticat.ja0.ShowService;
 
-/**
- * Servlet implementation class ShowDetail
- */
 @WebServlet("/jayoung/showDetail.do")
 public class ShowDetail extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -40,7 +37,6 @@ public class ShowDetail extends HttpServlet {
 			RequestDispatcher rd = request.getRequestDispatcher("showDetail.jsp");
 			rd.forward(request, response);
 		}
-		
 	}
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

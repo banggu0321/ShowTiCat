@@ -13,9 +13,6 @@ import javax.servlet.http.HttpSession;
 import com.kos.showticat.VO.MemberVO;
 import com.kos.showticat.ja0.MemberService;
 
-/**
- * Servlet implementation class DeleteMyPlace
- */
 @WebServlet("/jayoung/deleteMyPlace.do")
 public class DeleteMyPlace extends HttpServlet {
 	private static final long serialVersionUID = 1L;

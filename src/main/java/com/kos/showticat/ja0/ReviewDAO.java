@@ -8,7 +8,6 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.kos.showticat.VO.PlaceVO;
 import com.kos.showticat.VO.ReviewVO;
 import com.kos.showticat.util.DBUtil;
 

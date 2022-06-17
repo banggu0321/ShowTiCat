@@ -14,7 +14,7 @@ import javax.servlet.http.HttpSession;
 import com.kos.showticat.VO.MemberVO;
 
 @WebServlet("/jayoung/reservation.do")
-public class reservationSwitchShowTheater extends HttpServlet {
+public class rsSwitchShowTheater extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) 

@@ -15,13 +15,8 @@ import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 
-
-
-/**
- * Servlet implementation class LoginTest
- */
 @WebServlet("/jayoung/loginTest")
-public class LoginTest extends HttpServlet {
+public class XLoginTestX extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

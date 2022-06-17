@@ -10,11 +10,11 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import com.kos.showticat.reservation.dao.temp.ScheduleService;
+import com.kos.showticat.cansu.ScheduleService;
 
 
 @WebServlet("/reservationCompleteFromShowList")
-public class reservationCompleteFromShowList extends HttpServlet {
+public class rsFromSLreservationUpdate extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
 

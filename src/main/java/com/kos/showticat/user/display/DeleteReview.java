@@ -14,9 +14,6 @@ import com.kos.showticat.VO.MemberVO;
 import com.kos.showticat.ja0.MemberService;
 import com.kos.showticat.ja0.ReviewService;
 
-/**
- * Servlet implementation class DeleteReview
- */
 @WebServlet("/jayoung/deleteReview.do")
 public class DeleteReview extends HttpServlet {
 	private static final long serialVersionUID = 1L;

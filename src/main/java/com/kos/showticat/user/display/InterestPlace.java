@@ -3,7 +3,6 @@ package com.kos.showticat.user.display;
 import java.io.IOException;
 import java.io.PrintWriter;
 
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -13,8 +12,6 @@ import javax.servlet.http.HttpSession;
 
 import com.kos.showticat.VO.MemberVO;
 import com.kos.showticat.ja0.MemberService;
-import com.kos.showticat.ja0.PlaceService;
-import com.kos.showticat.ja0.ReviewService;
 
 @WebServlet("/jayoung/interestPlace.do")
 public class InterestPlace extends HttpServlet {

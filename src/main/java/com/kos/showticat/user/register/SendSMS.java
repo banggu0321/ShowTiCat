@@ -23,8 +23,7 @@ public class SendSMS extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String phone = request.getParameter("phone");
-		//System.out.println(phone);
-
+		
 		int randomNum = makeRandomNum();
 		System.out.println(randomNum);
 		
@@ -53,7 +52,7 @@ public class SendSMS extends HttpServlet {
 	    params.put("from", "1111");
 	    params.put("type", "SMS");
 	    params.put("text", "[Show TiCat]인증번호 ["+randomNum+"]를 입력하세요.");
-	    params.put("app_version", "test app 1.2"); // application name and version
+	    params.put("app_version", "test app 1.2"); 
 	
 	    try {
 	      JSONObject obj = (JSONObject) coolsms.send(params);

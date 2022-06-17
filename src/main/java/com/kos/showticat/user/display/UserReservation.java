@@ -2,9 +2,6 @@ package com.kos.showticat.user.display;
 
 import java.io.IOException;
 import java.sql.Date;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Calendar;
 import java.util.List;
 import java.util.Map;
 
@@ -46,6 +43,7 @@ public class UserReservation extends HttpServlet {
 		request.setAttribute("placeList", ps.selectByShow(show_code)); 
 		request.setAttribute("theaterList", ts.selectByPlace(place_num));
 		request.setAttribute("dateList", DateUtil.dateList());
+		
 		Map<Integer, Integer> cntMap = cntList(ss.reservCnt(place_num),ss.selectByTheater(place_num, show_start));
 		request.setAttribute("cntList", cntMap);
 		

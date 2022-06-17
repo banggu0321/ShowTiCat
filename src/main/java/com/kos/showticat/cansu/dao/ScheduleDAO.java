@@ -1,4 +1,4 @@
-package com.kos.showticat.reservation.dao.temp;
+package com.kos.showticat.cansu.dao;
 
 import java.sql.Connection;
 import java.sql.Date;
@@ -12,9 +12,9 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.kos.showticat.reservation.dao.temp.MembersVO;
-import com.kos.showticat.reservation.dao.temp.ReservationVO;
-import com.kos.showticat.reservation.dao.temp.ScheduleVO;
+import com.kos.showticat.cansu.dao.MembersVO;
+import com.kos.showticat.cansu.dao.ReservationVO;
+import com.kos.showticat.cansu.dao.ScheduleVO;
 import com.kos.showticat.util.DBUtil2;
 
 public class ScheduleDAO {
