@@ -25,7 +25,7 @@ public class reservationFromList extends HttpServlet {
 			throws ServletException, IOException {
 		
 		//log in check -> get id
-		String logInPath = "../jayoung/login.do";
+		String logInPath = "jayoung/login.do";
 		HttpSession session = request.getSession();
 
 		MemberVO member = new MemberVO();
