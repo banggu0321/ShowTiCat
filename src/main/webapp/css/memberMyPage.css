@@ -1,21 +1,23 @@
 @charset "UTF-8";
 
-/* body * {
-	outline : 3px solid tomato;
-} */
 
+body * {
+	outline : 2px solid tomato;
+}
+#cont {
+	height : 100%;
+}
 .userImage {
 	width : 200px;
 	height : 200px;
-	background-image: url("../images/catUser.png");
+	background-image: url("../images/UserCat.jpg");
 	background-size: 100% 100%;
+	outline: 1px solid #eee; 
 
 }
 
 .helloBox {
 	display: flex;
-    align-items: center;
-    border-right: 1px solid ddd;
 }
 
 .helloBox h1 {
@@ -24,8 +26,46 @@
 	
 }
 
-.helloTextBox {
-	width: fit-content;
-	height: 200px;
+.helloText {
+	width: 50%;
+	border-right: 1px solid #eee;
+	
+}
+
+.helloTextBox1 {
+	width: 85%;
+    margin: 0px 0px 20px 20px;
+	padding: 0px 0px 20px;
+	border-bottom: 1px solid #eee;
+	
+}
+
+.helloTextBox2 {
+	width: 85%;
 	margin: auto 20px;
+}
+
+.myInfo {
+	margin-top: 60px;
+	display: flex;
+	justify-content: space-evenly;
+}
+
+.myInfo h2 {
+	text-align: center;
+	
+}
+
+.myInfo div {
+	width: 30%
+}
+
+.myPlace {
+	
+
+}
+
+.myPoint {
+	
+	
 }
