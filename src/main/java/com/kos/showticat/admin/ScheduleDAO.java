@@ -150,7 +150,7 @@ public class ScheduleDAO {
 		conn = DBUtil.getConnection();
 		try {
 			pst = conn.prepareStatement(SQL_SELECT_OPENINGDATE_INSERT);
-			pst.setString(1, show_code); //첫번째 ?에 부서번호를 넣는다.
+			pst.setString(1, show_code); 
 			rs = pst.executeQuery();
 			while(rs.next()) {
 				show = makeshowlist(rs);

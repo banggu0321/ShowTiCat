@@ -25,17 +25,8 @@ public class MypageConfirmDeleteServlet extends HttpServlet {
 		int result2 = service.DeleteSeat(reservation_num);
 		//System.out.println("result1:" + result1); 
 		//System.out.println("result2:" + result2);
-		/*
-		 * boolean totalresult = (result1 > 0) && (result2 > 0);
-		 * System.out.println(totalresult);
-		 */
+
 		PrintWriter out = response.getWriter();
         out.print((result1 > 0) && (result2 > 0) ? 1 : 0);//1이상 삭제가능 0 삭제불가 
-		//request.setAttribute("message", );
-
 	}
-
-	//r의 rs삭제, rd모두삭제->개수가져오기, 그 개수만큼 남은자리 추가
-	
-	//예매시 남은자리 정보가져오는지 확인..
 }
