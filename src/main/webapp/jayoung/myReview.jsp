@@ -81,7 +81,7 @@ function updateReview() {
 <jsp:include page="../jaeyong/mySide.jsp"/>
 
 <div class="centerHidden">
-	<h3>리뷰</h3>
+	<h3>MY REVIEW</h3>
 	<c:if test="${empty myReview}">등록한 리뷰가 없습니다.</c:if>
 	
 	<c:if test="${!empty myReview}">

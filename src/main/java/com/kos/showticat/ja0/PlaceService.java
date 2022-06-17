@@ -12,6 +12,11 @@ public class PlaceService {
 		return dao.selectAll();
 	}
 	
+	//영화별 극장조회
+	public List<PlaceVO> selectByShow(String show_code) {
+		return dao.selectByShow(show_code);
+	}
+	
 	//극장 조회
 	public PlaceVO selectByNum(int place_num) {
 		return dao.selectByNum(place_num);
