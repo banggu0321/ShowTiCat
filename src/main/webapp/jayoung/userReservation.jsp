@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>RESERVATION</title>
 
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
 <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.slim.min.js"></script>
@@ -13,53 +13,8 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <link rel="stylesheet" href="../css/common.css">
+<link rel="stylesheet" href="css/reservationcss.css">
 
-<style>
-#reservation{
-	color: red;
-}
-.reserv {
-	text-align: center;
-	font-size: 18px;
-	font-weight: bold;
-	padding: 5px 0px;
-	margin-bottom: 15px;
-	border-bottom: 1px solid #ddd;
-}
-.style{
-	border-bottom: 1px solid #ddd;
-	padding: 10px 0px;
-}
-.left{
-	padding:0px 0px 0px 10px;
-}
-.place {
-	width: 24%;
-}
-.showL {
-	width: 29%;
-}
-.schedule {
-	width: 35%;
-}
-.date{
-	width: 12%;
-	text-align: center;
-}
-.checkStyle {
-	padding: 10px 0px;
-	margin: 0px;
-	background-color: #007bff;
-	border-radius: 0.25rem;
-}
-.checkStyle a {
-	font-weight: bold;
-	color: white;
-}
-.checkStyle a:hover {
-	color: white;
-}
-</style>
 </head>
 <body>
 <jsp:include page="header.jsp"/>
@@ -78,6 +33,9 @@
 			<li class="style">
 			<a href="userReservation.do?show_code=${show.show_code}&place_num=1020&date=${sysdate}">
 				${show.show_name}
+				<c:if test="${show.opening_date >sysdate}">
+					<p class="d_day">${show.opening_date} OPEN</p>
+				</c:if>
 			</a>
 			</li>
 			</c:if>
