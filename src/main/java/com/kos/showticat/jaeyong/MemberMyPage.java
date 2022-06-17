@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import com.kos.showticat.VO.MemberVO;
+import com.kos.showticat.ja0.PlaceService;
 
 /**
  * Servlet implementation class MemberMyPage
@@ -28,8 +29,12 @@ public class MemberMyPage extends HttpServlet {
 		if (member == null) {
 			response.sendRedirect("../jayoung/login.do");
 		} else {
-			RequestDispatcher rd;
-			rd = request.getRequestDispatcher("../jaeyong/memberMyPage.jsp");
+			PlaceService ps = new PlaceService();
+			
+			request.setAttribute("placeList", ps.selectAll());
+			request.setAttribute("myPlace", ps.selectMyPlace(member.getM_id()));
+			
+			RequestDispatcher rd = request.getRequestDispatcher("../jaeyong/memberMyPage.jsp");
 			rd.forward(request, response);
 		}
 

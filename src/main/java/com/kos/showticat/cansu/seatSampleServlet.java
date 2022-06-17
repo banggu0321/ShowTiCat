@@ -21,57 +21,66 @@ import com.kos.showticat.reservation.dao.temp.ScheduleService;
 @WebServlet("/seatSampleServlet")
 public class seatSampleServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
+
 
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		
+
 		Enumeration<String> seatName = request.getParameterNames();
 		List<String> seatPosition = new ArrayList<>();
-		
+
 		while(seatName.hasMoreElements()) {
 			seatPosition.add(request.getParameter(seatName.nextElement()));
 		}
 		for(String arr: seatPosition) {
 			System.out.println(arr);
 		}
-		
+
 		HttpSession session = request.getSession();
 		int scheduleNum = (int)session.getAttribute("scheduleNumber"); 
 		System.out.println(scheduleNum);
-		
-		
+
+
 		MemberVO member = new MemberVO();
 		member = (MemberVO) session.getAttribute("member");
 		String m_id=member.getM_id(); 
-		
+
+		System.out.println("seat position: "+seatPosition);
+		if(seatPosition.size() == 0) {
+			RequestDispatcher rd = request.getRequestDispatcher("index.jsp");
+			rd.forward(request, response);
+		}
+
 		//session
 		int reservationNum =  createScheduleNumber();
 		System.out.println("reservation number:"+reservationNum);
 		session.setAttribute("reservationNumber", reservationNum);
-		
+
 		int countSeat = seatPosition.size(); 
 		session.setAttribute("seatNumber", countSeat);
-		
+
 		//reservation table
 		ScheduleService service = new ScheduleService();
 		service.insertReservationInfor(reservationNum, m_id, scheduleNum);
-		
+
 		//reservation detail table
 		for(String arr: seatPosition) {
 			service.insertReservationDetailInfor(reservationNum, arr);
 		}
-				
-		
-//		//sample1 (paymentSample.jsp)
-//		RequestDispatcher rd = request.getRequestDispatcher("cansu/paymentSample.jsp");
-//		rd.forward(request, response);
-		
+
+
+		//		//sample1 (paymentSample.jsp)
+		//		RequestDispatcher rd = request.getRequestDispatcher("cansu/paymentSample.jsp");
+		//		rd.forward(request, response);
+
 		//sample2 (reservationResult.jsp) add seatTemp.jsp request
-		RequestDispatcher rd = request.getRequestDispatcher("/reservationCompleteFromShowList");
-		rd.forward(request, response);
-		
+
+		if(seatPosition.size() != 0) {
+			RequestDispatcher rd = request.getRequestDispatcher("/reservationCompleteFromShowList");
+			rd.forward(request, response);
+		}
+
 	}
 
 
@@ -79,7 +88,7 @@ public class seatSampleServlet extends HttpServlet {
 			throws ServletException, IOException {
 
 	}
-	
+
 	private static int createScheduleNumber() {
 
 		//random number
@@ -92,20 +101,20 @@ public class seatSampleServlet extends HttpServlet {
 		}
 		String randTemp = String.valueOf(dayNum);
 		System.out.println(randTemp.substring(0, 7));
-		
+
 		return Integer.parseInt(randTemp.substring(0, 7));
 	}
-	
+
 	private static String eachChartoString(String name, int number) {
-		
+
 		char[] temp = name.toCharArray();
 		String result = "";
 		for(char ch: temp) {
 			result += (int)ch;
 		}
-		
-//		System.out.println(result);
-//		System.out.println(Integer.toString(number));
+
+		//		System.out.println(result);
+		//		System.out.println(Integer.toString(number));
 		return result.substring(0, 6)+Integer.toString(number);
 	}
 

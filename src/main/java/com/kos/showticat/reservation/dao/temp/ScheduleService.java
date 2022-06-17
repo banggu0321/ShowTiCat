@@ -12,6 +12,14 @@ public class ScheduleService {
 
 	ScheduleDAO scdao = new ScheduleDAO();
 	
+	public int selectReservationTpriceByNum(int reservationNum) {
+		return scdao.selectReservationTpriceByNum(reservationNum);
+	}
+	
+	public String selectReservationIDbyNum(int reservationNum) {
+		return scdao.selectReservationIDbyNum(reservationNum);
+	}
+	
 	public List<ScheduleJoinPlaceVO> selectScheduleInfoByJoinPlace(String showCode){
 		return scdao.selectScheduleInfoByJoinPlace(showCode);
 	}

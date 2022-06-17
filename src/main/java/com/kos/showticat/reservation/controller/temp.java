@@ -68,9 +68,29 @@ public class temp {
 //		f30(); //select reservation table by show code;
 //		f31(); //select reservation detail table  by reservation number;
 //		f32(); //select reservation detail table by f30();
-		f33(); //select schedule, place table by show code;
+//		f33(); //select schedule, place table by show code;
+		
+//		f34(); //select reservation table by reservation number
+		f35(); //select reservation table by reservation number(total price)
 	}
 	
+	private static void f35() {
+				
+		int reservationNum = 6563612;
+		
+		ScheduleService service = new ScheduleService();
+		System.out.println(service.selectReservationTpriceByNum(reservationNum));
+		
+	}
+
+	private static void f34() {
+		
+		int reservationNum = 2138665;
+		
+		ScheduleService service = new ScheduleService();
+		System.out.println(service.selectReservationUserIDByReservationNum(reservationNum));
+	}
+
 	private static void f33() {
 		
 		String showCode = "AA8";

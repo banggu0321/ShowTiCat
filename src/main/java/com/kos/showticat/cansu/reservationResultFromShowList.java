@@ -38,11 +38,12 @@ public class reservationResultFromShowList extends HttpServlet {
 		String id = service.selectReservationUserIDByReservationNum(reservationNum);
 //		int point = Integer.parseInt(rvo.getTotalPrice())+service.selectMembersPointByID(id);  //update value = point + select value	
 		int pointValue = (int)seesion.getAttribute("seatNumber")*1000;
+		seesion.setAttribute("pointValue", pointValue);
 		System.out.println("point value: "+pointValue);
 		
-		int point = service.selectMembersPointByID(id)+pointValue; 
-		service.updatePointMembers(id, point);
-		System.out.println("ScheduleDAO.reservationResultFromShowList=>update data");
+//		int point = service.selectMembersPointByID(id)+pointValue; 
+//		service.updatePointMembers(id, point);
+//		System.out.println("ScheduleDAO.reservationResultFromShowList=>update data");
 		
 		//(reservationResult.jsp)
 		RequestDispatcher rd = request.getRequestDispatcher("cansu/reservationResult.jsp");
