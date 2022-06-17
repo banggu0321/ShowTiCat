@@ -39,8 +39,8 @@ function login() {
 <jsp:include page="header.jsp"/>
 <div class="contents resetPW">
 	<div id="resetPW">
-	<p>비밀번호 수정이 완료되었습니다.</p>
-	<button class="btn btn-success" id="login">로그인</button>
+		<p>비밀번호 수정이 완료되었습니다.</p>
+		<button class="btn btn-success" id="login">로그인</button>
 	</div>
 </div>
 <jsp:include page="../bang/mainUpTicket.jsp"/>

@@ -1,7 +1,6 @@
 package com.kos.showticat.user.display;
 
 import java.io.IOException;
-import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -12,13 +11,8 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import com.kos.showticat.VO.MemberVO;
-import com.kos.showticat.VO.ReviewVO;
 import com.kos.showticat.ja0.ReviewService;
-import com.kos.showticat.ja0.ShowService;
 
-/**
- * Servlet implementation class MyReview
- */
 @WebServlet("/jayoung/myReview.do")
 public class MyReview extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -34,9 +28,7 @@ public class MyReview extends HttpServlet {
 		rd.forward(request, response);
 	}
 
-
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
 		doGet(request, response);
 	}
 

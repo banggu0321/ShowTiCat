@@ -12,7 +12,6 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.kos.showticat.VO.ReviewVO;
 import com.kos.showticat.ja0.ReviewService;
-import com.kos.showticat.ja0.ShowService;
 
 @WebServlet("/jayoung/updateReview.do")
 public class UpdateReview extends HttpServlet {

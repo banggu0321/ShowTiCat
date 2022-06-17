@@ -9,14 +9,10 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 import com.kos.showticat.VO.MemberVO;
 import com.kos.showticat.ja0.MemberService;
 
-/**
- * Servlet implementation class FindID
- */
 @WebServlet("/jayoung/findPW.do")
 public class FindPW extends HttpServlet {
 	private static final long serialVersionUID = 1L;
