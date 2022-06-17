@@ -6,16 +6,11 @@
 <head>
 <meta charset="UTF-8">
 <title>예매확인</title>
-<link rel="stylesheet"
-	href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
-<script
-	src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.slim.min.js"></script>
-<script
-	src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
-<script
-	src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
-<script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <link rel="stylesheet" href="../css/common.css">
 <script>
 	$(function() {
@@ -136,10 +131,13 @@
 	<jsp:include page="../jayoung/header.jsp" />
 	<div class="contents">
 		<jsp:include page="../jaeyong/mySide.jsp"/>
-		
 			<div>
 				<div id="listTitle">
 					<h1>예매목록</h1>
+				</div>
+				<div id >
+					<p>- 예매 취소의 경우 영화는 상영시간 기준 30분 전 까지, 공연은 하루 전 까지만 가능합니다. </p>
+					<p>- 리뷰는 관람일 다음날 부터 작성 가능합니다. </p>
 				</div>
 				<!-- 취소목록 -->
 			</div>
@@ -160,60 +158,64 @@
 						</tr>
 						<c:forEach items="${resevationlist}" var="resevation">
 							<!-- var : DTO -->
-							<tr>
-								<td>${resevation.reservation_num}</td>
-								<td>${resevation.reservation_date }</td>
-								<td>${resevation.show_name }</td>
-								<td>${resevation.show_start_date }</td>
-								<td>${resevation.show_start_time }</td>
-								<td>${resevation.category }</td>
-								<c:choose>
-									<c:when test="${resevation.pay_yn eq '예매완료'}">
-										<td style="color: red;">${resevation.pay_yn}</td>
-									</c:when>
-									<c:when test="${resevation.pay_yn eq '관람완료'}">
-										<td style="color: blue;">${resevation.pay_yn}</td>
-									</c:when>
-									<c:when test="${resevation.pay_yn eq '예매취소'}">
-										<td style="">${resevation.pay_yn}</td>
-									</c:when>
-								</c:choose>
+						<tr>
+							<td>${resevation.reservation_num}</td>
+							<td>${resevation.reservation_date }</td>
+							<td>${resevation.show_name }</td>
+							<td>${resevation.show_start_date }</td>
+							<td>${resevation.show_start_time }</td>
+							<td>${resevation.category }</td>
+							<c:choose>
+								<c:when test="${resevation.pay_yn eq '예매완료'}">
+									<td style="color: red;">${resevation.pay_yn}</td>
+								</c:when>
+								<c:when test="${resevation.pay_yn eq '관람완료'}">
+									<td style="color: blue;">${resevation.pay_yn}</td>
+								</c:when>
+								<c:when test="${resevation.pay_yn eq '예매취소'}">
+									<td style="">${resevation.pay_yn}</td>
+								</c:when>
+							</c:choose>
 								<!-- onclick, data-showcode, data-mid -->
-	
-								<td><c:if test="${!empty resevation.detail}">
-										<c:choose>
-											<c:when test="${resevation.pay_yn eq '예매취소'}">
-												<button class="DetailBtn btn btn-light"
-													data-reservationnum="${resevation.reservation_num}"
-													data-toggle="modal" data-target="#myModalCancel">상세</button>
-											</c:when>
-											<c:otherwise>
-												<button class="DetailBtn btn btn-secondary"
-													data-reservationnum="${resevation.reservation_num}"
-													data-toggle="modal" data-target="#myModal">상세</button>
-											</c:otherwise>
-										</c:choose>
-									</c:if></td>
-								<td><c:if test="${!empty resevation.review}">
-										<button class="reviewBtn btn btn-info"
-											onclick="location.href='../jayoung/insertReview.do?reservation_num=${resevation.reservation_num}'"
-											data-showcode="${resevation.reservation_num}"
-											data-mid="${resevation.m_id}">리뷰</button>
-									</c:if></td>
-								<td><c:if test="${!empty resevation.cancel_yn}">
-										<button class="DelBtn btn btn-dark"
-											data-reservationnum="${resevation.reservation_num}"
-											data-category="${resevation.category}">삭제</button>
-									</c:if></td>
-							</tr>
-						</c:forEach>
-					</table>
-				</div>
+							<td>
+								<c:if test="${!empty resevation.detail}">
+									<c:choose>
+										<c:when test="${resevation.pay_yn eq '예매취소'}">
+											<button class="DetailBtn btn btn-light"
+												data-reservationnum="${resevation.reservation_num}"
+												data-toggle="modal" data-target="#myModalCancel">상세</button>
+										</c:when>
+										<c:otherwise>
+											<button class="DetailBtn btn btn-secondary"
+												data-reservationnum="${resevation.reservation_num}"
+												data-toggle="modal" data-target="#myModal">상세</button>
+										</c:otherwise>
+									</c:choose>
+								</c:if>
+							</td>
+							<td>
+								<c:if test="${!empty resevation.review}">
+									<button class="reviewBtn btn btn-info"
+										onclick="location.href='../jayoung/insertReview.do?reservation_num=${resevation.reservation_num}'"
+										data-showcode="${resevation.reservation_num}"
+										data-mid="${resevation.m_id}">리뷰</button>
+								</c:if>
+							</td>
+							<td>
+								<c:if test="${!empty resevation.cancel_yn}">
+									<button class="DelBtn btn btn-dark"
+										data-reservationnum="${resevation.reservation_num}"
+										data-category="${resevation.category}">삭제</button>
+								</c:if>
+							</td>
+						</tr>
+					</c:forEach>
+				</table>
 			</div>
 		</div>
+	</div>
 	
-	
-		<!-- The Modal -->
+		<!-- The Modal  -->
 		<div class="modal" id="myModal" style="display: none; z-index: 1050;">
 			<div class="modal-dialog">
 				<div class="modal-content">
@@ -249,7 +251,7 @@
 				</div>
 			</div>
 		</div>
-		<!-- The Modal -->
+		<!-- The Modal (Cancel) -->
 		<div class="modal" id="myModalCancel"
 			style="display: none; z-index: 1050;">
 			<div class="modal-dialog">
@@ -284,7 +286,7 @@
 				</div>
 			</div>
 		</div>
-		<!-- The Modal2 -->
+		<!-- The Modal(Seat) -->
 		<div class="modal" id="myModal2" style="display: none; z-index: 1060;">
 			<div class="modal-dialog">
 				<div class="modal-content">
@@ -298,6 +300,7 @@
 					<div id="here"></div>
 				</div>
 			</div>
-	</div>
+		</div>
+		<%-- <jsp:include page="mainUpTicket.jsp" /> --%>
 </body>
 </html>

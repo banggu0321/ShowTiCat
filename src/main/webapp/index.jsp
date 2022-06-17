@@ -19,6 +19,7 @@
 <link rel="stylesheet" href="css/common.css">
 <link rel="stylesheet" href="css/main_tab.css">
 <link rel="stylesheet" href="css/popup.css">
+<link rel="stylesheet" href="css/main_upticket.css">
 
 <script type="text/javascript">
 	//쿠키설정    

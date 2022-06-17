@@ -6,16 +6,11 @@
 <head>
 <meta charset="UTF-8">
 <title>스케줄 추가</title>
-<link rel="stylesheet"
-	href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
-<script
-	src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.slim.min.js"></script>
-<script
-	src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
-<script
-	src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
-<script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <link rel="stylesheet" href="css/admin.css">
 <style>
 label {
@@ -46,7 +41,7 @@ label {
 				</select>
 			</div>
 			<div class="form-group">
-				<label>극장이름</label> <select class="form-control" id="place_num"
+				<label>극장 이름</label> <select class="form-control" id="place_num"
 					name="place_num" onchange="OnChangePlace()">
 					<c:forEach items="${plist}" var="p">
 						<option class="placeN" value="${p.place_num}">${p.place_num}-${p.place_name}</option>
@@ -105,7 +100,7 @@ label {
 		}
 		function OnChangeShow() {
 			var show_code = $("#show_code").val();
-			alert(show_code);
+			//alert(show_code);
 			$.ajax({
 				type : "GET",
 				url : "scheduleInsertDate.do",
