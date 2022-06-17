@@ -1,0 +1,56 @@
+@charset "UTF-8";
+
+#reservation{
+	color: red;
+}
+.reserv {
+	text-align: center;
+	font-size: 18px;
+	font-weight: bold;
+	padding: 5px 0px;
+	margin-bottom: 15px;
+	border-bottom: 1px solid #ddd;
+}
+.style{
+	border-bottom: 1px solid #ddd;
+	padding: 10px 10px;
+}
+.d_day {
+	display:inline;
+	background-color: #ddd;
+	padding: 3px 5px;
+	margin-left: 5px;
+	border-radius: 0.25rem;
+}
+.msg {
+	text-align: center;
+}
+.left{
+	padding:0px 0px 0px 10px;
+}
+.place {
+	width: 24%;
+}
+.showL {
+	width: 29%;
+}
+.schedule {
+	width: 35%;
+}
+.date{
+	width: 12%;
+	text-align: center;
+}
+.checkStyle {
+	padding: 10px 10px;
+	margin: 0px;
+	background-color: #007bff;
+	border-radius: 0.25rem;
+}
+.checkStyle a {
+	font-weight: bold;
+	color: white;
+}
+.checkStyle a:hover {
+	color: white;
+}

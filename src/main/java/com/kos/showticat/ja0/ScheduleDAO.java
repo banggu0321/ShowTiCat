@@ -28,6 +28,14 @@ public class ScheduleDAO {
 			+ " FROM schedule s JOIN show using(show_code) JOIN theater using(theater_num)"
 			+ " where s.place_num=? and SHOW_START >= current_timestamp and SHOW_START < ? ORDER BY 2,4,6"; 
 	
+	static final String SQL_SELECT_SHOW ="SELECT SHOW_CODE,SHOW_NAME,schedule_num,theater_num,s.place_num, show_start "
+			+ " FROM schedule s JOIN show using(show_code) JOIN theater using(theater_num)"
+			+ " where s.place_num=? and SHOW_START >= ? and SHOW_START < ? and show_code=? ORDER BY 2,4,6"; 
+	
+	static final String SQL_SELECT_SHOW_IF_SYSDATE ="SELECT SHOW_CODE,SHOW_NAME,schedule_num,theater_num,s.place_num, show_start "
+			+ " FROM schedule s JOIN show using(show_code) JOIN theater using(theater_num)"
+			+ " where s.place_num=? and SHOW_START >= current_timestamp and SHOW_START < ? and show_code=? ORDER BY 2,4,6"; 
+	
 	static final String SQL_COUNT = "SELECT DISTINCT schedule_num , count(*) OVER(PARTITION BY schedule_num)"
 			+ " FROM reservation JOIN reserv_detail using(reservation_num) JOIN SCHEDULE s USING(schedule_num)"
 			+ " JOIN theater using(theater_num) WHERE pay_yn ='Y' AND s.place_num = ?";
@@ -134,6 +142,55 @@ public class ScheduleDAO {
 			pst = conn.prepareStatement(SQL_SELECT_IF_SYSDATE);
 			pst.setInt(1, place_num);
 			pst.setDate(2, DateUtil.dayAfter(DateUtil.sysdate()));
+			
+			rs = pst.executeQuery();
+			
+			while(rs.next()) {
+				scheduleList.add(makeSchedule(rs));
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			DBUtil.dbClose(rs, pst, conn);
+		}
+		
+		return scheduleList;
+	}
+	
+	//상영관, 영화별로 조회
+	public List<ScheduleVO> selectShow(int place_num , Date show_date, String show_code) {
+		List<ScheduleVO> scheduleList = new ArrayList<>();
+		conn = DBUtil.getConnection();
+		try {
+			pst = conn.prepareStatement(SQL_SELECT_SHOW);
+			pst.setInt(1, place_num);
+			pst.setDate(2, show_date); 
+			pst.setDate(3, DateUtil.dayAfter(show_date));
+			pst.setString(4, show_code);
+			
+			rs = pst.executeQuery();
+			
+			while(rs.next()) {
+				scheduleList.add(makeSchedule(rs));
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			DBUtil.dbClose(rs, pst, conn);
+		}
+		
+		return scheduleList;
+	}
+	
+	//상영관, 영화별로 조회(오늘)
+	public List<ScheduleVO> selectShowIfSysdate(int place_num, String show_code) {
+		List<ScheduleVO> scheduleList = new ArrayList<>();
+		conn = DBUtil.getConnection();
+		try {
+			pst = conn.prepareStatement(SQL_SELECT_SHOW_IF_SYSDATE);
+			pst.setInt(1, place_num);
+			pst.setDate(2, DateUtil.dayAfter(DateUtil.sysdate()));
+			pst.setString(3, show_code);
 			
 			rs = pst.executeQuery();
 			

@@ -34,6 +34,16 @@ public class ScheduleService {
 		return dao.selectByIfSysdate(place_num);
 	}
 	
+	//상영관, 영화별로 조회
+	public List<ScheduleVO> selectShow(int place_num , Date show_date, String show_code) {
+		return dao.selectShow(place_num, show_date, show_code);
+	}
+	
+	//상영관, 영화별로 조회(오늘)
+	public List<ScheduleVO> selectShowIfSysdate(int place_num, String show_code) {
+		return dao.selectShowIfSysdate(place_num, show_code);
+	}
+	
 	//예약된 좌석
 	public Map<Integer, Integer> reservCnt(int place_num) {
 		return dao.reservCnt(place_num);

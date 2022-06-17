@@ -19,7 +19,7 @@ import com.kos.showticat.VO.MemberVO;
  */
 @WebFilter({ "/mypagefilter", "/jaeyong/memberMyPage.do", "/jayoung/interestPlace.do", "/mypage/confirm.do",
 		"/jayoung/insertReview.do", "/jayoung/myReview.do", "/jayoung/updateReview.do", "/jaeyong/modifyPwCheck.do",
-		"/jaeyong/memberUpdate.do", "/jaeyong/deletePwCheck.do", "/jaeyong/memberDelete.do", "/jayoung/myPlace.do" })
+		"/jaeyong/memberUpdate.do", "/jaeyong/deletePwCheck.do", "/jaeyong/memberDelete.do" })
 public class mypagefilter implements Filter {
 
 	public mypagefilter() {

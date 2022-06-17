@@ -46,7 +46,7 @@
 						<td>상영관번호</td>
 						<td>관람일</td>
 						<td>시작시간</td>
-						<td>남은자리</td>
+						<td>좌석 수</td>
 						<td></td>
 					</tr>
 					<c:forEach items="${schedulelist}" var="schedule">
