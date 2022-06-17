@@ -61,6 +61,4 @@ function delMyPlace() {
 			<input class="btn btn-outline-primary resetBtn" type="reset" value="취소">
 		</div>
 	</form>
-
-
 </html>

@@ -28,7 +28,7 @@
 <jsp:include page="header.jsp"/>
 <div class="contents">
 <jsp:include page="../jaeyong/mySide.jsp"/>
-<h3>리뷰작성</h3>
+<h2>NEW REVIEW</h2>
 <hr>
 	<form action="insertReview.do" method="post">
 		<div class="form-group">

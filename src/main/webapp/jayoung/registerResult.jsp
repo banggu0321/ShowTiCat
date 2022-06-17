@@ -18,6 +18,9 @@
 <style>
 #welcome {
 	text-align: center;
+	width: 500px;
+	margin: auto;
+	padding-top: 50px;
 }
 </style>
 
@@ -35,9 +38,9 @@ function login() {
 <jsp:include page="header.jsp"/>
 <div class="contents">
 	<div id="welcome">
-	<p>${m_id}님 회원가입이 완료되었습니다.</p>
-	<p>환영합니다!</p>
-	<button class="btn btn-light" id="login">로그인</button>
+		<p>${m_id}님 회원가입이 완료되었습니다.</p>
+		<p>환영합니다!</p>
+		<button class="btn  btn-success" id="login">로그인</button>
 	</div>
 </div>
 <jsp:include page="../bang/mainUpTicket.jsp"/>

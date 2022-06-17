@@ -13,9 +13,6 @@ import javax.servlet.http.HttpServletResponse;
 import com.kos.showticat.VO.ShowVO;
 import com.kos.showticat.ja0.ShowService;
 
-/**
- * Servlet implementation class ResultServlet
- */
 @WebServlet("/jayoung/result.do")
 public class ResultServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;

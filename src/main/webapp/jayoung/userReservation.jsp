@@ -24,19 +24,19 @@
 		<c:forEach items="${showList}" var="show">
 			<c:if test="${show_code==show.show_code}">
 			<li class="checkStyle">
-			<a href="userReservation.do?show_code=${show.show_code}&place_num=1020&date=${sysdate}">
-				${show.show_name}
-			</a>
+				<a href="userReservation.do?show_code=${show.show_code}&place_num=1020&date=${sysdate}">
+					${show.show_name}
+				</a>
 			</li>
 			</c:if>
 			<c:if test="${show_code!=show.show_code}">
 			<li class="style">
-			<a href="userReservation.do?show_code=${show.show_code}&place_num=1020&date=${sysdate}">
-				${show.show_name}
-				<c:if test="${show.opening_date >sysdate}">
-					<p class="d_day">${show.opening_date} OPEN</p>
-				</c:if>
-			</a>
+				<a href="userReservation.do?show_code=${show.show_code}&place_num=1020&date=${sysdate}">
+					${show.show_name}
+					<c:if test="${show.opening_date >sysdate}">
+						<p class="d_day">${show.opening_date} OPEN</p>
+					</c:if>
+				</a>
 			</li>
 			</c:if>
 		</c:forEach>
@@ -54,9 +54,9 @@
 			</c:if>
 			<c:if test="${place_num!=place.place_num}">
 				<li class="style">
-				<a href="userReservation.do?show_code=${show_code}&place_num=${place.place_num}&date=${sysdate}">
-					ShowTiCat ${place.place_name}
-				</a>
+					<a href="userReservation.do?show_code=${show_code}&place_num=${place.place_num}&date=${sysdate}">
+						ShowTiCat ${place.place_name}
+					</a>
 				</li>
 			</c:if>
 		</c:forEach>
@@ -67,16 +67,16 @@
 		<c:forEach items="${dateList}" var="date" varStatus="s">
 			<c:if test="${show_start==date}">
 			<li class="checkStyle">
-			<a href="userReservation.do?show_code=${show_code}&place_num=${place_num}&date=${date}">
-				${date}
-			</a>
+				<a href="userReservation.do?show_code=${show_code}&place_num=${place_num}&date=${date}">
+					${date}
+				</a>
 			</li>
 			</c:if>
 			<c:if test="${show_start!=date}">
 			<li class="style">
-			<a href="userReservation.do?show_code=${show_code}&place_num=${place_num}&date=${date}">
-				${date}
-			</a>
+				<a href="userReservation.do?show_code=${show_code}&place_num=${place_num}&date=${date}">
+					${date}
+				</a>
 			</li>
 			</c:if>
 		</c:forEach>
