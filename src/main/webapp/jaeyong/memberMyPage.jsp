@@ -49,15 +49,21 @@
 		<div class="myInfo">
 				<div class="myPlace">
 					<h2>M Y P L A C E</h2>
+					<div class="placeText">
 					<span>
-
+					<%-- <jsp:include page="../jayoung/interestPlace.do"/> --%>
 					</span>
+					</div>
 
 				</div><!-- myPlace -->
 
 				<div class="myPoint">
 					<h2>M Y P O I N T</h2>
+					<div class="pointText">
+			 		<span>ShowTicat Point</span>
 					<span>${member.point}</span>
+					</div>
+					
 				</div><!-- myPoint -->		
 		</div><!-- myInfo -->
 		</div><!-- cont -->
