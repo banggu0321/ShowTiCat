@@ -223,20 +223,22 @@
 	
 					<!-- Modal body -->
 					<form class="modalForm modal-body form-group">
-						<label>예매번호</label> <input class="form-control reservation_num"
-							type="text" readonly="readonly"><br> <label>극장</label>
-						<input class="form-control place_name" type="text"
-							readonly="readonly"><br> <label>상영관</label> <input
-							class="form-control theater_num" type="text" 
-							readonly="readonly"><br> <label>type</label> <input
-							class="form-control theater_type" type="text" 
-							readonly="readonly"><br> <label>가격</label> <input
-							class="form-control price" type="text" readonly="readonly"><br>
-						<label>결제방법</label> <input class="form-control payment" type="text"
-							readonly="readonly"><br> <label>결제금액</label>
-						<input class="form-control total_price" type="text"
-							readonly="readonly"><br> <label>자리확인</label> <input
-							class="seatBtn btn-primary" type="button" data-toggle="modal"
+						<label>예매번호</label> 
+						<input class="form-control reservation_num" type="text" readonly="readonly"><br> 
+						<label>극장</label>
+						<input class="form-control place_name" type="text" readonly="readonly"><br> 
+						<label>상영관</label> 
+						<input class="form-control theater_num" type="text" readonly="readonly"><br> 
+						<label>type</label> 
+						<input class="form-control theater_type" type="text" readonly="readonly"><br> 
+						<label>가격</label> 
+						<input class="form-control price" type="text" readonly="readonly"><br>
+						<label>결제방법</label> 
+						<input class="form-control payment" type="text" readonly="readonly"><br> 
+						<label>결제금액</label>
+						<input class="form-control total_price" type="text" readonly="readonly"><br> 
+						<label>자리확인</label> 
+						<input class="seatBtn btn-primary" type="button" data-toggle="modal" 
 							data-target="#myModal2" data-modalreservation="" value="확인"><br>
 						<!-- Modal footer -->
 						<div class="modal-footer">
@@ -247,8 +249,7 @@
 			</div>
 		</div>
 		<!-- The Modal (Cancel) -->
-		<div class="modal" id="myModalCancel"
-			style="display: none; z-index: 1050;">
+		<div class="modal" id="myModalCancel" style="display: none; z-index: 1050;">
 			<div class="modal-dialog">
 				<div class="modal-content">
 	
@@ -260,19 +261,20 @@
 	
 					<!-- Modal body -->
 					<form class="modalForm modal-body form-group">
-						<label>예매번호</label> <input class="form-control reservation_num"
-							type="text" readonly="readonly"><br> <label>극장</label>
-						<input class="form-control place_name" type="text"
-							readonly="readonly"><br> <label>상영관</label> <input
-							class="form-control theater_num" type="text"
-							readonly="readonly"><br> <label>type</label> <input
-							class="form-control theater_type" type="text"
-							readonly="readonly"><br> <label>가격</label> <input
-							class="form-control price" type="text" readonly="readonly"><br>
-						<label>결제방법</label> <input class="form-control payment" type="text"
-							readonly="readonly"><br> <label>결제금액</label>
-						<input class="form-control total_price" type="text"
-							readonly="readonly"><br>
+						<label>예매번호</label> 
+						<input class="form-control reservation_num" type="text" readonly="readonly"><br> 
+						<label>극장</label>
+						<input class="form-control place_name" type="text" readonly="readonly"><br> 
+						<label>상영관</label> 
+						<input class="form-control theater_num" type="text" readonly="readonly"><br> 
+						<label>type</label> 
+						<input class="form-control theater_type" type="text" readonly="readonly"><br> 
+						<label>가격</label> 
+						<input class="form-control price" type="text" readonly="readonly"><br>
+						<label>결제방법</label> 
+						<input class="form-control payment" type="text" readonly="readonly"><br> 
+						<label>결제금액</label>
+						<input class="form-control total_price" type="text" readonly="readonly"><br>
 						<!-- Modal footer -->
 						<div class="modal-footer">
 							<button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
@@ -296,6 +298,6 @@
 				</div>
 			</div>
 		</div>
-		<%-- <jsp:include page="mainUpTicket.jsp" /> --%>
+		<jsp:include page="mainUpTicket.jsp" />
 </body>
 </html>
