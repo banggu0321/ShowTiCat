@@ -42,22 +42,20 @@ input {
 			<form class="form-inline"
 				action="http://localhost:9090/ShowTiCat/reservationCompletePayYNandRate">
 				<div id="sub1" class="form-group">
-					<input class="form-control-plaintext" type="text" value="예약 번호"
-						readonly></input><input class="form-control-plaintext" type="text"
-						value="${reservationData.getReservationNum()}" readonly></input><br>
-					<input class="form-control-plaintext" type="text" value="ID"
-						readonly /><input class="form-control-plaintext" type="text"
-						value="${reservationData.getmID()}" readonly /><br> <input
-						class="form-control-plaintext" type="text" value="예약 날짜" readonly /><input
-						class="form-control-plaintext" type="text"
-						value="${reservationData.getReservationDate()}" readonly /><br>
-					<input class="form-control-plaintext" type="text" value="스케쥴 번호"
-						readonly /><input class="form-control-plaintext" type="text"
-						value="${reservationData.getScheduleNum()}" readonly /><br>
-					<input class="form-control-plaintext" type="text" value="총 금액"
-						readonly /><input class="form-control-plaintext" type="text"
-						value="${reservationData.getTotalPrice()}" readonly /><br> <input
-						class="form-control-plaintext" type="text" value="지불방식" readonly />
+					<input class="form-control-plaintext" type="text" value="예약 번호" readonly></input>
+					<input class="form-control-plaintext" type="text" value="${reservationData.getReservationNum()}" readonly></input><br>
+					<input class="form-control-plaintext" type="text" value="ID" readonly />
+					<input class="form-control-plaintext" type="text" value="${reservationData.getmID()}" readonly /><br> 
+					<input class="form-control-plaintext" type="text" value="예약 날짜" readonly />
+					<input class="form-control-plaintext" type="text" value="${reservationData.getReservationDate()}" readonly /><br>
+					<input class="form-control-plaintext" type="text" value="스케쥴 번호" readonly />
+					<input class="form-control-plaintext" type="text" value="${reservationData.getScheduleNum()}" readonly /><br>
+					<input class="form-control-plaintext" type="text" value="총 금액" readonly />
+					<input class="form-control-plaintext" type="text" value="${reservationData.getTotalPrice()}" readonly /><br> 
+					<input class="form-control-plaintext" type="text" value="포인트 사용  여부" readonly />
+					<input class="form-control-plaintext" type="text" name="pointYN" value="0"/><br>
+					
+					<input class="form-control-plaintext" type="text" value="지불방식" readonly />
 					<select name="pay">
 						<option value="checkCard">체크카드</option>
 						<option value="creditCard">신용카드</option>

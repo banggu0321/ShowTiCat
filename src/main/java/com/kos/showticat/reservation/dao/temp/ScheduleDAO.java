@@ -19,7 +19,6 @@ import com.kos.showticat.util.DBUtil2;
 
 public class ScheduleDAO {
 	
-	
 	final static String SQL_SCHEDULE_SELECT_BY_JOIN_PLACE = "SELECT s.THEATER_NUM, s.PLACE_NUM, s.SHOW_START, p.PLACE_NAME FROM SCHEDULE s INNER JOIN PLACE p ON s.PLACE_NUM = p.PLACE_NUM WHERE SHOW_CODE =? AND  SHOW_START>SYSDATE";
 	final static String SQL_SCHEDULE_SELECT_ALL ="select schedule_num, show_code, theater_num, place_num, show_start from schedule";
 	final static String SQL_SCHEDULE_SELECT_SCHEDULE_BY_SHOW_CODE="SELECT THEATER_NUM, PLACE_NUM , SHOW_START FROM SCHEDULE WHERE SHOW_CODE=?";
@@ -35,6 +34,8 @@ public class ScheduleDAO {
 	final static String SQL_SCHEDULE_POINT_SELECT_ALL ="select*from members";
 	final static String SQL_SCHEDULE_POINT_UPDATE="update members set point=? where m_id=?";
 
+	final static String SQL_RESERVATION_SELECT_TOTAL_PRICE_BY_RESERVATION_NUMBER="SELECT TOTAL_PRICE  FROM RESERVATION WHERE RESERVATION_NUM =?";
+	final static String SQL_RESERVATION_SELECT_mID_BY_RESERVATION_NUMBER="SELECT M_ID  FROM RESERVATION WHERE RESERVATION_NUM =?";
 	final static String SQL_RESERVATION_SELECT_RESERVATION_NUMBER_BY_JOIN_SCHEDULE ="SELECT r.RESERVATION_NUM, r.M_ID, r.SCHEDULE_NUM, s.SCHEDULE_NUM, s.SHOW_CODE  FROM RESERVATION r INNER JOIN SCHEDULE s ON r.SCHEDULE_NUM = s.SCHEDULE_NUM WHERE s.SHOW_CODE=? AND s.SCHEDULE_NUM=?";
 	final static String SQL_RESERVATION_SELECT_ALL_BY_ID="SELECT RESERVATION_NUM, M_ID , RESERVATION_DATE, SCHEDULE_NUM, PAYMENT, TOTAL_PRICE, PAY_YN FROM RESERVATION WHERE M_ID =?";	
 	final static String SQL_RESERVATION_SELECT_ID_BY_RESERVATION_NUMBER="SELECT M_ID FROM RESERVATION WHERE RESERVATION_NUM =?";
@@ -69,9 +70,65 @@ public class ScheduleDAO {
 	
 	
 	
+	public int selectReservationTpriceByNum(int reservationNum) {
+		int totalPrice = 0;
+		Connection con = DBUtil2.getConnection();
+		PreparedStatement ppst=null;
+		ResultSet rs = null;
+		
+		
+		try {
+			ppst = con.prepareStatement(SQL_RESERVATION_SELECT_TOTAL_PRICE_BY_RESERVATION_NUMBER);
+			ppst.setInt(1, reservationNum);
+			rs = ppst.executeQuery();
+
+			while(rs.next()) {
+				totalPrice = rs.getInt("total_price");
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				rs.close();
+				ppst.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+			DBUtil2.dbClose(con);
+		}				
+		return totalPrice;
+	}
+	
+	public String selectReservationIDbyNum(int reservationNum) {
+		String mID = null;
+		Connection con = DBUtil2.getConnection();
+		PreparedStatement ppst=null;
+		ResultSet rs = null;
+		
+		try {
+			ppst = con.prepareStatement(SQL_RESERVATION_SELECT_mID_BY_RESERVATION_NUMBER);
+			ppst.setInt(1, reservationNum);
+			rs = ppst.executeQuery();
+
+			while(rs.next()) {
+				mID = rs.getString("m_id");
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				rs.close();
+				ppst.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+			DBUtil2.dbClose(con);
+		}				
+		return mID;
+	}
+	
 	public List<ScheduleJoinPlaceVO> selectScheduleInfoByJoinPlace(String showCode){
 		
-		//SELECT s.THEATER_NUM, s.PLACE_NUM, s.SHOW_START, p.PLACE_NAME FROM SCHEDULE s INNER JOIN PLACE p ON s.PLACE_NUM = p.PLACE_NUM WHERE SHOW_CODE =?
 		List<ScheduleJoinPlaceVO> spList = new ArrayList<>();
 		Connection con = DBUtil2.getConnection();
 		PreparedStatement ppst=null;
