@@ -58,7 +58,7 @@ body * {
 	
 }
 
-.myInfo span {
+.myPlace span {
 	margin:0 auto;
 	border-bottom: 1px solid #eee;
 	
@@ -73,4 +73,12 @@ body * {
 .myPoint {
 	width: 50%;
 	
+}
+
+.pointText {
+	width: 240px;
+	margin: 0 auto;
+	border-bottom: 1px solid #eee;
+	display: flex;
+	justify-content: space-between;;
 }
