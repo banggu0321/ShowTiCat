@@ -2,8 +2,8 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
-<link rel="stylesheet" href="css/admin.css">
 <c:set var="path" value="${pageContext.request.contextPath}" />
+<link rel="stylesheet" href="${path}/css/admin.css">
 
 <div class="header">
 	<hr>

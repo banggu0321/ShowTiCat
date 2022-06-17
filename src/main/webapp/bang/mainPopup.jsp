@@ -1,22 +1,17 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
+<c:set var="path" value="${pageContext.request.contextPath}" />
+<link rel="stylesheet" href="${path}/bang/css/popup.css">	
 
-</head>
-<body>
-	<form name="notice_form">
-		<div id="divpop1" class="divpop">
-			<img alt="" src="bang/main_images/QR_22739206_.png">
-			<div class="button_area">
-				<input type='checkbox' name='chkbox' id='todaycloseyn' value='Y'>오늘 하루 이 창을 열지 않음 
-				<a href='#' onclick="javascript:closeWin(1);"><B>[닫기]</B></a>
-			</div>
+<form name="notice_form">
+	<div id="divpop1" class="divpop">
+		<img alt="" src="${path}/bang/main_images/QR_22739206_.png">
+		<div class="button_area">
+			<input type='checkbox' name='chkbox' id='todaycloseyn' value='Y'>
+			오늘하루 이 창을 열지 않음 
+			<a href='#' onclick="javascript:closeWin(1);"><B>[닫기]</B></a>
 		</div>
-	</form>
-</body>
-</html>
+	</div>
+</form>

@@ -4,14 +4,14 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
-<title>예매확인</title>
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
-<script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.slim.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-<link rel="stylesheet" href="../css/common.css">
+  <meta charset="UTF-8">
+  <title>예매확인</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <link rel="stylesheet" href="../css/common.css">
 <script>
 	$(function() {
 		//상세모달 .DetailBtn
@@ -20,16 +20,11 @@
 			$(".reservation_num").val(reservation_num);
 			$(".seatBtn").attr("data-modalreservation", reservation_num);
 			$.ajax({
-				url : "../mypage/confirmdetail.do", //어디로
-				data : {
-					"reservation_num" : reservation_num
-				}, //가져갈 data{key,value}
+				url : "../mypage/confirmdetail.do",
+				data : {"reservation_num" : reservation_num},
 				type : "get",
-				//datatype : "json",
 				success : function(responseData) {
-					//alert("서버에 다녀옴 : "+ responseData);
 					var detail = JSON.parse(responseData);
-					//console.dir(show);
 					$(".place_name").val(detail["place_name"]);
 					$(".theater_num").val(detail["theater_num"]);
 					$(".theater_type").val(detail["theater_type"]);
@@ -39,6 +34,7 @@
 				}
 			}); //location.href = "showUpdate.do?show_code=" + show_code;
 		});
+		
 		//자리확인 모달
 		$(".seatBtn").click(function() {
 			var reservation_num = $(this).attr("data-modalreservation");
@@ -56,7 +52,6 @@
 
 				}
 			}); //location.href = "showUpdate.do?show_code=" + show_code;
-
 		});
 
 		//삭제
@@ -64,8 +59,6 @@
 			var category = $(this).attr("data-category");
 			var reservation_num = $(this).attr(
 					"data-reservationnum");
-			//alert(category);
-			//alert(reservation_num);
 			if (confirm(reservation_num + "번 예매를 취소하시겠습니까?")) {
 				if (category == "공연") {
 					$.ajax({
@@ -79,7 +72,6 @@
 									data : {"reservation_num" : reservation_num},
 									type : "get",
 									success : function(message) {
-										//alert(message);
 										if (message >= 1) {
 											alert("["+ reservation_num+ "]"+ "삭제되었습니다.");
 											location.reload();
@@ -105,7 +97,6 @@
 									data : {"reservation_num" : reservation_num},
 									type : "get",
 									success : function(message) {
-										//alert(message)
 										if (message >= 1) {
 											alert("["+ reservation_num+ "]"+ "삭제되었습니다.");
 											location.reload();
@@ -123,15 +114,13 @@
 			}
 		});
 	});
-</script>
-<style>
-.reservation a {
-	font-weight: bold;
-	color:red;
-}
-
-</style>
-
+ </script>
+ <style>
+	.reservation a {
+		font-weight: bold;
+		color:red;
+	}
+ </style>
 </head>
 <body>
 	<!-- header -->
@@ -164,63 +153,62 @@
 							<td></td>
 						</tr>
 						<c:forEach items="${resevationlist}" var="resevation">
-							<!-- var : DTO -->
-						<tr>
-							<td>${resevation.reservation_num}</td>
-							<td>${resevation.reservation_date }</td>
-							<td>${resevation.show_name }</td>
-							<td>${resevation.show_start_date }</td>
-							<td>${resevation.show_start_time }</td>
-							<td>${resevation.category }</td>
-							<c:choose>
-								<c:when test="${resevation.pay_yn eq '예매완료'}">
-									<td style="color: red;">${resevation.pay_yn}</td>
-								</c:when>
-								<c:when test="${resevation.pay_yn eq '관람완료'}">
-									<td style="color: blue;">${resevation.pay_yn}</td>
-								</c:when>
-								<c:when test="${resevation.pay_yn eq '예매취소'}">
-									<td style="">${resevation.pay_yn}</td>
-								</c:when>
-							</c:choose>
-								<!-- onclick, data-showcode, data-mid -->
-							<td>
-								<c:if test="${!empty resevation.detail}">
-									<c:choose>
-										<c:when test="${resevation.pay_yn eq '예매취소'}">
-											<button class="DetailBtn btn btn-light"
-												data-reservationnum="${resevation.reservation_num}"
-												data-toggle="modal" data-target="#myModalCancel">상세</button>
-										</c:when>
-										<c:otherwise>
-											<button class="DetailBtn btn btn-secondary"
-												data-reservationnum="${resevation.reservation_num}"
-												data-toggle="modal" data-target="#myModal">상세</button>
-										</c:otherwise>
-									</c:choose>
-								</c:if>
-							</td>
-							<td>
-								<c:if test="${!empty resevation.review}">
-									<button class="reviewBtn btn btn-info"
-										onclick="location.href='../jayoung/insertReview.do?reservation_num=${resevation.reservation_num}'"
-										data-showcode="${resevation.reservation_num}"
-										data-mid="${resevation.m_id}">리뷰</button>
-								</c:if>
-							</td>
-							<td>
-								<c:if test="${!empty resevation.cancel_yn}">
-									<button class="DelBtn btn btn-dark"
-										data-reservationnum="${resevation.reservation_num}"
-										data-category="${resevation.category}">삭제</button>
-								</c:if>
-							</td>
-						</tr>
-					</c:forEach>
-				</table>
+							<tr>
+								<td>${resevation.reservation_num}</td>
+								<td>${resevation.reservation_date }</td>
+								<td>${resevation.show_name }</td>
+								<td>${resevation.show_start_date }</td>
+								<td>${resevation.show_start_time }</td>
+								<td>${resevation.category }</td>
+								<c:choose>
+									<c:when test="${resevation.pay_yn eq '예매완료'}">
+										<td style="color: red;">${resevation.pay_yn}</td>
+									</c:when>
+									<c:when test="${resevation.pay_yn eq '관람완료'}">
+										<td style="color: blue;">${resevation.pay_yn}</td>
+									</c:when>
+									<c:when test="${resevation.pay_yn eq '예매취소'}">
+										<td style="">${resevation.pay_yn}</td>
+									</c:when>
+								</c:choose>
+									<!-- onclick, data-showcode, data-mid -->
+								<td>
+									<c:if test="${!empty resevation.detail}">
+										<c:choose>
+											<c:when test="${resevation.pay_yn eq '예매취소'}">
+												<button class="DetailBtn btn btn-light"
+													data-reservationnum="${resevation.reservation_num}"
+													data-toggle="modal" data-target="#myModalCancel">상세</button>
+											</c:when>
+											<c:otherwise>
+												<button class="DetailBtn btn btn-secondary"
+													data-reservationnum="${resevation.reservation_num}"
+													data-toggle="modal" data-target="#myModal">상세</button>
+											</c:otherwise>
+										</c:choose>
+									</c:if>
+								</td>
+								<td>
+									<c:if test="${!empty resevation.review}">
+										<button class="reviewBtn btn btn-info"
+											onclick="location.href='../jayoung/insertReview.do?reservation_num=${resevation.reservation_num}'"
+											data-showcode="${resevation.reservation_num}"
+											data-mid="${resevation.m_id}">리뷰</button>
+									</c:if>
+								</td>
+								<td>
+									<c:if test="${!empty resevation.cancel_yn}">
+										<button class="DelBtn btn btn-dark"
+											data-reservationnum="${resevation.reservation_num}"
+											data-category="${resevation.category}">삭제</button>
+									</c:if>
+								</td>
+							</tr>
+						</c:forEach>
+					</table>
+				</div>
 			</div>
 		</div>
-	</div>
 	
 		<!-- The Modal  -->
 		<div class="modal" id="myModal" style="display: none; z-index: 1050;">

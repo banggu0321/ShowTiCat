@@ -1,12 +1,15 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
+  <meta charset="UTF-8">
+  <c:set var="path" value="${pageContext.request.contextPath}" />
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
-  <link rel="stylesheet" href="css/main_tab.css">
+  <link rel="stylesheet" href="${path}/bang/css/main_tab.css">
 <script>
 		$(function() {//tchart active하면
 			//alert("load 후");
@@ -15,7 +18,6 @@
 					url:"bang/tab1.do",
 					type:"get",
 					success:function(responseData){
-						//alert("서버에 다녀옴 : "+ responseData);
 						$("#home > .movieChart > .posters").html(responseData);
 					}
 				});
@@ -26,27 +28,25 @@
 					url:"bang/tab2.do",
 					type:"get",
 					success:function(responseData){
-						//alert("서버에 다녀옴 : "+ responseData);
 						$("#menu1 > .movieChart > .posters").html(responseData);
 					}
 				});
 			});
-			
 		});
 </script>
 </head>
 <body>
 	<div class="container mt-3">
-	  <br>
-	  <!-- Nav tabs -->
-	  <ul class="tabmenu nav nav-tabs" id="tabmenu_nav">
-	    <li id="tabmenu_li" class="nav-item">
-	      <a id="tabmenu_a" class="nav-link tchart active" data-toggle="tab" href="#home">무비차트</a>
-	    </li>
-	    <li id="tabmenu_li" class="nav-item">
-	      <a id="tabmenu_a" class="nav-link tscreen" data-toggle="tab" href="#menu1">상영예정작</a>
-	    </li>
-	  </ul>
+		<br>
+	  	<!-- Nav tabs -->
+		<ul class="tabmenu nav nav-tabs" id="tabmenu_nav">
+			<li id="tabmenu_li" class="nav-item">
+				<a id="tabmenu_a" class="nav-link tchart active" data-toggle="tab" href="#home">무비차트</a>
+		    </li>
+		    <li id="tabmenu_li" class="nav-item">
+				<a id="tabmenu_a" class="nav-link tscreen" data-toggle="tab" href="#menu1">상영예정작</a>
+		    </li>
+		</ul>
 	  
 	  <!-- Tab panes -->
 	  <div class="tab-content">
