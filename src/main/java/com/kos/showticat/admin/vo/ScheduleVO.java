@@ -1,7 +1,6 @@
 package com.kos.showticat.admin.vo;
 
 import java.sql.Date;
-import java.sql.Time;
 
 public class ScheduleVO {
 	private int schedule_num;
@@ -9,8 +8,8 @@ public class ScheduleVO {
 	private String theater_num;
 	private int place_num;
 	private Date show_start;
+	
 	public ScheduleVO() {
-		// TODO Auto-generated constructor stub
 	}
 	public ScheduleVO(int schedule_num, String show_code, String theater_num, int place_num, Date show_start) {
 		super();
@@ -58,5 +57,4 @@ public class ScheduleVO {
 				.append(", show_start=").append(show_start).append("]");
 		return builder.toString();
 	}
-	
 }

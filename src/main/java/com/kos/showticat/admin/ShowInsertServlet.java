@@ -15,9 +15,6 @@ import com.kos.showticat.admin.vo.ShowVO;
 import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 
-/**
- * Servlet implementation class ScheduleInsertServlet
- */
 @WebServlet("/bang/showInsert.do")
 public class ShowInsertServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -42,12 +39,11 @@ public class ShowInsertServlet extends HttpServlet {
 		MultipartRequest multi = new MultipartRequest(request, location, maxSize, "utf-8",
 				new DefaultFileRenamePolicy());
 		String fileName = multi.getFilesystemName("file");
-		System.out.println(fileName);
+		//System.out.println(fileName);
 
 		ShowVO s = makeS(multi, fileName);
 		ShowService service = new ShowService();
 		int result = service.insertShow(s);
-		request.setAttribute("message", result > 0 ? "성공" : "실패");
 		if (result > 0) {
 			response.sendRedirect("show.do");
 		} else {
@@ -57,7 +53,6 @@ public class ShowInsertServlet extends HttpServlet {
 
 	private ShowVO makeS(MultipartRequest request, String fileName) {
 		ShowVO s = new ShowVO();
-		//System.out.println(fileName);
 		s.setShow_code(request.getParameter("show_code"));
 		s.setShow_name(request.getParameter("show_name"));
 		s.setDirector(request.getParameter("director"));
@@ -67,7 +62,6 @@ public class ShowInsertServlet extends HttpServlet {
 		s.setCategory(request.getParameter("category"));
 		s.setSummary(request.getParameter("summary"));
 		s.setPoster(fileName);
-		// s.setPoster(request.getParameter("poster"));
 		s.setPrice(readInt(request, "price"));
 
 		return s;

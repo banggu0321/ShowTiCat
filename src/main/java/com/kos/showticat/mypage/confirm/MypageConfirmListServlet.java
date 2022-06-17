@@ -18,17 +18,6 @@ public class MypageConfirmListServlet extends HttpServlet {
     
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		
-    	/*
-    	String m_id = "bang";
-		ConfirmService service = new ConfirmService();
-		request.setAttribute("resevationlist", service.selectAllReservation(m_id));
-		
-		
-		RequestDispatcher rd;
-		rd = request.getRequestDispatcher("../bang/mypageConfirm.jsp");
-		rd.forward(request, response);*/
-		
 		HttpSession session = request.getSession(false);
 		MemberVO member = (MemberVO) session.getAttribute("member");
 
@@ -37,7 +26,6 @@ public class MypageConfirmListServlet extends HttpServlet {
 			response.sendRedirect(path);
 
 		} else {
-			
 			String m_id = member.getM_id();
 			System.out.println(m_id);
 			ConfirmService service = new ConfirmService();
@@ -49,6 +37,4 @@ public class MypageConfirmListServlet extends HttpServlet {
 			rd.forward(request, response);
 		}
 	}
-
-
 }

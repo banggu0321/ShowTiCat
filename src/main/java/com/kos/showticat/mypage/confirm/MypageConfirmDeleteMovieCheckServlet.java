@@ -19,7 +19,7 @@ public class MypageConfirmDeleteMovieCheckServlet extends HttpServlet {
 		int result = service.CheckMovieReservation(reservation_num);
 		//System.out.println("영화"+result);
 		PrintWriter out = response.getWriter();
-        out.print(result);//1이상 삭제가능 0 삭제불가 
+        out.print(result);//1이상-> 삭제가능, 0-> 삭제불가 
         
 	}
 

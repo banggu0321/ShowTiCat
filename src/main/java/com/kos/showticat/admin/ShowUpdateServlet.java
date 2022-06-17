@@ -5,7 +5,6 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.Date;
 
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -18,22 +17,17 @@ import com.kos.showticat.admin.vo.ShowVO;
 import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 
-/**
- * Servlet implementation class ShowUpdateServlet
- */
 @WebServlet("/bang/showUpdate.do")
 public class ShowUpdateServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String show_code = request.getParameter("show_code");
-		//System.out.println(show_code);
 		
 		ShowService service = new ShowService();
 		ShowVO show = service.selectByCode(show_code);
 		
-		//JSON 객체 만들기
-		JSONObject obj = new JSONObject(); //{}
+		JSONObject obj = new JSONObject();
 		obj.put("show_name", show.getShow_name());
 		obj.put("director", show.getDirector());
 		obj.put("trailer", show.getTrailer());
@@ -44,19 +38,17 @@ public class ShowUpdateServlet extends HttpServlet {
 		obj.put("poster", show.getPoster());
 		obj.put("price", show.getPrice());
 		
-		String jsonStr = obj.toJSONString(); //문자로
+		String jsonStr = obj.toJSONString();
 
 		response.setContentType("text/html; charset=utf-8");
 		PrintWriter writer = response.getWriter();
 		writer.print(jsonStr);
 	}
 
-	// 입력된 data를 DB에 저장하기
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		request.setCharacterEncoding("utf-8");
 		String applicationPath = request.getSession().getServletContext().getRealPath(".");
-
 		String UPLOAD_DIR = "images";
 		String location = applicationPath + File.separator + UPLOAD_DIR + File.separator;
 		//System.out.println(applicationPath);
@@ -71,10 +63,11 @@ public class ShowUpdateServlet extends HttpServlet {
 		ShowVO s = makeS(multi, fileName);
 		ShowService service = new ShowService();
 		int result = service.updateShow(s);
-		if(result==0) {
-			request.setAttribute("message", result > 0 ? "성공" : "실패");
+		if(result > 0) {
+			request.setAttribute("message","성공");
 			response.sendRedirect("show.do");
 		}else {
+			request.setAttribute("message","실패");
 			response.sendRedirect("show.do");
 		}
 		
@@ -82,7 +75,6 @@ public class ShowUpdateServlet extends HttpServlet {
 
 	private ShowVO makeS(MultipartRequest request, String fileName) {
 		ShowVO s = new ShowVO();
-		
 		//System.out.println(fileName);
 		s.setShow_code(request.getParameter("show_code"));
 		s.setShow_name(request.getParameter("show_name"));
@@ -94,7 +86,6 @@ public class ShowUpdateServlet extends HttpServlet {
 		s.setSummary(request.getParameter("summary"));
 		s.setPoster(fileName);
 		s.setPrice(readInt(request, "price"));
-
 		return s;
 	}
 	private Date readDate(MultipartRequest request, String column) {

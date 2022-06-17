@@ -9,8 +9,6 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 
-//import javax.swing.text.DateFormatter;
-
 public class DateUtil {
 	public static Date convertToDate(String strdate) {
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");

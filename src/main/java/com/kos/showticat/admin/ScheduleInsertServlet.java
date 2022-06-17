@@ -15,9 +15,6 @@ import com.kos.showticat.admin.vo.PlaceVO;
 import com.kos.showticat.admin.vo.ScheduleVO;
 import com.kos.showticat.admin.vo.ShowVO;
 
-/**
- * Servlet implementation class ScheduleInsertServlet
- */
 @WebServlet("/bang/scheduleInsert.do")
 public class ScheduleInsertServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;

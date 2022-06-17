@@ -12,9 +12,6 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.kos.showticat.admin.vo.TheaterVO;
 
-/**
- * Servlet implementation class ScheduleInsertTheaterServlet
- */
 @WebServlet("/bang/scheduleInsertTheater.do")
 public class ScheduleInsertTheaterServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;

@@ -1,7 +1,5 @@
 package com.kos.showticat.admin.vo;
 
-import java.sql.Date;
-import java.sql.Time;
 
 public class PlaceVO {
 	private int place_num;

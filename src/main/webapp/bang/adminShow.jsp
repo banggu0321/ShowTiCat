@@ -4,41 +4,31 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
-<title>공연/영화 관리</title>
-<link rel="stylesheet"
-	href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
-<script
-	src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.slim.min.js"></script>
-<script
-	src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
-<script
-	src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
-<script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-<link rel="stylesheet" href="css/admin.css">
-<style type="text/css">
-.nav_menu_2 a {
-	font-weight: bold;
-	color: red;
-}
-</style>
-<script>
+  <meta charset="UTF-8">
+  <title>공연/영화 관리</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+ <style type="text/css">
+	.nav_menu_2 a {
+		font-weight: bold;
+		color: red;
+	}
+ </style>
+ <script>
 	$(function() {
 		$(".btnUpd").click(function() {
 			var show_code = $(this).attr("data-showcode");
 			$("#show_code").val(show_code);
 			$.ajax({
-				url : "showUpdate.do", //어디로
-				data : {
-					"show_code" : show_code
-				}, //가져갈 data{key,value}
+				url : "showUpdate.do",
+				data : {"show_code" : show_code},
 				type : "get",
-				//datatype : "json",
 				success : function(responseData) {
-					//alert("서버에 다녀옴 : "+ responseData);
 					var show = JSON.parse(responseData);
-					//console.dir(show);
 					$("#show_name").val(show["show_name"]);
 					$("#director").val(show["director"]);
 					$("#trailer").val(show["trailer"]);
@@ -57,17 +47,13 @@
 			if (confirm(show_code + " 삭제?")) {
 				$.ajax({
 					url : "showDeleteCheck.do",
-					data : {
-						"show_code" : show_code
-					},
+					data : {"show_code" : show_code},
 					type : "get",
 					success : function(responseData) {
 						if (responseData == 0) {
 							$.ajax({
 								url : "showDelete.do",
-								data : {
-									"show_code" : show_code
-								},
+								data : {"show_code" : show_code},
 								type : "get",
 								success : function() {
 									alert("[" + show_code + "]" + "삭제되었습니다.");
@@ -86,7 +72,7 @@
 			}//location.href = "showDelete.do?show_code=" + show_code;
 		});
 	});
-</script>
+ </script>
 </head>
 <body>
 	<jsp:include page="adminHeader.jsp" />
@@ -96,9 +82,7 @@
 				<h1>공연/영화 목록</h1>
 			</div>
 			<div id="listButton">
-				<button class="btnAdd btn btn-warning"
-					onclick="location.href='showInsert.do'">영화/공연 등록</button>
-				<!-- <a href="scheduleInsert.do">스케줄 추가</a> -->
+				<button class="btnAdd btn btn-warning"onclick="location.href='showInsert.do'">영화/공연 등록</button>
 			</div>
 		</div>
 		<div class="row justify-content-center">
@@ -113,18 +97,18 @@
 						<td></td>
 					</tr>
 					<c:forEach items="${showlist}" var="show">
-						<!-- var : DTO -->
 						<tr>
 							<td>${show.show_code}</td>
 							<td>${show.show_name }</td>
 							<td>${show.opening_date }</td>
 							<td>${show.show_time }</td>
 							<td>${show.category }</td>
-							<td><input type="button" value="수정"
-								class="btnUpd btn btn-info" data-toggle="modal"
-								data-target="#myModal" data-showcode="${show.show_code}">
+							<td>
+								<input type="button" value="수정" class="btnUpd btn btn-info" data-toggle="modal"
+									data-target="#myModal" data-showcode="${show.show_code}">
 								<input type="button" value="삭제" class="btnDel btn btn-dark"
-								data-showcode="${show.show_code}"></td>
+									data-showcode="${show.show_code}">
+							</td>
 						</tr>
 					</c:forEach>
 				</table>
@@ -144,34 +128,34 @@
 				</div>
 
 				<!-- Modal body -->
-				<form class="modalForm modal-body form-group" action="showUpdate.do"
-					method="post" enctype="multipart/form-data">
-					<label>코드</label><input class="form-control" type="text"
-						id="show_code" name="show_code" readonly="readonly"><br>
-					<label>제목</label><input class="form-control" type="text"
-						id="show_name" name="show_name"><br> <label>감독</label><input
-						class="form-control" type="text" id="director" name="director"><br>
-					<label>트레일러</label><input class="form-control" type="text"
-						id="trailer" name="trailer"><br> <label>개봉일자</label><input
-						class="form-control" type="date" id="opening_date"
-						name="opening_date"><br> <label>러닝타임</label> <input
-						class="form-control" type="number" id="show_time" name="show_time"><br>
-					<label>카테고리</label> <select class="form-control" name="category"
-						id="category" onchange="OnChange()">
+				<form class="modalForm modal-body form-group" action="showUpdate.do" method="post" enctype="multipart/form-data">
+					<label>코드</label>
+					<input class="form-control" type="text" id="show_code" name="show_code" readonly="readonly"><br>
+					<label>제목</label>
+					<input class="form-control" type="text" id="show_name" name="show_name"><br> 
+					<label>감독</label>
+					<input class="form-control" type="text" id="director" name="director"><br>
+					<label>트레일러</label>
+					<input class="form-control" type="text" id="trailer" name="trailer"><br> 
+					<label>개봉일자</label>
+					<input class="form-control" type="date" id="opening_date" name="opening_date"><br> 
+					<label>러닝타임</label> 
+					<input class="form-control" type="number" id="show_time" name="show_time"><br>
+					<label>카테고리</label> 
+					<select class="form-control" name="category" id="category" onchange="OnChange()">
 						<option value="영화">영화</option>
 						<option value="공연">공연</option>
-					</select><br> <label>줄거리</label><textarea class="form-control" type="text"
-						id="summary" name="summary"></textarea><br> 
-						
-				<label>포스터</label> 
-				<input class="form-control" type="text" id="poster" name="poster" readonly="readonly">
+					</select><br> 
+					<label>줄거리</label>
+					<textarea class="form-control" id="summary" name="summary"></textarea><br> 		
+					<label>포스터</label> 
+					<input class="form-control" type="text" id="poster" name="poster" readonly="readonly">
 					<div class="custom-file form-control">
-						<input type="file" class="custom-file-input" id="customFile"
-							name="file"> <label class="custom-file-label"
-							for="customFile">Choose file</label>
-					</div>
-					<br> <label>가격</label><input class="form-control" type="text"
-						id="price" name="price" readonly="readonly"><br>
+						<input type="file" class="custom-file-input" id="customFile" name="file"> 
+						<label class="custom-file-label" for="customFile">Choose file</label>
+					</div><br> 
+					<label>가격</label>
+					<input class="form-control" type="text" id="price" name="price" readonly="readonly"><br>
 
 					<!-- Modal footer -->
 					<div class="modal-footer">
@@ -184,22 +168,17 @@
 	</div>
 	<script>
 		function OnChange() {
-			var option = document.getElementById("category").options[document
-					.getElementById("category").selectedIndex].value;
-			//alert(option);
+			var option = document.getElementById("category").options[document.getElementById("category").selectedIndex].value;
 			if (option == "영화") {
 				document.getElementById("price").value = 12000;
 			} else {
 				document.getElementById("price").value = 100000;
 			}
 		}
-		$(".custom-file-input").on(
-				"change",
-				function() {
-					var fileName = $(this).val().split("\\").pop();
-					$(this).siblings(".custom-file-label").addClass("selected")
-							.html(fileName);
-				});
+		$(".custom-file-input").on("change",function() {
+			var fileName = $(this).val().split("\\").pop();
+			$(this).siblings(".custom-file-label").addClass("selected").html(fileName);
+		});
 	</script>
 </body>
 </html>

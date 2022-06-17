@@ -17,11 +17,12 @@ public class ShowService {
 		return showDAO.insertShow(sc);
 	}
 
-	// 3. 공연 수정
+	// 3-1. 해당 공연 조회
 	public ShowVO selectByCode(String show_code) {
 		return showDAO.selectByCode(show_code);
 	}
 
+	// 3-2. 공연 수정
 	public int updateShow(ShowVO sc) {
 		return showDAO.updateShow(sc);
 	}

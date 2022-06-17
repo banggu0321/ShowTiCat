@@ -6,7 +6,6 @@ public class ReservDetailVO {
 	private String seatNum;
 
 	public ReservDetailVO() {
-
 	}
 
 	public ReservDetailVO(int reservation_num, String seatNum) {

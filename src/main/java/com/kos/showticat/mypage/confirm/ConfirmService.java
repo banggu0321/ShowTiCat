@@ -19,16 +19,6 @@ public class ConfirmService {
 		return confirmDAO.selectDetailReservation(reservation_num);
 	}
 
-	// 1-2. pay Y
-	public List<ConfirmVO> selectPayYReservation(String m_id) {
-		return confirmDAO.selectPayYReservation(m_id);
-	}
-
-	// 1-3. pay N
-	public List<ConfirmVO> selectPayNReservation(String m_id) {
-		return confirmDAO.selectPayNReservation(m_id);
-	}
-
 	// 1-4. 자리확인
 	public List<ReservDetailVO> selectSeatNum(int reservation_num) {
 		return confirmDAO.selectSeatNum(reservation_num);

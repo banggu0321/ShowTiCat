@@ -70,7 +70,7 @@
 </head>
 <body>
 <c:set var="path" value="${pageContext.request.contextPath}"></c:set>
-	<jsp:include page="mainHeader.jsp" />
+	<jsp:include page="../jayoung/header.jsp" />
 	<!-- /////////////////////////////////////////////////// -->
 	<!-- 틀만 잡았음 -->
 	<div class="contaniner container-fluid">

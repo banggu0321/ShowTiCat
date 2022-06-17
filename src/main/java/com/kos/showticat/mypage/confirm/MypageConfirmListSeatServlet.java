@@ -19,17 +19,12 @@ public class MypageConfirmListSeatServlet extends HttpServlet {
     
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		int reservation_num = Integer.parseInt(request.getParameter("reservation_num"));
-		System.out.println(reservation_num);
 		ConfirmService service = new ConfirmService();
 		List<ReservDetailVO> list = service.selectSeatNum(reservation_num);
 		request.setAttribute("seatlist", list);
-		System.out.println(list);
 		
 		RequestDispatcher rd;
 		rd = request.getRequestDispatcher("../bang/seatmodal.jsp");
 		rd.forward(request, response);
-		//response.
-		//Writer().append("Served at: ").append(request.getContextPath());
-		//Response.
 	}
 }

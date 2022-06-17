@@ -127,8 +127,4 @@ public class ShowVO {
 				.append(price).append("]");
 		return builder.toString();
 	}
-
-
-	
-	
 }
