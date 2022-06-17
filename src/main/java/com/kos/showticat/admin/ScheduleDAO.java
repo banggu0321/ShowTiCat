@@ -32,9 +32,8 @@ public class ScheduleDAO {
 	static final String SQL_SELECT_OPENINGDATE_INSERT ="SELECT SHOW_CODE , SHOW_NAME, OPENING_DATE FROM SHOW WHERE SHOW_CODE = ?";	
 	static final String SQL_INSERT_SCHEDULE ="INSERT INTO schedule values(seq_schedule_no.nextval,?,?,?,?)";
 	static final String SQL_SELECT_RESERVATION_DELETE_SCHEDULE =""
-			+ "SELECT count(r.RESERVATION_NUM) FROM SCHEDULE sc JOIN RESERVATION r  ON (sc.SCHEDULE_NUM = r.SCHEDULE_NUM )"
-			+ " WHERE sc.SCHEDULE_NUM  = ? "
-			+ "	AND r.PAY_YN = 'Y' ";	
+			+ "SELECT count(r.RESERVATION_NUM) FROM RESERVATION r "
+			+ " WHERE r.SCHEDULE_NUM  = ? ";	
 	static final String SQL_DELETE_SCHEDULE ="DELETE FROM schedule WHERE SCHEDULE_NUM =? ";
 	
 	
@@ -66,6 +65,7 @@ public class ScheduleDAO {
 		sc.setLast_seat(rs.getInt("LAST_SEAT"));
 		return sc;
 	}
+	
 	// 2. 스케줄 추가
 	// 2-1. 스케줄 추가 form보여주기
 	// 2-1-1 show 제목 + show 번호
@@ -92,7 +92,7 @@ public class ScheduleDAO {
 		sh.setOpening_date(rs.getDate("OPENING_DATE"));
 		return sh;
 	}
-	//SQL_SELECT_PLACE_INSERT
+	
 	// 2-1-2 극장이름 + 극장번호
 	public List<PlaceVO> selectPlaceInsertSchedule(){
 		List<PlaceVO> placelist = new ArrayList<>();
@@ -117,7 +117,7 @@ public class ScheduleDAO {
 		
 		return pl;
 	}
-	//SQL_SELECT_THEATER_INSERT
+	
 	// 2-1-3 상영관번호
 	public List<TheaterVO> selectTheaterInsertSchedule(int place_num){
 		List<TheaterVO> theaterlist = new ArrayList<>();
@@ -137,13 +137,12 @@ public class ScheduleDAO {
 		return theaterlist;
 	}
 	private TheaterVO maketheaterlist(ResultSet rs) throws SQLException {
-		TheaterVO t = new TheaterVO();
-		t.setPlace_num(rs.getInt("PLACE_NUM"));
-		t.setTheater_num(rs.getString("THEATER_NUM"));
-		
-		return t;
+		TheaterVO theater = new TheaterVO();
+		theater.setPlace_num(rs.getInt("PLACE_NUM"));
+		theater.setTheater_num(rs.getString("THEATER_NUM"));
+		return theater;
 	}
-	//SQL_SELECT_OPENINGDATE_INSERT
+
 	// 2-1-4 개봉날짜
 	public ShowVO selectOpeningdateInsertSchedule(String show_code) {
 		ShowVO show = null;
@@ -162,6 +161,7 @@ public class ScheduleDAO {
 		}
 		return show;
 	}
+	
 	// 2-2. 스케줄 추가
 	public int insertSchedule(ScheduleVO sc) {
 		int result = 0;

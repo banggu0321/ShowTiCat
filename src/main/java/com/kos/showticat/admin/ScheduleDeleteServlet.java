@@ -20,8 +20,10 @@ public class ScheduleDeleteServlet extends HttpServlet {
 
 		ScheduleService service = new ScheduleService();
 		int result = service.deleteSchedule(schedule_num);
-		request.setAttribute("message", result > 0 ? "삭제성공" : "삭제실패");
-
-		response.sendRedirect("schedule.do");
+		if(result >0) {
+			response.sendRedirect("schedule.do");
+		}else {
+			return ;
+		}
 	}
 }

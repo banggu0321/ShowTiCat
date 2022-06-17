@@ -19,7 +19,9 @@ import com.kos.showticat.VO.MemberVO;
 /**
  * Servlet Filter implementation class AdminFilter
  */
-@WebFilter({ "/bang/schedule.do", "/bang/scheduleInsert.do", "/bang/scheduleInsertTheater.do", "/bang/scheduleDeleteCheck.do", "/bang/scheduleDelete.do", "/bang/show.do", "/bang/showInsert.do", "/bang/showUpdate.do", "/bang/showDeleteCheck.do", "/bang/showDelete.do" })
+@WebFilter({ "/bang/schedule.do", "/bang/scheduleInsert.do", "/bang/scheduleInsertTheater.do", 
+			"/bang/scheduleDeleteCheck.do", "/bang/scheduleDelete.do", "/bang/show.do", 
+			"/bang/showInsert.do", "/bang/showUpdate.do", "/bang/showDeleteCheck.do", "/bang/showDelete.do" })
 public class AdminFilter implements Filter {
 
     /**

@@ -69,42 +69,39 @@
 	</div>
 	<script>
 		$(function() {
-			$(".btnDel").on(
-					"click",
-					function() {
-						var schedule_num = $(this).attr("data-schedulenum");
-						if (confirm(schedule_num + " 삭제?")) {
-							$.ajax({
-								url : "scheduleDeleteCheck.do",
-								data : {
-									"schedule_num" : schedule_num
-								},
-								type : "get",
-								success : function(responseData) {
-									if (responseData == 0) {
-										$.ajax({
-											url : "scheduleDelete.do",
-											data : {
-												"schedule_num" : schedule_num
-											},
-											type : "get",
-											success : function() {
-												alert("[" + schedule_num + "]"
-														+ "삭제되었습니다.");
-												location.reload();
-											},
-											fail : {}
-										});
-									} else {
-										alert("삭제불가");
-									}
-								},
-								fail : function() {
-									alert("fail");
-								}
-							});//location.href = "showDeleteCheck.do?show_code=" + show_code;
-						}//location.href = "showDelete.do?show_code=" + show_code;
-					});
+			$(".btnDel").on("click",function() {
+				var schedule_num = $(this).attr("data-schedulenum");
+				if (confirm("[" + schedule_num + "] 삭제?")) {
+					$.ajax({
+						url : "scheduleDeleteCheck.do",
+						data : {
+							"schedule_num" : schedule_num
+						},
+						type : "get",
+						success : function(responseData) {
+							if (responseData == 0) {
+								$.ajax({
+									url : "scheduleDelete.do",
+									data : {
+										"schedule_num" : schedule_num
+									},
+									type : "get",
+									success : function() {
+										alert("[" + schedule_num + "]" + "삭제되었습니다.");
+										location.reload();
+									},
+									fail : {}
+								});
+							} else {
+								alert("삭제불가[예매기록있음]");
+							}
+						},
+						fail : function() {
+							alert("fail");
+						}
+					});//location.href = "showDeleteCheck.do?show_code=" + show_code;
+				}//location.href = "showDelete.do?show_code=" + show_code;
+			});
 			
 		});
 	</script>

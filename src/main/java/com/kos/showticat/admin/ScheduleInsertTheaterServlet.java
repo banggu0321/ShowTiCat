@@ -21,9 +21,7 @@ public class ScheduleInsertTheaterServlet extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		//System.out.println(request.getParameter("place_num").getClass().getName());
 		int place_num = Integer.parseInt(request.getParameter("place_num"));
-		//System.out.println(show_code);
 		
 		ScheduleService sService = new ScheduleService();
 		List<TheaterVO> tlist = sService.selectTheaterInsertSchedule(place_num);
