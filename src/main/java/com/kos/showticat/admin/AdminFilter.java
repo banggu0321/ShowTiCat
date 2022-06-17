@@ -19,21 +19,21 @@ import com.kos.showticat.VO.MemberVO;
 /**
  * Servlet Filter implementation class AdminFilter
  */
-@WebFilter({ "/bang/schedule.do", "/bang/scheduleInsert.do", "/bang/scheduleInsertTheater.do", "/bang/scheduleDeleteCheck.do", "/bang/scheduleDelete.do", "/bang/show.do", "/bang/showInsert.do", "/bang/showUpdate.do", "/bang/showDeleteCheck.do", "/bang/showDelete.do" })
+@WebFilter({ "/bang/schedule.do", "/bang/scheduleInsert.do", "/bang/scheduleInsertTheater.do", 
+			"/bang/scheduleDeleteCheck.do", "/bang/scheduleDelete.do", "/bang/show.do", 
+			"/bang/showInsert.do", "/bang/showUpdate.do", "/bang/showDeleteCheck.do", "/bang/showDelete.do" })
 public class AdminFilter implements Filter {
 
     /**
      * Default constructor. 
      */
     public AdminFilter() {
-        // TODO Auto-generated constructor stub
     }
 
 	/**
 	 * @see Filter#destroy()
 	 */
 	public void destroy() {
-		// TODO Auto-generated method stub
 	}
 
 	/**
@@ -44,40 +44,32 @@ public class AdminFilter implements Filter {
 		HttpServletResponse hresponse =(HttpServletResponse) response;
 		HttpSession session = hrequest.getSession(false);
 		MemberVO member = (MemberVO)session.getAttribute("member");
-		String path = hrequest.getContextPath();
+		String path = hrequest.getContextPath()+"/";
+		System.out.println(path);
 		
 		if(member==null) {
-			/*response.setContentType("text/html; charset=UTF-8");
+			hresponse.setContentType("text/html; charset=UTF-8");
 			PrintWriter writer = response.getWriter();
-			writer.println("<script>alert('관리자 페이지 접근이 불가능합니다');  location.href="+path+";</script>");
+			writer.println("<script>alert('관리자 페이지 접근이 불가능합니다');  location.href=\""+path+"\";</script>");
 			writer.close();
-			*/
-			hresponse.sendRedirect(path);
 			
 		}else {
 			if(member.getM_id().equals("admin")) {
 				chain.doFilter(request, response);
 			}
 			else {
-				/*response.setContentType("text/html; charset=UTF-8");
+				hresponse.setContentType("text/html; charset=UTF-8");
 				PrintWriter writer = response.getWriter();
-				writer.println("<script>alert('관리자 페이지 접근이 불가능합니다');  location.href="+path+";</script>");
+				writer.println("<script>alert('관리자 페이지 접근이 불가능합니다');  location.href=\""+path+"\";</script>");
 				writer.close();
-				*/
-				hresponse.sendRedirect(path);
 			}
 		}
-		
-		//HttpSession session = ((Object) request).getSession(false);
-		// pass the request along the filter chain
-		
 	}
 
 	/**
 	 * @see Filter#init(FilterConfig)
 	 */
 	public void init(FilterConfig fConfig) throws ServletException {
-		// TODO Auto-generated method stub
 	}
 
 }

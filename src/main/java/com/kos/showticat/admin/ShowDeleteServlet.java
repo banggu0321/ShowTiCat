@@ -20,8 +20,10 @@ public class ShowDeleteServlet extends HttpServlet {
 
 		ShowService service = new ShowService();
 		int result = service.deleteShow(show_code);
-		request.setAttribute("message", result > 0 ? "삭제성공" : "삭제실패");
-
-		response.sendRedirect("show.do");
+		if(result > 0) {
+			response.sendRedirect("show.do");
+		}else {
+			return ;
+		}
 	}
 }

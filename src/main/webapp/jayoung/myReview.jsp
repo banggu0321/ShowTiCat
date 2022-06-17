@@ -72,6 +72,10 @@ function updateReview() {
 	white-space : nowrap;
 	text-overflow: ellipsis;
 }
+.myReview a {
+	color: red;
+	font-weight: bold;
+}
 </style>
 </head>
 <body>

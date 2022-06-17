@@ -12,12 +12,8 @@ import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.Part;
 
-import com.oreilly.servlet.MultipartRequest;
-import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
-
 public class UploadFileHelper {
-	//�̹������� �̸�
-	//�Ķ���͵�
+
 	//{"photo":["aa.png","bb.png"], "params" : {"param1":"aa","param2":bb","param3":"cc"}}
 	
 	public static Map<String,Object> uploadFile(String UPLOAD_DIR, HttpServletRequest multi) {		

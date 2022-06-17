@@ -34,7 +34,6 @@ public class ScheduleService {
 		return scheduleDAO.selectTheaterInsertSchedule(place_num);
 	}
 
-	// SQL_SELECT_OPENINGDATE_INSERT
 	// 2-1-4 개봉날짜
 	public ShowVO selectOpeningdateInsertSchedule(String show_code) {
 		return scheduleDAO.selectOpeningdateInsertSchedule(show_code);

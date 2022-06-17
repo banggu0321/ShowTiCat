@@ -5,12 +5,12 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<link rel="stylesheet" href="../css/header.css">
+<c:set var="path" value="${pageContext.request.contextPath}"/>
+<link rel="stylesheet" href="${path}/css/header.css">
 
 </head>
 
 <body>
-<c:set var="path" value="${pageContext.request.contextPath}"/>
     <div class="header">
         <!-- 헤더 컨텐츠 -->
         <div class="headerContents">

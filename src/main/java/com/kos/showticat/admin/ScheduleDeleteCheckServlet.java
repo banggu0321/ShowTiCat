@@ -18,15 +18,9 @@ public class ScheduleDeleteCheckServlet extends HttpServlet {
         if(schedule_num==null)  return ;
         int i_schedule_num = Integer.parseInt(schedule_num);
 		
-        /*
-		if(show_code==null) return ;
-        System.out.println("show_code:" + show_code);
-        //DB에 직원id가 존재하는지 체크한다. ???empService->empDAO-->DB  
-        */
 		ScheduleService service = new ScheduleService();
         int result = service.selectBuySchedule(i_schedule_num);
         PrintWriter out = response.getWriter();
-        out.print(result);//0이면 삭제가능 1이상 삭제불가 
-        
+        out.print(result);//0 -> 삭제가능, 1이상 -> 삭제불가    
 	}
 }

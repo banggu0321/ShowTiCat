@@ -72,7 +72,7 @@ public class ConfirmDAO {
 		conn = DBUtil.getConnection();
 		try {
 			pst = conn.prepareStatement(SQL_SELECT_ALL_RESERVATION);
-			pst.setString(1, m_id); // 첫번째 ?에 부서번호를 넣는다.
+			pst.setString(1, m_id); 
 			rs = pst.executeQuery();
 			while (rs.next()) {
 				ConfirmVO res = makesAlllist(rs);
@@ -92,7 +92,7 @@ public class ConfirmDAO {
 		conn = DBUtil.getConnection();
 		try {
 			pst = conn.prepareStatement(SQL_SELECT_DETAIL_RESERVATION);
-			pst.setInt(1, reservation_num); // 첫번째 ?에 부서번호를 넣는다.
+			pst.setInt(1, reservation_num); 
 			rs = pst.executeQuery();
 			while (rs.next()) {
 				resevationdetaillist = makesAlllist(rs);
@@ -176,24 +176,6 @@ public class ConfirmDAO {
 			c.setCancel_yn(null);
 			c.setReview(null);
 		}
-		/*
-		if (rs.getString("PAY_YN").equals("Y")) {
-			c.setPay_yn(rs.getString("PAY_YN"));
-			//System.out.println("y");
-		}else {
-			c.setPay_yn("예매취소");
-			//System.out.println("n");
-		}
-		if(rs.getDate("SHOW_START").before(date)){ //이전 공연
-			c.setCancel_yn(null); //Cancel불가
-		}else {
-			c.setCancel_yn("YY"); //CancelY가능
-		}
-		if(rs.getDate("SHOW_START").after(date)) { //이후 공연
-			c.setReview("YY");//리뷰가능
-		}else {
-			c.setReview(null); //리뷰불가능
-		}*/
 		//System.out.println(c.getPay_yn());
 		//System.out.println(c.getDetail());
 		//System.out.println(c.getCancel_yn());
@@ -218,7 +200,7 @@ public class ConfirmDAO {
 		conn = DBUtil.getConnection();
 		try {
 			pst = conn.prepareStatement(SQL_SELECT_SEATNUM_RESERVATION);
-			pst.setInt(1, reservation_num); // 첫번째 ?에 부서번호를 넣는다.
+			pst.setInt(1, reservation_num); 
 			rs = pst.executeQuery();
 			while (rs.next()) {
 				ReservDetailVO res = makesSeatlist(rs);
