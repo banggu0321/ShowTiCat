@@ -15,6 +15,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import com.kos.showticat.VO.MemberVO;
+import com.kos.showticat.reservation.dao.temp.ScheduleJoinPlaceVO;
 import com.kos.showticat.reservation.dao.temp.ScheduleService;
 import com.kos.showticat.reservation.dao.temp.ScheduleVO;
 
@@ -53,11 +54,15 @@ public class reservationFromShowList extends HttpServlet {
 //		System.out.println("create schedule: scheduleNum("+scheduleNum+")");
 
 
-		//sample 2: showCode -> relative schedule(user schedule 제외 ) 		List<ScheduleVO> sResult = new ArrayList<>();
-		List<ScheduleVO> sList = new ArrayList<>();
-		sList = service.selectScheduleByShowcode(showCode);
-		//		System.out.println(sList.size());
-		request.setAttribute("ScheduleList", sList);
+		//sample 2: showCode -> schedule
+//		List<ScheduleVO> sList = new ArrayList<>();
+//		sList = service.selectScheduleByShowcode(showCode);
+//		//		System.out.println(sList.size());
+//		request.setAttribute("ScheduleList", sList);
+				
+		List<ScheduleJoinPlaceVO> spList = new ArrayList<>();
+		spList = service.selectScheduleInfoByJoinPlace(showCode);
+		request.setAttribute("ScheduleListAddPlace", spList);
 
 		//위임
 		RequestDispatcher rd = request.getRequestDispatcher("/reservationFromSListUSchedule");	

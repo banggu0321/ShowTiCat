@@ -1,6 +1,8 @@
 package com.kos.showticat.cansu;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -42,6 +44,26 @@ public class reservationFromShowLTBeta extends HttpServlet {
 		//		System.out.println(scheduleNum);
 		//		
 //		service.updateScheduleByScheduleNum(theaterNum, placeNum, showStart, scheduleNum);
+		
+		//selected showcode.schedule.seat 
+		List<Integer> iList = new ArrayList<>();
+		iList = service.selectReservationByJoinSchedule(scheduleNum, shoCode);
+//		System.out.println(iList);
+		
+		List<String> temp = new ArrayList<>();
+		List<String> seatList = new ArrayList<>();
+		for(Integer arr: iList) {
+			temp = service.selectReservationDetailByNumber(arr);
+//			System.out.println(temp);
+			
+			for(String seatTemp: temp) {
+				seatList.add(seatTemp);
+			}
+		}
+		
+		System.out.println("selected seat number: "+seatList);
+		request.setAttribute("seatList", seatList);
+		
 
 		RequestDispatcher rd = request.getRequestDispatcher("cansu/seatTemp.jsp");
 		rd.forward(request, response);

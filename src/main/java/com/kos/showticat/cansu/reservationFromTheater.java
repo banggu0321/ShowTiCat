@@ -3,7 +3,9 @@ package com.kos.showticat.cansu;
 import java.io.IOException;
 import java.sql.Date;
 import java.sql.Timestamp;
+import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.List;
 import java.util.Random;
 
 import javax.servlet.RequestDispatcher;
@@ -46,16 +48,27 @@ public class reservationFromTheater extends HttpServlet {
 		ScheduleVO svoTemp = new ScheduleVO();
 		String showCode = service.selectScheduleByScheduleNum(scheduleNumFromTheater);
 		session.setAttribute("showCode", showCode);
+		System.out.println("schedule number: "+scheduleNumFromTheater);
 		
-//		svoTemp = service.selectScheduleByScheduleNumBeta(scheduleNumFromTheater);
-		//session-user
-//		int scheduleNum = createScheduleNumber(); 
-//		session.setAttribute("scheduleNumber", scheduleNum);
-//		System.out.println("scheduleNum:"+scheduleNum);
+		//selected showcode.schedule.seat 
+		List<Integer> iList = new ArrayList<>();
+		iList = service.selectReservationByJoinSchedule(scheduleNumFromTheater, showCode);
+//		System.out.println(iList);
 		
-//		service.insertScheduleInfor(scheduleNum, m_id, svoTemp.getTheaterNum(), svoTemp.getPlaceNum(), svoTemp.getShowStart());
-//		service.insertScheduleInforNum(scheduleNum, svoTemp.getShowCode());
-//		service.updateScheduleByScheduleNum(svoTemp.getTheaterNum(), svoTemp.getPlaceNum(), svoTemp.getShowStart(), scheduleNum);		
+		List<String> temp = new ArrayList<>();
+		List<String> seatList = new ArrayList<>();
+		for(Integer arr: iList) {
+			temp = service.selectReservationDetailByNumber(arr);
+//			System.out.println(temp);
+			
+			for(String seatTemp: temp) {
+				seatList.add(seatTemp);
+			}
+		}
+		
+		System.out.println("selected seat number: "+seatList);
+		request.setAttribute("seatList", seatList);
+		System.out.println(seatList);
 		
 		//create reservation number
 		int reservationNumBeta = createScheduleNumber();

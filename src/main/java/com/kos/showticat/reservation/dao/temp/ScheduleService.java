@@ -12,6 +12,20 @@ public class ScheduleService {
 
 	ScheduleDAO scdao = new ScheduleDAO();
 	
+	public List<ScheduleJoinPlaceVO> selectScheduleInfoByJoinPlace(String showCode){
+		return scdao.selectScheduleInfoByJoinPlace(showCode);
+	}
+
+	
+	public List<String> selectReservationDetailByNumber(int reservationNum) {
+		return scdao.selectReservationDetailByNumber(reservationNum);
+	}
+	
+	public List<Integer> selectReservationByJoinSchedule(int scheduleNum, String showCode) {
+		return scdao.selectReservationByJoinSchedule(scheduleNum, showCode);
+	}
+
+	
 	public List<ReservationVO> selectReservationByID(String mID) {
 		return scdao.selectReservationByID(mID);
 	}
