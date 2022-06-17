@@ -9,11 +9,11 @@
 </head>
 <body>
 	<div class=mySide>
+<!-- 
 		<div class="favorite">
 			<a href="../jayoung/interestPlace.do">관심매장</a>
 		</div>
-		<!-- favorite -->
-
+ -->
 		<div class="reservation">
 			<a href="../mypage/confirm.do">예매</a>
 		</div>

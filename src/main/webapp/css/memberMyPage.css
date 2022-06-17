@@ -1,10 +1,10 @@
 @charset "UTF-8";
 
-
+/* 
 body * {
 	outline : 2px solid tomato;
 }
-
+ */
 #cont {
 	height : 100%;
 }
@@ -28,7 +28,7 @@ body * {
 }
 
 .helloText {
-	width: 50%;
+	width: 55%;
 	border-right: 1px solid #eee;
 	
 }
