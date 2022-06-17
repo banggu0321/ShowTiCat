@@ -140,9 +140,9 @@
 		<jsp:include page="../jaeyong/mySide.jsp"/>
 			<div>
 				<div id="listTitle">
-					<h1>예매목록</h1>
+					<h2>MY RESERVATION</h2>
 				</div>
-				<div id >
+				<div>
 					<p>- 예매 취소의 경우 영화는 상영시간 기준 30분 전 까지, 공연은 하루 전 까지만 가능합니다. </p>
 					<p>- 리뷰는 관람일 다음날 부터 작성 가능합니다. </p>
 				</div>

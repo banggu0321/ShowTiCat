@@ -16,29 +16,17 @@ import javax.servlet.http.HttpSession;
 
 import com.kos.showticat.VO.MemberVO;
 
-/**
- * Servlet Filter implementation class AdminFilter
- */
 @WebFilter({ "/bang/schedule.do", "/bang/scheduleInsert.do", "/bang/scheduleInsertTheater.do", 
 			"/bang/scheduleDeleteCheck.do", "/bang/scheduleDelete.do", "/bang/show.do", 
 			"/bang/showInsert.do", "/bang/showUpdate.do", "/bang/showDeleteCheck.do", "/bang/showDelete.do" })
 public class AdminFilter implements Filter {
 
-    /**
-     * Default constructor. 
-     */
     public AdminFilter() {
     }
 
-	/**
-	 * @see Filter#destroy()
-	 */
 	public void destroy() {
 	}
 
-	/**
-	 * @see Filter#doFilter(ServletRequest, ServletResponse, FilterChain)
-	 */
 	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
 		HttpServletRequest hrequest = (HttpServletRequest) request;
 		HttpServletResponse hresponse =(HttpServletResponse) response;
@@ -66,10 +54,6 @@ public class AdminFilter implements Filter {
 		}
 	}
 
-	/**
-	 * @see Filter#init(FilterConfig)
-	 */
 	public void init(FilterConfig fConfig) throws ServletException {
 	}
-
 }

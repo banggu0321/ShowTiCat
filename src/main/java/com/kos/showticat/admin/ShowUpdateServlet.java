@@ -17,9 +17,6 @@ import com.kos.showticat.admin.vo.ShowVO;
 import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 
-/**
- * Servlet implementation class ShowUpdateServlet
- */
 @WebServlet("/bang/showUpdate.do")
 public class ShowUpdateServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
