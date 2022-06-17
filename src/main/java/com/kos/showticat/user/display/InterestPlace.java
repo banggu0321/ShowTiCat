@@ -31,7 +31,10 @@ public class InterestPlace extends HttpServlet {
 		
 		session.setAttribute("member", service.selectID(member.getM_id(), member.getM_pw()));
 		
-		RequestDispatcher rd = request.getRequestDispatcher("../jaeyong/memberMyPage.do");
-		rd.forward(request, response);
+		response.setContentType("text/html; charset=UTF-8");
+		PrintWriter writer = response.getWriter();
+		writer.println("<script>alert('관심매장이 등록되었습니다.');  location.href='../jaeyong/memberMyPage.do';</script>");
+		writer.close();
+
 	}
 }

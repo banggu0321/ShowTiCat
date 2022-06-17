@@ -16,7 +16,7 @@ public class MemberDAO {
 	static final String SQL_FIND_PW = "select * from members where m_id=? and m_name=? and phone=?";
 	static final String SQL_SELECT_ID = "select count(*) from members where m_id=?";
 	static final String SQL_SELECT_PHONE = "select count(*) from members where phone=?";
-	static final String SQL_INSERT = "insert into members values(?,?,?,?,?,?,?,sysdate,0,null)";
+	static final String SQL_INSERT = "insert into members values(?,?,?,?,?,?,?,current_timestamp,0,null)";
 	static final String SQL_UPDATE_PW = "update members set m_pw = ? where m_id = ?";
 	static final String SQL_UPDATE_PLACE = "update members set place_num = ? where m_id = ?";
 	static final String SQL_DELTE_PLACE = "update members set place_num = null where m_id = ?";
