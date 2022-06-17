@@ -38,27 +38,28 @@
 					<p></p>
 				</div><!-- helloTextBox1 -->
 				
-				<div class="helloTextBox2">
-	
+				<div class="helloTextBox2">	
 					<p>Welcome!! 어서오세요!!</p>
 					<p>즐거운 하루 되세요!!</p>
 				</div><!-- helloTextBox2 -->
+				
 			</div><!-- helloText -->
 		</div><!-- helloBox -->
+		
 		<div class="myInfo">
-		
-			<div class="myPlace">
-				<h2>M Y P L A C E</h2>
-				<span>${place.place_name}</span>
-			</div><!-- myPlace -->                
-			         			
-			<div class="myPoint">
-				<h2>M Y P O I N T</h2>
-				<span>${member.point}</span>
-			</div><!-- myPoint -->		
-		
+				<div class="myPlace">
+					<h2>M Y P L A C E</h2>
+					<span>
+
+					</span>
+
+				</div><!-- myPlace -->
+
+				<div class="myPoint">
+					<h2>M Y P O I N T</h2>
+					<span>${member.point}</span>
+				</div><!-- myPoint -->		
 		</div><!-- myInfo -->
-		
 		</div><!-- cont -->
 	</div><!-- contents -->
 </body>
