@@ -41,7 +41,7 @@
 				<div class="helloTextBox2">
 	
 					<p>Welcome!! 어서오세요!!</p>
-					<p>또 오셨네요??</p>
+					<p>즐거운 하루 되세요!!</p>
 				</div><!-- helloTextBox2 -->
 			</div><!-- helloText -->
 		</div><!-- helloBox -->
@@ -49,11 +49,9 @@
 		
 			<div class="myPlace">
 				<h2>M Y P L A C E</h2>
-				<span>${member.place_num}</span>
-<%-- <h2>${member.gender=="W"?"":""}></h2> --%>
-				
-			</div><!-- myPlace -->
-			
+				<span>${place.place_name}</span>
+			</div><!-- myPlace -->                
+			         			
 			<div class="myPoint">
 				<h2>M Y P O I N T</h2>
 				<span>${member.point}</span>
