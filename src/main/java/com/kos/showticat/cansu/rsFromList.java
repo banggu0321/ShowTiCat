@@ -13,11 +13,11 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import com.kos.showticat.VO.MemberVO;
-import com.kos.showticat.reservation.dao.temp.ReservationVO;
-import com.kos.showticat.reservation.dao.temp.ScheduleService;
+import com.kos.showticat.cansu.dao.ReservationVO;
+import com.kos.showticat.cansu.ScheduleService;
 
 @WebServlet("/reservationFromList")
-public class reservationFromList extends HttpServlet {
+public class rsFromList extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
 

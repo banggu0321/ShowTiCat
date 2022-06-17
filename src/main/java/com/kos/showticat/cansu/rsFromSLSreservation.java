@@ -16,10 +16,10 @@ import javax.servlet.http.HttpSession;
 import javax.websocket.Session;
 
 import com.kos.showticat.VO.MemberVO;
-import com.kos.showticat.reservation.dao.temp.ScheduleService;
+import com.kos.showticat.cansu.ScheduleService;
 
 @WebServlet("/seatSampleServlet")
-public class seatSampleServlet extends HttpServlet {
+public class rsFromSLSreservation extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 

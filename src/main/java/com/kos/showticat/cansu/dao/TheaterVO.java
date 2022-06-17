@@ -1,4 +1,4 @@
-package com.kos.showticat.reservation.dao.temp;
+package com.kos.showticat.cansu.dao;
 
 public class TheaterVO {
 	private String theater_num, theater_type;

@@ -1,4 +1,4 @@
-package com.kos.showticat.reservation.controller;
+package com.kos.showticat.cansu.dao;
 
 import java.sql.Date;
 import java.sql.Timestamp;
@@ -9,14 +9,14 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 
-import com.kos.showticat.reservation.dao.temp.ScheduleService;
-import com.kos.showticat.reservation.dao.temp.ChartVO;
-import com.kos.showticat.reservation.dao.temp.MembersVO;
-import com.kos.showticat.reservation.dao.temp.PlaceVO;
-import com.kos.showticat.reservation.dao.temp.ReservationVO;
-import com.kos.showticat.reservation.dao.temp.ScheduleJoinPlaceVO;
-import com.kos.showticat.reservation.dao.temp.ScheduleVO;
-import com.kos.showticat.reservation.dao.temp.TheaterVO;
+import com.kos.showticat.cansu.ScheduleService;
+import com.kos.showticat.cansu.dao.ChartVO;
+import com.kos.showticat.cansu.dao.MembersVO;
+import com.kos.showticat.cansu.dao.PlaceVO;
+import com.kos.showticat.cansu.dao.ReservationVO;
+import com.kos.showticat.cansu.dao.ScheduleJoinPlaceVO;
+import com.kos.showticat.cansu.dao.ScheduleVO;
+import com.kos.showticat.cansu.dao.TheaterVO;
 
 //import oracle.sql.CHAR;
 
