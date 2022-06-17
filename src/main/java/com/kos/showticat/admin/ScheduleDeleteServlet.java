@@ -17,7 +17,6 @@ public class ScheduleDeleteServlet extends HttpServlet {
        
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		int schedule_num = Integer.parseInt(request.getParameter("schedule_num"));
-
 		ScheduleService service = new ScheduleService();
 		int result = service.deleteSchedule(schedule_num);
 		if(result >0) {

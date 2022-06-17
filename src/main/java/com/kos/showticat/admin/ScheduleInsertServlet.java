@@ -61,7 +61,7 @@ public class ScheduleInsertServlet extends HttpServlet {
 	}
 	private Date readDate(HttpServletRequest request, String column) {
 		String data = request.getParameter(column);
-		return com.kos.showticat.util.DateUtil.convertToDateTime(data);
+		return com.kos.showticat.util.DateUtil.convertToDateTime(data); //localdate=>date로 
 	}
 	private int readInt(HttpServletRequest request, String column) {
 		String data = request.getParameter(column);

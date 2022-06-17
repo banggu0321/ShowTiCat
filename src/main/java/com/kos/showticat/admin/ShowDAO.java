@@ -33,7 +33,6 @@ public class ShowDAO {
 	static final String SQL_SELECT_SCHEDULE_DELETE_SHOW ="SELECT COUNT(SCHEDULE_NUM) FROM SCHEDULE WHERE SHOW_CODE = ?";	
 	static final String SQL_DELETE_SHOW ="DELETE FROM show WHERE show_code =? ";
 	
-	
 	// 1. 모든 공연 조회
 	public List<ShowVO> selectAllShow() {
 		List<ShowVO> showlist = new ArrayList<>();
@@ -94,7 +93,7 @@ public class ShowDAO {
 		conn = DBUtil.getConnection();
 		try {
 			pst = conn.prepareStatement(SQL_SELECT_BYSHOW);
-			pst.setString(1, show_code); //첫번째 ?에 부서번호를 넣는다.
+			pst.setString(1, show_code);
 			rs = pst.executeQuery();
 			while(rs.next()) {
 				show = makeSlist(rs);

@@ -24,31 +24,19 @@ public class ShowInsertServlet extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		// 화면보여주기
 		RequestDispatcher rd;
 		rd = request.getRequestDispatcher("adminShowInsert.jsp");
 		rd.forward(request, response);
 	}
 
-	// 입력된 data를 DB에 저장하기
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		request.setCharacterEncoding("utf-8");
 		String applicationPath = request.getSession().getServletContext().getRealPath(".");
-		//String applicationPathStr = applicationPath.substring(0,30);
-		
-		//int index = applicationPath.indexOf(".");
-		//System.out.println(index);
-		//String dstr  = 
-		//String tstr = applicationPath.substring(30,);
-		//System.out.println(dstr);
-		//System.out.println(tstr);
-		
-		
 		String UPLOAD_DIR = "images";
 		String location = applicationPath + File.separator + UPLOAD_DIR + File.separator;
 		//System.out.println(applicationPath);
-		System.out.println(location);
+		//System.out.println(location);
 		int maxSize = 1024 * 1024 * 5;
 		
 		MultipartRequest multi = new MultipartRequest(request, location, maxSize, "utf-8",
