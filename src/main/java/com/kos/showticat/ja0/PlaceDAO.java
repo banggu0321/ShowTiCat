@@ -14,7 +14,7 @@ import com.kos.showticat.util.DBUtil;
 public class PlaceDAO {
 	static final String SQL_SELECT_ALL ="select * from place order by 2";
 	static final String SQL_SELECT_BY_SHOW = "SELECT DISTINCT place_name, PLACE_NUM, place_loc, place_phone FROM show JOIN schedule using(show_code) "
-			+ "JOIN place USING(place_num) WHERE SHOW_CODE = ?";
+			+ "JOIN place USING(place_num) WHERE SHOW_CODE = ? and show_start >= current_timestamp order by 1";
 	static final String SQL_SELECT ="select * from place where place_num = ?";
 	static final String SQL_MYPLACE ="SELECT place_name FROM place JOIN members using(place_num) WHERE m_id = ?";
 

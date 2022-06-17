@@ -30,6 +30,9 @@
 	border-bottom: 1px solid #ddd;
 	padding: 10px 0px;
 }
+.msg {
+	text-align: center;
+}
 .left{
 	padding:0px 0px 0px 10px;
 }
@@ -46,87 +49,49 @@
 	width: 12%;
 	text-align: center;
 }
-.checkStyle {
-	padding: 10px 0px;
-	margin: 0px;
-	background-color: #007bff;
-	border-radius: 0.25rem;
-}
-.checkStyle a {
-	font-weight: bold;
-	color: white;
-}
-.checkStyle a:hover {
-	color: white;
-}
 </style>
 </head>
 <body>
 <jsp:include page="header.jsp"/>
 <div class="contents">
+	
+	
 	<ul class="left showL">
 		<li class="reserv">영화</li>
 		<c:forEach items="${showList}" var="show">
-			<c:if test="${show_code==show.show_code}">
-			<li class="checkStyle">
-			<a href="userReservation.do?show_code=${show.show_code}&place_num=1020&date=${sysdate}">
-				${show.show_name}
-			</a>
-			</li>
-			</c:if>
-			<c:if test="${show_code!=show.show_code}">
 			<li class="style">
 			<a href="userReservation.do?show_code=${show.show_code}&place_num=1020&date=${sysdate}">
 				${show.show_name}
 			</a>
 			</li>
-			</c:if>
 		</c:forEach>
 	</ul>
 	
 	<ul class="left place">
 		<li class="reserv">극장</li>
 		<c:forEach items="${placeList}" var="place" varStatus="s">
-			<c:if test="${place_num==place.place_num}">
-			<li class="checkStyle">
-				<a href="userReservation.do?show_code=${show_code}&place_num=${place.place_num}&date=${sysdate}">
-					ShowTiCat ${place.place_name}
-				</a>
-			</li>
-			</c:if>
-			<c:if test="${place_num!=place.place_num}">
 				<li class="style">
 				<a href="userReservation.do?show_code=${show_code}&place_num=${place.place_num}&date=${sysdate}">
 					ShowTiCat ${place.place_name}
 				</a>
 				</li>
-			</c:if>
 		</c:forEach>
 	 </ul>
 	 
 	<ul class="left date">
 		<li class="reserv">날짜</li>
 		<c:forEach items="${dateList}" var="date" varStatus="s">
-			<c:if test="${show_start==date}">
-			<li class="checkStyle">
-			<a href="userReservation.do?show_code=${show_code}&place_num=${place_num}&date=${date}">
-				${date}
-			</a>
-			</li>
-			</c:if>
-			<c:if test="${show_start!=date}">
 			<li class="style">
 			<a href="userReservation.do?show_code=${show_code}&place_num=${place_num}&date=${date}">
 				${date}
 			</a>
 			</li>
-			</c:if>
 		</c:forEach>
 	</ul>
 	
 	<ul class="left schedule">
 		<li class="reserv">시간</li>
-		<jsp:include page="scheduleList.jsp"/>
+		<li class="msg">영화, 극장, 날짜를 선택해주세요.</li>
 	</ul>
 
 </div>

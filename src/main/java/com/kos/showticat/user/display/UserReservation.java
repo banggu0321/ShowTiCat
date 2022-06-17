@@ -51,9 +51,9 @@ public class UserReservation extends HttpServlet {
 		
 		
 		if(show_start.equals(DateUtil.sysdate())) { 
-			request.setAttribute("list",ss.selectByIfSysdate(place_num)); 
+			request.setAttribute("list",ss.selectShowIfSysdate(place_num, show_code)); 
 		} else {
-			request.setAttribute("list",ss.selectByTheater(place_num, show_start)); 
+			request.setAttribute("list",ss.selectShow(place_num, show_start, show_code)); 
 		}
 		 
 		RequestDispatcher rd = request.getRequestDispatcher("userReservation.jsp");

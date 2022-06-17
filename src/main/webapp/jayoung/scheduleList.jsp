@@ -55,7 +55,6 @@ function reservation() {
 					
 			<c:if test="${list.get(s.index).show_name!=list.get(s.index-1).show_name}">
 				</div>
-				<hr> <%-- 영화/공연 구분 --%>
 				<p>${v.count}관 | ${theater.theater_name} | 총 ${theater.last_seat}석</p>
 				<div class="show">
 			</c:if>
