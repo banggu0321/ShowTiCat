@@ -26,19 +26,40 @@
 
 	<div class="contents">
 		<jsp:include page="/jaeyong/mySide.jsp" />
+		<div id="cont">
 		<div class="helloBox">
 		
 			<div class="userImage">
 			</div><!-- userImage -->
-		
-			<div class="helloTextBox">
-				<h1>${member.m_name}</h1><span>님</span>
-				<p></p>
-				<p>어서오세요!!!</p>
-				<p>안녕하세요???</p>
-			</div><!-- helloTextBox -->
-		
+			
+			<div class="helloText">			
+				<div class="helloTextBox1">
+					<h1>${member.m_name}</h1><span>님 </span><span> (ID:${member.m_id})</span>
+					<p></p>
+				</div><!-- helloTextBox1 -->
+				
+				<div class="helloTextBox2">
+	
+					<p>Welcome!! 어서오세요!!</p>
+					<p>즐거운 하루 되세요!!</p>
+				</div><!-- helloTextBox2 -->
+			</div><!-- helloText -->
 		</div><!-- helloBox -->
+		<div class="myInfo">
+		
+			<div class="myPlace">
+				<h2>M Y P L A C E</h2>
+				<span>${place.place_name}</span>
+			</div><!-- myPlace -->                
+			         			
+			<div class="myPoint">
+				<h2>M Y P O I N T</h2>
+				<span>${member.point}</span>
+			</div><!-- myPoint -->		
+		
+		</div><!-- myInfo -->
+		
+		</div><!-- cont -->
 	</div><!-- contents -->
 </body>
 

@@ -91,7 +91,7 @@
 		<label>
 		<input type="radio"
 			   name="gender"
-			   value="W" ${member.gender=="W"?"checked":""}>여
+			  value="W" ${member.gender=="W"?"checked":""}>여
 		</label><br>
 		<label>이메일 : </label>
 		<input type="email"
