@@ -124,6 +124,13 @@
 		});
 	});
 </script>
+<style>
+.reservation a {
+	font-weight: bold;
+	color:red;
+}
+
+</style>
 
 </head>
 <body>

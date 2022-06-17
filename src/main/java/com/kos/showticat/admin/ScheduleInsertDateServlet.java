@@ -19,18 +19,16 @@ public class ScheduleInsertDateServlet extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		// show_code
-		String show_code = request.getParameter("show_code");
 		
+		String show_code = request.getParameter("show_code");
 		ScheduleService sService = new ScheduleService();
 		ShowVO show = sService.selectOpeningdateInsertSchedule(show_code);
 		
-		//JSON 객체 만들기
-		JSONObject obj = new JSONObject(); //{}
+		JSONObject obj = new JSONObject(); 
 		obj.put("show_name", show.getShow_name());
 		obj.put("opening_date", show.getOpening_date().toString());
 		
-		String jsonStr = obj.toJSONString(); //문자로
+		String jsonStr = obj.toJSONString(); 
 
 		response.setContentType("text/html; charset=utf-8");
 		PrintWriter writer = response.getWriter();

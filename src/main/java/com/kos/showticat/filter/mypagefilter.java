@@ -1,6 +1,8 @@
 package com.kos.showticat.filter;
 
 import java.io.IOException;
+import java.io.PrintWriter;
+
 import javax.servlet.Filter;
 import javax.servlet.FilterChain;
 import javax.servlet.FilterConfig;
@@ -33,18 +35,26 @@ public class mypagefilter implements Filter {
 		HttpServletRequest hrequest = (HttpServletRequest) request;
 		HttpServletResponse hresponse = (HttpServletResponse) response;
 		HttpSession session = hrequest.getSession(false);
-		String path = hrequest.getContextPath();
+		String path = hrequest.getContextPath() + "/jayoung/login.do";
+		System.out.println(path);
 
 		if (session != null) {
 			MemberVO member = (MemberVO) session.getAttribute("member");
 			
 			if (member == null) {
-				hresponse.sendRedirect(path + "/jayoung/login.do");
+				hresponse.setContentType("text/html; charset=UTF-8");
+				PrintWriter writer = response.getWriter();
+				writer.println("<script>alert('로그인 후 이용 가능합니다.');  location.href= \""+path+"\";</script>");
+				writer.close();
+				
 			} else {
 				chain.doFilter(request, response);
 			}
 		}else {
-			hresponse.sendRedirect(path + "/jayoung/login.do");
+			hresponse.setContentType("text/html; charset=UTF-8");
+			PrintWriter writer = response.getWriter();
+			writer.println("<script>alert('로그인 후 이용 가능합니다.');  location.href=\"+path+\";</script>");
+			writer.close();
 		}
 	}
 

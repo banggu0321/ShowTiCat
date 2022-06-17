@@ -17,11 +17,12 @@ public class ScheduleDeleteServlet extends HttpServlet {
        
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		int schedule_num = Integer.parseInt(request.getParameter("schedule_num"));
-
 		ScheduleService service = new ScheduleService();
 		int result = service.deleteSchedule(schedule_num);
-		request.setAttribute("message", result > 0 ? "삭제성공" : "삭제실패");
-
-		response.sendRedirect("schedule.do");
+		if(result >0) {
+			response.sendRedirect("schedule.do");
+		}else {
+			return ;
+		}
 	}
 }
