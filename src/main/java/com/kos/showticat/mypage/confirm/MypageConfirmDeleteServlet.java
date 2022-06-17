@@ -23,10 +23,8 @@ public class MypageConfirmDeleteServlet extends HttpServlet {
 		ConfirmService service = new ConfirmService();
 		int result1 = service.updateReservation(reservation_num);
 		int result2 = service.DeleteSeat(reservation_num);
-		//System.out.println("result1:" + result1); 
-		//System.out.println("result2:" + result2);
-
+		
 		PrintWriter out = response.getWriter();
-        out.print((result1 > 0) && (result2 > 0) ? 1 : 0);//1이상 삭제가능 0 삭제불가 
+        out.print((result1 > 0) && (result2 > 0) ? 1 : 0);//1이상-> 삭제가능, 0-> 삭제불가
 	}
 }

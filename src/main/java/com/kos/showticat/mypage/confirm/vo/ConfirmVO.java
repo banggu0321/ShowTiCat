@@ -21,9 +21,9 @@ public class ConfirmVO {
 	private String payment;
 	private int total_price;
 	private String pay_yn;
-	private String detail;
-	private String cancel_yn;//이미 취소된 좌석
-	private String review; //
+	private String detail; //detail button
+	private String cancel_yn;//cancel button
+	private String review; //review button
 	
 	public ConfirmVO() {}
 
@@ -228,6 +228,4 @@ public class ConfirmVO {
 				.append(detail).append(", cancel_yn=").append(cancel_yn).append(", review=").append(review).append("]");
 		return builder.toString();
 	}
-	
-	
 }

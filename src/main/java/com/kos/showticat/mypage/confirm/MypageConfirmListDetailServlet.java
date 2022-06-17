@@ -20,7 +20,6 @@ public class MypageConfirmListDetailServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		int reservation_num = Integer.parseInt(request.getParameter("reservation_num"));
-		//System.out.println(reservation_num);
 		
 		ConfirmService service = new ConfirmService();
 		ConfirmVO detail = service.selectDetailReservation(reservation_num);

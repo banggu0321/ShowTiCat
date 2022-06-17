@@ -35,24 +35,6 @@ public class ConfirmDAO {
 			+ "							JOIN THEATER t ON (t.THEATER_NUM=sc.THEATER_NUM) "
 			+ "							JOIN PLACE p ON (p.PLACE_NUM=sc.PLACE_NUM) "
 			+ "							JOIN SHOW s ON (s.SHOW_CODE=sc.SHOW_CODE) " + " WHERE r.RESERVATION_NUM = ? ";
-	/*
-	 * static final String SQL_SELECT_PAY_Y_RESERVATION = "" +
-	 * " SELECT * FROM RESERVATION r JOIN SCHEDULE sc ON (r.SCHEDULE_NUM = sc.SCHEDULE_NUM ) "
-	 * +
-	 * "							JOIN THEATER t ON (t.THEATER_NUM=sc.THEATER_NUM) "
-	 * + "							JOIN PLACE p ON (p.PLACE_NUM=sc.PLACE_NUM) " +
-	 * "							JOIN SHOW s ON (s.SHOW_CODE=sc.SHOW_CODE) " +
-	 * " WHERE r.M_ID = ? " + " AND r.PAY_YN = 'Y' " +
-	 * " ORDER BY r.RESERVATION_NUM "; static final String
-	 * SQL_SELECT_PAY_N_RESERVATION = "" +
-	 * " SELECT * FROM RESERVATION r JOIN SCHEDULE sc ON (r.SCHEDULE_NUM = sc.SCHEDULE_NUM ) "
-	 * +
-	 * "							JOIN THEATER t ON (t.THEATER_NUM=sc.THEATER_NUM) "
-	 * + "							JOIN PLACE p ON (p.PLACE_NUM=sc.PLACE_NUM) " +
-	 * "							JOIN SHOW s ON (s.SHOW_CODE=sc.SHOW_CODE) " +
-	 * " WHERE r.M_ID = ? " + " AND r.PAY_YN = 'N'" +
-	 * " ORDER BY r.RESERVATION_NUM ";
-	 */
 	static final String SQL_SELECT_SEATNUM_RESERVATION = ""
 			+ " SELECT * FROM RESERVATION r JOIN RESERV_DETAIL rd ON (r.RESERVATION_NUM=rd.RESERVATION_NUM) "
 			+ " WHERE r.RESERVATION_NUM = ? ";
@@ -123,37 +105,26 @@ public class ConfirmDAO {
 		c.setTheater_type(rs.getString("THEATER_TYPE"));
 		c.setPayment(rs.getString("PAYMENT"));
 		c.setTotal_price(rs.getInt("TOTAL_PRICE"));
-		//System.out.println("예매내역"+rs.getString("PAY_YN"));
-		//System.out.println("---");
-		//c.setPay_yn(rs.getString("PAY_YN"));
-		//상태 	1) Y && 날짜가 오늘보다 이후 	-> 예매완료 -> 상세 삭제
-		//	  	2) Y && 날짜가 오늘보다 이전 	-> 관람완료 -> 상세 리뷰
-		//	 	3) N  				   	-> 예매취소 -> 상세
 		
-		//1) Y && 날짜가 오늘보다 이후 	-> 예매완료 -> 상세 삭제
-		//2) Y && 날짜가 오늘보다 이전 	-> 관람완료 -> 상세 리뷰
+		//1) Y && 날짜가 오늘보다 이전 	-> 관람완료 -> 상세 리뷰
+		//2) Y && 날짜가 오늘보다 이후 	-> 예매완료 -> 상세 삭제
 		//3) N  				   	-> 예매취소 -> 상세
-		System.out.println(date);
-		System.out.println(time);
-		System.out.println("getdate"+rs.getDate("SHOW_START"));
-		System.out.println("gettime"+rs.getTime("SHOW_START"));
-		System.out.println(rs.getTime("SHOW_START").before(time));
-		System.out.println("날짜 같음?"+rs.getDate("SHOW_START").equals(date));
-		//System.out.println(rs.getDate("SHOW_START").before(date)&&rs.getTime("SHOW_START").before(time));
 		if(rs.getString("PAY_YN").equals("Y")) {
 			if(rs.getDate("SHOW_START").before(date)) { //이미 지난 공연
 				c.setPay_yn("관람완료"); 
 				c.setDetail("Y");
-				c.setCancel_yn(null);
+				c.setCancel_yn(null); //삭제불가능
 				c.setReview("Y"); //리뷰가능
 				System.out.println("지난공연");
 			}else if(rs.getDate("SHOW_START").after(date)){ //예정공연
 				c.setPay_yn("예매완료");
 				c.setDetail("Y");
-				c.setCancel_yn("Y");
+				c.setCancel_yn("Y"); //삭제가능
 				c.setReview(null);//리뷰불가능	
 				System.out.println("예정공연");
 			}else {	
+				//System.out.println("날짜 같음?"+rs.getDate("SHOW_START").equals(date));
+				//System.out.println(rs.getDate("SHOW_START").before(date)&&rs.getTime("SHOW_START").before(time));
 				/*//당일 공연 경우 적용안됨
 				if(rs.getTime("SHOW_START").before(time)) { //시간 지난 공연
 					c.setPay_yn("관람완료"); 
@@ -170,30 +141,14 @@ public class ConfirmDAO {
 				}*/
 			}
 		}else {
-			//3
 			c.setPay_yn("예매취소");
 			c.setDetail("Y");
 			c.setCancel_yn(null);
 			c.setReview(null);
 		}
-		//System.out.println(c.getPay_yn());
-		//System.out.println(c.getDetail());
-		//System.out.println(c.getCancel_yn());
-		//System.out.println(c.getReview());
-		// c.setSeat_num(rs.getString("SEAT_NUM"));
 		return c;
 	}
-
-	// 1-2. pay Y
-	public List<ConfirmVO> selectPayYReservation(String m_id) {
-		return null;
-	}
-
-	// 1-3. pay N
-	public List<ConfirmVO> selectPayNReservation(String m_id) {
-		return null;
-	}
-
+	
 	// 1-4. 자리확인
 	public List<ReservDetailVO> selectSeatNum(int reservation_num) {
 		List<ReservDetailVO> resevationlist = new ArrayList<>();
@@ -228,7 +183,6 @@ public class ConfirmDAO {
 		conn = DBUtil.getConnection();
 		try {
 			pst = conn.prepareStatement(SQL_SELECT_CHECK_SHOW_RESERVATION);
-			System.out.println("reservation_num" + reservation_num);
 			pst.setInt(1, reservation_num);
 			rs = pst.executeQuery();
 			while (rs.next()) {
