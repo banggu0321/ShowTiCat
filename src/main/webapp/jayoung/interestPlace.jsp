@@ -5,7 +5,6 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
 
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
 <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.slim.min.js"></script>
@@ -18,12 +17,12 @@
 <script>
 $(function() {
 	$("#placeForm").hide();
-	$(".myPlaceBtn").on("click", myPlace);
+	$(".myPlaceBtn").on("click", showForm);
 	$(".resetBtn").on("click", reset);
 	$(".delBtn").on("click", delMyPlace);
 })
 
-function myPlace() {
+function showForm() {
 	$("#placeForm").show();
 }
 
@@ -33,11 +32,11 @@ function reset() {
 
 function delMyPlace() {
 	$.ajax({
-		url:"deleteMyPlace.do",
+		url:"../jayoung/deleteMyPlace.do",
 		success: function(resData) {
 			if(resData >= 1) {
 				alert("관심매장이 삭제되었습니다.");
-				location.reload();
+				location.href="../jaeyong/memberMyPage.do";
 			}
 		}
 	})
@@ -46,11 +45,6 @@ function delMyPlace() {
 </script>
 </head>
 <body>
-<jsp:include page="header.jsp"/>
-
-<div class="contents">
-<jsp:include page="../jaeyong/mySide.jsp"/>
-
 <div class="centerHidden">
 	<c:if test="${member.place_num == 0}">
 		등록된 관심매장이 없습니다.	
@@ -64,7 +58,7 @@ function delMyPlace() {
 	</c:if>
 	<hr>
 	
-	<form action="interestPlace.do" method="post" id="placeForm">
+	<form action="../jayoung/interestPlace.do" method="post" id="placeForm">
 		<div class="form-group">
 		    <label for="sel1">매장 선택</label>
 		    <select class="form-control" name="place_num">
@@ -76,10 +70,6 @@ function delMyPlace() {
 			<input class="btn btn-outline-primary resetBtn" type="reset" value="취소">
 		</div>
 	</form>
-</div><!-- centerHidden -->
-
-<div class="rightHidden">
-</div><!-- rightHidden -->
 </div>
 
 </html>

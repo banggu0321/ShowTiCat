@@ -49,7 +49,7 @@
 		
 			<div class="myPlace">
 				<h2>M Y P L A C E</h2>
-				<span>${place.place_name}</span>
+				<span><jsp:include page="../jayoung/interestPlace.jsp"/></span>
 			</div><!-- myPlace -->                
 			         			
 			<div class="myPoint">

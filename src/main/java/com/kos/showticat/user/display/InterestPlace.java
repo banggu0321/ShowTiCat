@@ -20,21 +20,6 @@ import com.kos.showticat.ja0.ReviewService;
 public class InterestPlace extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		HttpSession session = request.getSession();
-		MemberVO member = (MemberVO)session.getAttribute("member");
-		
-		if(member != null) {
-			PlaceService ps = new PlaceService();
-			
-			request.setAttribute("placeList", ps.selectAll());
-			request.setAttribute("myPlace", ps.selectMyPlace(member.getM_id()));
-
-			RequestDispatcher rd = request.getRequestDispatcher("interestPlace.jsp");
-			rd.forward(request, response);
-		}
-	}
-	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session = request.getSession();
 		MemberVO member = (MemberVO)session.getAttribute("member");
@@ -46,9 +31,7 @@ public class InterestPlace extends HttpServlet {
 		
 		session.setAttribute("member", service.selectID(member.getM_id(), member.getM_pw()));
 		
-		response.setContentType("text/html; charset=UTF-8");
-		PrintWriter writer = response.getWriter();
-		writer.println("<script>alert('관심매장이 등록되었습니다.'); location.href='interestPlace.do';</script>");
-		writer.close();
+		RequestDispatcher rd = request.getRequestDispatcher("../jaeyong/memberMyPage.do");
+		rd.forward(request, response);
 	}
 }
