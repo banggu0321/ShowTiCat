@@ -89,18 +89,18 @@
 				</a>
 				<div class="carousel-inner">
 					<div class="carousel-item active">
-						<a href='jayoung/showDetail.do?show_code=AA7'><img src="${path}/images/broker_banner.jpg" alt=""
-							width="100%" height="500"></a>
+						<a href='jayoung/showDetail.do?show_code=AA7'>
+						<img src="${path}/images/broker_banner.jpg" alt="" width="100%" height="500"></a>
 						<!--  width="980" -->
 					</div>
 					<div class="carousel-item">
-						<a href='jayoung/showDetail.do?show_code=AA10'><img src="${path}/images/deathnote_banner.jpg"
-							alt="" width="100%" height="500"></a>
+						<a href='jayoung/showDetail.do?show_code=AA10'>
+						<img src="${path}/images/deathnote_banner.jpg" alt="" width="100%" height="500"></a>
 						<!--  width="980" -->
 					</div>
 					<div class="carousel-item">
-						<a href='jayoung/showDetail.do?show_code=AA6'> <img src="${path}/images/crimecity2_banner.jpg"
-							alt="" width="100%" height="500"></a>
+						<a href='jayoung/showDetail.do?show_code=AA6'> 
+						<img src="${path}/images/crimecity2_banner.jpg" alt="" width="100%" height="500"></a>
 						<!--  width="980" -->
 					</div>
 
@@ -131,16 +131,14 @@
 		<div id="divpop1" class="divpop">
 			<img alt="" src="${path}/bang/main_images/QR_22739206_.png">
 			<div class="button_area">
-				<input type='checkbox' name='chkbox' id='todaycloseyn' value='Y'>오늘
-				하루 이 창을 열지 않음 <a href='#' onclick="javascript:closeWin(1);"><B>[닫기]</B></a>
+				<input type='checkbox' name='chkbox' id='todaycloseyn' value='Y'>
+				오늘 하루 이 창을 열지 않음 
+				<a href='#' onclick="javascript:closeWin(1);"><B>[닫기]</B></a>
 			</div>
 		</div>
 	</form>
 	<jsp:include page="bang/mainUpTicket.jsp" />
 	<footer>
-		<!-- <form>
-			<input type=button value="쿠키삭제" onClick="deleteCookie()">
-		</form> -->
 	</footer>
 </body>
 </html>
