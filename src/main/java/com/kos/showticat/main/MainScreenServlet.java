@@ -13,33 +13,22 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.kos.showticat.main.vo.ShowVO;
 
-/**
- * Servlet implementation class MainChartServlet
- */
 @WebServlet("/bang/tab2.do")
 public class MainScreenServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		// System.out.println("aa");
 		TabShowService service = new TabShowService();
 		List<ShowVO> showList1 = service.selectScreenMovie();
 		List<ShowVO> showList2 = service.selectScreenPer();
-		// System.out.println(showList1);
-		// System.out.println(showList2);
-		// System.out.println(showList1.get(0).getPoster());
-		// System.out.println(showList1.get(1).getPoster());
-		// System.out.println(showList2.get(0).getPoster());
-		// System.out.println(showList2.get(1).getPoster());
 
 		String notReady = "notReady.jpg";
 		ShowVO noneshow = new ShowVO("#", "준비중", notReady); // show_code가 #이면 다시 메인으로
 		String image_dir = request.getSession().getServletContext().getRealPath("/") + "images"
 				+ java.io.File.separator;
 
-		//System.out.println(showList2.size());
-
+		//통계결과가 없을경우, 1개일 경우 noneshow추가
 		if (showList1.size() == 0) {
 			showList1.add(noneshow);
 			showList1.add(noneshow);
@@ -55,16 +44,12 @@ public class MainScreenServlet extends HttpServlet {
 			showList2.add(noneshow);
 		} else {
 		}
-		// System.out.println(showList2);
 
+		//poster가 (실행환경)images파일에 없을 경우 notReady출력
 		File file1 = new File(image_dir + showList1.get(0).getPoster());
 		File file2 = new File(image_dir + showList1.get(1).getPoster());
 		File file3 = new File(image_dir + showList2.get(0).getPoster());
 		File file4 = new File(image_dir + showList2.get(1).getPoster());
-		// System.out.println(file1.exists());
-		// System.out.println(file2.exists());
-		// System.out.println(file3.exists());
-		// System.out.println(file4.exists());
 
 		if (file1.exists() == false) {
 			showList1.get(0).setPoster(notReady);

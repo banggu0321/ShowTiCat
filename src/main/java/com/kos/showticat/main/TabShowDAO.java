@@ -15,7 +15,6 @@ public class TabShowDAO {
 	PreparedStatement pst;
 	ResultSet rs;
 
-	//chart 변경전
 	static final String SQL_SELECT_CHART_MOVIE = ""
 			+ "SELECT * "
 			+ "FROM (SELECT rownum AS rownumber, o.*  "
