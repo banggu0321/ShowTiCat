@@ -71,11 +71,11 @@
 	} */
 </script>
 <style>
-p {
-	margin: 0;
-	font-size: 0.25em;
-	color: tomato;
+.modifyPwCheck a {
+	font-weight: bold;
+	color:red;
 }
+
 </style>
 </head>
 <body>
