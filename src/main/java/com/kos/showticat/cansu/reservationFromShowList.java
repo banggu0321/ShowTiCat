@@ -46,14 +46,6 @@ public class reservationFromShowList extends HttpServlet {
 		session.setAttribute("showCode", showCode);
 		
 		ScheduleService service = new ScheduleService();
-		// schedule number session
-//		int scheduleNum = createScheduleNumber(m_id); 
-//		session.setAttribute("scheduleNumber", scheduleNum);
-		//session
-//		service.insertScheduleInforNum(scheduleNum, showCode);
-//		System.out.println("create schedule: scheduleNum("+scheduleNum+")");
-
-
 		//sample 2: showCode -> schedule
 //		List<ScheduleVO> sList = new ArrayList<>();
 //		sList = service.selectScheduleByShowcode(showCode);

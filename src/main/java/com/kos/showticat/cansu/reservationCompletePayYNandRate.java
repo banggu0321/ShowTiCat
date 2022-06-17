@@ -28,12 +28,46 @@ public class reservationCompletePayYNandRate extends HttpServlet {
 		//session reservation number -> select schedule number ->	show code
 		int reservationNum = (int)seesion.getAttribute("reservationNumber");
 		//		System.out.println(reservationNum);
+		String id = service.selectReservationUserIDByReservationNum(reservationNum);
 				
 		//update payment		
 		String payment = request.getParameter("pay");
 		System.out.println(payment);		
 		service.updateReservationPaymentByResNum(payment, reservationNum);
 		
+		int pointYN = Integer.parseInt(request.getParameter("pointYN"));
+		System.out.println(pointYN);
+		if(pointYN <0)
+		{
+			pointYN = 0;
+		}
+		
+		int pointValue = (int)seesion.getAttribute("pointValue");
+		int totalPrice = service.selectReservationTpriceByNum(reservationNum);
+
+		//if Y
+		//total price - point
+		if((pointYN>0)&&(pointValue>pointYN)) {
+			int point = service.selectMembersPointByID(id) + (pointValue-pointYN);  //before+(new-request)
+			if(point > totalPrice) {
+				point -= totalPrice;  
+				service.updatePointMembers(id, point);
+				System.out.println("ScheduleDAO.reservationResultFromShowList=>update data(point-totalPrice)");
+			}
+			if(point<totalPrice) {
+				point = service.selectMembersPointByID(id)+pointValue; 
+				service.updatePointMembers(id, point);
+				System.out.println("ScheduleDAO.reservationResultFromShowList=>update data(point < total Price)");
+			}
+		}
+		
+		//if 0==N
+		if((pointYN==0)||(pointValue<pointYN)) {
+			int point = service.selectMembersPointByID(id)+pointValue; 
+			service.updatePointMembers(id, point);
+			System.out.println("ScheduleDAO.reservationResultFromShowList=>update data");
+		}
+
 
 		int scheduleNum = service.selectReservationByReservationNum(reservationNum);
 		String showCode = service.selectScheduleByScheduleNum(scheduleNum);		

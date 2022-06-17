@@ -37,13 +37,6 @@ public class reservationFromShowLTBeta extends HttpServlet {
 		ScheduleService service = new ScheduleService();
 		int scheduleNum = service.selectScheduleBythreeAttri(shoCode, theaterNum, placeNum);
 		session.setAttribute("scheduleNumber", scheduleNum);
-
-		
-
-//		int scheduleNum = (int)session.getAttribute("scheduleNumber"); 
-		//		System.out.println(scheduleNum);
-		//		
-//		service.updateScheduleByScheduleNum(theaterNum, placeNum, showStart, scheduleNum);
 		
 		//selected showcode.schedule.seat 
 		List<Integer> iList = new ArrayList<>();
