@@ -51,7 +51,7 @@
 					<h2>M Y P L A C E</h2>
 					<div class="placeText">
 					<span>
-					<%-- <jsp:include page="../jayoung/interestPlace.do"/> --%>
+					<jsp:include page="../jayoung/interestPlace.jsp"/>
 					</span>
 					</div>
 

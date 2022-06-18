@@ -8,6 +8,16 @@
 <c:set var="path" value="${pageContext.request.contextPath}"/>
 <link rel="stylesheet" href="${path}/css/header.css">
 
+<script>
+$(function() {
+	$.ajax({
+		url:"getSysdate.do",
+		success: function(resData) {
+			}
+	});
+
+})
+</script>
 </head>
 
 <body>

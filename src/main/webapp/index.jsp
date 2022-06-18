@@ -67,7 +67,7 @@
 	
 	$(function() {
 		$.ajax({
-			url:"getSysdate.do",
+			url:"jayoung/getSysdate.do",
 			success: function(resData) {
 				}
 		});
