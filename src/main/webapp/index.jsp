@@ -129,6 +129,7 @@
 	<%-- <jsp:include page="mainPopup.jsp" /> --%>
 	<form name="notice_form" id="popupform">
 		<div id="divpop1" class="divpop">
+			<h3> ShowTiCat 모바일로 보기</h3>
 			<img alt="" src="${path}/bang/main_images/QR_22739206_.png">
 			<div class="button_area">
 				<input type='checkbox' name='chkbox' id='todaycloseyn' value='Y'>
