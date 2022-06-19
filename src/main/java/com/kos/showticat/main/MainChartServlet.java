@@ -24,9 +24,10 @@ public class MainChartServlet extends HttpServlet {
 		List<ShowVO> showList2 = service.selectChartPer(); //chartShow
 		
 		String notReady = "notReady.jpg";
-		ShowVO noneshow = new ShowVO("#", "준비중", notReady); //ShowVO("show_code", "show_name", "poster")
-		String image_dir = request.getSession().getServletContext().getRealPath("/") + "images"
-				+ java.io.File.separator;
+		ShowVO noneshow = new ShowVO("#", "준비중", notReady); 
+		//ShowVO("show_code", "show_name", "poster")
+		String image_dir = request.getSession().getServletContext().getRealPath("/") +
+				"images" + java.io.File.separator;
 
 		//통계결과가 없을경우, 1개일 경우 noneshow추가
 		if (showList1.size() == 0) {

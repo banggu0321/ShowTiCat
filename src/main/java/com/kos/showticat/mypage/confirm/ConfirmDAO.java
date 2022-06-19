@@ -40,10 +40,12 @@ public class ConfirmDAO {
 			+ " WHERE r.RESERVATION_NUM = ? ";
 	static final String SQL_SELECT_CHECK_SHOW_RESERVATION = ""
 			+ " SELECT * FROM SCHEDULE s JOIN RESERVATION r ON (r.SCHEDULE_NUM =s.SCHEDULE_NUM) "
-			+ " WHERE s.SHOW_START - 1 > CURRENT_TIMESTAMP " + " AND r.RESERVATION_NUM = ? ";
+			+ " WHERE s.SHOW_START - 1 > CURRENT_TIMESTAMP " 
+			+ " AND r.RESERVATION_NUM = ? ";
 	static final String SQL_SELECT_CHECK_MOVIE_RESERVATION = ""
 			+ " SELECT * FROM SCHEDULE s JOIN RESERVATION r ON (r.SCHEDULE_NUM =s.SCHEDULE_NUM) "
-			+ " WHERE s.SHOW_START - 1/24*0.5 > CURRENT_TIMESTAMP " + " AND r.RESERVATION_NUM = ? ";
+			+ " WHERE s.SHOW_START - 1/24*0.5 > CURRENT_TIMESTAMP "
+			+ " AND r.RESERVATION_NUM = ? ";
 	static final String SQL_UPDATE_RESERVATION = "UPDATE RESERVATION SET PAY_YN = 'N' WHERE RESERVATION_NUM = ? ";
 	static final String SQL_DELETE_SEAT = "DELETE FROM RESERV_DETAIL WHERE RESERVATION_NUM  = ? ";
 
@@ -122,24 +124,7 @@ public class ConfirmDAO {
 				c.setCancel_yn("Y"); //삭제가능
 				c.setReview(null);//리뷰불가능	
 				System.out.println("예정공연");
-			}else {	
-				//System.out.println("날짜 같음?"+rs.getDate("SHOW_START").equals(date));
-				//System.out.println(rs.getDate("SHOW_START").before(date)&&rs.getTime("SHOW_START").before(time));
-				/*//당일 공연 경우 적용안됨
-				if(rs.getTime("SHOW_START").before(time)) { //시간 지난 공연
-					c.setPay_yn("관람완료"); 
-					c.setDetail("Y");
-					c.setCancel_yn(null);
-					c.setReview("Y"); //리뷰가능
-					System.out.println("오늘자 지난공연");
-				}else {										//예정공연
-					c.setPay_yn("예매완료");
-					c.setDetail("Y");
-					c.setCancel_yn("Y");
-					c.setReview(null);//리뷰불가능
-					System.out.println("오늘자 예정공연");
-				}*/
-			}
+			}else {	}
 		}else {
 			c.setPay_yn("예매취소");
 			c.setDetail("Y");

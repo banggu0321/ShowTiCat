@@ -7,7 +7,6 @@
 
 <script>
 	$(document).ready(function() {
-
 		$(window).scroll(function() {
 			// top button controll
 			if ($(this).scrollTop() > 50) {
@@ -27,6 +26,8 @@
 </script>
 
 <div id="topButton" style="cursor: pointer">
-	<a href="${path}/jayoung/reservationFirst.do"><img src="${path}/images/main_ticket.png" id="reserveButtonImg"></a> 
+	<a href="${path}/jayoung/reservationFirst.do">
+		<img src="${path}/images/main_ticket.png" id="reserveButtonImg">
+	</a> 
 	<img src="${path}/images/main_up.jpg" id="topButtonImg">
 </div>

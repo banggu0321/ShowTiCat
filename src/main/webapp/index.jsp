@@ -46,14 +46,6 @@
 		return "";
 	}
 
-	//닫기 버튼 클릭시
-	function closeWin(key) {
-		if ($("#todaycloseyn").prop("checked")) {
-			setCookie('divpop' + key, 'Y', 1);
-		}
-		$("#divpop" + key + "").hide();
-	}
-
 	$(function() {
 		if (getCookie("divpop1") == "Y") {
 			$("#divpop1").hide();
@@ -61,8 +53,13 @@
 			$("#divpop1").show();
 		}
 	});
-	function deleteCookie() {
-		document.cookie = "divpop1=" + "N" + ";path=/; expires=-1";
+	
+	//닫기 버튼 클릭시
+	function closeWin(key) {
+		if ($("#todaycloseyn").prop("checked")) {
+			setCookie('divpop' + key, 'Y', 1);
+		}
+		$("#divpop" + key + "").hide();
 	}
 	
 	$(function() {
@@ -122,8 +119,7 @@
 	<div class="chart">
 		<div class="contents">
 			<jsp:include page="bang/mainTab.jsp" />
-		</div>
-		<!-- contents -->
+		</div><!-- contents -->
 	</div>
 	<!-- chart -->
 	<%-- <jsp:include page="mainPopup.jsp" /> --%>
