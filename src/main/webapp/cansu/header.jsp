@@ -1,3 +1,4 @@
+
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
@@ -15,13 +16,11 @@
 	height: 113px;
 	margin: 0 0 50px;
 }
-
 .headerContents .contents {
 	padding: 30px 5px 25px 5px;
 	display: flex;
 	justify-content: space-between;
 }
-
 .header h1 img {
 	width: 240px;
 		
@@ -29,7 +28,6 @@
 	left:150px;
 	top: 10px
 }
-
 .member {
 	width: 400px;
 	height: 57px;
@@ -42,13 +40,11 @@
 	position: absolute;
 	right: 100px;
 }
-
 .member li {
 	width: 120px;
 	height: 100%;
 	list-style: none;
 }
-
 .member a {
 	height: 57px;
 	display: flex;
@@ -58,7 +54,6 @@
 	text-decoration: none;
 	color: black;
 }
-
 .member a:hover {
 	color: black;
 	text-decoration: none;
@@ -66,17 +61,14 @@
 .member img {
 	height: 100%;
 }
-
 .member #m_info {
 	font-weight: bold;
 	margin-top: 5px;
 }
-
 .nav {
 	height: 5px;
 	border-bottom: 1px solid #ddd;
 }
-
 .nav a {
 	font-size: 16px;
 	font-weight: bold;
@@ -86,30 +78,25 @@
 	position: absolute;
 	top:130px;
 }
-
 .nav a:hover {
 	font-size: 18px;
 	font-weight: bold;
 	color: black;
 	text-decoration: none;
 }
-
 .nav li {
 	width: 100%;
 	height: 40px;
 	list-style: none;
 }
-
 .nav_menu {
 	width: 500px;
 	display: inline-flex;
 }
-
 .nav_menu .search form {
 position:absolute;
 top:120px;
 right: 150px;
-
 	display: inline-flex;
 }
 .nav_menu .search .btn {
