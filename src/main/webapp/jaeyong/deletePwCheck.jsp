@@ -33,7 +33,7 @@
 				type : "post",
 				//datatype : "json",
 				success : function(responseData) {
-					alert("responsedata : "+ responseData);
+					//alert("responsedata : "+ responseData);
 					//message = responseData;
 					if(responseData != "Y"){
 						alert("비밀번호가 일치하지 않습니다.");
