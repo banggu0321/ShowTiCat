@@ -72,9 +72,18 @@ public class temp {
 		
 //		f34(); //select reservation table by reservation number
 //		f35(); //select reservation table by reservation number(total price)
-		f36(); //insert reservation table
+//		f36(); //insert reservation table
+		f37(); //insert schedule table
 	}
 	
+	private static void f37() {
+		String showCode = "AA37";
+		
+		ScheduleService service = new ScheduleService();
+		System.out.println(service.selectScheduleInfoByJoinPlace(showCode));
+		
+	}
+
 	private static void f36() {
 
 		ScheduleService service = new ScheduleService();

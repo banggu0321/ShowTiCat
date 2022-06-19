@@ -19,7 +19,7 @@ import com.kos.showticat.util.DBUtil2;
 
 public class ScheduleDAO {
 	
-	final static String SQL_SCHEDULE_SELECT_BY_JOIN_PLACE = "SELECT s.THEATER_NUM, s.PLACE_NUM, s.SHOW_START, p.PLACE_NAME FROM SCHEDULE s INNER JOIN PLACE p ON s.PLACE_NUM = p.PLACE_NUM WHERE SHOW_CODE =? AND  SHOW_START>SYSDATE";
+	final static String SQL_SCHEDULE_SELECT_BY_JOIN_PLACE = "SELECT s.THEATER_NUM, s.PLACE_NUM, s.SHOW_START, p.PLACE_NAME, s.SCHEDULE_NUM  FROM SCHEDULE s INNER JOIN PLACE p ON s.PLACE_NUM = p.PLACE_NUM WHERE SHOW_CODE =? AND  SHOW_START>SYSDATE";
 	final static String SQL_SCHEDULE_SELECT_ALL ="select schedule_num, show_code, theater_num, place_num, show_start from schedule";
 	final static String SQL_SCHEDULE_SELECT_SCHEDULE_BY_SHOW_CODE="SELECT THEATER_NUM, PLACE_NUM , SHOW_START FROM SCHEDULE WHERE SHOW_CODE=?";
 	final static String SQL_SCHEDULE_SELECT_SCHEDULE_NUMBER_BY_SHOW_CODE="SELECT SCHEDULE_NUM  FROM SCHEDULE WHERE show_code=? AND  THEATER_NUM =? AND PLACE_NUM=?";
@@ -145,6 +145,7 @@ public class ScheduleDAO {
 				spVO.setPlaceNum(rs.getInt("place_num"));
 				spVO.setShowStart(rs.getString("show_start"));
 				spVO.setPlaceName(rs.getString("place_name"));
+				spVO.setScheduleNum(rs.getInt("schedule_num"));  //SCHEDULE_NUM
 				spList.add(spVO);
 			}
 		} catch (SQLException e) {

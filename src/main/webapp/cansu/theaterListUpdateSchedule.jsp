@@ -82,7 +82,7 @@ overflow: auto;
 				<c:forEach items="${ScheduleListAddPlace}" var="scheduleAttr">
 					<tr>
 						<td><a id="aTheater"
-							href="http://localhost:9090/ShowTiCat/reservationFromShowLTBeta?theaterNum=${scheduleAttr.theaterNum}&placeNum=${scheduleAttr.placeNum}&showStart=${scheduleAttr.showStart}">
+							href="http://localhost:9090/ShowTiCat/reservationFromShowLTBeta?scheduleNum=${scheduleAttr.scheduleNum }&theaterNum=${scheduleAttr.theaterNum}&placeNum=${scheduleAttr.placeNum}&showStart=${scheduleAttr.showStart}">
 								${scheduleAttr.theaterNum}</a></td>
 						<td>${scheduleAttr.placeName}</td>
 						<td>${scheduleAttr.showStart}</td>

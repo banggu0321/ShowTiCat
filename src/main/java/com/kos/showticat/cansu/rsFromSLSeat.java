@@ -26,8 +26,8 @@ public class rsFromSLSeat extends HttpServlet {
 		String theaterNum = request.getParameter("theaterNum");
 		int placeNum = Integer.parseInt(request.getParameter("placeNum"));
 		String showStart = request.getParameter("showStart"); //
-		String shoCode = String.valueOf(session.getAttribute("showCode"));
 		
+		String shoCode = String.valueOf(session.getAttribute("showCode"));
 		request.setAttribute("showCode", shoCode);
 		System.out.println("Show code: "+shoCode);
 		//		System.out.println(theaterNum);
@@ -35,7 +35,8 @@ public class rsFromSLSeat extends HttpServlet {
 
 		//session
 		ScheduleService service = new ScheduleService();
-		int scheduleNum = service.selectScheduleBythreeAttri(shoCode, theaterNum, placeNum);
+//		int scheduleNum = service.selectScheduleBythreeAttri(shoCode, theaterNum, placeNum);
+		int scheduleNum = Integer.parseInt(request.getParameter("scheduleNum"));
 		session.setAttribute("scheduleNumber", scheduleNum);
 		
 		//selected showcode.schedule.seat 
