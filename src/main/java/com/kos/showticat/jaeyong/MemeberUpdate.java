@@ -55,7 +55,7 @@ public class MemeberUpdate extends HttpServlet {
 		if (result > 0) {
 			msg = "수정성공";
 			request.setAttribute("msg", msg);
-			session.setAttribute("member", member);
+			session.setAttribute("member", service.selectID(m_id, m_pw));
 		}
 
 		RequestDispatcher rd;

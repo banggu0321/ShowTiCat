@@ -19,6 +19,8 @@ public class MemberDAO {
 	static final String SQL_SELECT_PLACE = "select m_name,place_num from members where m_name=?";
 	static final String SQL_UPDATE_PLACE = "update members set place_num=? where m_name=?";
 	static final String SQL_DELETE_MEMBER = "delete from members where m_id =?";
+	
+	static final String SQL_LOGIN = "select * from members where m_id=? and m_pw=?";
 
 	Connection conn;
 	Statement st;
@@ -133,7 +135,29 @@ public class MemberDAO {
 		return result;
 	}
 /////////////////////////////////////////////////////////////////////
-
+	
+	//로그인
+	public MemberVO selectID(String m_id, String m_pw) {
+		MemberVO member = null;
+		conn = DBUtil.getConnection();   
+		
+		try {
+			pst = conn.prepareStatement(SQL_LOGIN);
+			pst.setString(1, m_id); 
+			pst.setString(2, m_pw); 
+			rs = pst.executeQuery();
+			
+			while(rs.next()) {
+				member = makeMember(rs);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			DBUtil.dbClose(rs, pst, conn);
+		}
+		return member;
+	}
+	
 	private MemberVO makeMember(ResultSet rs) throws SQLException {
 		MemberVO member = new MemberVO();
 

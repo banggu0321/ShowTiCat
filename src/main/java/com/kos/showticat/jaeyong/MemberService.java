@@ -29,5 +29,11 @@ public class MemberService {
 	public int Delete(String m_id) {
 		return dao.Delete(m_id);
 	}
+	
+
+	//로그인
+	public MemberVO selectID(String m_id, String m_pw) {
+		return dao.selectID(m_id, m_pw);
+	}
 
 }
