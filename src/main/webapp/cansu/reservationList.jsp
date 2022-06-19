@@ -29,7 +29,7 @@ text-align:center;
 <body>
 
 	<div id="headerInclude">
-		<jsp:include page="/cansu/header.jsp" />
+		<jsp:include page="/jayoung/header.jsp" />
 	</div>
 
 	<div id="mainDIV" class="container">

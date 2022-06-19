@@ -21,12 +21,10 @@ public class rstFromSLresult extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) 
 			throws ServletException, IOException {
 		
-		
 		//session 
 		HttpSession seesion = request.getSession();
 		int reservationNum = (int)seesion.getAttribute("reservationNumber");
 
-		
 		ScheduleService service = new ScheduleService();
 		ReservationVO rvo = service.reservationSelectByNumber(reservationNum);
 		//		System.out.println(rvo);
@@ -36,14 +34,9 @@ public class rstFromSLresult extends HttpServlet {
 		
 		//update point
 		String id = service.selectReservationUserIDByReservationNum(reservationNum);
-//		int point = Integer.parseInt(rvo.getTotalPrice())+service.selectMembersPointByID(id);  //update value = point + select value	
 		int pointValue = (int)seesion.getAttribute("seatNumber")*1000;
 		seesion.setAttribute("pointValue", pointValue);
 		System.out.println("point value: "+pointValue);
-		
-//		int point = service.selectMembersPointByID(id)+pointValue; 
-//		service.updatePointMembers(id, point);
-//		System.out.println("ScheduleDAO.reservationResultFromShowList=>update data");
 		
 		//(reservationResult.jsp)
 		RequestDispatcher rd = request.getRequestDispatcher("cansu/reservationResult.jsp");

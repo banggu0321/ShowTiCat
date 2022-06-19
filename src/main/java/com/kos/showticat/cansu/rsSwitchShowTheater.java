@@ -31,10 +31,7 @@ public class rsSwitchShowTheater extends HttpServlet {
 			return;
 		}
 
-
 		Enumeration<String> temp = request.getParameterNames();
-		//		boolean tfTemp = true;
-		//		int i=0;
 		while(temp.hasMoreElements()) {
 			String name = temp.nextElement();
 			System.out.println(name);
