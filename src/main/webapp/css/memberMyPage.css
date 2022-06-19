@@ -60,7 +60,6 @@ body * {
 
 .myPlace span {
 	margin:0 auto;
-	border-bottom: 1px solid #eee;
 	
 }
 
@@ -70,15 +69,38 @@ body * {
 	
 }
 
+.placeText {
+	width: 270px;
+	height: 240px;
+	margin: 0 auto;
+	border-bottom: 1px solid #eee;
+}
+
 .myPoint {
 	width: 50%;
 	
 }
 
 .pointText {
-	width: 240px;
+	width: 270px;
+	height: 240px;
 	margin: 0 auto;
 	border-bottom: 1px solid #eee;
 	display: flex;
 	justify-content: space-between;;
 }
+
+h4.point {
+	font-size: 18px;
+	
+}
+
+/*==============================================
+<jsp:include page="../jayoung/interestPlace.jsp"/>
+controller
+================================================*/
+.placeText hr {
+	display: none;
+}
+
+
