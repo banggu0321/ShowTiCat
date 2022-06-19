@@ -42,8 +42,22 @@
 		}
 	}
 </script>
+<style>
+	p {
+	color : tomato;
+}
+
+	.modifyPwCheck a {
+	font-weight: bold;
+	color:red;
+	
+	
+}
+</style>
 </head>
 <body>
+	<jsp:include page="${path}/bang/mainUpTicket.jsp" />
+	
 	<jsp:include page="../jayoung/header.jsp" />
 	<div class="contents">
 		<jsp:include page="../jaeyong/mySide.jsp" />

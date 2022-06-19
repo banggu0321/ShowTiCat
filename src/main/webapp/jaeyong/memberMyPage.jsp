@@ -22,6 +22,8 @@
 
 </head>
 <body>
+	<jsp:include page="${path}/bang/mainUpTicket.jsp" />
+
 	<jsp:include page="../jayoung/header.jsp" />
 
 	<div class="contents">
@@ -61,7 +63,7 @@
 					<h2>M Y P O I N T</h2>
 					<div class="pointText">
 			 		<span>ShowTicat Point</span>
-					<span>${member.point}</span>
+					<h4 class=point>${member.point}</h4>
 					</div>
 					
 				</div><!-- myPoint -->		
