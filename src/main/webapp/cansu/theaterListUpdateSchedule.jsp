@@ -4,6 +4,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+<link rel="stylesheet" href="../css/common.css">
 <meta charset="EUC-KR">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link
@@ -51,7 +52,7 @@ overflow: auto;
 
 <body id="bodyM">
 	<div id="headerInclude">
-		<jsp:include page="/cansu/header.jsp" />
+		<jsp:include page="../jayoung/header.jsp" />
 	</div>
 
 	<div id="main">

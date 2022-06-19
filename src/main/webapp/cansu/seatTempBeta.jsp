@@ -6,6 +6,9 @@
 <!DOCTYPE html>
 <html>
 <head>
+<c:set var="path" value="${pageContext.request.contextPath}" />
+<link rel="stylesheet" href="${path}/css/common.css">
+
 <meta charset="EUC-KR">
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
@@ -65,7 +68,7 @@ input[type="checkbox"]:checked {
 <title>좌석 선택</title>
 <body>
 	<div id="headerInclude">
-		<jsp:include page="/cansu/header.jsp" />
+		<jsp:include page="../jayoung/header.jsp" />
 	</div>
 	<form action="http://localhost:9090/ShowTiCat/seatSampleServletBeta">
 		<div id="main">

@@ -71,9 +71,16 @@ public class temp {
 //		f33(); //select schedule, place table by show code;
 		
 //		f34(); //select reservation table by reservation number
-		f35(); //select reservation table by reservation number(total price)
+//		f35(); //select reservation table by reservation number(total price)
+		f36(); //insert reservation table
 	}
 	
+	private static void f36() {
+
+		ScheduleService service = new ScheduleService();
+		service.insertReservationInfor(1777888, "cansu", 1492);
+	}
+
 	private static void f35() {
 				
 		int reservationNum = 6563612;

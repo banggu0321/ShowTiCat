@@ -1,8 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
 	pageEncoding="EUC-KR"%>
+	<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
+<c:set var="path" value="${pageContext.request.contextPath}" />
+<link rel="stylesheet" href="${path}/css/common.css">
+
 <meta charset="EUC-KR">
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
@@ -34,7 +38,7 @@ input {
 </head>
 <body>
 	<div id="headerInclude">
-		<jsp:include page="/cansu/header.jsp" />
+		<jsp:include page="../jayoung/header.jsp" />
 	</div>
 
 	<div id="main">
