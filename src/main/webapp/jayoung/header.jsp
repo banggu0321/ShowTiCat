@@ -8,6 +8,16 @@
 <c:set var="path" value="${pageContext.request.contextPath}"/>
 <link rel="stylesheet" href="${path}/css/header.css">
 
+<script>
+$(function() {
+	$.ajax({
+		url:"getSysdate.do",
+		success: function(resData) {
+			}
+	});
+
+})
+</script>
 </head>
 
 <body>
@@ -79,7 +89,14 @@
                         <h2><a href="${path}/jayoung/showList.do?category=공연" id="showList">공연</a></h2>
                     </li>
                     <li>
-                        <h2><a href="${path}/jayoung/placeDetail.do?place_num=1020&date=${sysdate}" id="theaterList">극장</a></h2>
+                        <h2>
+	                        <c:if test="${empty member || member.place_num == 0}">
+	                        	<a href="${path}/jayoung/placeDetail.do?place_num=1020&date=${sysdate}" id="theaterList">극장</a>
+	                        </c:if>
+	                        <c:if test="${!empty member && member.place_num != 0}">
+	                        	<a href="${path}/jayoung/placeDetail.do?place_num=${member.place_num}&date=${sysdate}" id="theaterList">극장</a>
+	                        </c:if>
+                        </h2>
                     </li>
                     <li>
                         <h2><a href="${path}/jayoung/reservationFirst.do" id="reservation">예매</a></h2>
