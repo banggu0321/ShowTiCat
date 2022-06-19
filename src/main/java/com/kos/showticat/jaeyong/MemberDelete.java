@@ -28,7 +28,6 @@ public class MemberDelete extends HttpServlet {
 		int result = service.Delete(m_id);
 		String msg = "삭제실패";
 		
-		
 		if (result > 0) {
 			msg = "삭제성공";
 			request.setAttribute("msg", msg);
