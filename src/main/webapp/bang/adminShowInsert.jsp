@@ -105,7 +105,7 @@
 			if (option == "영화") {
 				document.getElementById("price").value = 12000;
 			} else {
-				document.getElementById("price").value = 100000;
+				document.getElementById("price").value = 150000;
 			}
 		}
 		//파일 업로더 label
