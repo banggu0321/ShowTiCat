@@ -29,10 +29,7 @@ public class rsFromSLreservationUpdate extends HttpServlet {
 		//(session)reservationNum, (request)showCode
 		int reservationNum = (int)seesion.getAttribute("reservationNumber");
 		
-		ScheduleService service = new ScheduleService();		
-//		int schedulNum = service.selectReservationByReservationNum(reservationNum);
-//		String showCode = service.selectScheduleByScheduleNum(schedulNum);
-		
+		ScheduleService service = new ScheduleService();				
 		String showCode= String.valueOf(seesion.getAttribute("showCode"));
 		int showPrice = service.selectShowByShowCode(showCode);
 		System.out.println("show price:"+showPrice);

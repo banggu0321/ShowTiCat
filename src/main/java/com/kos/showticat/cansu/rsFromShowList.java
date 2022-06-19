@@ -46,11 +46,6 @@ public class rsFromShowList extends HttpServlet {
 		session.setAttribute("showCode", showCode);
 		
 		ScheduleService service = new ScheduleService();
-		//sample 2: showCode -> schedule
-//		List<ScheduleVO> sList = new ArrayList<>();
-//		sList = service.selectScheduleByShowcode(showCode);
-//		//		System.out.println(sList.size());
-//		request.setAttribute("ScheduleList", sList);
 				
 		List<ScheduleJoinPlaceVO> spList = new ArrayList<>();
 		spList = service.selectScheduleInfoByJoinPlace(showCode);

@@ -73,7 +73,7 @@
 									type : "get",
 									success : function(message) {
 										if (message >= 1) {
-											alert("["+ reservation_num+ "]"+ "삭제되었습니다.");
+											alert("["+ reservation_num+ "]"+ "취소되었습니다.");
 											location.reload();
 										} else {
 											alert("이미 취소된 좌석입니다.");
@@ -98,7 +98,7 @@
 									type : "get",
 									success : function(message) {
 										if (message >= 1) {
-											alert("["+ reservation_num+ "]"+ "삭제되었습니다.");
+											alert("["+ reservation_num+ "]"+ "취소되었습니다.");
 											location.reload();
 										} else {
 											alert("이미 취소된 좌석입니다.");

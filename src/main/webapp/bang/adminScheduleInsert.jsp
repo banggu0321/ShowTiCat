@@ -72,11 +72,13 @@
 		</form>
 	</div>
 	<script>
+		//return버튼
 		$(function() {
 			$("#return").click(function() {
 				location.href = "schedule.do";
 			});
 		});
+		//극장에 따라 상영관 번호 바꾸기
 		function OnChangePlace() {
 			var place_num = $("#place_num").val();
 			$.ajax({
@@ -88,6 +90,8 @@
 				}
 			});
 		}
+		//영화/공연에 따라 개봉일을 최솟값으로 제한
+		//datetime-local의 형식 : yyyy-MM-ddTHH:mm:ss
 		function OnChangeShow() {
 			var show_code = $("#show_code").val();
 			$.ajax({

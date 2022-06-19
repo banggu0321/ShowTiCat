@@ -46,14 +46,6 @@
 		return "";
 	}
 
-	//닫기 버튼 클릭시
-	function closeWin(key) {
-		if ($("#todaycloseyn").prop("checked")) {
-			setCookie('divpop' + key, 'Y', 1);
-		}
-		$("#divpop" + key + "").hide();
-	}
-
 	$(function() {
 		if (getCookie("divpop1") == "Y") {
 			$("#divpop1").hide();
@@ -61,8 +53,13 @@
 			$("#divpop1").show();
 		}
 	});
-	function deleteCookie() {
-		document.cookie = "divpop1=" + "N" + ";path=/; expires=-1";
+	
+	//닫기 버튼 클릭시
+	function closeWin(key) {
+		if ($("#todaycloseyn").prop("checked")) {
+			setCookie('divpop' + key, 'Y', 1);
+		}
+		$("#divpop" + key + "").hide();
 	}
 	
 	$(function() {
@@ -122,13 +119,13 @@
 	<div class="chart">
 		<div class="contents">
 			<jsp:include page="bang/mainTab.jsp" />
-		</div>
-		<!-- contents -->
+		</div><!-- contents -->
 	</div>
 	<!-- chart -->
 	<%-- <jsp:include page="mainPopup.jsp" /> --%>
 	<form name="notice_form" id="popupform">
 		<div id="divpop1" class="divpop">
+			<h3> ShowTiCat 모바일로 보기</h3>
 			<img alt="" src="${path}/bang/main_images/QR_22739206_.png">
 			<div class="button_area">
 				<input type='checkbox' name='chkbox' id='todaycloseyn' value='Y'>

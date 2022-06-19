@@ -92,19 +92,23 @@
 		</form>
 	</div>
 	<script>
+		//return버튼
 		$(function() {
 			$("#return").click(function() {
 				location.href = "show.do";
 			});
 		});
+		//category에 따라 가격 정해짐
 		function OnChange() {
-			var option = document.getElementById("category").options[document.getElementById("category").selectedIndex].value;
+			var option = document.getElementById("category").
+							options[document.getElementById("category").selectedIndex].value;
 			if (option == "영화") {
 				document.getElementById("price").value = 12000;
 			} else {
 				document.getElementById("price").value = 100000;
 			}
 		}
+		//파일 업로더 label
 		$(".custom-file-input").on("change",function() {
 			var fileName = $(this).val().split("\\").pop();
 			$(this).siblings(".custom-file-label").addClass("selected").html(fileName);

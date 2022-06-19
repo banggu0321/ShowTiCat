@@ -62,7 +62,7 @@
 								fail : {}
 							});
 						} else {
-							alert("삭제불가");
+							alert("삭제불가[스케줄있음]");
 						}
 					},
 					fail : function() {
@@ -82,7 +82,8 @@
 				<h1>공연/영화 목록</h1>
 			</div>
 			<div id="listButton">
-				<button class="btnAdd btn btn-warning"onclick="location.href='showInsert.do'">영화/공연 등록</button>
+				<button class="btnAdd btn btn-warning" onclick="location.href='showInsert.do'">
+				영화/공연 등록</button>
 			</div>
 		</div>
 		<div class="row justify-content-center">
@@ -104,8 +105,9 @@
 							<td>${show.show_time }</td>
 							<td>${show.category }</td>
 							<td>
-								<input type="button" value="수정" class="btnUpd btn btn-info" data-toggle="modal"
-									data-target="#myModal" data-showcode="${show.show_code}">
+								<input type="button" value="수정" class="btnUpd btn btn-info" 
+									data-toggle="modal" data-target="#myModal" 
+									data-showcode="${show.show_code}">
 								<input type="button" value="삭제" class="btnDel btn btn-dark"
 									data-showcode="${show.show_code}">
 							</td>
