@@ -35,34 +35,38 @@ public class rsComplete extends HttpServlet {
 		System.out.println(payment);		
 		service.updateReservationPaymentByResNum(payment, reservationNum);
 		
+		//reservation table pay_YN update		
+		String yn="Y"; //check Y or N 
+		service.updateReservationPaymentYN(yn, reservationNum);
+		
+		
 		int pointYN = Integer.parseInt(request.getParameter("pointYN"));
-		System.out.println(pointYN);
-		if(pointYN <0)
-		{
-			pointYN = 0;
-		}
 		
 		int pointValue = (int)seesion.getAttribute("pointValue");
 		int totalPrice = service.selectReservationTpriceByNum(reservationNum);
 
+		System.out.println("DB point:"+service.selectMembersPointByID(id));
+		System.out.println("+ed point: "+pointValue);
+		System.out.println("request point"+pointYN);
+		
+		if(pointYN <0)
+		{
+			pointYN = 0;
+		}else if(pointYN > totalPrice) {
+			pointYN = 0;
+		}else if(service.selectMembersPointByID(id)-pointYN<0) {
+			pointYN = 0;
+		}
+		
 		//if Y
-		//total price - point
-		if((pointYN>0)&&(pointValue>pointYN)) {
-			int point = service.selectMembersPointByID(id) + (pointValue-pointYN);  //before+(new-request)
-			if(point > totalPrice) {
-				point -= totalPrice;  
-				service.updatePointMembers(id, point);
-				System.out.println("ScheduleDAO.reservationResultFromShowList=>update data(point-totalPrice)");
-			}
-			if(point<totalPrice) {
-				point = service.selectMembersPointByID(id)+pointValue; 
-				service.updatePointMembers(id, point);
-				System.out.println("ScheduleDAO.reservationResultFromShowList=>update data(point < total Price)");
-			}
+		if(pointYN>0) {
+			int point = service.selectMembersPointByID(id)+pointValue-pointYN;
+			service.updatePointMembers(id, point);
+			System.out.println("ScheduleDAO.reservationResultFromShowList=>update data(point-request point)");
 		}
 		
 		//if 0==N
-		if((pointYN==0)||(pointValue<pointYN)) {
+		if((pointYN==0)) {
 			int point = service.selectMembersPointByID(id)+pointValue; 
 			service.updatePointMembers(id, point);
 			System.out.println("ScheduleDAO.reservationResultFromShowList=>update data");
@@ -72,10 +76,6 @@ public class rsComplete extends HttpServlet {
 		int scheduleNum = service.selectReservationByReservationNum(reservationNum);
 		String showCode = service.selectScheduleByScheduleNum(scheduleNum);		
 		//		System.out.println(showCode);
-
-		//reservation table pay_YN update		
-		String yn="Y"; //check Y or N 
-		service.updateReservationPaymentYN(yn, reservationNum);
 
 
 		//reservation number select m_id -> gender 

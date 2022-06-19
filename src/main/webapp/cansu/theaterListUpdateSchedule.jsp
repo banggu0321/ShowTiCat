@@ -16,22 +16,25 @@
 tr, td {
 	text-align: center;
 }
+
 #main {
 	position: absolute;
-	top: 35%;
+	top: 25%;
+	left: 20%;
 	
 	display: inline-block;
 	width: 60%;
-	
-	position: absolute;
-	left: 20%;
 }
 
 #sub1, #sub2 {
 	float: left;
-	margin: 15px;
+	margin: 25px;
 }
-
+#sub2{
+width: 500px;
+height: 700px;
+overflow: auto;
+}
 #title {
 	font-size: xx-large;
 	width: 290px;
@@ -86,7 +89,6 @@ tr, td {
 				</c:forEach>
 			</table>
 		</div>
-
 	</div>
 
 </body>

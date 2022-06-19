@@ -69,18 +69,16 @@ public class rsFromSLSreservation extends HttpServlet {
 			service.insertReservationDetailInfor(reservationNum, arr);
 		}
 
-
-		//		//sample1 (paymentSample.jsp)
-		//		RequestDispatcher rd = request.getRequestDispatcher("cansu/paymentSample.jsp");
-		//		rd.forward(request, response);
-
 		//sample2 (reservationResult.jsp) add seatTemp.jsp request
-
 		if(seatPosition.size() != 0) {
 			RequestDispatcher rd = request.getRequestDispatcher("/reservationCompleteFromShowList");
 			rd.forward(request, response);
 		}
 
+
+		//		//sample1 (paymentSample.jsp)
+		//		RequestDispatcher rd = request.getRequestDispatcher("cansu/paymentSample.jsp");
+		//		rd.forward(request, response);
 	}
 
 
