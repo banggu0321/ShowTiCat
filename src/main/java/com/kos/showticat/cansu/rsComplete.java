@@ -13,6 +13,8 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import com.kos.showticat.cansu.dao.ChartVO;
+import com.kos.showticat.ja0.MemberService;
+import com.kos.showticat.VO.MemberVO;  //com.kos.showticat.VO.MemberVO
 import com.kos.showticat.cansu.ScheduleService;
 
 @WebServlet("/reservationCompletePayYNandRate")
@@ -72,7 +74,12 @@ public class rsComplete extends HttpServlet {
 			System.out.println("ScheduleDAO.reservationResultFromShowList=>update data");
 		}
 
+		MemberService serviceBeta = new MemberService();
+		MemberVO member = new MemberVO();
+		member = (MemberVO) seesion.getAttribute("member");
+		seesion.setAttribute("member", serviceBeta.selectID(member.getM_id(), member.getM_pw()));
 
+/////////
 		int scheduleNum = service.selectReservationByReservationNum(reservationNum);
 		String showCode = service.selectScheduleByScheduleNum(scheduleNum);		
 		//		System.out.println(showCode);
